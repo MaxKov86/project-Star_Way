@@ -11,8 +11,13 @@
 	min-width: 320px;
 	min-height: 100vh;
 } */
+@font-face {
+	font-family: 'Poppins';
+	src: url('./fonts/Poppins/Poppins-Regular.ttf');
+}
+
 body {
-	font-family: sans-serif;
+	font-family: 'Poppins', sans-serif;
 	line-height: 1.5;
 }
 h1,
