@@ -7,13 +7,4 @@ export default defineConfig({
 	build: {
 		sourcemap: true,
 	},
-	resolve: {
-		alias: {
-			src: '/src',
-			components: '/src/components',
-			pages: '/src/pages',
-			assets: '/src/assets',
-		},
-	},
-	base: '/project-star-way',
 });
