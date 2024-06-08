@@ -1,5 +1,3 @@
-
-
 const WelcomePage = () => {
 	return (
 		<div>
