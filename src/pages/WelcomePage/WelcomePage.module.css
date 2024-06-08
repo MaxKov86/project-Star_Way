@@ -1,1 +1,10 @@
-
+.formBox {
+	border-radius: 8px;
+	width: 424px;
+	height: 332px;
+}
+.formButton {
+	border-radius: 8px;
+	width: 344px;
+	height: 49px;
+}

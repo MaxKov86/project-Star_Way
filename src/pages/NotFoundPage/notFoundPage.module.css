@@ -1,0 +1,11 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	padding: 40px;
+	width: 1440px;
+	height: 770px;
+}
+.title {
+	font-size: 50px;
+	margin-bottom: 30px;
+}
