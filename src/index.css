@@ -11,6 +11,7 @@
 	min-width: 320px;
 	min-height: 100vh;
 } */
+@import './css/root.css';
 
 @font-face {
 	font-family: 'Poppins';
