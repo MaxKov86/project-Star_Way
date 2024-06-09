@@ -22,7 +22,7 @@ const schema = yup.object().shape({
 		.required('Password is required'),
 });
 
-export const RegisterForm = () => {
+ const RegisterForm = () => {
 	const [showPassword, setShowPassword] = useState(false);
 	const {
 		register,
