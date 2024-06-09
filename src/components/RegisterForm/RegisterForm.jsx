@@ -7,6 +7,8 @@ import css from './RegisterForm.module.css';
 import icons from '/src/assets/icons.svg';
 import { useForm } from 'react-hook-form';
 import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { register } from '';
 
 const schema = yup.object().shape({
 	name: yup
@@ -34,6 +36,7 @@ export const RegisterForm = () => {
 
 	const onSubmit = data => {
 		console.log(data);
+		dispatch(register(data));
 		// Imitational registration & login
 		navigate('/home');
 	};
@@ -41,6 +44,8 @@ export const RegisterForm = () => {
 	const toggleShowPassword = () => {
 		setShowPassword(prevState => !prevState);
 	};
+
+	const dispatch = useDispatch();
 
 	return (
 		<>
