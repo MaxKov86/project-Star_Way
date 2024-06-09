@@ -8,7 +8,7 @@ import icons from '/src/assets/icons.svg';
 import { useForm } from 'react-hook-form';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { register } from '';
+import { register } from '/src/redux/auth/operations';
 
 const schema = yup.object().shape({
 	name: yup
