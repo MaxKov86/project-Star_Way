@@ -6,7 +6,7 @@ import { selectTheme } from '../../redux/theme/selectors';
 import { useSelector } from 'react-redux';
 import CreateCard from './CreateCard/CreateCard';
 import SidebarBoard from './SidebarBoard/SidebarBoard';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 
 const boards = [
