@@ -1,10 +1,12 @@
- import ColumnList from '../../components/ColumnList/ColumnList';
+import ColumnList from '../../components/ColumnList/ColumnList';
+import Sidebar from '../../components/Sidebar/Sidebar';
 
 const ScreenPage = () => {
 	return (
 		<>
 			<h1>ScreenPage</h1>
-			<ColumnList /> 
+			<Sidebar />
+			<ColumnList />
 		</>
 	);
 };

@@ -1,0 +1,76 @@
+/* box */
+.box {
+    display: flex;
+    flex-direction: column;
+    width: 255px;
+    height: 100vh;
+}
+
+.box_dark {
+    background-color: var(--secondary-color-black-background);
+}
+
+.box_light {
+    background-color: var(--secondary-color-background);
+}
+
+.box_violet {
+    background-color: var(--primary-color-violet);
+}
+
+/* topBox */
+.topBox {
+    padding-top: 14px;
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+.bottomBox {
+    padding-bottom: 14px;
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+/* myBoardText */
+.myBoardText {
+    margin-bottom: 8px;
+
+    font-size: 12px;
+    letter-spacing: -0.02em;
+}
+
+.myBoardText_dark {
+    color: var(--secondary-color-text-gray);
+}
+
+.myBoardText_light {
+    color: var(--color-icons-board);
+}
+
+.myBoardText_violet {
+    color: var(--secondary-color-text-gray);
+}
+
+/* sidebarBoardsBox */
+.sidebarBoardsBox {
+    flex-grow: 1;
+    overflow: scroll;
+}
+
+@media screen and (min-width: 768px) {
+    .box {
+        width: 260px;
+    }
+
+    .topBox {
+        padding-top: 24px;
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .bottomBox {
+        padding-bottom: 24px;
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}
