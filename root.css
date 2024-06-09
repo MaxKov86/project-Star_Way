@@ -1,0 +1,39 @@
+:root {
+	/*dark theme*/
+	--primary-color-text-white: #fff;
+	--secondary-color-text-gray: rgba(255, 255, 255, 0.5);
+	--primary-color-text-black: #161616;
+
+	--primary-color-black-background: #1f1f1f; /*needHelp*/
+	--color-green-background: #bedbb0; /*buttom, welcomePage*/
+	--color-white-background: #f6f6f7;
+	--color-form-background: #151515;
+	--secondary-color-black-background: #121212; /*addColumn*/
+
+	--color-icons: rgba(255, 255, 255, 0.5);
+
+	/*white theme*/
+	--primary-color-background: #fcfcfc;
+	--secondary-color-background: #fff;
+	--color-text-welcome: rgba(22, 22, 22, 0.7);
+	--color-icons-board: rgba(22, 22, 22, 0.5);
+	--primary-color-text: #161616;
+	--secondary-color-text: rgba(22, 22, 22, 0.8);
+	--color-green: #bedbb0;
+
+	/*violet theme*/
+	--primary-color-white-background: #fcfcfc;
+	--secondary-color-white-background: #fff;
+	--primary-color-violet: #5255bc;
+	--secondary-color-violet: #b8bcfd;
+	/*--color-violet-background:   ;*/
+	--secondary-color-text: rgba(22, 22, 22, 0.7);
+	--color-icons-board: rgba(22, 22, 22, 0.5);
+	--primary-color-text: #161616;
+
+	/* Кольори select */
+	--color1: #8fa1d0;
+	--color2: #e09cb5;
+	--color3: #bedbb0;
+	--color4: #1616164d;
+}

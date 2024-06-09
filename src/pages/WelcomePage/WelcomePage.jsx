@@ -1,8 +1,8 @@
-// import React from 'react';
+
 import css from './WelcomePage.module.css';
 import { NavLink } from 'react-router-dom';
-// import sprite from '/src/assets/icon-logo.svg';
 import logo from '/src/assets/icon-logo.svg';
+
 
 const WelcomePage = () => {
 	return (
