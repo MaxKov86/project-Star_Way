@@ -3,12 +3,11 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import css from './RegisterForm.module.css';
-
 import icons from '/src/assets/icons.svg';
 import { useForm } from 'react-hook-form';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { register } from '../../redux/auth/operations';
+import { registr } from '../../redux/auth/operations';
 
 const schema = yup.object().shape({
 	name: yup
@@ -22,8 +21,10 @@ const schema = yup.object().shape({
 		.required('Password is required'),
 });
 
- const RegisterForm = () => {
+const RegisterForm = () => {
 	const [showPassword, setShowPassword] = useState(false);
+	const dispatch = useDispatch();
+
 	const {
 		register,
 		handleSubmit,
@@ -36,7 +37,7 @@ const schema = yup.object().shape({
 
 	const onSubmit = data => {
 		console.log(data);
-		dispatch(register(data));
+		dispatch(registr(data));
 		// Imitational registration & login
 		navigate('/home');
 	};
@@ -44,8 +45,6 @@ const schema = yup.object().shape({
 	const toggleShowPassword = () => {
 		setShowPassword(prevState => !prevState);
 	};
-
-	const dispatch = useDispatch();
 
 	return (
 		<>
