@@ -1,15 +1,13 @@
-
 import css from './WelcomePage.module.css';
 import { NavLink } from 'react-router-dom';
 import logo from '/src/assets/icon-logo.svg';
-
 
 const WelcomePage = () => {
 	return (
 		<div className={css.bodyArea}>
 			<div className={css.homeArea}>
 				<div className={css.homeImg}>
-					<img src="/src/assets/Logo-image/Image-desktop.png" alt="" />
+					<img src="Logo-image/Image-desktop.png" alt="" />
 				</div>
 				<div className={css.logoName}>
 					<img src={logo} alt="Logo " />
