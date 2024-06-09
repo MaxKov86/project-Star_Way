@@ -1,0 +1,129 @@
+/* mainBox */
+.mainBox {
+    display: flex;
+    gap: 4px;
+
+    text-decoration: none;
+    width: 100%;
+    height: 61px;
+}
+
+.mainBox.active {
+    background-color: rgba(31, 31, 31, 0.4);
+}
+
+.mainBox.light.active {
+    background-color: var(--color-white-background);
+}
+
+.mainBox.violet.active {
+    background-color: var(--secondary-color-text-gray);
+}
+
+/* box */
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 100%;
+
+    padding-left: 14px;
+    padding-right: 10px;
+}
+
+/* infoBox */
+.infoBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* icon */
+.icon {
+    fill: none;
+    stroke: var(--secondary-color-text-gray);
+    height: 18px;
+    width: 18px;
+}
+
+.icon.active {
+    stroke: var(--primary-color-text-white);
+}
+
+
+.icon.light {
+    stroke: var(--color-icons-board);
+}
+
+.icon.light.active {
+    stroke: var(--primary-color-text);
+}
+
+/* text */
+
+.title {
+    color: var(--secondary-color-text-gray);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+}
+
+.title.active {
+    color: var(--primary-color-text-white);
+}
+
+.title.light {
+    color: var(--primary-color-text-white);
+}
+
+/* btnBox */
+.btnBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* btn */
+.btn {
+    display: none;
+
+    width: 16px;
+    height: 16px;
+
+    border: none;
+    background-color: transparent;
+}
+
+.btn.active {
+    display: block;
+}
+
+/* btnIcon */
+
+.btnIcon {
+    fill: none;
+    width: 100%;
+    height: 100%;
+    stroke: var(--color-icons);
+}
+
+.btnIcon.violet {
+    stroke: var(--color-icons-board);
+}
+
+/* stick */
+.stick {
+    height: 100%;
+    width: 4px;
+
+    border-radius: 4px 0px 0px 4px;
+    background-color: var(--color-green-background);
+}
+
+.stick.violet {
+    background-color: var(--secondary-color-white-background);
+}
