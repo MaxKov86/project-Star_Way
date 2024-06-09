@@ -50,9 +50,9 @@
 .line {
 	width: 290px;
 	height: 0.5px;
-	background-color: rgba(22, 22, 22, 0.1); /* Колір лінії */
-	align-self: center; /* Центрування лінії */
-	margin: 0 auto; /* Відступи зверху та знизу */
+	background-color: rgba(22, 22, 22, 0.1);
+	align-self: center;
+	margin: 0 auto;
 	line-height: 1.5;
 }
 
@@ -70,7 +70,7 @@
 }
 .priorityTitle {
 	color: rgba(22, 22, 22, 0.5);
-	margin-right: 10px; /* Відстань між заголовком і календарем */
+	margin-right: 10px;
 	font-family: Poppins;
 	font-size: 8px;
 	font-style: normal;
@@ -101,12 +101,12 @@
 }
 
 .radio {
-	margin-right: 5px; /* Відстань між радіокнопкою і текстом */
+	margin-right: 5px;
 }
 .icon {
-	width: 16px; /* Задайте потрібний розмір */
-	height: 16px; /* Задайте потрібний розмір */
-	fill: currentColor; /* Задайте колір */
+	width: 16px;
+	height: 16px;
+	fill: currentColor;
 }
 .iconBox {
 	display: flex;
@@ -116,4 +116,13 @@
 	padding-top: 15px;
 	gap: 8px;
 	padding-left: 86px;
+}
+.iconBox svg {
+	width: 16px;
+	height: 16px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 2.6;
+	stroke-linecap: round;
+	stroke-linejoin: round;
 }
