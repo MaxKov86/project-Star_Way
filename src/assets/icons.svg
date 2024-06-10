@@ -14,12 +14,12 @@
       <path stroke-width="2.286" stroke-linecap="round" stroke-linejoin="round" d="M16 6.666v18.667M6.667 16h18.667"/>
     </symbol>
     <symbol id="icon-eye" viewBox="0 0 32 32">
-      <path stroke-width="2.311" stroke-linecap="round" stroke-linejoin="round" d="M1.333 16S6.666 5.333 16 5.333 30.667 16 30.667 16 25.334 26.667 16 26.667 1.333 16 1.333 16z" fill="#fff"/>
-      <path stroke-width="2.311" stroke-linecap="round" stroke-linejoin="round" d="M16 20a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" fill="#1f1f1f"/>
+      <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.311" d="M1.333 16S6.666 5.333 16 5.333 30.667 16 30.667 16 25.334 26.667 16 26.667 1.333 16 1.333 16z"/>
+      <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.311" d="M16 20a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/>
     </symbol>
     <symbol id="icon-eye-off" viewBox="0 0 32 32">
-      <path stroke-width="2.311" stroke-linecap="round" stroke-linejoin="round" d="M1.333 16S6.666 5.333 16 5.333 30.667 16 30.667 16 25.334 26.667 16 26.667 1.333 16 1.333 16z" />
-      <path stroke-width="2.311" stroke-linecap="round" stroke-linejoin="round" d="M16 20a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" fill="#1f1f1f"/>
+      <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.311" d="M1.333 16S6.666 5.333 16 5.333 30.667 16 30.667 16 25.334 26.667 16 26.667 1.333 16 1.333 16z" stroke='#ffffff4d'/>
+      <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.311" d="M16 20a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" stroke='#ffffff4d'/>
     </symbol>
     <symbol id="icon-ring" viewBox="0 0 32 32">
       <path stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M12.472 28c.94.83 2.175 1.333 3.528 1.333s2.588-.504 3.528-1.333M24 10.667a8 8 0 1 0-16 0c0 4.12-1.039 6.941-2.2 8.807-.979 1.574-1.469 2.361-1.451 2.58.02.243.071.336.267.481.177.131.974.131 2.569.131h17.63c1.595 0 2.393 0 2.57-.131.196-.145.247-.238.267-.481.018-.22-.472-1.006-1.451-2.58-1.161-1.866-2.2-4.687-2.2-8.807z"/>

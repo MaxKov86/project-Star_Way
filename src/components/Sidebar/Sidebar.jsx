@@ -1,16 +1,15 @@
 import clsx from 'clsx';
 import LogoComponent from '../LogoComponent/LogoComponent';
 import NeedHelp from './NeedHelp/NeedHelp';
-import css from "./Sidebar.module.css";
+import css from './Sidebar.module.css';
 import { selectTheme } from '../../redux/theme/selectors';
-import { useDispatch, useSelector } from 'react-redux';
-import CreateBoard from './CreateBoard/CreateBoard';
+import { useSelector } from 'react-redux';
+import CreateCard from './CreateCard/CreateCard';
 import SidebarBoard from './SidebarBoard/SidebarBoard';
 import { useParams } from 'react-router-dom';
 import Logout from './Logout/Logout';
 
 import { selectBoards } from '../../redux/boards/selectors';
-
 
 const Sidebar = () => {
 	const params = useParams();
@@ -28,11 +27,30 @@ const Sidebar = () => {
 			</div>
 
 			<ul className={css.sidebarBoardsBox}>
-				{boards.map((board) => {
+				{boards.map(board => {
 					if (params.boardName === board._id) {
-						return <li key={board._id}><SidebarBoard title={board.title} icon={board.icon} id={board._id} isActive={true} /></li>
+						return (
+							<li key={board._id}>
+								<SidebarBoard
+									title={board.title}
+									icon={board.icon}
+									id={board._id}
+									isActive={true}
+								/>
+							</li>
+						);
 					}
-					return <li key={board._id}><SidebarBoard key={board._id} title={board.title} icon={board.icon} id={board._id} isActive={false} /></li>
+					return (
+						<li key={board._id}>
+							<SidebarBoard
+								key={board._id}
+								title={board.title}
+								icon={board.icon}
+								id={board._id}
+								isActive={false}
+							/>
+						</li>
+					);
 				})}
 			</ul>
 

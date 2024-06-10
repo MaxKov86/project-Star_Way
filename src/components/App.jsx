@@ -7,6 +7,7 @@ import { Toaster } from 'react-hot-toast';
 import Layout from './Layout/Layout';
 import ScreenPage from '../pages/ScreensPage/ScreenPage';
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
+// import PrivateRoute from './PrivateRoute';
 
 function App() {
 	return (
