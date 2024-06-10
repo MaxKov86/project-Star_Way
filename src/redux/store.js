@@ -18,7 +18,7 @@ import columnsReduser from './columns/slice.js';
 const themePersistCfg = {
 	key: 'theme',
 	storage,
-	whiteList: ['value'],
+	whitelist: ['value'],
 };
 
 const persistThemeReduser = persistReducer(themePersistCfg, themeReduser);
@@ -26,7 +26,7 @@ const persistThemeReduser = persistReducer(themePersistCfg, themeReduser);
 const authPersistConfig = {
 	key: 'auth',
 	storage,
-	whiteList: ['token'],
+	whitelist: ['token'],
 };
 const persistdAuthReducer = persistReducer(authPersistConfig, authReduser);
 

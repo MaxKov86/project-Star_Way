@@ -7,9 +7,16 @@ import { Toaster } from 'react-hot-toast';
 import Layout from './Layout/Layout';
 import ScreenPage from '../pages/ScreensPage/ScreenPage';
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { refreshUser } from '../redux/auth/operations';
 // import PrivateRoute from './PrivateRoute';
 
 function App() {
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(refreshUser());
+	}, [dispatch]);
 	return (
 		<>
 			<Layout>
