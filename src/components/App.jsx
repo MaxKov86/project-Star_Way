@@ -3,6 +3,7 @@ import WelcomePage from '../pages/WelcomePage/WelcomePage';
 import AuthPage from '../pages/AuthPage/AuthPage';
 import HomePage from '../pages/HomePage/HomePage';
 import './App.module.css';
+import { Toaster } from 'react-hot-toast';
 import Layout from './Layout/Layout';
 import ScreenPage from '../pages/ScreensPage/ScreenPage';
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
@@ -18,6 +19,7 @@ function App() {
 					<Route path="/home/:boardName" element={<ScreenPage />} />
 					<Route path="*" element={<NotFoundPage />} />
 				</Routes>
+				<Toaster />
 			</Layout>
 		</>
 	);
