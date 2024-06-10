@@ -3,7 +3,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import css from './RegisterForm.module.css';
-
 import icons from '/src/assets/icons.svg';
 import { useForm } from 'react-hook-form';
 import { NavLink } from 'react-router-dom';
@@ -24,6 +23,8 @@ const schema = yup.object().shape({
 
 const RegisterForm = () => {
 	const [showPassword, setShowPassword] = useState(false);
+	const dispatch = useDispatch();
+
 	const {
 		register,
 		handleSubmit,
@@ -36,8 +37,7 @@ const RegisterForm = () => {
 
 	const onSubmit = data => {
 		console.log(data);
-		const reg = registr(data);
-		dispatch(reg);
+		dispatch(registr(data));
 		// Imitational registration & login
 		navigate('/home');
 	};
@@ -45,8 +45,6 @@ const RegisterForm = () => {
 	const toggleShowPassword = () => {
 		setShowPassword(prevState => !prevState);
 	};
-
-	const dispatch = useDispatch();
 
 	return (
 		<>
