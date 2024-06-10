@@ -18,7 +18,12 @@ function App() {
 					<Route path="/auth/:id" element={<AuthPage />} />
 					<Route
 						path="/home"
-						element={<PrivateRoute component={<HomePage />} />}
+						element={
+							<PrivateRoute
+								component={<HomePage />}
+								redirectTo={'/auth/register'}
+							/>
+						}
 					/>
 					<Route path="/home/:boardName" element={<ScreenPage />} />
 					<Route path="*" element={<NotFoundPage />} />
