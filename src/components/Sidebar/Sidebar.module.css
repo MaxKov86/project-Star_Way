@@ -1,0 +1,200 @@
+.sidebarWrap {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: -100%;
+	background: #121212;
+	z-index: 1;
+}
+
+.sidebarWrap.visible {
+	left: 0;
+	transition: all 0.3s linear;
+}
+
+.sidebar {
+	width: 225px;
+	height: 100%;
+	background: #121212;
+	padding: 14px 0 24px;
+}
+
+.logoBox {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	margin-bottom: 70px;
+	padding: 0 14px;
+}
+
+.logoTitle {
+	font-weight: 600;
+	font-size: 16px;
+	letter-spacing: -0.04em;
+	color: #fff;
+}
+
+.logoSvg {
+	width: 32px;
+	height: 32px;
+	fill: #1f1f1f;
+}
+
+.createTitle {
+	font-size: 12px;
+	letter-spacing: -0.02em;
+	color: rgba(255, 255, 255, 0.5);
+	margin-bottom: 8px;
+}
+
+.createBox {
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	display: flex;
+	justify-content: space-between;
+	padding: 14px 4px 14px 0;
+	align-items: center;
+}
+
+.createText {
+	width: 76px;
+	font-weight: 500;
+	font-size: 14px;
+	letter-spacing: -0.02em;
+	line-height: 21px;
+	color: #fff;
+}
+
+.createBtn {
+	border: none;
+	border-radius: 6px;
+	width: 40px;
+	height: 36px;
+	background: #bedbb0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.createBtn:hover,
+.createBtn:active {
+	background: #9dc888;
+}
+
+.createSvg {
+	width: 20px;
+	height: 20px;
+	stroke: #121212;
+}
+
+.projects {
+	height: calc(100% - 468px);
+	overflow-y: auto;
+	padding: 40px 0 20px;
+}
+
+.helpBlock {
+	background-color: #1f1f1f;
+	padding: 14px;
+	border-radius: 8px;
+	margin-bottom: 24px;
+}
+
+.img {
+	width: 54px;
+	height: 78px;
+	margin-bottom: 14px;
+}
+
+.helpText {
+	width: 168px;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 133%;
+	letter-spacing: -0.02em;
+	color: #fff;
+	word-break: break-all;
+	margin-bottom: 18px;
+}
+
+.helpLink {
+	color: #9dc888;
+}
+
+.helpSvg {
+	width: 20px;
+	height: 20px;
+}
+
+.helpBtn {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	border: none;
+	background-color: transparent;
+	font-weight: 500;
+	font-size: 12px;
+	letter-spacing: -0.02em;
+	color: #fff;
+}
+
+.logOutSvg {
+	width: 23px;
+	height: 23px;
+}
+
+.logOutBtn {
+	gap: 14px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: none;
+	background-color: transparent;
+	font-weight: 500;
+	font-size: 14px;
+	color: #fff;
+}
+
+.block {
+	padding: 0 14px;
+}
+
+@media screen and (min-width: 768px) {
+	.sidebar {
+		width: 260px;
+		padding: 24px 0;
+	}
+
+	.logoBox {
+		padding: 0 24px;
+	}
+
+	.helpText {
+		font-size: 14px;
+	}
+
+	.logOutSvg {
+		width: 32px;
+		height: 32px;
+	}
+
+	.block {
+		padding: 0 24px;
+	}
+
+	.projects {
+		height: calc(100% - 500px);
+	}
+}
+
+@media screen and (min-width: 1440px) {
+	.sidebarWrap {
+		position: static;
+		width: 260px;
+	}
+
+	.helpText {
+		font-size: 16px;
+	}
+}

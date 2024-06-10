@@ -1,0 +1,155 @@
+.helpBlock {
+	background-color: #1f1f1f;
+	padding: 14px;
+	border-radius: 8px;
+}
+
+.img {
+	width: 54px;
+	height: 78px;
+	margin-bottom: 14px;
+}
+
+.btnBox {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+}
+
+.helpText {
+	font-family: Poppins;
+	width: 168px;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 133%;
+	letter-spacing: -0.02em;
+	color: #fff;
+	word-break: break-all;
+	margin-bottom: 18px;
+}
+
+.taskProSpan {
+	color: #bedbb0;
+}
+
+.helpSvg {
+	width: 20px;
+	height: 20px;
+}
+
+.iconHelpCircle {
+	width: 20px;
+	height: 20px;
+	stroke: white;
+}
+
+.helpBtn {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	border: none;
+	background-color: transparent;
+	font-weight: 500;
+	font-size: 12px;
+	letter-spacing: -0.02em;
+	color: #fff;
+}
+@media (min-width: 375px) {
+	.helpBlock {
+		max-width: 335px;
+	}
+}
+
+@media (min-width: 768px) {
+	.helpBlock {
+		max-width: 473px;
+	}
+}
+
+.iconKaktusNeedHelp {
+	display: inline-block;
+	width: 54px;
+	height: 78px;
+	background-image: url('../../../assets/kaktus-need-help.jpg');
+	background-size: contain;
+	margin-right: 10px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.help-form {
+	margin-top: 20px;
+}
+
+.help-form input,
+.help-form textarea {
+	display: block;
+	/* width: 100%; */
+	max-width: 335px;
+	margin-bottom: 10px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+.help-form button {
+	padding: 10px 20px;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.help-form button:hover {
+	background-color: #0056b3;
+}
+/*============*/
+.wrapLogo {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	margin-bottom: 24px;
+}
+
+@media (min-width: 768px) {
+	.wrapLogo {
+		height: 60px;
+	}
+}
+
+.logoIcon {
+	width: 40px;
+	height: 40px;
+}
+
+@media (min-width: 768px) {
+	.logoIcon {
+		width: 48px;
+		height: 48px;
+	}
+}
+/*=============*/
+.modal {
+	/* Стилі для модального вікна */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	right: auto;
+	bottom: auto;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+
+	padding: 0px;
+	border-radius: 8px;
+	outline: none;
+}
+.overlay {
+	/* Стилі для оверлея */
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}

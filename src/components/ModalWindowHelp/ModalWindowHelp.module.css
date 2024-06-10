@@ -1,0 +1,137 @@
+/*.modalContainer {
+	background: #1e1e1e;
+}
+.form {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	background: #1e1e1e;
+}
+
+.formInput {
+	background: white;
+	border: 1px solid rgba(190, 219, 176, 0.5);
+	border-radius: 4px;
+	padding: 10px;
+	margin-bottom: 16px;
+	color: #ffffff;
+	width: 100%;
+	box-sizing: border-box;
+
+	font-family: 'Poppins', sans-serif;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 18px;
+	letter-spacing: -0.02em;
+	text-align: left;
+}
+
+.title {
+	color: #ffffff;
+}
+
+.textareaInput {
+	background: #1e1e1e;
+	border: 1px solid rgba(190, 219, 176, 0.5);
+	border-radius: 4px;
+	padding: 10px;
+	margin-bottom: 16px;
+	color: #ffffff;
+	width: 100%;
+	box-sizing: border-box;
+	resize: vertical;
+
+	font-family: 'Poppins', sans-serif;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 18px;
+	letter-spacing: -0.02em;
+	text-align: left;
+}
+
+.labelContainer {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 16px;
+}
+
+.labelTitle {
+	display: block;
+	margin-bottom: 4px;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 18px;
+	letter-spacing: -0.02em;
+	color: #ffffff;
+}*/
+
+.modalContainer {
+	background-color: #151515;
+	color: white; /* Білий текст */
+	padding: 20px;
+	border-radius: 8px;
+	position: relative;
+	width: 400px;
+	max-width: 90%;
+	margin: 50px auto;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.closeButton {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background: #151515;
+	border: none;
+	color: yellow;
+	cursor: pointer;
+	font-size: 20px;
+}
+
+.title {
+	color: #fff;
+	font-family: Poppins;
+	font-size: 18px;
+	font-weight: 500;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+}
+
+.formInput,
+.textareaInput {
+	border-radius: 8px;
+	border: 1px solid #bedbb0;
+	opacity: 0.4;
+
+	background-color: #151515;
+	border: 1px solid #555;
+	border-radius: 4px;
+	padding: 10px;
+	margin-bottom: 10px;
+	color: #fff;
+	font-size: 14px;
+	font-weight: 400;
+}
+
+.textareaInput {
+	resize: vertical;
+	min-height: 100px;
+}
+
+.modalButton {
+	background-color: #bedbb0;
+	color: #161616;
+	border: none;
+	border-radius: 4px;
+	padding: 10px;
+	cursor: pointer;
+	font-size: 16px;
+	text-align: center;
+}
+
+.modalButton:hover {
+	background-color: #9dc888;
+}
