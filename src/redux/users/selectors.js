@@ -1,4 +1,3 @@
-export const selectUser = (state) => state.user;
 
 export const selectUserName = (state) => state.user.name;
 

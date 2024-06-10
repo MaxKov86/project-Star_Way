@@ -6,6 +6,7 @@ import {
 	IconButton,
 	InputAdornment,
 	Avatar,
+	Box,
 } from '@mui/material';
 import {
 	Person as UserIcon,
@@ -17,6 +18,7 @@ import {
 import { useForm, Controller } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { editUser } from '../../../redux/users/operations';
+import css from './Modal.module.css'
 
 const ModalForm = ({ open, handleClose, user }) => {
 	const dispatch = useDispatch();
@@ -37,6 +39,7 @@ const ModalForm = ({ open, handleClose, user }) => {
 			name: user.name,
 			email: user.email,
 			password: '',
+			avatar: ''
 		},
 	});
 
@@ -69,17 +72,19 @@ const ModalForm = ({ open, handleClose, user }) => {
 
 	return (
 		<Modal open={open} onClose={handleClose}>
-			<div>
-				<IconButton onClick={handleClose}>
+			<Box className={css.modalBox}>
+				<div className={css.closeBtn}>
+				<IconButton onClick={handleClose} className={css.closeBtn}>
 					<CloseIcon />
 				</IconButton>
-				<h2>Edit profile</h2>
-				<form onSubmit={handleSubmit(onSubmit)}>
-					<div>
-						<Avatar src={userAvatar || ''}>
+				</div>
+				<h2 className={css.text}>Edit profile</h2>
+				<form onSubmit={handleSubmit(onSubmit)} className={css.form}>
+					<div className={css.photoUpload}>
+						<Avatar src={userAvatar || ''} className={css.avatar}>
 							{!userAvatar && <UserIcon />}
 						</Avatar>
-						<IconButton component="label">
+						<IconButton component="label" className={css.plusBtn}>
 							<input
 								type="file"
 								hidden
@@ -90,6 +95,7 @@ const ModalForm = ({ open, handleClose, user }) => {
 							<AddIcon />
 						</IconButton>
 					</div>
+					<div className={css.form}>
 					<Controller
 						name="name"
 						control={control}
@@ -136,9 +142,10 @@ const ModalForm = ({ open, handleClose, user }) => {
 							/>
 						)}
 					/>
-					<Button type="submit">Edit</Button>
+					</div>
+					<Button type="submit" className={css.btn}>Edit</Button>
 				</form>
-			</div>
+			</Box>
 		</Modal>
 	);
 };
