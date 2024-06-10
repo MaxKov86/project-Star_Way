@@ -1,0 +1,70 @@
+/* box */
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 70px;
+
+    margin-bottom: 40px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.box_light {
+    border-top: 1px solid rgba(22, 22, 22, 0.10);
+    border-bottom: 1px solid rgba(22, 22, 22, 0.10);
+}
+
+/* img */
+.icon {
+    width: 20px;
+    height: 20px;
+
+    stroke: var(--secondary-color-black-background);
+}
+
+.icon_violet {
+    stroke: var(--secondary-color-white-background);
+}
+
+/* text */
+.text {
+    width: 76px;
+
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+
+    color: var(--primary-color-text-white);
+}
+
+.text_light {
+    color: var(--primary-color-text);
+}
+
+/* btn */
+.btn {
+    width: 40px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 6px;
+    background-color: var(--color-green-background);
+}
+
+.btn_violet {
+    background-color: var(--secondary-color-violet);
+}
+
+.btn:hover {
+    background-color: #9DC888;
+}
+
+.btn_violet:hover {
+    background-color: #979CEA;
+}

@@ -11,6 +11,7 @@
 	min-width: 320px;
 	min-height: 100vh;
 } */
+@import './css/root.css';
 
 @font-face {
 	font-family: 'Poppins';
@@ -40,4 +41,9 @@ ol {
 img {
 	display: block;
 	max-width: 100%;
+}
+
+button {
+	cursor: pointer;
+	padding: 0;
 }

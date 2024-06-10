@@ -1,0 +1,119 @@
+.form {
+	background-color: rgb(21, 21, 21);
+	border-radius: 8px;
+	padding: 24px;
+	/* width: 335px;
+	height: 363px; */
+	margin: 0 auto;
+	color: rgba(22, 22, 22, 0.08);
+	@media screen and (min-width: 768px) {
+		width: 424px;
+		/* height: 395px; */
+		padding: 40px;
+	}
+}
+
+.formTitle {
+	margin-bottom: 40px;
+	display: flex;
+	/* justify-content: center; */
+	flex-direction: row;
+}
+.formTitle h1 {
+	color: #fff;
+	font-size: 1.125rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	letter-spacing: -0.0225rem;
+	margin-right: 0.88em;
+}
+
+.link {
+	text-decoration: none;
+	color: rgba(255, 255, 255, 0.3);
+	font-size: 1.125rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	letter-spacing: -0.0225rem;
+}
+
+.link:hover {
+	color: #a6a6a6;
+}
+
+.inputWrap {
+	margin-bottom: 16px;
+	position: relative;
+}
+
+.formImput {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid rgba(190, 219, 176, 0.3);
+	border-radius: 5px;
+	background-color: rgba(31, 31, 31, 1);
+	color: rgba(255, 255, 255, 0.8);
+	/* margin-bottom: 14px; */
+	position: relative;
+}
+
+.formImput::placeholder {
+	color: rgb(108, 108, 108);
+}
+
+.formImput:focus {
+	background-color: rgba(31, 31, 31, 1);
+	border-color: rgba(190, 219, 176, 1);
+	outline: none;
+}
+
+.error {
+	border-color: #ff4c4c;
+}
+
+.errors {
+	color: #ff4c4c;
+	font-size: 12px;
+	margin-top: 5px;
+	position: absolute;
+	/* opacity: 0; */
+	top: 100%;
+	left: 0;
+	transform: translateY(-40%);
+	/* transition: all 1.5s ease; */
+	/* right: 10px; */
+	/* transform: translateY(-80%); */
+}
+
+.formBtn {
+	width: 100%;
+	padding: 10px;
+	background-color: rgba(157, 200, 136, 1);
+	border: none;
+	border-radius: 5px;
+	color: rgba(22, 22, 22, 1);
+	font-size: 16px;
+	cursor: pointer;
+	margin-top: 10px;
+}
+
+.formBtn:hover {
+	background-color: rgba(190, 219, 176, 1);
+}
+
+.icon {
+	width: 19px;
+	height: 18px;
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transform: translateY(-50%);
+	fill: #6c6c6c;
+	cursor: pointer;
+}
+
+.icon:hover {
+	fill: #e0e0e0;
+}

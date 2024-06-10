@@ -1,1 +1,128 @@
+.bodyArea {
+	background: linear-gradient(
+		180deg,
+		rgba(196, 196, 196, 0) 25%,
+		#bedbb0 92.19%
+	);
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 
+.homeArea {
+	width: 330px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	@media screen and (min-width: 768px) {
+		width: 473px;
+	}
+}
+.homeImg {
+	max-width: 124px;
+	max-height: 124px;
+	margin-bottom: 14px;
+	@media screen and (min-width: 768px) {
+		max-width: 162px;
+		max-height: 162px;
+		margin-bottom: 24px;
+	}
+}
+.homeText {
+	text-align: center;
+	width: 100%;
+	font-size: 0.875rem;
+	font-weight: 400;
+	color: #161616;
+	line-height: 1.125rem; /* 128.571% */
+	letter-spacing: -0.0175rem;
+	margin-bottom: 3rem;
+}
+
+.logoName {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.875rem;
+	margin-bottom: 24px;
+}
+
+.logoName h1 {
+	color: #161616;
+	font-family: Poppins;
+	font-size: 1.75rem;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+	letter-spacing: -0.07rem;
+	@media screen and (min-width: 768px) {
+		font-size: 2.5rem;
+		letter-spacing: -0.1rem;
+	}
+}
+.logoName img {
+	max-width: 40px;
+	max-height: 40px;
+	margin-right: 0.88rem;
+	@media screen and (min-width: 768px) {
+		max-width: 48px;
+		max-height: 48px;
+	}
+}
+
+.linkBtn {
+	width: 335px;
+	margin-bottom: 0.87rem;
+	@media screen and (max-width: 320px) {
+		width: 100%;
+	}
+	@media screen and (min-width: 768px) {
+		width: 344px;
+	}
+}
+
+button {
+	border-radius: 0.5em;
+	border: 1px solid transparent;
+	padding: 0.4em 1.2em;
+	font-size: 0.875em;
+	cursor: pointer;
+	background-color: #161616;
+	width: 100%;
+	height: 49px;
+	padding: 0.875em 0em;
+	color: white;
+	text-decoration: none;
+	font-size: 0.875em;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	letter-spacing: -0.0175em;
+}
+button:hover {
+	/* border-color: #161616; */
+	background-color: #2d2d2d;
+}
+button:focus,
+button:focus-visible {
+	/* outline: 1px solid #2d2d2d; */
+	background-color: #2d2d2d;
+}
+
+.link {
+	/* display: inline-block; */
+	text-decoration: none;
+	color: #161616;
+	font-size: 0.875rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	letter-spacing: -0.0175rem;
+}
+
+.link:hover {
+	color: #a6a6a6;
+}
