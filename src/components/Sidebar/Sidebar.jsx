@@ -4,27 +4,19 @@ import NeedHelp from './NeedHelp/NeedHelp';
 import css from "./Sidebar.module.css";
 import { selectTheme } from '../../redux/theme/selectors';
 import { useDispatch, useSelector } from 'react-redux';
-import CreateCard from './CreateCard/CreateCard';
+import CreateBoard from './CreateBoard/CreateBoard';
 import SidebarBoard from './SidebarBoard/SidebarBoard';
 import { useParams } from 'react-router-dom';
 import Logout from './Logout/Logout';
 
 import { selectBoards } from '../../redux/boards/selectors';
-import { useEffect } from 'react';
-import { getAllBoards } from '../../redux/boards/operations';
 
 
 const Sidebar = () => {
 	const params = useParams();
 
-	const dispatch = useDispatch();
-	useEffect(() => {
-		dispatch(getAllBoards())
-	})
-
 	const boards = useSelector(selectBoards);
 	const theme = useSelector(selectTheme);
-
 
 	return (
 		<div className={clsx(css.box, css[`box_${theme}`])}>
@@ -32,7 +24,7 @@ const Sidebar = () => {
 				<LogoComponent />
 
 				<p className={clsx(css.myBoardText, css[`myBoardText_${theme}`])}>My boards</p>
-				<CreateCard />
+				<CreateBoard />
 			</div>
 
 			<ul className={css.sidebarBoardsBox}>
