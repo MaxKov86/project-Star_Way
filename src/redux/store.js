@@ -26,7 +26,7 @@ const persistThemeReduser = persistReducer(themePersistCfg, themeReduser);
 const authPersistConfig = {
 	key: 'auth',
 	storage,
-	whitelist: ['token'],
+	whiteList: ['token'],
 };
 const persistdAuthReducer = persistReducer(authPersistConfig, authReduser);
 
