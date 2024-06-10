@@ -3,9 +3,11 @@ import { Avatar } from '@mui/material';
 import { Person as UserIcon } from '@mui/icons-material';
 import { useSelector } from 'react-redux';
 import ModalForm from './Modal';
+import { selectUserAvatar, selectUserName } from '../../../redux/users/selectors';
 
 const UserInfo = () => {
-    const user = useSelector((state) => state.user);
+    const userName = useSelector(selectUserName);
+    const userAvatar = useSelector(selectUserAvatar);
     const [open, setOpen] = useState(false);
 
     const handleOpen = () => setOpen(true);
@@ -13,11 +15,11 @@ const UserInfo = () => {
 
     return (
         <div>
-            <Avatar onClick={handleOpen} src={user.avatar || ''}>
-                {!user.avatar && <UserIcon />}
+            <Avatar onClick={handleOpen} src={userAvatar || ''}>
+                {!userAvatar && <UserIcon />}
             </Avatar>
-            <span>{user.name}</span>
-            <ModalForm open={open} handleClose={handleClose} user={user} />
+            <span>{userName}</span>
+            <ModalForm open={open} handleClose={handleClose} user={{ name: userName, avatar: userAvatar }} />
         </div>
     );
 };

@@ -16,7 +16,7 @@ import {
 } from '@mui/icons-material';
 import { useForm, Controller } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { editUser } from '../../../redux/users/slice';
+import { editUser } from '../../../redux/users/operations';
 
 const ModalForm = ({ open, handleClose, user }) => {
 	const dispatch = useDispatch();

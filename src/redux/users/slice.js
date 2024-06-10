@@ -1,11 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
 
 const initialState = {
   name: '',
   email: '',
   password: '',
-  avatar: '',
+  avatar: null,
 };
 
 const userSlice = createSlice({
@@ -23,18 +22,4 @@ const userSlice = createSlice({
 });
 
 export const { editUserSuccess } = userSlice.actions;
-
-export const editUser = (formData) => async (dispatch) => {
-  try {
-    const response = await axios.post("/api/users/edit", formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
-    dispatch(editUserSuccess(response.data));
-  } catch (error) {
-    console.error('Failed to edit user:', error);
-  }
-};
-
 export default userSlice.reducer;
