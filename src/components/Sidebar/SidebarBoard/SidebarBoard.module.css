@@ -102,6 +102,19 @@
     display: block;
 }
 
+.btn:hover,
+.btn:focus {
+    background-color: transparent;
+}
+
+.btn:hover .btnIcon {
+    stroke: var(--primary-color-text-white);
+}
+
+.btn:hover .btnIcon.light {
+    stroke: var(--primary-color-text);
+}
+
 /* btnIcon */
 
 .btnIcon {

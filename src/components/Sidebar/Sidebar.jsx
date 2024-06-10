@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import CreateCard from './CreateCard/CreateCard';
 import SidebarBoard from './SidebarBoard/SidebarBoard';
 import { useParams } from 'react-router-dom';
+import Logout from './Logout/Logout';
 
 
 const boards = [
@@ -47,18 +48,18 @@ const Sidebar = () => {
 				<CreateCard />
 			</div>
 
-			<div className={css.sidebarBoardsBox}>
+			<ul className={css.sidebarBoardsBox}>
 				{boards.map((board) => {
 					if (params.boardName === board._id) {
-						return <SidebarBoard key={board._id} title={board.title} icon={board.icon} id={board._id} isActive={true} />
+						return <li key={board._id}><SidebarBoard title={board.title} icon={board.icon} id={board._id} isActive={true} /></li>
 					}
-					return <SidebarBoard key={board._id} title={board.title} icon={board.icon} id={board._id} isActive={false} />
+					return <li key={board._id}><SidebarBoard key={board._id} title={board.title} icon={board.icon} id={board._id} isActive={false} /></li>
 				})}
-			</div>
+			</ul>
 
 			<div className={css.bottomBox}>
 				<NeedHelp />
-				<button>Log out</button>
+				<Logout />
 			</div>
 		</div>
 	);
