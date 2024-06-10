@@ -8,7 +8,7 @@ import icons from '/src/assets/icons.svg';
 import { useForm } from 'react-hook-form';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { register } from '../../redux/auth/operations';
+import { registr } from '../../redux/auth/operations';
 
 const schema = yup.object().shape({
 	name: yup
@@ -22,7 +22,7 @@ const schema = yup.object().shape({
 		.required('Password is required'),
 });
 
- const RegisterForm = () => {
+const RegisterForm = () => {
 	const [showPassword, setShowPassword] = useState(false);
 	const {
 		register,
@@ -36,7 +36,8 @@ const schema = yup.object().shape({
 
 	const onSubmit = data => {
 		console.log(data);
-		dispatch(register(data));
+		const reg = registr(data);
+		dispatch(reg);
 		// Imitational registration & login
 		navigate('/home');
 	};
@@ -76,7 +77,7 @@ const schema = yup.object().shape({
 					/>
 					{errors.email && <p className={css.errors}>{errors.email.message}</p>}
 				</div>
-				<div className={css.inputWrap} style={{ position: 'relative' }}>
+				<div className={css.inputWrap}>
 					<input
 						className={`${css.formImput} ${errors.name ? css.error : ''}`}
 						type={showPassword ? 'text' : 'password'}
