@@ -41,10 +41,11 @@ const slice = createSlice({
 			.addCase(deleteBoard.fulfilled, (state, action) => {
 				state.items = state.items.filter(item => item.id !== action.payload.id);
 				state.isLoading = false;
-			}).addCase(deleteBoard.rejected, state => {
-                state.error = true;
-                state.isLoading = false;
-            }),
+			})
+			.addCase(deleteBoard.rejected, state => {
+				state.error = true;
+				state.isLoading = false;
+			}),
 });
 
 export default slice.reducer;

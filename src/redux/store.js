@@ -13,6 +13,7 @@ import storage from 'redux-persist/lib/storage';
 import themeReduser from './theme/slice';
 import authReduser from './auth/slice';
 import boardsReduser from './boards/slice';
+import columnsReduser from './columns/slice';
 
 const themePersistCfg = {
 	key: 'theme',
@@ -32,6 +33,7 @@ const persistedAuthReducer = persistReducer(authPersistConfig, authReduser);
 export const store = configureStore({
 	reducer: {
 		boards: boardsReduser,
+		columns: columnsReduser,
 		theme: persistThemeReduser,
 		auth: persistedAuthReducer,
 	},
