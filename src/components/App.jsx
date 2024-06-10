@@ -7,6 +7,7 @@ import { Toaster } from 'react-hot-toast';
 import Layout from './Layout/Layout';
 import ScreenPage from '../pages/ScreensPage/ScreenPage';
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
+import PrivateRoute from './PrivateRoute';
 
 function App() {
 	return (
@@ -15,7 +16,10 @@ function App() {
 				<Routes>
 					<Route path="/" element={<WelcomePage />} />
 					<Route path="/auth/:id" element={<AuthPage />} />
-					<Route path="/home" element={<HomePage />} />
+					<Route
+						path="/home"
+						element={<PrivateRoute component={<HomePage />} />}
+					/>
 					<Route path="/home/:boardName" element={<ScreenPage />} />
 					<Route path="*" element={<NotFoundPage />} />
 				</Routes>
