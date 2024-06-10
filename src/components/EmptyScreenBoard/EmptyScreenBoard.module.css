@@ -1,0 +1,11 @@
+.container {
+	background-color: var(--primary-color-black-background);
+}
+
+.text {
+	color: var(--secondary-color-text-gray);
+}
+
+.span {
+	color: var(--color-green-background);
+}
