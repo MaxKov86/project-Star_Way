@@ -1,5 +1,11 @@
+import UserInfo from './UserInfo/UserInfo';
+
 const Header = () => {
-	return <h1>Header</h1>;
+	return (
+		<header>
+			<UserInfo />
+		</header>
+	);
 };
 
 export default Header;
