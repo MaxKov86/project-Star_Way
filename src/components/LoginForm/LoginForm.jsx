@@ -9,7 +9,7 @@ import { useForm } from 'react-hook-form';
 import { NavLink } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
-import { registr } from '../../redux/auth/operations';
+import { logIn } from '../../redux/auth/operations';
 
 const schema = yup.object().shape({
 	email: yup.string().email('Invalid email').required('Email is required'),
@@ -30,9 +30,11 @@ const LoginForm = () => {
 	});
 	const navigate = useNavigate();
 
+	const dispatch = useDispatch();
+
 	const onSubmit = data => {
 		console.log(data);
-		const reg = registr(data);
+		const reg = logIn(data);
 		dispatch(reg);
 		// Imitational registration & login
 		navigate('/home');
@@ -41,8 +43,6 @@ const LoginForm = () => {
 	const toggleShowPassword = () => {
 		setShowPassword(prevState => !prevState);
 	};
-
-	const dispatch = useDispatch();
 
 	return (
 		<form className={css.form} onSubmit={handleSubmit(onSubmit)}>
@@ -67,7 +67,7 @@ const LoginForm = () => {
 					className={`${css.formInput} ${errors.password ? css.error : ''}`}
 					type={showPassword ? 'text' : 'password'}
 					{...register('password')}
-					placeholder="Create a password"
+					placeholder="Enter your password"
 				/>
 				<svg
 					className={css.icon}

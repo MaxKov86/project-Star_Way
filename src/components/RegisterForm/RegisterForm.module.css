@@ -69,6 +69,14 @@
 	outline: none;
 }
 
+/* style for autofill data */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+	-webkit-text-fill-color: rgba(255, 255, 255, 0.8);
+	-webkit-box-shadow: 0 0 0px 40rem rgba(31, 31, 31, 1) inset;
+}
+
 .error {
 	border-color: #ff4c4c;
 }
@@ -111,10 +119,11 @@
 	top: 50%;
 	right: 10px;
 	transform: translateY(-50%);
-	fill: #6c6c6c;
 	cursor: pointer;
+	stroke: #e0e0e0;
+	fill: #1f1f1f;
 }
 
 .icon:hover {
-	fill: #e0e0e0;
+	stroke: #fff;
 }
