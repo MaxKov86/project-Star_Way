@@ -4,7 +4,7 @@ import NeedHelp from './NeedHelp/NeedHelp';
 import css from './Sidebar.module.css';
 import { selectTheme } from '../../redux/theme/selectors';
 import { useSelector } from 'react-redux';
-import CreateCard from './CreateCard/CreateCard';
+import CreateBoard from './CreateBoard/CreateBoard';
 import SidebarBoard from './SidebarBoard/SidebarBoard';
 import { useParams } from 'react-router-dom';
 import Logout from './Logout/Logout';
