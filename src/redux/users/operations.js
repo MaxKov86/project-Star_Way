@@ -11,6 +11,7 @@ export const editUser = async (formData) => {
           'Content-Type': 'multipart/form-data',
         },
       });
+      console.log('Response data:', response.data);
       editUserSuccess(response.data);
     } catch (error) {
       console.error('Failed to edit user:', error);

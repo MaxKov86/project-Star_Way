@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  name: '',
+  name: 'Test User',
   email: '',
   password: '',
   avatar: null,
@@ -13,6 +13,7 @@ const userSlice = createSlice({
   reducers: {
     editUserSuccess: (state, action) => {
       const { name, email, password, avatar } = action.payload;
+      console.log('Payload:', action.payload);
       state.name = name;
       state.email = email;
       state.password = password;

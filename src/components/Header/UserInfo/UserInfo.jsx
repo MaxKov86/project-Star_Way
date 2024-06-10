@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Avatar } from '@mui/material';
 import { Person as UserIcon } from '@mui/icons-material';
 import { useSelector } from 'react-redux';
@@ -9,6 +9,11 @@ const UserInfo = () => {
     const userName = useSelector(selectUserName);
     const userAvatar = useSelector(selectUserAvatar);
     const [open, setOpen] = useState(false);
+
+    useEffect(() => {
+        console.log("User name:", userName);
+        console.log("User avatar:", userAvatar);
+    }, [userName, userAvatar]);
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
