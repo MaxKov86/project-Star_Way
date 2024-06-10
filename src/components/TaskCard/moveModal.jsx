@@ -1,8 +1,8 @@
 import React from 'react';
-import css from './Modal.module.css';
+import css from './MoveModal.module.css';
 import sprite from '../../assets/icons.svg';
 
-const Modal = ({ show, handleClose, handleMove }) => {
+const MoveModal = ({ show, handleClose, handleMove }) => {
 	if (!show) return null;
 
 	return (
@@ -32,5 +32,20 @@ const Modal = ({ show, handleClose, handleMove }) => {
 		</div>
 	);
 };
+const EditeModal = ({ show, handleClose, content }) => {
+	if (!show) return null;
 
-export default Modal;
+	return (
+		<div className={css.modalOverlay} onClick={handleClose}>
+			<div className={css.modalContent} onClick={e => e.stopPropagation()}>
+				{content}
+				<button onClick={handleClose} className={css.closeButton}>
+					Close
+				</button>
+			</div>
+		</div>
+	);
+};
+
+// Експортуємо обидва компоненти
+export { MoveModal, EditeModal };
