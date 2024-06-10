@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'localhost:3000/api/';
+axios.defaults.baseURL = 'https://task-pro-api-763i.onrender.com/api';
 
 const setAuthHeader = token => {
 	axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -11,7 +11,7 @@ const clearAuthHeader = () => {
 	axios.defaults.headers.common['Authorization'] = '';
 };
 
-export const register = createAsyncThunk(
+export const registr = createAsyncThunk(
 	'auth/register',
 	async (userInfo, thunkAPI) => {
 		try {
