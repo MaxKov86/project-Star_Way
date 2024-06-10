@@ -7,7 +7,11 @@ const WelcomePage = () => {
 		<div className={css.bodyArea}>
 			<div className={css.homeArea}>
 				<div className={css.homeImg}>
-					<img src="Logo-image/Image-desktop.png" alt="" />
+					<img
+						src="Logo-image/Image-phone.png"
+						srcSet="Logo-image/Image-tablet.png, Logo-image/Image-desktop.png"
+						alt="User with Laptop"
+					/>
 				</div>
 				<div className={css.logoName}>
 					<img src={logo} alt="Logo " />
