@@ -1,13 +1,21 @@
 import clsx from "clsx";
 import css from "./SidebarBoard.module.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectTheme } from "../../../redux/theme/selectors";
 import { NavLink } from "react-router-dom";
 import staticIcons from "../../../assets/icons.svg"
+import { deleteBoard, getAllBoards } from "../../../redux/boards/operations"
 
 export default function SidebarBoard({ title, icon, id, isActive }) {
 
     const theme = useSelector(selectTheme);
+    const dispatch = useDispatch();
+
+    const handleDelete = async () => {
+        await dispatch(deleteBoard(id)).unwrap();
+        await dispatch(getAllBoards()).unwrap();
+    }
+
 
     return (
         isActive
@@ -28,7 +36,7 @@ export default function SidebarBoard({ title, icon, id, isActive }) {
                             </svg>
                         </button>
 
-                        <button className={clsx(css.btn, isActive && css.active)} type="button">
+                        <button className={clsx(css.btn, isActive && css.active)} onClick={handleDelete} type="button">
                             <svg className={clsx(css.btnIcon, css[theme])} >
                                 <use href={`${staticIcons}#icon-trash`}></use>
                             </svg>
@@ -54,7 +62,7 @@ export default function SidebarBoard({ title, icon, id, isActive }) {
                             </svg>
                         </button>
 
-                        <button className={clsx(css.btn, isActive && css.active)} type="button">
+                        <button className={clsx(css.btn, isActive && css.active)} onClick={handleDelete} type="button">
                             <svg className={clsx(css.btnIcon, css[theme])} >
                                 <use href={`${staticIcons}#icon-trash`}></use>
                             </svg>
