@@ -21,11 +21,9 @@ const Sidebar = ({ isOpen, toggle }) => {
 
 	const dispatch = useDispatch()
 
-
-
-
 	return (
-		<div className={clsx(css.backdrop, isOpen && css.open, css[theme])} onClick={() => toggle(!isOpen)}>
+		<>
+			<div className={clsx(css.backdrop, isOpen && css.open, css[theme])} onClick={() => toggle(!isOpen)}>		</div>
 			<div className={clsx(css.box, css[`box_${theme}`], isOpen && css.open)}>
 				<div className={css.topBox}>
 					<LogoComponent />
@@ -68,7 +66,7 @@ const Sidebar = ({ isOpen, toggle }) => {
 				</div>
 				{/* <button type='button' onClick={() => dispatch(getAllBoards())}>ddd</button> */}
 			</div>
-		</div>
+		</>
 	);
 };
 
