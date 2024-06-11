@@ -28,9 +28,9 @@ const Sidebar = () => {
 
 			<ul className={css.sidebarBoardsBox}>
 				{boards.map(board => {
-					if (params.boardName === board._id) {
+					if (params.boardName === board._id ?? boards[0] === board) {
 						return (
-							<li key={board._id}>
+							<li key={board._id ?? new Date + Math.random()}>
 								<SidebarBoard
 									title={board.title}
 									icon={board.icon}
@@ -41,7 +41,7 @@ const Sidebar = () => {
 						);
 					}
 					return (
-						<li key={board._id}>
+						<li key={board._id ?? new Date + Math.random()}>
 							<SidebarBoard
 								key={board._id}
 								title={board.title}

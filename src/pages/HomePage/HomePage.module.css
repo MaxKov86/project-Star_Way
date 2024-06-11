@@ -1,0 +1,26 @@
+.homePage {
+	display: flex;
+}
+
+.mainContent {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+.header {
+	flex-shrink: 0;
+}
+
+.screenPage {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	position: relative;
+}
+
+.dashboardFilter {
+	position: absolute;
+	top: 0;
+	right: 0;
+}

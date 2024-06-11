@@ -1,17 +1,22 @@
-import Button from '../../components/Buttons/PrimeBtn';
+// import Button from '../../components/Buttons/PrimeBtn';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import ScreenPage from '../ScreensPage/ScreenPage';
+import Header from '../../components/Header/Header';
+import DashboardFilter from '../../components/DashboardFilter/DashboardFilter';
+
+import css from './HomePage.module.css';
+
 const HomePage = () => {
 	return (
-		<>
-			<h1>Header</h1>
-			<Button>
-				<img src="/src/assets/icon-logo.svg" alt="logo" />
-				Send
-			</Button>
+		<div className={css.homePage}>
 			<Sidebar />
-			<ScreenPage />
-		</>
+			<div className={css.mainContent}>
+				<Header />
+				<ScreenPage>
+					<DashboardFilter />
+				</ScreenPage>
+			</div>
+		</div>
 	);
 };
 
