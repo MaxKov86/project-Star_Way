@@ -1,6 +1,6 @@
 .layout {
 	@media screen and (min-width: 320px) {
-		width: 100%;
+		width: 100vw;
 		height: 100vh;
 		/* padding: 0 20px;
 		margin: 0 auto; */

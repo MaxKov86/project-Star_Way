@@ -9,7 +9,7 @@ import css from './HomePage.module.css';
 const HomePage = () => {
 	return (
 		<div className={css.homePage}>
-			<Sidebar />
+			{innerWidth >= 1440 && <Sidebar />}
 			<div className={css.mainContent}>
 				<Header />
 				<ScreenPage>

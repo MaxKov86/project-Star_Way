@@ -1,11 +1,28 @@
 .container {
 	background-color: var(--primary-color-black-background);
+	width: 335px;
+	@media screen and (min-width: 768px) {
+		width: 486px;
+	}
 }
 
 .text {
 	color: var(--secondary-color-text-gray);
+	font-size: 0.75rem;
+	font-weight: 400;
+	line-height: 1.125rem;
+	letter-spacing: -0.0175rem;
+	text-align: center;
+	@media screen and (min-width: 768px) {
+		font-size: 0.875rem;
+		line-height: 1.125rem;
+		letter-spacing: -0.0175rem;
+	}
 }
 
 .span {
 	color: var(--color-green-background);
+}
+.span:hover {
+	color: #74be50;
 }

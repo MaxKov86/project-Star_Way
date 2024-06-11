@@ -4,7 +4,7 @@ import AuthPage from '../pages/AuthPage/AuthPage';
 import HomePage from '../pages/HomePage/HomePage';
 import './App.module.css';
 import { Toaster } from 'react-hot-toast';
-import Layout from './Layout/Layout';
+// import Layout from './Layout/Layout';
 import ScreenPage from '../pages/ScreensPage/ScreenPage';
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 import { useEffect } from 'react';
@@ -18,16 +18,16 @@ function App() {
 	}, [dispatch]);
 	return (
 		<>
-			<Layout>
-				<Routes>
-					<Route path="/" element={<WelcomePage />} />
-					<Route path="/auth/:id" element={<AuthPage />} />
-					<Route path="/home" element={<HomePage />} />
-					<Route path="/home/:boardName" element={<ScreenPage />} />
-					<Route path="*" element={<NotFoundPage />} />
-				</Routes>
-				<Toaster />
-			</Layout>
+			{/* <Layout> */}
+			<Routes>
+				<Route path="/" element={<WelcomePage />} />
+				<Route path="/auth/:id" element={<AuthPage />} />
+				<Route path="/home" element={<HomePage />} />
+				<Route path="/home/:boardName" element={<ScreenPage />} />
+				<Route path="*" element={<NotFoundPage />} />
+			</Routes>
+			<Toaster />
+			{/* </Layout> */}
 		</>
 	);
 }
