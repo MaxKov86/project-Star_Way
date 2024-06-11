@@ -22,7 +22,9 @@ const WelcomePage = () => {
 					Pro - Don&apos;t wait, start achieving your goals now!
 				</div>
 				<NavLink to="/auth/register" className={css.linkBtn}>
-					<button type="button">Registration</button>
+					<button type="button" className={css.btn}>
+						Registration
+					</button>
 				</NavLink>
 				<NavLink className={css.link} to="/auth/login">
 					Log in
