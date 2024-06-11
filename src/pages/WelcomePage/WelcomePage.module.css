@@ -103,12 +103,12 @@ button {
 	letter-spacing: -0.0175em;
 }
 button:hover {
-	/* border-color: #161616; */
+	border-color: #161616;
 	background-color: #2d2d2d;
 }
 button:focus,
 button:focus-visible {
-	/* outline: 1px solid #2d2d2d; */
+	outline: 1px solid #2d2d2d;
 	background-color: #2d2d2d;
 }
 
