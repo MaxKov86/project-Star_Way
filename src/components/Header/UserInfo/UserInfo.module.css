@@ -1,6 +1,6 @@
 .wrap {
-	width: 375px;
-	height: 60px;
+	max-width: 100%;
+	margin-left: auto;
 	display: flex;
 	align-items: center;
 	background: #161616;
