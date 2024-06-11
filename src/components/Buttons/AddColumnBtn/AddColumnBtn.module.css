@@ -1,0 +1,62 @@
+.addColumnBtn {
+	display: inline-flex;
+	margin-top: 10px;
+	margin-left: 24px;
+	padding: 14px 78px 14px 79px;
+	justify-content: center;
+	align-items: center;
+	border-radius: 8px;
+	background: #121212;
+	border: none;
+}
+
+.iconAddColumnBtn {
+	margin-left: 5px;
+	width: 28px;
+	height: 28px;
+	padding: 7px;
+	stroke: #121212;
+	background-color: #fff;
+	border-radius: 8px;
+}
+
+.textAddColumnBtn {
+	color: #fff;
+	margin-left: 8px;
+	font-family: Poppins;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	letter-spacing: -0.28px;
+}
+
+/* _________VIOLET_________ */
+
+.violet .addColumnBtn {
+	background: #fff;
+}
+
+.violet .iconAddColumnBtn {
+	stroke: #fff;
+	background-color: rgba(82, 85, 188, 1);
+}
+
+.violet .textAddColumnBtn {
+	color: #161616;
+}
+
+/* _________LIGHT_________ */
+
+.light .addColumnBtn {
+	background: #fff;
+}
+
+.light .iconAddColumnBtn {
+	stroke: #fff;
+	background-color: #161616;
+}
+
+.light .textAddColumnBtn {
+	color: #161616;
+}
