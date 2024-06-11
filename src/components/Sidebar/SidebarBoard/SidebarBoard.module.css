@@ -4,7 +4,7 @@
     gap: 4px;
 
     text-decoration: none;
-    width: 100%;
+    width: 225px;
     height: 61px;
 }
 
@@ -37,12 +37,14 @@
 .infoBox {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 8px;
+    flex-grow: 1;
 }
 
 /* icon */
 .icon {
+    margin-right: 8px;
+
+
     fill: none;
     stroke: var(--secondary-color-text-gray);
     height: 18px;
@@ -65,10 +67,15 @@
 /* text */
 
 .title {
-    color: var(--secondary-color-text-gray);
+    flex-grow: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
     font-size: 14px;
     font-weight: 500;
     letter-spacing: -0.02em;
+    color: var(--secondary-color-text-gray);
 }
 
 .title.active {
@@ -85,6 +92,8 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
+
+    margin-left: 8px;
 }
 
 /* btn */
@@ -139,4 +148,10 @@
 
 .stick.violet {
     background-color: var(--secondary-color-white-background);
+}
+
+@media screen and (min-width: 768px) {
+    .mainBox {
+        width: 260px;
+    }
 }

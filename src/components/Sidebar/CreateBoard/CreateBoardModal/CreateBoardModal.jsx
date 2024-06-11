@@ -14,7 +14,8 @@ import { createBoard, getAllBoards } from "../../../../redux/boards/operations"
 const schema = yup.object().shape({
     title: yup
         .string()
-        .min(2, 'Title must be at least 2 characters')
+        .min(2, 'Min. title length is 2 symbol')
+        .max(50, "Max. title length is 50 symbols")
         .required('Title is required'),
     icon: yup
         .string(),
