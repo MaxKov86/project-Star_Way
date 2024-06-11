@@ -39,7 +39,7 @@ const slice = createSlice({
 				state.isLoading = true;
 			})
 			.addCase(deleteBoard.fulfilled, (state, action) => {
-				state.items = state.items.filter(item => item.id !== action.payload.id);
+				state.items = state.items.filter(item => item._id !== action.payload._id);
 				state.isLoading = false;
 			})
 			.addCase(deleteBoard.rejected, state => {

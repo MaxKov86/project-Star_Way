@@ -3,19 +3,25 @@ import LogoComponent from '../LogoComponent/LogoComponent';
 import NeedHelp from './NeedHelp/NeedHelp';
 import css from './Sidebar.module.css';
 import { selectTheme } from '../../redux/theme/selectors';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import CreateBoard from './CreateBoard/CreateBoard';
 import SidebarBoard from './SidebarBoard/SidebarBoard';
 import { useParams } from 'react-router-dom';
 import Logout from './Logout/Logout';
 
 import { selectBoards } from '../../redux/boards/selectors';
+import { getAllBoards } from '../../redux/boards/operations';
 
 const Sidebar = () => {
 	const params = useParams();
 
 	const boards = useSelector(selectBoards);
 	const theme = useSelector(selectTheme);
+
+	const dispatch = useDispatch()
+
+
+
 
 	return (
 		<div className={clsx(css.box, css[`box_${theme}`])}>
@@ -28,7 +34,7 @@ const Sidebar = () => {
 
 			<ul className={css.sidebarBoardsBox}>
 				{boards.map(board => {
-					if (params.boardName === board._id ?? boards[0] === board) {
+					if (params.boardName === board._id || (params.boardName == null && boards[0] === board)) {
 						return (
 							<li key={board._id ?? new Date + Math.random()}>
 								<SidebarBoard
@@ -58,6 +64,7 @@ const Sidebar = () => {
 				<NeedHelp />
 				<Logout />
 			</div>
+			<button type='button' onClick={() => dispatch(getAllBoards())}>ddd</button>
 		</div>
 	);
 };

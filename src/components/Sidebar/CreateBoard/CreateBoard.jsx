@@ -3,7 +3,7 @@ import sprite from "../../../assets/icons.svg"
 import css from "./CreateBoard.module.css";
 import { useSelector } from "react-redux";
 import { selectTheme } from "../../../redux/theme/selectors";
-import CreateBoardModal from "./CreateBoardModal/CreateBoardModal";
+// import CreateBoardModal from "./CreateBoardModal/CreateBoardModal";
 
 export default function CreateCard() {
 
