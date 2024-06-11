@@ -18,7 +18,7 @@ import {
 import { useForm, Controller } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { editUser } from '../../../redux/users/operations';
-import css from './Modal.module.css'
+import css from './Modal.module.css';
 
 const ModalForm = ({ open, handleClose, user }) => {
 	const dispatch = useDispatch();
@@ -39,7 +39,7 @@ const ModalForm = ({ open, handleClose, user }) => {
 			name: user.name,
 			email: user.email,
 			password: '',
-			avatar: ''
+			avatar: '',
 		},
 	});
 
@@ -73,18 +73,22 @@ const ModalForm = ({ open, handleClose, user }) => {
 	return (
 		<Modal open={open} onClose={handleClose}>
 			<Box className={css.modalBox}>
-				<div className={css.closeBtn}>
-				<IconButton onClick={handleClose} className={css.closeBtn}>
-					<CloseIcon />
-				</IconButton>
+				<div className={css.wrap}>
+					<IconButton onClick={handleClose} className={css.closeBtn} style={{color: 'white'}}>
+						<CloseIcon />
+					</IconButton>
 				</div>
 				<h2 className={css.text}>Edit profile</h2>
 				<form onSubmit={handleSubmit(onSubmit)} className={css.form}>
 					<div className={css.photoUpload}>
-						<Avatar src={userAvatar || ''} className={css.avatar}>
+						<Avatar src={userAvatar || ''} style={{
+							width: '68px',
+							height: '68px',
+							borderRadius: '4px'
+						}}>
 							{!userAvatar && <UserIcon />}
 						</Avatar>
-						<IconButton component="label" className={css.plusBtn}>
+						<IconButton component="label">
 							<input
 								type="file"
 								hidden
@@ -92,58 +96,93 @@ const ModalForm = ({ open, handleClose, user }) => {
 								{...register('avatar')}
 								onChange={handleAvatarChange}
 							/>
-							<AddIcon />
+							<AddIcon className={css.plusBtn} />
 						</IconButton>
 					</div>
 					<div className={css.form}>
-					<Controller
-						name="name"
-						control={control}
-						render={({ field }) => (
-							<TextField
-								{...field}
-								label="Name"
-								error={!!errors.name}
-								helperText={errors.name ? 'Invalid name' : ''}
-							/>
-						)}
-					/>
-					<Controller
-						name="email"
-						control={control}
-						render={({ field }) => (
-							<TextField
-								{...field}
-								label="Email"
-								error={!!errors.email}
-								helperText={errors.email ? 'Invalid email' : ''}
-							/>
-						)}
-					/>
-					<Controller
-						name="password"
-						control={control}
-						render={({ field }) => (
-							<TextField
-								{...field}
-								label="Password"
-								type={showPassword ? 'text' : 'password'}
-								error={!!errors.password}
-								helperText={errors.password ? 'Invalid password' : ''}
-								InputProps={{
-									endAdornment: (
-										<InputAdornment position="end">
-											<IconButton onClick={handleClickShowPassword}>
-												{showPassword ? <VisibilityOff /> : <Visibility />}
-											</IconButton>
-										</InputAdornment>
-									),
-								}}
-							/>
-						)}
-					/>
+						<Controller
+							name="name"
+							control={control}
+							render={({ field }) => (
+								<TextField
+									{...field}
+									placeholder='Name'
+									error={!!errors.name}
+									helperText={errors.name ? 'Invalid name' : ''}
+									InputProps={{
+										className: css.formInput,
+										style: { color: 'white' },
+									}}
+								/>
+							)}
+						/>
+						<Controller
+							name="email"
+							control={control}
+							render={({ field }) => (
+								<TextField
+									{...field}
+									placeholder='Email'
+									error={!!errors.email}
+									helperText={errors.email ? 'Invalid email' : ''}
+									InputProps={{
+										className: css.formInput,
+										style: { color: 'white' },
+									}}
+								/>
+							)}
+						/>
+						<Controller
+							name="password"
+							control={control}
+							render={({ field }) => (
+								<TextField
+									{...field}
+									type={showPassword ? 'text' : 'password'}
+									error={!!errors.password}
+									helperText={errors.password ? 'Invalid password' : ''}
+									InputProps={{
+										endAdornment: (
+											<InputAdornment position="end">
+												<IconButton
+													onClick={handleClickShowPassword}
+													style={{
+														backgroundColor: 'transparent', 
+														border: 'none',
+														color: 'white'
+													}}
+												>
+													{showPassword ? <VisibilityOff /> : <Visibility />}
+												</IconButton>
+											</InputAdornment>
+										),
+										className: css.formInput,
+										style: { color: 'white' },
+									}}
+								/>
+							)}
+						/>
 					</div>
-					<Button type="submit" className={css.btn}>Edit</Button>
+					<Button
+						type="submit"
+						style={{
+							fontSize: '14px',
+							fontWeight: 600,
+							fontStyle: 'normal',
+							alignItems: 'center',
+							backgroundColor: '#bedbb0',
+							border: 'none',
+							borderRadius: '8px',
+							color: '#161616',
+							lineHeight: '21px',
+							paddingBottom: '11px',
+							paddingTop: '10px',
+							width: '100%',
+							marginTop: '14px',
+						}}
+					>
+						Edit
+					</Button>
 				</form>
 			</Box>
 		</Modal>

@@ -1,0 +1,31 @@
+.wrap {
+	width: 375px;
+	height: 60px;
+	display: flex;
+	align-items: center;
+	background: #161616;
+    padding-right: 24px;
+}
+
+
+.name {
+	color: #fff;
+    font-family: Poppins;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	letter-spacing: -0.28px;
+}
+
+.userinfo {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+}
+
+@media screen and (min-width: 768px) {
+    .wrap {
+        height: 68px;
+    }
+}

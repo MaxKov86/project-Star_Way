@@ -12,6 +12,9 @@ import {
 import storage from 'redux-persist/lib/storage';
 import themeReduser from './theme/slice';
 import authReduser from './auth/slice';
+import boardsReduser from './boards/slice.js';
+import columnsReduser from './columns/slice.js';
+import usersReducer from './users/slice.js';
 
 const themePersistCfg = {
 	key: 'theme',
@@ -33,7 +36,8 @@ export const store = configureStore({
 		boards: boardsReduser,
 		columns: columnsReduser,
 		theme: persistThemeReduser,
-		auth: persistedAuthReducer,
+		auth: persistdAuthReducer,
+		user: usersReducer,
 	},
 	middleware: getDefaultMiddleware =>
 		getDefaultMiddleware({

@@ -3,30 +3,34 @@ import { Avatar } from '@mui/material';
 import { Person as UserIcon } from '@mui/icons-material';
 import { useSelector } from 'react-redux';
 import ModalForm from './Modal';
-import {
-	selectUserAvatar,
-	selectUserName,
-} from '../../../redux/users/selectors';
+import {selectUser} from '../../../redux/auth/selectors';
+import css from './UserInfo.module.css'
 
 const UserInfo = () => {
-	const userName = useSelector(selectUserName);
-	const userAvatar = useSelector(selectUserAvatar);
+	const { name, avatar } = useSelector(selectUser);
 	const [open, setOpen] = useState(false);
 
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
 
 	return (
-		<div>
-			<Avatar onClick={handleOpen} src={userAvatar || ''}>
-				{!userAvatar && <UserIcon />}
+		<div className={css.wrap}>
+		<div className={css.userinfo}>
+			<span className={css.name}>{name}</span>
+			<Avatar style={{
+				width: '32px',
+				height: '32px',
+				borderRadius: '4px',
+				cursor: 'pointer'
+			}} onClick={handleOpen} src={avatar || ''}>
+				{!avatar && <UserIcon />}
 			</Avatar>
-			<span>{userName}</span>
 			<ModalForm
 				open={open}
 				handleClose={handleClose}
-				user={{ name: userName, avatar: userAvatar }}
+				user={{ name, avatar }}
 			/>
+		</div>
 		</div>
 	);
 };
