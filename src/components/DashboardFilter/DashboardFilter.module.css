@@ -1,0 +1,325 @@
+.filterBtnModal {
+	display: flex;
+	background: none;
+	border: none;
+	cursor: pointer;
+	width: 64px;
+	height: 20px;
+	align-items: center;
+	gap: 8px;
+	border: none;
+}
+
+.filterBtnModal:focus,
+.filterBtnModal:hover {
+	outline: none;
+	background: none;
+	border: none;
+}
+
+.btnFilterIcon {
+	width: 16px;
+	height: 16px;
+	align-items: center;
+	stroke: var(--secondary-color-text-gray);
+	fill: #1f1f1f;
+}
+
+.filterBtnText {
+	font-family: Poppins;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	letter-spacing: -0.28px;
+	color: var(--secondary-color-text-gray);
+}
+
+.modalOverlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.modalContent {
+	position: relative;
+	padding: 24px;
+	width: 300px;
+	border-radius: 8px;
+	border-radius: 8px;
+	background-color: var(--color-form-background);
+}
+
+.modalHeader {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.titleModalFilter {
+	font-family: Poppins;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	letter-spacing: -0.36px;
+	color: var(--primary-color-text-white);
+}
+
+.closeButton {
+	position: absolute;
+	top: 14px;
+	right: 14px;
+	width: 18px;
+	height: 18px;
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
+.modalContent::after {
+	content: '';
+	position: absolute;
+	top: 65px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 252px;
+	height: 1px;
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+.closeButton:focus,
+.closeButton:hover {
+	outline: none;
+	background: none;
+	border: none;
+}
+
+.btnCloseIcon {
+	width: 18px;
+	height: 18px;
+	stroke: #fff;
+}
+
+.filterForm {
+	margin-top: 16px;
+}
+
+.formGroup {
+	display: flex;
+	align-items: center;
+	margin-top: 28px;
+	margin-bottom: 14px;
+	justify-content: space-between;
+}
+
+.titleLabelColor {
+	font-family: Poppins;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	letter-spacing: -0.28px;
+	color: var(--primary-color-text-white);
+}
+
+.showAllButton {
+	background: none;
+	border: none;
+	cursor: pointer;
+	width: 48px;
+	height: 18px;
+	font-family: Poppins;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	letter-spacing: -0.24px;
+	text-decoration-line: underline;
+	color: var(--secondary-color-text-gray);
+}
+
+.showAllButton:focus,
+.showAllButton:hover {
+	outline: none;
+	background: none;
+	border: none;
+}
+
+.radioGroup {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.labelModalFilter {
+	font-family: Poppins;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	letter-spacing: -0.24px;
+	color: var(--secondary-color-text-gray);
+}
+
+.labelModalFilter:focus,
+.labelModalFilter:hover {
+	color: #fff;
+}
+
+.radioOption input[type='radio']:focus + .labelModalFilter,
+.radioOption input[type='radio']:hover + .labelModalFilter {
+	color: #fff;
+}
+
+.radioOption {
+	display: flex;
+	align-items: center;
+}
+
+.radioOption input[type='radio'] {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	border: 2px solid rgba(255, 255, 255, 0.3);
+	outline: none;
+	cursor: pointer;
+	margin-right: 8px;
+	position: relative;
+}
+
+.radioOption input[type='radio']:checked::before {
+	content: '';
+	display: block;
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background-color: rgba(255, 255, 255, 0.3);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.radioOption.low input[type='radio'] {
+	border-color: rgba(143, 161, 208, 1);
+}
+
+.radioOption.low input[type='radio']:checked::before {
+	background-color: rgba(143, 161, 208, 1);
+}
+
+.radioOption.medium input[type='radio'] {
+	border-color: rgba(224, 156, 181, 1);
+}
+
+.radioOption.medium input[type='radio']:checked::before {
+	background-color: rgba(224, 156, 181, 1);
+}
+
+.radioOption.high input[type='radio'] {
+	border-color: rgba(190, 219, 176, 1);
+}
+
+.radioOption.high input[type='radio']:checked::before {
+	background-color: rgba(190, 219, 176, 1);
+}
+
+/* _________VIOLET_________ */
+
+.violet .btnFilterIcon {
+	stroke: var(--secondary-color-text);
+	fill: var(--primary-color-text-white);
+}
+
+.violet .filterBtnText {
+	color: var(--secondary-color-text);
+}
+
+.violet .modalContent {
+	background-color: var(--primary-color-background);
+}
+
+.violet .titleModalFilter {
+	color: var(--primary-color-text-black);
+}
+
+.violet .btnCloseIcon {
+	stroke: #161616;
+}
+
+.violet .titliLabelColor {
+	color: var(--primary-color-text-black);
+}
+
+.violet .showAllButton {
+	color: rgba(22, 22, 22, 0.5);
+}
+
+.violet .labelModalFilter {
+	color: rgba(22, 22, 22, 0.5);
+}
+
+.violet .labelModalFilter:focus,
+.violet .labelModalFilter:hover {
+	color: #161616;
+}
+
+.violet .radioOption input[type='radio']:focus + .labelModalFilter,
+.violet .radioOption input[type='radio']:hover + .labelModalFilter {
+	color: #161616;
+}
+
+/* _________LIGHT_________ */
+
+.light .btnFilterIcon {
+	stroke: var(--secondary-color-text);
+	fill: var(--primary-color-text-white);
+}
+
+.light .filterBtnText {
+	color: var(--secondary-color-text);
+}
+
+.light .modalContent {
+	background-color: var(--primary-color-background);
+}
+
+.light .titleModalFilter {
+	color: var(--primary-color-text-black);
+}
+
+.light .btnCloseIcon {
+	stroke: #161616;
+}
+
+.light .titliLabelColor {
+	color: var(--primary-color-text-black);
+}
+
+.light .showAllButton {
+	color: rgba(22, 22, 22, 0.5);
+}
+
+.light .labelModalFilter {
+	color: rgba(22, 22, 22, 0.5);
+}
+
+.light .labelModalFilter:focus,
+.light .labelModalFilter:hover {
+	color: #161616;
+}
+
+.light .radioOption input[type='radio']:focus + .labelModalFilter,
+.light .radioOption input[type='radio']:hover + .labelModalFilter {
+	color: #161616;
+}
