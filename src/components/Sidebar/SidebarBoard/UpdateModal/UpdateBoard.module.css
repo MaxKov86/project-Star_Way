@@ -13,6 +13,7 @@
 
     width: 100vw;
     height: 100vh;
+    background-color: black;
 }
 
 /* title */
@@ -215,13 +216,21 @@
     width: 100%;
     height: 49px;
 
-    border: none;
     border-radius: 5px;
+    border: none;
     background-color: var(--color-green-background);
+}
+
+.btn:hover {
+    background-color: #9DC888;
 }
 
 .btn.violet {
     background-color: var(--primary-color-violet);
+}
+
+.btn.violet:hover {
+    background-color: #7B7EDE;
 }
 
 /* btnIconBox */

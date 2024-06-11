@@ -53,6 +53,7 @@
     align-items: center;
     justify-content: center;
 
+    border: none;
     border-radius: 6px;
     background-color: var(--color-green-background);
 }
@@ -67,12 +68,4 @@
 
 .btn.violet:hover {
     background-color: #979CEA;
-}
-
-.btn:focus {
-    background-color: var(--color-green-background);
-}
-
-.btn.violet:focus {
-    background-color: var(--secondary-color-violet);
 }
