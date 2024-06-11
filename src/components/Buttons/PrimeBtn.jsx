@@ -7,6 +7,7 @@ const PrimeBtn = ({ children, onBtnClick }) => {
 	const theme = useSelector(selectTheme);
 	return (
 		<button
+			type="submit"
 			onClick={() => {
 				onBtnClick();
 			}}
