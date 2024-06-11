@@ -10,18 +10,12 @@
 	}
 }
 
-.homeImg {
-	max-width: 124px;
-	max-height: 124px;
-	margin-bottom: 14px;
-	@media screen and (min-width: 768px) {
-		max-width: 162px;
-		max-height: 162px;
-		margin-bottom: 24px;
-	}
-}
-
 .userIcon {
-	font-size: 48px;
+	width: 142px;
+	height: 42px;
 	color: rgba(255, 255, 255, 0.5);
+	margin-right: 8px;
+	@media screen and (min-width: 768px) {
+		height: 24px;
+	}
 }

@@ -1,4 +1,5 @@
 import MenuIcon from '@mui/icons-material/Menu';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import css from './Header.module.css';
 
 const Header = () => {
@@ -9,29 +10,12 @@ const Header = () => {
 					<MenuIcon className={css.userIcon} />
 				</div>
 			)}
+			<div></div>
 			<div className={css.homeImg}>
-				<h1>Header1</h1>
-				{/* <MenuIcon className={css.userIcon} /> */}
+				<AccountBoxIcon className={css.userIcon} sx={{ fontSize: 46 }} />
 			</div>
 		</div>
 	);
 };
 
 export default Header;
-
-// import css from './Header.module.css';
-
-// const Header = () => {
-// 	return (
-// 		// <h1>Header1</h1>
-// 		<div className={css.header}>
-// 			<div>
-// 				<div className={css.homeImg}>
-// 					<img src="Logo-image/Image-phone.png" alt="User photo" />
-// 				</div>
-// 			</div>
-// 		</div>
-// 	);
-// };
-
-// export default Header;
