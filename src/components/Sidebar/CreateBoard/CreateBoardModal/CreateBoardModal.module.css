@@ -30,13 +30,18 @@
     color: var(--primary-color-text-white);
 }
 
+/* inputBox */
+
+.inputBox {
+    margin-bottom: 24px;
+}
+
 /* input */
 .input {
     width: 100%;
     height: 49px;
 
     padding-left: 18px;
-    margin-bottom: 24px;
 
     border-radius: 8px;
     border: 1px solid rgba(190, 219, 176, 0.4);
@@ -45,6 +50,7 @@
     color: var(--primary-color-text-white);
     background-color: transparent;
 }
+
 
 .input.violet {
     border-color: rgba(82, 85, 188, 0.4);
@@ -56,6 +62,15 @@
 
 .input:focus {
     border-color: var(--color-green-background);
+}
+
+/* errors */
+.errors {
+    color: #ff4c4c;
+    font-size: 10px;
+    line-height: 10px;
+    margin-top: 5px;
+    position: absolute;
 }
 
 /* subtitle */
@@ -104,6 +119,7 @@
     width: 18px;
     height: 18px;
     stroke: var(--secondary-color-text-gray);
+    fill: none;
 }
 
 .icon:hover {
@@ -161,6 +177,7 @@
 
 .nullIcon {
     stroke: rgba(255, 255, 255, 0.1);
+    fill: none;
 }
 
 .nullIcon.light {
@@ -187,5 +204,63 @@
     outline-color: var(--primary-color-violet);
 }
 
+/* btn */
 
-@media screen and (min-width: 4) {}
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    background-color: var(--color-green-background);
+}
+
+.btn.violet {
+    background-color: var(--primary-color-violet);
+}
+
+/* btnIconBox */
+
+.btnIconBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 28px;
+    height: 28px;
+
+    border-radius: 5px;
+    background-color: var(--primary-color-text-black);
+}
+
+.btnIconBox.violet {
+    background-color: var(--primary-color-text-white);
+}
+
+/* btnIcon */
+
+.btnIcon {
+    width: 14px;
+    height: 14px;
+
+    fill: none;
+    stroke: var(--primary-color-text-white);
+}
+
+.btnIcon.violet {
+    background-color: var(--primary-color-text);
+}
+
+/* btnText */
+
+.btnText {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+
+    color: var(--primary-color-text-black);
+}
+
+.btnText.violet {
+    color: var(--primary-color-text-white);
+}
