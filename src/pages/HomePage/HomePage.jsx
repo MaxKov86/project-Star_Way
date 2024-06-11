@@ -1,4 +1,5 @@
 import Sidebar from '../../components/Sidebar/Sidebar';
+
 import ScreenPage from '../ScreensPage/ScreenPage';
 
 const HomePage = () => {
@@ -7,7 +8,9 @@ const HomePage = () => {
 			<h1>HomePage</h1>
 
 			<Sidebar />
+
 			<ScreenPage />
+
 		</>
 	);
 };

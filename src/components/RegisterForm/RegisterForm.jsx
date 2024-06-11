@@ -75,7 +75,7 @@ const RegisterForm = () => {
 					/>
 					{errors.email && <p className={css.errors}>{errors.email.message}</p>}
 				</div>
-				<div className={css.inputWrap} style={{ position: 'relative' }}>
+				<div className={css.inputWrap}>
 					<input
 						className={`${css.formImput} ${errors.name ? css.error : ''}`}
 						type={showPassword ? 'text' : 'password'}

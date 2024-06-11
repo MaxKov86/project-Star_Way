@@ -12,7 +12,7 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.10);
 }
 
-.box_light {
+.box.light {
     border-top: 1px solid rgba(22, 22, 22, 0.10);
     border-bottom: 1px solid rgba(22, 22, 22, 0.10);
 }
@@ -25,7 +25,7 @@
     stroke: var(--secondary-color-black-background);
 }
 
-.icon_violet {
+.icon.violet {
     stroke: var(--secondary-color-white-background);
 }
 
@@ -40,7 +40,7 @@
     color: var(--primary-color-text-white);
 }
 
-.text_light {
+.text.light {
     color: var(--primary-color-text);
 }
 
@@ -57,7 +57,7 @@
     background-color: var(--color-green-background);
 }
 
-.btn_violet {
+.btn.violet {
     background-color: var(--secondary-color-violet);
 }
 
@@ -65,6 +65,14 @@
     background-color: #9DC888;
 }
 
-.btn_violet:hover {
+.btn.violet:hover {
     background-color: #979CEA;
+}
+
+.btn:focus {
+    background-color: var(--color-green-background);
+}
+
+.btn.violet:focus {
+    background-color: var(--secondary-color-violet);
 }
