@@ -1,20 +1,51 @@
 import TaskCard from '../TaskCard/TaskCard';
+import css from './Column.module.css';
+import sprite from '../../assets/icons.svg';
 
+const tasks = [
+	{
+		_id: '6665d226efd6a7cb8aa7cbc4',
+		title: 'Зробити документацію API',
+		description: 'Детально розписати кожен ендпоінт',
+		priority: 'high',
+		deadline: '2024-10-06T00:00:00.000Z',
+		columnId: '6665ce97efd6a7cb8aa7cbae',
+	},
+	{
+		_id: '6665d561efd6a7cb8aa7cbc9',
+		title: 'Зробити state Redux',
+		description: 'Детально розписати кожен ендпоінт',
+		priority: 'high',
+		deadline: '2024-10-06T00:00:00.000Z',
+		columnId: '6665ce97efd6a7cb8aa7cbae',
+	},
+];
 const Column = () => {
-	const tasks = [{ id: 1, title: 'Title', description: 'New task' }];
 	return (
-		<ul>
+		<div>
 			<h1>Column</h1>
-			{tasks.map(task => (
-				<li key={task.id}>
-					<TaskCard
-						title={task.title}
-						description={task.description}
-						id={task.id}
-					/>
-				</li>
-			))}
-		</ul>
+			<ul>
+				{tasks.map(task => (
+					<li key={task._id}>
+						<TaskCard
+							title={task.title}
+							description={task.description}
+							priority={task.priority}
+							deadline={task.deadline}
+							id={task._id}
+						/>
+					</li>
+				))}
+			</ul>
+			<button type="button" className={css.btn}>
+				<div className={css.iconWrapper}>
+					<svg className={css.icon}>
+						<use href={`${sprite}#icon-plus`}></use>
+					</svg>
+				</div>
+				Add another card
+			</button>
+		</div>
 	);
 };
 

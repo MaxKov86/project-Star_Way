@@ -12,28 +12,28 @@ import {
 import storage from 'redux-persist/lib/storage';
 import themeReduser from './theme/slice';
 import authReduser from './auth/slice';
-import userReducer from './users/slice';
 
 const themePersistCfg = {
 	key: 'theme',
 	storage,
-	whiteList: ['value'],
+	whitelist: ['value'],
 };
 
 const persistThemeReduser = persistReducer(themePersistCfg, themeReduser);
 
 const authPersistConfig = {
-	key: 'authSlice',
+	key: 'auth',
 	storage,
 	whitelist: ['token'],
 };
-const persistedAuthReducer = persistReducer(authPersistConfig, authReduser);
+const persistdAuthReducer = persistReducer(authPersistConfig, authReduser);
 
 export const store = configureStore({
 	reducer: {
+		boards: boardsReduser,
+		columns: columnsReduser,
 		theme: persistThemeReduser,
 		auth: persistedAuthReducer,
-		user: userReducer,
 	},
 	middleware: getDefaultMiddleware =>
 		getDefaultMiddleware({
