@@ -64,7 +64,7 @@ const Sidebar = () => {
 				<NeedHelp />
 				<Logout />
 			</div>
-			<button type='button' onClick={() => dispatch(getAllBoards())}>ddd</button>
+			{/* <button type='button' onClick={() => dispatch(getAllBoards())}>ddd</button> */}
 		</div>
 	);
 };
