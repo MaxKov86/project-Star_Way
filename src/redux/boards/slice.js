@@ -1,5 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getAllBoards, createBoard, deleteBoard } from './operations';
+import {
+	getAllBoards,
+	createBoard,
+	deleteBoard,
+	updateBoard,
+	getOneBoard,
+} from './operations';
 import { logOut } from '../auth/operations';
 
 const slice = createSlice({
@@ -47,6 +53,22 @@ const slice = createSlice({
 			})
 			.addCase(deleteBoard.rejected, state => {
 				state.error = true;
+				state.isLoading = false;
+			})
+			.addCase(updateBoard.pending, state => {
+				state.error = false;
+				state.isLoading = true;
+			})
+			.addCase(updateBoard.fulfilled, (state, action) => {
+				state.items.find(item => item._id === action.payload.id);
+				state.isLoading = false;
+			})
+			.addCase(updateBoard.rejected, state => {
+				state.error = true;
+				state.isLoading = false;
+			})
+			.addCase(getOneBoard.fulfilled, (state, action) => {
+				state.items.find(item => item._id === action.payload.id);
 				state.isLoading = false;
 			})
 			.addCase(logOut.fulfilled, state => {

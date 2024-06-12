@@ -38,3 +38,27 @@ export const deleteBoard = createAsyncThunk(
 		}
 	}
 );
+
+export const updateBoard = createAsyncThunk(
+	'boards/updateBoard',
+	async (boardId, thunkAPI) => {
+		try {
+			const response = await axios.patch(`boards/${boardId}`);
+			return response.data;
+		} catch (error) {
+			return thunkAPI.rejectWithValue(error.message);
+		}
+	}
+);
+
+export const getOneBoard = createAsyncThunk(
+	'boards/getOneBoard',
+	async (boardId, thunkAPI) => {
+		try {
+			const response = await axios.get(`/boards/${boardId}`);
+			return response.data;
+		} catch (error) {
+			return thunkAPI.rejectWithValue(error.message);
+		}
+	}
+);
