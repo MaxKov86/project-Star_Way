@@ -14,6 +14,7 @@ import themeReduser from './theme/slice.js';
 import authReduser from './auth/slice.js';
 import boardsReduser from './boards/slice.js';
 import columnsReduser from './columns/slice.js';
+import cardsReducer from './cards/slice.js';
 
 const themePersistCfg = {
 	key: 'theme',
@@ -34,6 +35,7 @@ export const store = configureStore({
 	reducer: {
 		boards: boardsReduser,
 		columns: columnsReduser,
+		cards: cardsReducer,
 		theme: persistThemeReduser,
 		auth: persistdAuthReducer,
 	},
