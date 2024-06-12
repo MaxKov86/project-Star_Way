@@ -1,19 +1,20 @@
 import axios from 'axios';
-import { editUserSuccess } from './slice';
-
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://task-pro-api-763i.onrender.com/api';
 
-export const editUser = async (formData) => {
-    try {
-      const response = await axios.post("/users/edit", formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-      console.log('Response data:', response.data);
-      editUserSuccess(response.data);
-    } catch (error) {
-      console.error('Failed to edit user:', error);
-    }
-  };
+export const editUser = createAsyncThunk(
+	'user/edit',
+	async (formData, thunkAPI) => {
+		try {
+			const response = await axios.put('/users/edit', formData, {
+				headers: {
+					'Content-Type': 'multipart/form-data',
+				},
+			});
+			return response.data;
+		} catch (error) {
+			return thunkAPI.rejectWithValue(error.message);
+		}
+	}
+);
