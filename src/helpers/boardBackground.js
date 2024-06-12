@@ -1,5 +1,5 @@
-
 export default function boardBackground(number) {
+
     const width = window.innerWidth;
     const isRetina = window.devicePixelRatio > 1
     let screen;
