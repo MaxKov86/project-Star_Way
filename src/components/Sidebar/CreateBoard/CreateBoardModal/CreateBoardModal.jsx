@@ -96,7 +96,7 @@ export default function CreateBoardModal({ handelClose }) {
                         )
                     }
                     return (<label key={i + Math.random()}>
-                        <input className={css.radioBtn} type="radio" name="background" {...register("background")} value={`icon-icon-board-${i}`} />
+                        <input className={css.radioBtn} type="radio" name="background" {...register("background")} value={`${i}`} />
                         <img className={css.bgIcon} src={`../../../../src/assets/task-bg/task-bg-tablet-${i}.jpg`} width="28" height="28" alt="" />
                     </label>)
                 })}
