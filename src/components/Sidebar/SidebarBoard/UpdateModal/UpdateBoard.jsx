@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import sprite from "../../../../assets/icons.svg"
-import css from "./CreateBoardModal.module.css";
+import css from "./UpdateBoard.module.css";
 import { selectTheme } from "../../../../redux/theme/selectors";
 import Modal from "../../../Modal/Modal";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,6 +8,7 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { createBoard, getAllBoards } from "../../../../redux/boards/operations"
+import { selectBoards } from "../../../../redux/boards/selectors";
 
 // validation
 
@@ -23,10 +24,13 @@ const schema = yup.object().shape({
         .string(),
 })
 
-export default function CreateBoardModal() {
+export default function UpdateBoard({ id, setIsEdit }) {
 
     const theme = useSelector(selectTheme);
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const boards = useSelector(selectBoards);
+    const board = boards.find(item => item._id === id);
+    const { title, background, icon } = board
 
     // array for icons and backgrounds
     const numbers = (num, start) => {
@@ -38,11 +42,12 @@ export default function CreateBoardModal() {
     }
 
     // submit function
-    const { register, handleSubmit, formState: { errors }, reset } = useForm({
+    const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schema),
         defaultValues: {
-            icon: "icon-icon-board-1",
-            background: '',
+            title,
+            icon,
+            background: background ?? "",
         },
     })
 
@@ -52,11 +57,11 @@ export default function CreateBoardModal() {
 
         await dispatch(createBoard({ ...data, background })).unwrap();
         await dispatch(getAllBoards()).unwrap();
-        reset();
+        setIsEdit(false);
     }
 
     return (
-        <Modal>
+        <div className={css.modalBox}>
             <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
                 <h3 className={clsx(css.title, css[theme])}>New board</h3>
 
@@ -114,6 +119,6 @@ export default function CreateBoardModal() {
                     <p className={clsx(css.btnText, css[theme])}>Create</p>
                 </button>
             </form>
-        </Modal>
+        </div>
     )
 }

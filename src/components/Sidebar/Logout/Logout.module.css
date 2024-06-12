@@ -1,47 +1,48 @@
 .btn {
-    display: flex;
-    align-items: center;
-    gap: 14px;
+	display: flex;
+	align-items: center;
+	gap: 14px;
 
-    width: max-content;
+	width: max-content;
 
-    padding-right: 7px;
+	padding-right: 7px;
 
-    background-color: transparent;
+	background-color: transparent;
+	border: none;
 }
 
 .btn:hover .icon {
-    stroke: #9DC888;
+	stroke: #9dc888;
 }
 
 .btn:hover .icon.violet {
-    stroke: var(--secondary-color-violet);
+	stroke: var(--secondary-color-violet);
 }
 
 /* icon */
 
 .icon {
-    stroke: var(--color-green-background);
+	stroke: var(--color-green-background);
 }
 
 .icon.violet {
-    stroke: var(--secondary-color-white-background);
+	stroke: var(--secondary-color-white-background);
 }
 
 /* text */
 
 .text {
-    color: var(--primary-color-text-white);
-    font-size: 14px;
-    font-weight: 500;
+	color: var(--primary-color-text-white);
+	font-size: 14px;
+	font-weight: 500;
 }
 
 .text.light {
-    color: var(--primary-color-text);
+	color: var(--primary-color-text);
 }
 
 @media screen and (min-width: 1440px) {
-    .text {
-        font-size: 16px;
-    }
+	.text {
+		font-size: 16px;
+	}
 }

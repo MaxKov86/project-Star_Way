@@ -1,13 +1,17 @@
-import ColumnList from '../../components/ColumnList/ColumnList';
-import Sidebar from '../../components/Sidebar/Sidebar';
+import EmptyScreenBoard from '../../components/EmptyScreenBoard/EmptyScreenBoard';
+import DashboardFilter from '../../components/DashboardFilter/DashboardFilter';
+import css from './ScreenPage.module.css';
 
 const ScreenPage = () => {
 	return (
-		<>
-			<h1>ScreenPage</h1>
-			<Sidebar />
-			<ColumnList />
-		</>
+		<div className={css.wrapper}>
+			<div className={css.deskHeader}>
+				<DashboardFilter />
+			</div>
+			<div className={css.deskBoard}>
+				<EmptyScreenBoard />
+			</div>
+		</div>
 	);
 };
 

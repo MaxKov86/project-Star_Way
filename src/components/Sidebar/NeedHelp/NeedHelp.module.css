@@ -1,0 +1,110 @@
+.helpBlock {
+	background-color: #1f1f1f;
+	padding: 14px;
+	border-radius: 8px;
+	position: relative;
+}
+
+.helpBlock img {
+	width: 54px;
+	height: 78px;
+	margin-bottom: 14px;
+}
+
+.iconKaktusNeedHelp {
+	display: inline-block;
+	width: 54px;
+	height: 78px;
+	background-image: url('../../../assets/kaktus-need-help.jpg');
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.btnBox {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+}
+
+.helpText {
+	font-family: Poppins;
+	width: 168px;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 133%;
+	letter-spacing: -0.02em;
+	color: #fff;
+	word-break: break-all;
+	margin-bottom: 18px;
+}
+
+.taskProSpan {
+	color: #bedbb0;
+}
+
+.helpSvg {
+	width: 20px;
+	height: 20px;
+}
+
+.iconHelpCircle {
+	width: 20px;
+	height: 20px;
+	stroke: white;
+}
+
+.helpBtn {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	border: none;
+	background-color: transparent;
+	font-weight: 500;
+	font-size: 12px;
+	letter-spacing: -0.02em;
+	color: #fff;
+}
+@media (min-width: 375px) {
+	.helpBlock {
+		max-width: 335px;
+	}
+}
+
+@media (min-width: 768px) {
+	.helpBlock {
+		max-width: 473px;
+	}
+}
+
+/*=============*/
+.modal {
+	/* Стилі для модального вікна */
+	position: absolute;
+	/* top: 50%; */
+	top: 0;
+	left: 50%;
+	right: auto;
+	bottom: auto;
+	margin-right: -50%;
+	/* transform: translate(-50%, -50%);*/
+	transform: translateX(-50%);
+	width: 100%;
+	max-width: 335px;
+	padding: 24px;
+	/* background-color: white;
+	border: 1px solid #ccc;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+	border-radius: 8px;
+	outline: none;
+}
+.overlay {
+	/* Стилі для оверлея */
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+}

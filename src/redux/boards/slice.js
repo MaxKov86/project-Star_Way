@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getAllBoards, createBoard, deleteBoard } from './operations';
+import { logOut } from '../auth/operations';
 
 const slice = createSlice({
 	name: 'boards',
@@ -39,11 +40,18 @@ const slice = createSlice({
 				state.isLoading = true;
 			})
 			.addCase(deleteBoard.fulfilled, (state, action) => {
-				state.items = state.items.filter(item => item.id !== action.payload.id);
+				state.items = state.items.filter(
+					item => item._id !== action.payload.id
+				);
 				state.isLoading = false;
 			})
 			.addCase(deleteBoard.rejected, state => {
 				state.error = true;
+				state.isLoading = false;
+			})
+			.addCase(logOut.fulfilled, state => {
+				state.items = [];
+				state.error = false;
 				state.isLoading = false;
 			}),
 });

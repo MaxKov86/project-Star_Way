@@ -39,7 +39,9 @@ const slice = createSlice({
 				state.isLoading = true;
 			})
 			.addCase(deleteColumn.fulfilled, (state, action) => {
-				state.items = state.items.filter(item => item.id !== action.payload.id);
+				state.items = state.items.filter(
+					item => item._id !== action.payload.id
+				);
 				state.isLoading = false;
 			})
 			.addCase(deleteColumn.rejected, state => {

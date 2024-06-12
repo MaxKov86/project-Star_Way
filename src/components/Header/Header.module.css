@@ -1,34 +1,47 @@
-.headerLayout {
+.header {
 	height: 60px;
-	background-color: #161616;
+	background-color: rgba(22, 22, 22, 1);
 	display: flex;
 	justify-content: space-between;
-	gap: 4px;
 	align-items: center;
-	padding: 14px 20px;
-  }
-  
-  .header {
-	max-width: 100%;
-	margin-left: auto;
-  }
-.burger {
-	background-color: transparent;
-	border: none;
-	display: flex;
-	align-items: center;
-	cursor: pointer;
-  }
+	padding: 0 20px;
 
-@media screen and (min-width: 768px) {
-	.headerLayout {
-		width: 768px;
+	@media screen and (min-width: 768px) {
 		height: 68px;
 	}
 }
 
-@media screen and (min-width: 1180px) {
-    .headerLayout {
-        width: 1180px;
-    }
+
+.burgerBtn {
+	height: min-content;
+	width: min-content;
+
+	border: 0;
+	background-color: transparent;
 }
+
+.homeImg {
+	max-width: 124px;
+	max-height: 124px;
+	margin-bottom: 14px;
+
+	@media screen and (min-width: 768px) {
+		max-width: 162px;
+		max-height: 162px;
+		margin-bottom: 24px;
+	}
+}
+
+
+.userIcon {
+	width: 142px;
+	height: 42px;
+	color: rgba(255, 255, 255, 0.5);
+
+	margin-right: 8px;
+	@media screen and (min-width: 768px) {
+		height: 24px;
+	}
+}
+
+
