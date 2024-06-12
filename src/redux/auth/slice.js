@@ -13,6 +13,7 @@ const slice = createSlice({
 		user: {
 			name: null,
 			email: null,
+			avatarUrl: null,
 		},
 		token: null,
 		isLoggedIn: false,
