@@ -11,7 +11,7 @@ const ScreenPage = () => {
 			<div className={css.deskBoard}>
 				<EmptyScreenBoard />
 			</div>
-				</div>
+		</div>
 	);
 };
 
