@@ -18,7 +18,8 @@ const NeedHelp = () => {
 
 	return (
 		<div className={css.helpBlock}>
-			<img className={css.iconKaktusNeedHelp}></img>
+			{/* <img className={css.iconKaktusNeedHelp}></img> */}
+			<img src="/kaktus-need-help.png" alt="Kaktus Need Help" />
 			<p className={css.helpText}>
 				If you need help with <br />
 				<span className={css.taskProSpan}> TaskPro</span>, check out our support
