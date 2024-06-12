@@ -1,37 +1,26 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { editUser } from './operations';
 
-const initialState = {
-  name: '',
-  email: '',
-  password: '',
-  avatar: null,
-  status: 'idle',
-  error: null,
-};
-
 const userSlice = createSlice({
-  name: 'user',
-  initialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder
-      .addCase(editUser.pending, (state) => {
-        state.status = 'loading';
-      })
-      .addCase(editUser.fulfilled, (state, action) => {
-        const { name, email, password, avatar } = action.payload;
-        state.name = name;
-        state.email = email;
-        state.password = password;
-        state.avatar = avatar;
-        state.status = 'succeeded';
-      })
-      .addCase(editUser.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.payload;
-      });
-  },
+	name: 'user',
+	initialState: {
+		user: {
+			name: '',
+			email: '',
+			password: '',
+			avatarUrl: '',
+		},
+		token: null,
+	},
+	extraReducers: builder => {
+		builder.addCase(editUser.fulfilled, (state, action) => {
+			const { name, email, password, avatarUrl } = action.payload;
+			state.user.name = name;
+			state.user.email = email;
+			state.user.password = password;
+			state.user.avatarUrl = avatarUrl;
+		});
+	},
 });
 
 export default userSlice.reducer;

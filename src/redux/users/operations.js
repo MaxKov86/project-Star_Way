@@ -7,7 +7,7 @@ export const editUser = createAsyncThunk(
 	'user/edit',
 	async (formData, thunkAPI) => {
 		try {
-			const response = await axios.put('/users/edit', formData, {
+			const response = await axios.patch('/users/edit', formData, {
 				headers: {
 					'Content-Type': 'multipart/form-data',
 				},
