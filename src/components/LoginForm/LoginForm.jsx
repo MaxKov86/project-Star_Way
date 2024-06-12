@@ -12,6 +12,10 @@ import { useDispatch } from 'react-redux';
 import { logIn } from '../../redux/auth/operations';
 
 const schema = yup.object().shape({
+	name: yup
+		.string()
+		.min(2, 'Name must be at least 2 characters')
+		.required('Name is required'),
 	email: yup.string().email('Invalid email').required('Email is required'),
 	password: yup
 		.string()
@@ -21,22 +25,26 @@ const schema = yup.object().shape({
 
 const LoginForm = () => {
 	const [showPassword, setShowPassword] = useState(false);
+	const dispatch = useDispatch();
+
 	const {
 		register,
 		handleSubmit,
-		formState: { errors },
+		formState: { errors, isValid },
+		trigger,
 	} = useForm({
 		resolver: yupResolver(schema),
+		mode: 'onBlur',
+		reValidateMode: 'onChange',
 	});
-	const navigate = useNavigate();
 
-	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const onSubmit = data => {
 		console.log(data);
+		// dispatch(logIn(data));
 		const reg = logIn(data);
 		dispatch(reg);
-		// Imitational registration & login
 		navigate('/home');
 	};
 
@@ -55,10 +63,12 @@ const LoginForm = () => {
 			<div className={css.inputWrap}>
 				<input
 					className={`${css.formInput} ${errors.email ? css.error : ''}`}
-					type="email"
-					name="email"
+					type="text"
 					placeholder="Enter your email"
-					{...register('email')}
+					{...register('email', {
+						onBlur: () => trigger('email'),
+						onChange: () => trigger('email'),
+					})}
 				/>
 				{errors.email && <p className={css.errors}>{errors.email.message}</p>}
 			</div>
@@ -66,7 +76,10 @@ const LoginForm = () => {
 				<input
 					className={`${css.formInput} ${errors.password ? css.error : ''}`}
 					type={showPassword ? 'text' : 'password'}
-					{...register('password')}
+					{...register('password', {
+						onBlur: () => trigger('password'),
+						onChange: () => trigger('password'),
+					})}
 					placeholder="Enter your password"
 				/>
 				<svg
@@ -83,11 +96,92 @@ const LoginForm = () => {
 					<p className={css.errors}>{errors.password.message}</p>
 				)}
 			</div>
-			<button className={css.formBtn} type="submit">
-				Log In Now
+			<button className={css.formBtn} type="submit" disabled={!isValid}>
+				Log in Now
 			</button>
 		</form>
 	);
 };
 
 export default LoginForm;
+
+// const schema = yup.object().shape({
+// 	email: yup.string().email('Invalid email').required('Email is required'),
+// 	password: yup
+// 		.string()
+// 		.min(8, 'Password must be at least 8 characters')
+// 		.required('Password is required'),
+// });
+
+// const LoginForm = () => {
+// 	const [showPassword, setShowPassword] = useState(false);
+// 	const {
+// 		register,
+// 		handleSubmit,
+// 		formState: { errors },
+// 	} = useForm({
+// 		resolver: yupResolver(schema),
+// 	});
+// 	const navigate = useNavigate();
+
+// 	const dispatch = useDispatch();
+
+// 	const onSubmit = data => {
+// 		console.log(data);
+// 		const reg = logIn(data);
+// 		dispatch(reg);
+// 		// Imitational registration & login
+// 		navigate('/home');
+// 	};
+
+// 	const toggleShowPassword = () => {
+// 		setShowPassword(prevState => !prevState);
+// 	};
+
+// 	return (
+// 		<form className={css.form} onSubmit={handleSubmit(onSubmit)}>
+// 			<div className={css.formTitle}>
+// 				<NavLink className={css.link} to="/auth/register">
+// 					Registration
+// 				</NavLink>
+// 				<h1>Log in</h1>
+// 			</div>
+// 			<div className={css.inputWrap}>
+// 				<input
+// 					className={`${css.formInput} ${errors.email ? css.error : ''}`}
+// 					type="email"
+// 					name="email"
+// 					placeholder="Enter your email"
+// 					{...register('email')}
+// 				/>
+// 				{errors.email && <p className={css.errors}>{errors.email.message}</p>}
+// 			</div>
+// 			<div className={css.inputWrap}>
+// 				<input
+// 					className={`${css.formInput} ${errors.password ? css.error : ''}`}
+// 					type={showPassword ? 'text' : 'password'}
+// 					{...register('password')}
+// 					placeholder="Enter your password"
+// 				/>
+// 				<svg
+// 					className={css.icon}
+// 					width="20"
+// 					height="20"
+// 					onClick={toggleShowPassword}
+// 				>
+// 					<use
+// 						xlinkHref={`${icons}#${showPassword ? 'icon-eye' : 'icon-eye-off'}`}
+// 					></use>
+// 				</svg>
+// 				{errors.password && (
+// 					<p className={css.errors}>{errors.password.message}</p>
+// 				)}
+// 			</div>
+// 			<button className={css.formBtn} type="submit">
+// 				Log In Now
+// 			</button>
+// 		</form>
+// 	);
+// };
+
+// export default LoginForm;

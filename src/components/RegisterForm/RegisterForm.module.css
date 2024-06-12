@@ -48,7 +48,7 @@
 	position: relative;
 }
 
-.formImput {
+.formInput {
 	width: 100%;
 	padding: 10px;
 	border: 1px solid rgba(190, 219, 176, 0.3);
@@ -59,11 +59,11 @@
 	position: relative;
 }
 
-.formImput::placeholder {
+.formInput::placeholder {
 	color: rgb(108, 108, 108);
 }
 
-.formImput:focus {
+.formInput:focus {
 	background-color: rgba(31, 31, 31, 1);
 	border-color: rgba(190, 219, 176, 1);
 	outline: none;
