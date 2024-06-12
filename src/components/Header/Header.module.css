@@ -5,17 +5,43 @@
 	justify-content: space-between;
 	align-items: center;
 	padding: 0 20px;
+
 	@media screen and (min-width: 768px) {
 		height: 68px;
 	}
 }
 
+
+.burgerBtn {
+	height: min-content;
+	width: min-content;
+
+	border: 0;
+	background-color: transparent;
+}
+
+.homeImg {
+	max-width: 124px;
+	max-height: 124px;
+	margin-bottom: 14px;
+
+	@media screen and (min-width: 768px) {
+		max-width: 162px;
+		max-height: 162px;
+		margin-bottom: 24px;
+	}
+}
+
+
 .userIcon {
 	width: 142px;
 	height: 42px;
 	color: rgba(255, 255, 255, 0.5);
+
 	margin-right: 8px;
 	@media screen and (min-width: 768px) {
 		height: 24px;
 	}
 }
+
+

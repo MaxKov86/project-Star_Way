@@ -2,13 +2,13 @@ import MenuIcon from '@mui/icons-material/Menu';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import css from './Header.module.css';
 
-const Header = () => {
+const Header = ({ isOpen, toggle }) => {
 	return (
 		<div className={css.header}>
 			{innerWidth < 1440 && (
-				<div>
+				<button className={css.burgerBtn} onClick={() => toggle(!isOpen)} type='button'>
 					<MenuIcon className={css.userIcon} />
-				</div>
+				</button>
 			)}
 			<div></div>
 			<div className={css.homeImg}>
