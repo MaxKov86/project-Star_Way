@@ -7,6 +7,7 @@ import staticIcons from "../../../assets/icons.svg"
 import { deleteBoard, getAllBoards } from "../../../redux/boards/operations"
 import UpdateBoard from "./UpdateModal/UpdateBoard";
 import { useState } from "react";
+import EllipsisText from "react-ellipsis-text";
 
 export default function SidebarBoard({ title, icon, id, isActive }) {
 
@@ -19,6 +20,7 @@ export default function SidebarBoard({ title, icon, id, isActive }) {
         await dispatch(getAllBoards()).unwrap();
     }
 
+
     return (<>
 
         {isActive
@@ -29,7 +31,7 @@ export default function SidebarBoard({ title, icon, id, isActive }) {
                         <svg className={clsx(css.icon, css[theme], isActive && css.active)}>
                             <use href={`${staticIcons}#${icon}`}></use>
                         </svg>
-                        <p className={clsx(css.title, css[theme], isActive && css.active)}>{title}</p>
+                        <p className={clsx(css.title, css[theme], isActive && css.active)}><EllipsisText text={title} length={20} /></p>
                     </div>
 
                     <div className={clsx(css.btnBox, css[theme], isActive && css.active)}>
@@ -56,7 +58,7 @@ export default function SidebarBoard({ title, icon, id, isActive }) {
                         <svg className={clsx(css.icon, css[theme], isActive && css.active)}>
                             <use href={`${staticIcons}#${icon}`}></use>
                         </svg>
-                        <p className={clsx(css.title, css[theme], isActive && css.active)}>{title}</p>
+                        <p className={clsx(css.title, css[theme], isActive && css.active)}><EllipsisText text={title} length={20} /></p>
                     </div>
                 </div>
             </NavLink >}
