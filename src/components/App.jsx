@@ -10,6 +10,7 @@ import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from '../redux/auth/operations';
+import PrivateRoute from './PrivateRoute';
 
 function App() {
 	const dispatch = useDispatch();
@@ -22,7 +23,10 @@ function App() {
 			<Routes>
 				<Route path="/" element={<WelcomePage />} />
 				<Route path="/auth/:id" element={<AuthPage />} />
-				<Route path="/home" element={<HomePage />} />
+				<Route
+					path="/home"
+					element={<PrivateRoute component={<HomePage />} />}
+				/>
 				<Route path="/home/:boardName" element={<ScreenPage />} />
 				<Route path="*" element={<NotFoundPage />} />
 			</Routes>
