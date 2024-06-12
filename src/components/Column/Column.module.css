@@ -14,3 +14,21 @@
 	margin-right: 8px;
 	border-radius: 6px;
 }
+
+/* ці стилі підключити до колонки */
+.columnWrap {
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+.columnWrap::-webkit-scrollbar {
+	width: 8px;
+	border: 0;
+}
+.columnWrap::-webkit-scrollbar-thumb {
+	border-radius: 12px;
+	background-color: var(--secondary-color-black-background);
+}
+.columnWrap::-webkit-scrollbar-track {
+	border-radius: 12px;
+	background-color: var(--background-track-dark);
+}
