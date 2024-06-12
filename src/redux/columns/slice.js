@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getAllColumns, createColumn, deleteColumn } from './operation';
+import { logOut } from '../auth/operations';
 
 const slice = createSlice({
 	name: 'columns',
@@ -47,6 +48,11 @@ const slice = createSlice({
 			.addCase(deleteColumn.rejected, state => {
 				state.error = false;
 				state.isLoading = true;
+			})
+			.addCase(logOut.fulfilled, state => {
+				state.items = [];
+				state.error = false;
+				state.isLoading = false;
 			});
 	},
 });
