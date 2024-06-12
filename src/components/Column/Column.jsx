@@ -1,6 +1,10 @@
 import TaskCard from '../TaskCard/TaskCard';
 import css from './Column.module.css';
 import sprite from '../../assets/icons.svg';
+import PrimeBtn from '../Buttons/PrimeBtn';
+import { useState } from 'react';
+// import { useDispatch } from 'react-redux';
+import Modal from 'react-modal';
 
 const tasks = [
 	{
@@ -21,6 +25,35 @@ const tasks = [
 	},
 ];
 const Column = () => {
+	const [modalIsOpen, setIsOpen] = useState(false);
+	const [newTask, setNewTask] = useState({
+		title: '',
+		description: '',
+		priority: 'low',
+		deadline: '',
+	});
+
+	// const dispatch = useDispatch();
+
+	const openModal = () => {
+		setIsOpen(true);
+	};
+
+	const closeModal = () => {
+		setIsOpen(false);
+	};
+
+	const handleInputChange = e => {
+		const { name, value } = e.target;
+		setNewTask({ ...newTask, [name]: value });
+	};
+
+	// const handleSubmit = e => {
+	// 	e.prevent.default();
+	// 	dispatch(createCard(newTask));
+	// 	closeModal;
+	// };
+
 	return (
 		<div>
 			<h1>Column</h1>
@@ -37,14 +70,56 @@ const Column = () => {
 					</li>
 				))}
 			</ul>
-			<button type="button" className={css.btn}>
+			<PrimeBtn onBtnClick={openModal} className={css.btn}>
 				<div className={css.iconWrapper}>
 					<svg className={css.icon}>
 						<use href={`${sprite}#icon-plus`}></use>
 					</svg>
 				</div>
 				Add another card
-			</button>
+			</PrimeBtn>
+			<Modal
+				isOpen={modalIsOpen}
+				onRequestClose={closeModal}
+				contentLabel="Add Task"
+			>
+				<form onSubmit={handleSubmit}>
+					<input
+						type="text"
+						name="title"
+						placeholder="Title"
+						value={newTask.title}
+						onChange={handleInputChange}
+						required
+					/>
+					<textarea
+						name="description"
+						placeholder="Description"
+						value={newTask.description}
+						onChange={handleInputChange}
+					/>
+					<select
+						name="priority"
+						value={newTask.priority}
+						onChange={handleInputChange}
+					>
+						<option value="low">Low</option>
+						<option value="medium">Medium</option>
+						<option value="high">High</option>
+					</select>
+					<input
+						type="date"
+						name="deadline"
+						value={newTask.deadline}
+						onChange={handleInputChange}
+						required
+					/>
+					<button type="submit">Add Task</button>
+				</form>
+				<button className={css.closeButton} onClick={closeModal}>
+					Close
+				</button>
+			</Modal>
 		</div>
 	);
 };

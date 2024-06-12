@@ -4,7 +4,7 @@ import { editUserInfo } from './operation';
 const slice = createSlice({
 	name: 'users',
 	initialState: {
-		user: {
+		profile: {
 			name: '',
 			email: '',
 			password: '',
@@ -14,7 +14,7 @@ const slice = createSlice({
 	},
 	extraReducers: builder =>
 		builder.addCase(editUserInfo.fulfilled, (state, action) => {
-			state.user = action.payload.user;
+			state.profile = action.payload.profile;
 			state.token = action.payload.token;
 		}),
 });

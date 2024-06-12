@@ -1,15 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { changeTheme } from './operations';
 
 const slice = createSlice({
 	name: 'theme',
 	initialState: { value: 'dark' },
-	reducers: {
-		changeTheme(state, action) {
+	extraReducers: builder =>
+		builder.addCase(changeTheme.fulfilled, (state, action) => {
 			state.value = action.payload;
-		},
-	},
+		}),
 });
-
-export const { changeTheme } = slice.actions;
 
 export default slice.reducer;
