@@ -1,33 +1,11 @@
-/* modal box */
-
-.modalBox {
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    stroke: wheat;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 100vw;
-    height: 100vh;
+.form {
+    width: 287px;
 }
 
-/* title */
-.title {
-    margin-bottom: 24px;
-
-    font-size: 18px;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-
-    color: var(--primary-color-text);
-}
-
-.title.dark {
-    color: var(--primary-color-text-white);
+@media screen and (min-width: 768px) {
+    .form {
+        width: 302px;
+    }
 }
 
 /* inputBox */

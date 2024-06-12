@@ -3,23 +3,19 @@ import LogoComponent from '../LogoComponent/LogoComponent';
 import NeedHelp from './NeedHelp/NeedHelp';
 import css from './Sidebar.module.css';
 import { selectTheme } from '../../redux/theme/selectors';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import CreateBoard from './CreateBoard/CreateBoard';
 import SidebarBoard from './SidebarBoard/SidebarBoard';
 import { useParams } from 'react-router-dom';
 import Logout from './Logout/Logout';
 
 import { selectBoards } from '../../redux/boards/selectors';
-import { getAllBoards } from '../../redux/boards/operations';
 
 const Sidebar = ({ isOpen, toggle }) => {
 	const params = useParams();
 
 	const boards = useSelector(selectBoards);
 	const theme = useSelector(selectTheme);
-
-
-	const dispatch = useDispatch()
 
 	return (
 		<>
@@ -64,7 +60,6 @@ const Sidebar = ({ isOpen, toggle }) => {
 					<NeedHelp />
 					<Logout />
 				</div>
-				<button type='button' onClick={() => dispatch(getAllBoards())}>ddd</button>
 			</div>
 		</>
 	);

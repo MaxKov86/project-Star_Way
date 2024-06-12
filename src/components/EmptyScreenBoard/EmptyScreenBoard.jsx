@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import Modal from 'react-modal';
+import OurModal from '../Modal/Modal';
 import css from './EmptyScreenBoard.module.css';
+import CreateBoardModal from "../Sidebar/CreateBoard/CreateBoardModal/CreateBoardModal"
 
 export default function EmptyScreenBoard() {
 	//для відкриття модального вікна
@@ -26,18 +27,13 @@ export default function EmptyScreenBoard() {
 				effective collaboration among team members.
 			</div>
 
-			<Modal
+			<OurModal
 				isOpen={modalIsOpen}
-				onRequestClose={closeModal}
-				contentLabel="Modal"
+				closeModal={closeModal}
+				title="New board"
 			>
-				<div>
-					Тут має потрібна форма передаватися як children, в форму перенести
-					кнопку закриття модалки або функцію на onClick
-				</div>
-
-				<button onClick={closeModal}>Close</button>
-			</Modal>
+				<CreateBoardModal handelClose={closeModal} />
+			</OurModal>
 		</div>
 	);
 }
