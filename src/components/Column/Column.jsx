@@ -1,6 +1,7 @@
 import TaskCard from '../TaskCard/TaskCard';
 import css from './Column.module.css';
 import sprite from '../../assets/icons.svg';
+import PrimeBtn from '../Buttons/PrimeBtn';
 
 const tasks = [
 	{
@@ -37,14 +38,14 @@ const Column = () => {
 					</li>
 				))}
 			</ul>
-			<button type="button" className={css.btn}>
+			<PrimeBtn className={css.btn}>
 				<div className={css.iconWrapper}>
 					<svg className={css.icon}>
 						<use href={`${sprite}#icon-plus`}></use>
 					</svg>
 				</div>
 				Add another card
-			</button>
+			</PrimeBtn>
 		</div>
 	);
 };
