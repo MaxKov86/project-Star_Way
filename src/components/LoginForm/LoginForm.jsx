@@ -12,10 +12,6 @@ import { useDispatch } from 'react-redux';
 import { logIn } from '../../redux/auth/operations';
 
 const schema = yup.object().shape({
-	name: yup
-		.string()
-		.min(2, 'Name must be at least 2 characters')
-		.required('Name is required'),
 	email: yup.string().email('Invalid email').required('Email is required'),
 	password: yup
 		.string()
@@ -42,9 +38,9 @@ const LoginForm = () => {
 
 	const onSubmit = data => {
 		console.log(data);
-		// dispatch(logIn(data));
-		const reg = logIn(data);
-		dispatch(reg);
+		dispatch(logIn(data));
+		// const reg = logIn(data);
+		// dispatch(reg);
 		navigate('/home');
 	};
 
@@ -64,6 +60,7 @@ const LoginForm = () => {
 				<input
 					className={`${css.formInput} ${errors.email ? css.error : ''}`}
 					type="text"
+					name="email"
 					placeholder="Enter your email"
 					{...register('email', {
 						onBlur: () => trigger('email'),
