@@ -2,7 +2,6 @@ import clsx from "clsx";
 import sprite from "../../../../assets/icons.svg"
 import css from "./UpdateBoard.module.css";
 import { selectTheme } from "../../../../redux/theme/selectors";
-import Modal from "../../../Modal/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
