@@ -1,5 +1,4 @@
 import EmptyScreenBoard from '../../components/EmptyScreenBoard/EmptyScreenBoard';
-import DashboardFilter from '../../components/DashboardFilter/DashboardFilter';
 import css from './ScreenPage.module.css';
 import { useSelector } from 'react-redux';
 import { selectBoards } from '../../redux/boards/selectors';
@@ -20,12 +19,12 @@ const ScreenPage = () => {
 		<div className={clsx(css.wrapper, css[theme])}>
 			<HeaderDashboard />
 
-			{param.boardName
-				?
-				<MainDashboard />
-				:
-				<EmptyScreenBoard />
-       
+			param.boardName
+			?
+			<MainDashboard />
+			:
+			<EmptyScreenBoard />
+
 		</div>
 	);
 };
