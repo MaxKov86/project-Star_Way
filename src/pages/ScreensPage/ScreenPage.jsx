@@ -19,11 +19,12 @@ const ScreenPage = () => {
 		<div className={clsx(css.wrapper, css[theme])}>
 			<HeaderDashboard />
 
-			param.boardName
-			?
-			<MainDashboard />
-			:
-			<EmptyScreenBoard />
+			{param.boardName
+				?
+				<MainDashboard />
+				:
+				<EmptyScreenBoard />
+			}
 
 		</div>
 	);
