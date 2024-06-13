@@ -1,6 +1,7 @@
+import css from './Header.module.css';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
-import css from './Header.module.css';
+import UserInfo from './UserInfo/UserInfo';
 
 const Header = ({ isOpen, toggle }) => {
 	return (
@@ -14,6 +15,7 @@ const Header = ({ isOpen, toggle }) => {
 			<div className={css.homeImg}>
 				<AccountBoxIcon className={css.userIcon} sx={{ fontSize: 46 }} />
 			</div>
+			<UserInfo/>
 		</div>
 	);
 };

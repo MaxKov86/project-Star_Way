@@ -1,0 +1,84 @@
+.modalBox {
+	background-color: var(--color-form-background);
+	min-width: 335px;
+	border: 1px solid var(--color-green-background);
+	border-radius: 8px;
+	box-shadow: 0 4px 16px hsla(0, 0%, 7%, 0.1);
+	padding: 24px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	outline: none;
+}
+
+.wrap {
+	position: absolute;
+	top: 14px;
+	right: 14px;
+	cursor: pointer;
+}
+
+.closeBtn {
+	width: 18px;
+	height: 18px;
+}
+
+.text {
+	color: #fff;
+	font-family: 'Poppins', sans-serif;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 500;
+	margin: 0;
+}
+
+.photoUpload {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	border-radius: 8px;
+	margin-top: 24px;
+}
+
+
+.plusBtn {
+	border: none;
+	background-color: var(--color-green-background);
+	border-radius: 4px;
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	top: -75%;
+	cursor: pointer;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.formInput {
+	padding-left: 0;
+    padding-right: 18px;
+	width: 100%;
+	height: 49px;
+	border-radius: 8px;
+	border: 1px solid rgba(190, 219, 176, 0.5);
+	background-color: inherit;
+	font-family: 'Poppins', sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	outline: none;
+	box-shadow: none;
+	position: relative;
+}
+
+@media screen and (min-width: 768px) {
+	.modalBox {
+		width: 400px;
+	}
+}
