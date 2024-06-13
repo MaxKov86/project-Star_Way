@@ -8,6 +8,7 @@ import css from './UserInfo.module.css'
 
 const UserInfo = () => {
 	const { name, avatarUrl } = useSelector(selectUser);
+	console.log('Avatar URL:', avatarUrl);
 	const [open, setOpen] = useState(false);
 
 	const handleOpen = () => setOpen(true);
