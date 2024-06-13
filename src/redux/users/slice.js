@@ -8,7 +8,7 @@ const slice = createSlice({
 			name: '',
 			email: '',
 			password: '',
-			avatarUrl: '',
+			avatarURL: '',
 		},
 		help: {
 			email: '',
