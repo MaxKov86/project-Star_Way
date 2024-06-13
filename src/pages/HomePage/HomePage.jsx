@@ -2,7 +2,6 @@
 import Sidebar from '../../components/Sidebar/Sidebar';
 import ScreenPage from '../ScreensPage/ScreenPage';
 import Header from '../../components/Header/Header';
-import DashboardFilter from '../../components/DashboardFilter/DashboardFilter';
 
 import css from './HomePage.module.css';
 import { useEffect, useState } from 'react';

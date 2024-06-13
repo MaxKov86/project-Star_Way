@@ -6,20 +6,28 @@ import { selectTheme } from '../../redux/theme/selectors';
 import { useSelector } from 'react-redux';
 import CreateBoard from './CreateBoard/CreateBoard';
 import SidebarBoard from './SidebarBoard/SidebarBoard';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Logout from './Logout/Logout';
 
 import { selectBoards } from '../../redux/boards/selectors';
+import { useEffect } from 'react';
+
 
 const Sidebar = ({ isOpen, toggle }) => {
-	const params = useParams();
+	const { boardName } = useParams();
+	const nav = useNavigate();
 
 	const boards = useSelector(selectBoards);
 	const theme = useSelector(selectTheme);
 
+	useEffect(() => {
+		if (!boardName && boards.length > 0) {
+			nav(`/home/${boards[0]._id}`);
+		}
+	}, [boardName, boards, nav]);
+
 	return (
 		<>
-			<div className={clsx(css.backdrop, isOpen && css.open, css[theme])} onClick={() => toggle(!isOpen)}>		</div>
 			<div className={clsx(css.box, css[`box_${theme}`], isOpen && css.open)}>
 				<div className={css.topBox}>
 					<LogoComponent />
@@ -30,7 +38,7 @@ const Sidebar = ({ isOpen, toggle }) => {
 
 				<ul className={css.sidebarBoardsBox}>
 					{boards.map(board => {
-						if (params.boardName === board._id || (params.boardName == null && boards[0] === board)) {
+						if (boardName === board._id || (boardName == null && boards[0] === board)) {
 							return (
 								<li key={board._id ?? new Date + Math.random()}>
 									<SidebarBoard
@@ -61,6 +69,9 @@ const Sidebar = ({ isOpen, toggle }) => {
 					<Logout />
 				</div>
 			</div>
+
+			{/* backdrop */}
+			<div className={clsx(css.backdrop, isOpen && css.open, css[theme])} onClick={() => toggle(!isOpen)}></div>
 		</>
 	);
 };
