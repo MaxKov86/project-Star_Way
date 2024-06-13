@@ -26,9 +26,7 @@ const HomePage = () => {
 			<Sidebar isOpen={toggleSidebar} toggle={setToggleSidebar} />
 			<div className={css.mainContent}>
 				<Header isOpen={toggleSidebar} toggle={setToggleSidebar} />
-				<ScreenPage>
-					<DashboardFilter />
-				</ScreenPage>
+				<ScreenPage />
 			</div>
 		</div>
 	);
