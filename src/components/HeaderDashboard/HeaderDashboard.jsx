@@ -34,7 +34,7 @@ const HeaderDashboard = () => {
 	return (
 		<div className={clsx(css.headerDashboardContainer, css[theme], !boardName && css.empty)}>
 
-			{board && isLoading &&
+			{board && !isLoading &&
 				<h2 className={clsx(css.titleHeaderDashboard, css[theme])}>
 					{board.title}
 				</h2>}

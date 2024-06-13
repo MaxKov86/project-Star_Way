@@ -33,6 +33,9 @@ export default function SidebarBoard({ title, icon, id, isActive }) {
 	// delete function
 
 	const handleDelete = async () => {
+		await dispatch(deleteBoard(id)).unwrap();
+		await dispatch(getAllBoards()).unwrap();
+
 		if (boards.length !== 0 && boards.length !== 1) {
 			if (index === 0) {
 				console.log(1);
@@ -42,12 +45,9 @@ export default function SidebarBoard({ title, icon, id, isActive }) {
 				nav(`/home/${boards[index - 1]._id}`);
 			}
 		} else {
-
 			nav(`/home`);
 		}
 
-		await dispatch(deleteBoard(id)).unwrap();
-		await dispatch(getAllBoards()).unwrap();
 	};
 
 	return (
