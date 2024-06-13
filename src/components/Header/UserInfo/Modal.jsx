@@ -18,9 +18,7 @@ import {
 import { useForm, Controller } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { editUserInfo } from '../../../redux/users/operation';
-import { selectUser } from '../../../redux/auth/selectors';
-// import { selectUserProfile } from '../../../redux/users/selectors';
-import { selectToken } from '../../../redux/auth/selectors';
+import { selectUser, selectToken } from '../../../redux/auth/selectors';
 import css from './Modal.module.css';
 
 const ModalForm = ({ open, handleClose }) => {
