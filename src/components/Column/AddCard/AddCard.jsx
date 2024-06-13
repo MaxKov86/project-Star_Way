@@ -1,87 +1,87 @@
-// import React, { useState } from 'react';
+import css from './AddCard.module.css';
+import sprite from '../../../assets/icons.svg';
+import PrimeBtn from '../../Buttons/PrimeBtn';
+import { useDispatch } from 'react-redux';
+import { createCard } from '../../../redux/cards/operations';
+import { useForm } from 'react-hook-form';
 
-// const TaskCardForm = ({ onAddTask }) => {
-// 	const [title, setTitle] = useState('');
-// 	const [description, setDescription] = useState('');
-// 	const [priority, setPriority] = useState('without');
-// 	const [deadline, setDeadline] = useState('');
+const AddCard = ({ columnId, closeModal }) => {
+	const dispatch = useDispatch();
 
-// 	const handleSubmit = e => {
-// 		e.preventDefault();
-// 		onAddTask({
-// 			title,
-// 			description,
-// 			priority,
-// 			deadline,
-// 			_id: Date.now().toString(), // Temporary ID for the task card
-// 		});
-// 		setTitle('');
-// 		setDescription('');
-// 		setPriority('without');
-// 		setDeadline('');
-// 	};
+	const {
+		register,
+		handleSubmit,
+		reset,
+		formState: { errors },
+	} = useForm();
 
-// 	return (
-// 		<form onSubmit={handleSubmit} className="task-card-form">
-// 			<input
-// 				type="text"
-// 				placeholder="Title"
-// 				value={title}
-// 				onChange={e => setTitle(e.target.value)}
-// 				required
-// 			/>
-// 			<textarea
-// 				placeholder="Description"
-// 				value={description}
-// 				onChange={e => setDescription(e.target.value)}
-// 			/>
-// 			<div>
-// 				<label>
-// 					<input
-// 						type="radio"
-// 						value="high"
-// 						checked={priority === 'high'}
-// 						onChange={e => setPriority(e.target.value)}
-// 					/>
-// 					High
-// 				</label>
-// 				<label>
-// 					<input
-// 						type="radio"
-// 						value="medium"
-// 						checked={priority === 'medium'}
-// 						onChange={e => setPriority(e.target.value)}
-// 					/>
-// 					Medium
-// 				</label>
-// 				<label>
-// 					<input
-// 						type="radio"
-// 						value="low"
-// 						checked={priority === 'low'}
-// 						onChange={e => setPriority(e.target.value)}
-// 					/>
-// 					Low
-// 				</label>
-// 				<label>
-// 					<input
-// 						type="radio"
-// 						value="without"
-// 						checked={priority === 'without'}
-// 						onChange={e => setPriority(e.target.value)}
-// 					/>
-// 					Without
-// 				</label>
-// 			</div>
-// 			<input
-// 				type="date"
-// 				value={deadline}
-// 				onChange={e => setDeadline(e.target.value)}
-// 				min={new Date().toISOString().split('T')[0]}
-// 			/>
-// 			<button type="submit">Add</button>
-// 		</form>
-// 	);
-// };
+	const onSubmit = async data => {
+		const formData = { ...data, columnId };
+		console.log('Form data before dispatch:', formData);
 
-// export default TaskCardForm;
+		try {
+			const response = await dispatch(createCard(formData)).unwrap();
+			console.log('New card added:', response);
+			reset();
+			closeModal();
+		} catch (error) {
+			console.error('Error in API call:', error);
+		}
+	};
+
+	return (
+		<div>
+			<form onSubmit={handleSubmit(onSubmit)} className={css.form}>
+				<div className={css.inputBox}>
+					<input
+						className={css.input}
+						type="text"
+						name="title"
+						placeholder="Title"
+						{...register('title', { required: 'Title is required' })}
+					/>
+					{errors.title && <p className={css.error}>{errors.title.message}</p>}
+				</div>
+				<div>
+					<textarea
+						className={css.text}
+						name="description"
+						placeholder="Description"
+						{...register('description')}
+					/>
+				</div>
+				<div>
+					<select
+						name="priority"
+						{...register('priority', { required: 'Priority is required' })}
+					>
+						<option value="low">Low</option>
+						<option value="medium">Medium</option>
+						<option value="high">High</option>
+					</select>
+				</div>
+				<div>
+					<input
+						type="date"
+						name="deadline"
+						{...register('deadline', { required: 'Deadline is required' })}
+						min={new Date().toISOString().split('T')[0]}
+					/>
+					{errors.deadline && (
+						<p className={css.error}>{errors.deadline.message}</p>
+					)}
+				</div>
+				<PrimeBtn className={css.btn}>
+					<div className={css.iconWrapper}>
+						<svg className={css.icon}>
+							<use href={`${sprite}#icon-plus`}></use>
+						</svg>
+					</div>
+					Add
+				</PrimeBtn>
+			</form>
+		</div>
+	);
+};
+
+export default AddCard;
