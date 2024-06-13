@@ -7,11 +7,12 @@ import clsx from 'clsx';
 import { selectTheme } from '../../redux/theme/selectors';
 import DashboardFilter from '../DashboardFilter/DashboardFilter';
 import css from './HeaderDashboard.module.css';
-import { selectBoards } from '../../redux/boards/selectors.js';
+import { selectBoards, selectIsLoading } from '../../redux/boards/selectors.js';
 
 const HeaderDashboard = () => {
 	const { boardName } = useParams();
 	const boards = useSelector(selectBoards);
+	const isLoading = useSelector(selectIsLoading);
 
 
 	const board = boards.find(board => board._id === boardName);
@@ -33,7 +34,7 @@ const HeaderDashboard = () => {
 	return (
 		<div className={clsx(css.headerDashboardContainer, css[theme], !boardName && css.empty)}>
 
-			{boardName &&
+			{board && !isLoading &&
 				<h2 className={clsx(css.titleHeaderDashboard, css[theme])}>
 					{board.title}
 				</h2>}

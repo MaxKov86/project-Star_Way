@@ -7,6 +7,7 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { createBoard, getAllBoards } from "../../../../redux/boards/operations"
+import { useNavigate } from "react-router-dom";
 
 // validation
 
@@ -26,6 +27,7 @@ export default function CreateBoardModal({ handelClose }) {
 
     const theme = useSelector(selectTheme);
     const dispatch = useDispatch()
+    const nav = useNavigate();
 
     // array for icons and backgrounds
     const numbers = (num, start) => {
@@ -49,10 +51,11 @@ export default function CreateBoardModal({ handelClose }) {
         let { background } = data;
         if (background === "") background = null;
 
-        await dispatch(createBoard({ ...data, background })).unwrap();
+        const newBoard = await dispatch(createBoard({ ...data, background })).unwrap();
         await dispatch(getAllBoards()).unwrap();
 
-        handelClose()
+        nav(`/home/${newBoard.board._id}`);
+        handelClose();
     }
 
     return (
