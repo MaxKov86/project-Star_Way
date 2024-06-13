@@ -1,13 +1,13 @@
 .addColumnBtn {
 	display: inline-flex;
-	margin-top: 10px;
-	margin-left: 24px;
 	padding: 14px 78px 14px 79px;
 	justify-content: center;
 	align-items: center;
 	border-radius: 8px;
 	background: #121212;
 	border: none;
+	height: 56px;
+	width: 335px;
 }
 
 .iconAddColumnBtn {
