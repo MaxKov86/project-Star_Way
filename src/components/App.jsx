@@ -10,6 +10,8 @@ import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from '../redux/auth/operations';
+import PrivateRoute from './PrivateRoute';
+import RestrictedRoute from './RestrictedRoute';
 
 function App() {
 	const dispatch = useDispatch();
@@ -20,10 +22,18 @@ function App() {
 		<>
 			{/* <Layout> */}
 			<Routes>
-				<Route path="/" element={<WelcomePage />} />
-				<Route path="/auth/:id" element={<AuthPage />} />
-				<Route path="/home" element={<HomePage />} />
-				<Route path="/home/:boardName" element={<ScreenPage />} />
+				<Route
+					path="/"
+					element={<RestrictedRoute component={<WelcomePage />} />}
+				/>
+				<Route
+					path="/auth/:id"
+					element={<RestrictedRoute component={<AuthPage />} />}
+				/>
+				<Route path="/home" element={<PrivateRoute component={<HomePage />} />}>
+					<Route path="/home/:boardName" element={<ScreenPage />} />
+				</Route>
+
 				<Route path="*" element={<NotFoundPage />} />
 			</Routes>
 			<Toaster />

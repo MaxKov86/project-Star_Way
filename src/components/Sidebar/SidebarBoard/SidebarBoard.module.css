@@ -1,11 +1,19 @@
 /* mainBox */
 .mainBox {
+    position: relative;
+
     display: flex;
     gap: 4px;
 
+    padding-left: 14px;
+    padding-right: 18px;
+
     text-decoration: none;
+
     width: 225px;
     height: 61px;
+
+    box-sizing: border-box;
 }
 
 .mainBox.active {
@@ -25,12 +33,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     width: 100%;
     height: 100%;
 
-    padding-left: 14px;
-    padding-right: 10px;
+    box-sizing: border-box;
 }
 
 /* infoBox */
@@ -38,23 +44,23 @@
     display: flex;
     align-items: center;
     flex-grow: 1;
+    overflow: hidden;
 }
 
 /* icon */
 .icon {
     margin-right: 8px;
-
-
     fill: none;
     stroke: var(--secondary-color-text-gray);
-    height: 18px;
-    width: 18px;
+    min-height: 18px;
+    min-width: 18px;
+    max-width: 18px;
+    max-height: 18px;
 }
 
 .icon.active {
     stroke: var(--primary-color-text-white);
 }
-
 
 .icon.light {
     stroke: var(--color-icons-board);
@@ -65,13 +71,12 @@
 }
 
 /* text */
-
 .title {
-    flex-grow: 1;
-    text-overflow: ellipsis;
-    white-space: nowrap;
     overflow: hidden;
-
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    max-width: 100%;
     font-size: 14px;
     font-weight: 500;
     letter-spacing: -0.02em;
@@ -92,17 +97,14 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-
     margin-left: 8px;
 }
 
 /* btn */
 .btn {
     display: none;
-
     width: 16px;
     height: 16px;
-
     border: none;
     background-color: transparent;
 }
@@ -125,11 +127,11 @@
 }
 
 /* btnIcon */
-
 .btnIcon {
     fill: none;
     width: 100%;
     height: 100%;
+
     stroke: var(--color-icons);
 }
 
@@ -139,6 +141,9 @@
 
 /* stick */
 .stick {
+    position: absolute;
+    top: 0;
+    right: 0;
     height: 100%;
     width: 4px;
 
@@ -153,5 +158,12 @@
 @media screen and (min-width: 768px) {
     .mainBox {
         width: 260px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .mainBox {
+        padding-left: 24px;
+        padding-right: 24px;
     }
 }

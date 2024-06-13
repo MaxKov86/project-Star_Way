@@ -5,10 +5,22 @@ import Header from '../../components/Header/Header';
 import DashboardFilter from '../../components/DashboardFilter/DashboardFilter';
 
 import css from './HomePage.module.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { getAllBoards } from '../../redux/boards/operations';
+import { getAllColumns } from '../../redux/columns/operation';
+import { getAllCards } from '../../redux/cards/operations';
 
 const HomePage = () => {
+	const dispatch = useDispatch();
 	const [toggleSidebar, setToggleSidebar] = useState(false);
+
+	useEffect(() => {
+		dispatch(getAllBoards());
+		dispatch(getAllColumns());
+		dispatch(getAllCards());
+	}, [dispatch]);
+
 	return (
 		<div className={css.homePage}>
 			<Sidebar isOpen={toggleSidebar} toggle={setToggleSidebar} />

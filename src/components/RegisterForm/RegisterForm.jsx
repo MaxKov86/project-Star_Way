@@ -28,9 +28,12 @@ const RegisterForm = () => {
 	const {
 		register,
 		handleSubmit,
-		formState: { errors },
+		formState: { errors, isValid },
+		trigger,
 	} = useForm({
 		resolver: yupResolver(schema),
+		mode: 'onBlur',
+		reValidateMode: 'onChange',
 	});
 
 	const navigate = useNavigate();
@@ -38,7 +41,6 @@ const RegisterForm = () => {
 	const onSubmit = data => {
 		console.log(data);
 		dispatch(registr(data));
-		// Imitational registration & login
 		navigate('/home');
 	};
 
@@ -47,62 +49,56 @@ const RegisterForm = () => {
 	};
 
 	return (
-		<>
-			<form className={css.form} onSubmit={handleSubmit(onSubmit)}>
-				<div className={css.formTitle}>
-					<h1>Registration</h1>
-					<NavLink className={css.link} to="/auth/login">
-						Log in
-					</NavLink>
-				</div>
-				<div className={css.inputWrap}>
-					<input
-						className={`${css.formImput} ${errors.name ? css.error : ''}`}
-						placeholder="Enter your name"
-						type="text"
-						name="name"
-						{...register('name')}
-					/>
-					{errors.name && <p className={css.errors}>{errors.name.message}</p>}
-				</div>
-				<div className={css.inputWrap}>
-					<input
-						className={`${css.formImput} ${errors.name ? css.error : ''}`}
-						type="email"
-						name="email"
-						placeholder="Enter your email"
-						{...register('email')}
-					/>
-					{errors.email && <p className={css.errors}>{errors.email.message}</p>}
-				</div>
-				<div className={css.inputWrap}>
-					<input
-						className={`${css.formImput} ${errors.name ? css.error : ''}`}
-						type={showPassword ? 'text' : 'password'}
-						{...register('password')}
-						placeholder="Create a password"
-					/>
-					<svg
-						className={css.icon}
-						width="20"
-						height="20"
-						onClick={toggleShowPassword}
-					>
-						<use
-							xlinkHref={`${icons}#${
-								showPassword ? 'icon-eye' : 'icon-eye-off'
-							}`}
-						></use>
-					</svg>
-					{errors.password && (
-						<p className={css.errors}>{errors.password.message}</p>
-					)}
-				</div>
-				<button className={css.formBtn} type="submit">
-					Register Now
-				</button>
-			</form>
-		</>
+		<form className={css.form} onSubmit={handleSubmit(onSubmit)}>
+			<div className={css.formTitle}>
+				<h1>Registration</h1>
+				<NavLink className={css.link} to="/auth/login">
+					Log in
+				</NavLink>
+			</div>
+			<div className={css.inputWrap}>
+				<input
+					className={`${css.formInput} ${errors.name ? css.error : ''}`}
+					placeholder="Enter your name"
+					type="text"
+					{...register('name', { onBlur: () => trigger('name') })}
+				/>
+				{errors.name && <p className={css.errors}>{errors.name.message}</p>}
+			</div>
+			<div className={css.inputWrap}>
+				<input
+					className={`${css.formInput} ${errors.email ? css.error : ''}`}
+					type="text"
+					placeholder="Enter your email"
+					{...register('email', { onBlur: () => trigger('email') })}
+				/>
+				{errors.email && <p className={css.errors}>{errors.email.message}</p>}
+			</div>
+			<div className={css.inputWrap}>
+				<input
+					className={`${css.formInput} ${errors.password ? css.error : ''}`}
+					type={showPassword ? 'text' : 'password'}
+					{...register('password', { onBlur: () => trigger('password') })}
+					placeholder="Create a password"
+				/>
+				<svg
+					className={css.icon}
+					width="20"
+					height="20"
+					onClick={toggleShowPassword}
+				>
+					<use
+						xlinkHref={`${icons}#${showPassword ? 'icon-eye' : 'icon-eye-off'}`}
+					></use>
+				</svg>
+				{errors.password && (
+					<p className={css.errors}>{errors.password.message}</p>
+				)}
+			</div>
+			<button className={css.formBtn} type="submit" disabled={!isValid}>
+				Register Now
+			</button>
+		</form>
 	);
 };
 

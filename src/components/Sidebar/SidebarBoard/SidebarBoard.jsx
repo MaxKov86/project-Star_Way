@@ -7,17 +7,32 @@ import staticIcons from "../../../assets/icons.svg"
 import { deleteBoard, getAllBoards } from "../../../redux/boards/operations"
 import UpdateBoard from "./UpdateModal/UpdateBoard";
 import { useState } from "react";
+import OurModal from "../../Modal/Modal";
 
 export default function SidebarBoard({ title, icon, id, isActive }) {
 
-    const [isEdit, setIsEdit] = useState(false);
+
     const theme = useSelector(selectTheme);
     const dispatch = useDispatch();
+
+    // modal
+    const [modalIsOpen, setIsOpen] = useState(false);
+
+    const openModal = () => {
+        setIsOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsOpen(false);
+    };
+
+    // delete function
 
     const handleDelete = async () => {
         await dispatch(deleteBoard(id)).unwrap();
         await dispatch(getAllBoards()).unwrap();
     }
+
 
     return (<>
 
@@ -33,8 +48,7 @@ export default function SidebarBoard({ title, icon, id, isActive }) {
                     </div>
 
                     <div className={clsx(css.btnBox, css[theme], isActive && css.active)}>
-                        {/*onClick={() => setIsEdit(!isEdit)}*/}
-                        <button className={clsx(css.btn, isActive && css.active)} type="button">
+                        <button className={clsx(css.btn, isActive && css.active)} onClick={openModal} type="button">
                             <svg className={clsx(css.btnIcon, css[theme])} >
                                 <use href={`${staticIcons}#icon-pencil`}></use>
                             </svg>
@@ -61,7 +75,12 @@ export default function SidebarBoard({ title, icon, id, isActive }) {
                 </div>
             </NavLink >}
 
-        {isEdit && <UpdateBoard setIsEdit={setIsEdit} id={id} />}
+        <OurModal
+            isOpen={modalIsOpen}
+            closeModal={closeModal}
+            title="Edit board">
+            <UpdateBoard handleClose={closeModal} id={id} />
+        </OurModal>
     </>
     )
 }
