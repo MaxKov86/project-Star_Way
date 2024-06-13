@@ -43,7 +43,11 @@ export const updateBoard = createAsyncThunk(
 	'boards/updateBoard',
 	async (board, thunkAPI) => {
 		try {
-			const response = await axios.patch(`boards/${board.id}`, board);
+			const response = await axios.patch(`boards/${board.id}`, {
+				background: board.background,
+				icon: board.icon,
+				title: board.title,
+			});
 			return response.data;
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error.message);
