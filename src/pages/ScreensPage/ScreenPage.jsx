@@ -24,9 +24,8 @@ const ScreenPage = () => {
 				?
 				<MainDashboard />
 				:
-
 				<EmptyScreenBoard />
-			}
+       
 		</div>
 	);
 };
