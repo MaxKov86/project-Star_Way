@@ -1,8 +1,28 @@
+/* mainBox */
+
+.mainBox {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 100%;
+	height: 100%;
+
+}
+
 .container {
-	background-color: var(--primary-color-black-background);
+	background-color: transparent;
 	width: 335px;
+
+	transform: translateY(-80px);
+
 	@media screen and (min-width: 768px) {
 		width: 486px;
+	}
+
+	@media screen and (min-width: 1440px) {
+		width: 486px;
+		transform: translateY(-60px);
 	}
 }
 
@@ -13,6 +33,7 @@
 	line-height: 1.125rem;
 	letter-spacing: -0.0175rem;
 	text-align: center;
+
 	@media screen and (min-width: 768px) {
 		font-size: 0.875rem;
 		line-height: 1.125rem;
@@ -20,9 +41,24 @@
 	}
 }
 
+.text.light,
+.text.violet {
+	color: var(--color-text-welcome);
+}
+
 .span {
+	cursor: pointer;
 	color: var(--color-green-background);
 }
+
+.span.violet {
+	color: var(--primary-color-violet);
+}
+
 .span:hover {
 	color: #74be50;
+}
+
+.span.violet:hover {
+	color: #7B7EDE;
 }

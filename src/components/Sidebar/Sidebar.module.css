@@ -27,8 +27,10 @@
 .box {
 	position: fixed;
 	left: -225px;
+
 	transform: translateX(0);
 	transition: transform 250ms ease-in;
+	z-index: 2;
 
 	display: flex;
 	flex-direction: column;
