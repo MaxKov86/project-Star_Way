@@ -17,6 +17,7 @@ const DashboardFilter = ({
 	};
 
 	const handleShowAllClick = e => {
+		e.preventDefault();
 		e.stopPropagation();
 		onFilterChange(null);
 	};
