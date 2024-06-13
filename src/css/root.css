@@ -11,7 +11,9 @@
 	--color-white-background: #f6f6f7;
 	--color-form-background: #151515;
 	--secondary-color-black-background: #121212;
-	--background-scroll-track-dark: #313131;
+	/* column scroll */
+	--column-scroll-track-dark: #313131;
+	--column-scroll-thumb-dark: #181818;
 	/*addColumn*/
 
 	--color-icons: rgba(255, 255, 255, 0.5);
