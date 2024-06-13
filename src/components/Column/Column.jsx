@@ -8,19 +8,23 @@ import { selectCards } from '../../redux/cards/selectors';
 import { useState } from 'react';
 import OurModal from '../Modal/Modal';
 
-const Column = ({ columnId, columnName }) => {
+const Column = ({ id, title }) => {
 	const [modalIsOpen, setIsOpen] = useState(false);
-	const tasks = useSelector(selectCards).filter(
-		task => task.columnId === columnId
-	);
+	const tasks = useSelector(selectCards).filter(task => task.columnId === id);
 
 	const openModal = () => setIsOpen(true);
 	const closeModal = () => setIsOpen(false);
 
 	return (
-		<div>
-			<h1>{columnName}</h1>
-			<ul>
+		<div className={css.columnWrap}>
+			{/* шапка колонки */}
+			<div className={css.columnHead}>
+				<h1 className={css.title}>{title}</h1>
+				<div className={css.columnHeadIconsWrap}></div>
+			</div>
+
+			{/* список карток */}
+			<ul className={css.cardList}>
 				{tasks.map(task => (
 					<li key={task._id}>
 						<TaskCard
@@ -33,6 +37,8 @@ const Column = ({ columnId, columnName }) => {
 					</li>
 				))}
 			</ul>
+
+			{/* add another card button*/}
 			<PrimeBtn onBtnClick={openModal} className={css.btn}>
 				<div className={css.iconWrapper}>
 					<svg className={css.icon}>
@@ -41,11 +47,11 @@ const Column = ({ columnId, columnName }) => {
 				</div>
 				Add another card
 			</PrimeBtn>
-			{modalIsOpen && (
+			{/* {modalIsOpen && (
 				<OurModal isOpen={modalIsOpen} closeModal={closeModal} title="Add card">
 					<AddCard columnId={columnId} closeModal={closeModal} />
 				</OurModal>
-			)}
+			)} */}
 		</div>
 	);
 };
