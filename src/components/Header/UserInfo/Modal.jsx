@@ -18,7 +18,8 @@ import {
 import { useForm, Controller } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { editUserInfo } from '../../../redux/users/operation';
-import { selectUserProfile } from '../../../redux/users/selectors';
+import { selectUser } from '../../../redux/auth/selectors';
+// import { selectUserProfile } from '../../../redux/users/selectors';
 import { selectToken } from '../../../redux/auth/selectors';
 import css from './Modal.module.css';
 
@@ -26,9 +27,9 @@ const ModalForm = ({ open, handleClose }) => {
 	const dispatch = useDispatch();
 	const token = useSelector(selectToken);
 	console.log(token);
-	const user = useSelector(selectUserProfile);
+	const user = useSelector(selectUser);
 	const [showPassword, setShowPassword] = useState(false);
-	const [userAvatar, setUserAvatar] = useState(user.avatarUrl);
+	const [userAvatar, setUserAvatar] = useState(user.avatarURL);
 
 	useEffect(() => {
 		setUserAvatar(user.avatarURL);
@@ -131,7 +132,7 @@ const ModalForm = ({ open, handleClose }) => {
 							render={({ field }) => (
 								<TextField
 									{...field}
-									placeholder="Name"
+									placeholder={user.name}
 									error={!!errors.name}
 									helperText={errors.name ? 'Invalid name' : ''}
 									InputProps={{
@@ -153,7 +154,7 @@ const ModalForm = ({ open, handleClose }) => {
 							render={({ field }) => (
 								<TextField
 									{...field}
-									placeholder="Email"
+									placeholder={user.email}
 									error={!!errors.email}
 									helperText={errors.email ? 'Invalid email' : ''}
 									InputProps={{
