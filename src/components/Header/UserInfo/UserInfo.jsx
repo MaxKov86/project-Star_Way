@@ -7,7 +7,7 @@ import {selectUser} from '../../../redux/auth/selectors';
 import css from './UserInfo.module.css'
 
 const UserInfo = () => {
-	const { name, avatar } = useSelector(selectUser);
+	const { name, avatarUrl } = useSelector(selectUser);
 	const [open, setOpen] = useState(false);
 
 	const handleOpen = () => setOpen(true);
@@ -22,13 +22,13 @@ const UserInfo = () => {
 				height: '32px',
 				borderRadius: '4px',
 				cursor: 'pointer'
-			}} onClick={handleOpen} src={avatar || ''}>
-				{!avatar && <UserIcon />}
+			}} onClick={handleOpen} src={avatarUrl || ''}>
+				{!avatarUrl && <UserIcon />}
 			</Avatar>
 			<ModalForm
 				open={open}
 				handleClose={handleClose}
-				user={{ name, avatar }}
+				user={{ name, avatarUrl }}
 			/>
 		</div>
 		</div>

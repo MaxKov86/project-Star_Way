@@ -1,6 +1,7 @@
+export const selectUserName = state => state.user.name;
 
-export const selectUserName = (state) => state.user.name;
+export const selectUserEmail = state => state.user.email;
 
-export const selectUserEmail = (state) => state.user.email;
+export const selectUserAvatar = state => state.user.avatarUrl;
 
-export const selectUserAvatar = (state) => state.user.avatar;
+export const selectUserPass = state => state.user.password;
