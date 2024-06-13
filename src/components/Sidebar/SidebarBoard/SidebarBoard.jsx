@@ -2,16 +2,22 @@ import clsx from 'clsx';
 import css from './SidebarBoard.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectTheme } from '../../../redux/theme/selectors';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import staticIcons from '../../../assets/icons.svg';
 import { deleteBoard, getAllBoards } from '../../../redux/boards/operations';
 import UpdateBoard from './UpdateModal/UpdateBoard';
 import { useState } from 'react';
 import OurModal from '../../Modal/Modal';
+import { selectBoards } from '../../../redux/boards/selectors';
 
 export default function SidebarBoard({ title, icon, id, isActive }) {
 	const theme = useSelector(selectTheme);
 	const dispatch = useDispatch();
+	const nav = useNavigate();
+	const boards = useSelector(selectBoards);
+	const { boardName } = useParams();
+
+	const index = boards.findIndex(board => board._id === boardName)
 
 	// modal
 	const [modalIsOpen, setIsOpen] = useState(false);
@@ -27,6 +33,19 @@ export default function SidebarBoard({ title, icon, id, isActive }) {
 	// delete function
 
 	const handleDelete = async () => {
+		if (boards.length !== 0 && boards.length !== 1) {
+			if (index === 0) {
+				console.log(1);
+				nav(`/home/${boards[index + 1]._id}`);
+			} else {
+				console.log(2);
+				nav(`/home/${boards[index - 1]._id}`);
+			}
+		} else {
+
+			nav(`/home`);
+		}
+
 		await dispatch(deleteBoard(id)).unwrap();
 		await dispatch(getAllBoards()).unwrap();
 	};
