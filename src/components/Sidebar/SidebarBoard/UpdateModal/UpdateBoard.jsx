@@ -133,11 +133,11 @@ export default function UpdateBoard({ id, handleClose }) {
                                 type="radio"
                                 name="background"
                                 {...register('background')}
-                                value={`icon-icon-board-${i}`}
+                                value={`${i}`}
                             />
                             <img
                                 className={css.bgIcon}
-                                src={`../../../../src/assets/task-bg/task-bg-tablet-${i}.jpg`}
+                                src={`https://res.cloudinary.com/daqlrgzqj/image/upload/task-bg-tablet-${i}.jpg`}
                                 width="28"
                                 height="28"
                                 alt=""
