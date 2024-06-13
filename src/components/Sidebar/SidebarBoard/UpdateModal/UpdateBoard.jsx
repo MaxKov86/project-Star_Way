@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { createBoard, getAllBoards } from "../../../../redux/boards/operations"
+import { getAllBoards, updateBoard } from "../../../../redux/boards/operations"
 import { selectBoards } from "../../../../redux/boards/selectors";
 
 // validation
@@ -54,7 +54,7 @@ export default function UpdateBoard({ id, handleClose }) {
         let { background } = data;
         if (background === "") background = null;
 
-        await dispatch(createBoard({ ...data, background })).unwrap();
+        await dispatch(updateBoard({ ...data, background, id })).unwrap();
         await dispatch(getAllBoards()).unwrap();
 
         handleClose()
