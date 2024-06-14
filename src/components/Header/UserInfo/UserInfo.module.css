@@ -3,18 +3,28 @@
 	margin-left: auto;
 	display: flex;
 	align-items: center;
-	background: #161616;
+	background: transparent;
 	padding-right: 4px;
 }
 
 .name {
-	color: #fff;
+	/* color: #fff; */
+	color: var(--primary-color-text-white);
 	font-family: Poppins, sans-serif;
 	font-size: 14px;
 	font-style: normal;
 	font-weight: 500;
 	line-height: normal;
 	letter-spacing: -0.28px;
+}
+.name.active {
+	color: rgba(255, 255, 255, 0.8);
+}
+.name.light {
+	color: var(--primary-color-text);
+}
+.name.violet {
+	color: var(--primary-color-text);
 }
 
 .userinfo {

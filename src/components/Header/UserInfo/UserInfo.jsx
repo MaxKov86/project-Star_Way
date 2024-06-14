@@ -5,18 +5,20 @@ import { useSelector } from 'react-redux';
 import ModalForm from './Modal';
 import { selectUser } from '../../../redux/auth/selectors';
 import css from './UserInfo.module.css';
+import clsx from 'clsx';
+import { selectTheme } from '../../../redux/theme/selectors';
 
 const UserInfo = () => {
 	const { name, avatarURL } = useSelector(selectUser);
 	const [open, setOpen] = useState(false);
-
+	const theme = useSelector(selectTheme);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
 
 	return (
 		<div className={css.wrap}>
 			<div className={css.userinfo}>
-				<span className={css.name}>{name}</span>
+				<span className={clsx(css.name, css[theme])}>{name}</span>
 				<Avatar
 					style={{
 						width: '32px',

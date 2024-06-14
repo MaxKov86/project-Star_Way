@@ -7,7 +7,7 @@ import { selectTheme } from '../../redux/theme/selectors';
 import MainDashboard from '../../components/MainDashboard/MainDashboard';
 import HeaderDashboard from '../../components/HeaderDashboard/HeaderDashboard';
 import { selectBoards } from '../../redux/boards/selectors';
-import boardBackground from "../../helpers/boardBackground"
+import boardBackground from '../../helpers/boardBackground';
 import { useEffect, useState } from 'react';
 
 const ScreenPage = () => {
@@ -28,24 +28,16 @@ const ScreenPage = () => {
 		}
 	}, [board]);
 
-
 	return (
 		<div
 			className={clsx(css.wrapper, css[theme])}
-
 			style={{
 				backgroundImage: bgImage,
 			}}
 		>
 			<HeaderDashboard />
 
-			{boardName
-				?
-				<MainDashboard />
-				:
-				<EmptyScreenBoard />
-			}
-
+			{boardName ? <MainDashboard /> : <EmptyScreenBoard />}
 		</div>
 	);
 };
