@@ -4,7 +4,7 @@ import css from "./MainDashboard.module.css";
 import { selectColumns } from "../../redux/columns/selectors";
 import { useParams } from "react-router-dom";
 // import Column from "../Column/Column";
-
+import TaskCard from "../TaskCard/TaskCard";
 
 export default function MainDashboard() {
 
@@ -21,6 +21,7 @@ export default function MainDashboard() {
                 return <Column key={column._id} title={column.title} id={column._id} />
             })} */}
 
+            <TaskCard />
             <AddColumnBtn />
         </div>
     )

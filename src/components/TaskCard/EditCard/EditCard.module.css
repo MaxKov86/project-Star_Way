@@ -1,40 +1,181 @@
 .form {
-	display: flex;
-	flex-direction: column;
-	gap: 16px;
-	padding: 16px;
-	background-color: #f9f9f9;
-	border-radius: 8px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	width: 287px;
 }
 
-/* Стилі для полів введення */
-.inputBox {
-	display: flex;
-	flex-direction: column;
-}
+/* input */
 
 .input {
-	padding: 8px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	font-size: 16px;
+	width: 100%;
+	height: 49px;
+
+	padding-left: 18px;
+	margin-bottom: 14px;
+
+	font-size: 14px;
+	font-weight: 400;
+	letter-spacing: -0.02em;
+
+	border: 1px solid rgba(190, 219, 176, 0.4);
+	border-radius: 8px;
+	box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+
+	background-color: transparent;
+	color: var(--primary-color-text-white);
 }
 
-.text {
-	padding: 8px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	font-size: 16px;
-	min-height: 100px;
+.input:focus {
+	border-color: var(--color-green);
 }
 
-/* Стилі для селектора пріоритету */
-select {
-	padding: 8px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	font-size: 16px;
+.input.light {
+	color: var(--primary-color-text-black);
+}
+
+.input.violet {
+	color: var(--primary-color-text-black);
+	border-color: rgba(82, 85, 188, 0.4);
+}
+
+.input:focus.violet {
+	border-color: var(--primary-color-violet);
+}
+
+/* textarea */
+
+.textarea {
+	width: 100%;
+	height: 154px;
+
+	padding: 14px 18px;
+	margin-bottom: 24px;
+
+	font-size: 14px;
+	font-weight: 400;
+	letter-spacing: -0.02em;
+
+	border: 1px solid rgba(190, 219, 176, 0.4);
+	border-radius: 8px;
+	box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+	resize: none;
+
+	background-color: transparent;
+	color: var(--primary-color-text-white);
+}
+
+.textarea:focus {
+	border-color: var(--color-green);
+}
+
+.textarea.light {
+	color: var(--primary-color-text-black);
+}
+
+.textarea.violet {
+	color: var(--primary-color-text-black);
+	border-color: rgba(82, 85, 188, 0.4);
+}
+
+.textarea:focus.violet {
+	border-color: var(--primary-color-violet);
+}
+
+/* priorityTitle */
+
+.priorityTitle {
+	margin-bottom: 4px;
+
+	font-size: 12px;
+	font-weight: 400;
+	letter-spacing: -0.02em;
+
+	color: var(--color-icons-board);
+}
+
+.priorityTitle.dark {
+	color: var(--color-icons);
+}
+
+/* priorityBox */
+
+.priorityBox {
+	display: flex;
+	gap: 8px;
+
+	margin-bottom: 14px;
+}
+
+/* priorityBtn */
+
+.priorityBtn {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	border: 0;
+	padding: 0;
+
+	white-space: nowrap;
+	clip-path: inset(100%);
+	clip: rect(0 0 0 0);
+	overflow: hidden;
+}
+
+/* priorityCircle */
+
+.priorityCircle {
+	cursor: pointer;
+
+	height: 14px;
+	width: 14px;
+
+	border-radius: 50%;
+
+	border: 1px solid rgba(22, 22, 22, 0.3);
+}
+
+.priorityCircle.dark {
+	border-color: var(--color4);
+}
+
+.priorityCircle.low {
+	border-color: var(--color1);
+}
+
+.priorityCircle.medium {
+	border-color: var(--color2);
+}
+
+.priorityCircle.high {
+	border-color: var(--color3);
+}
+
+/* priorityCircleInside */
+
+.priorityCircleInside {
+	height: 100%;
+	width: 100%;
+	background-color: rgba(22, 22, 22, 0.3);
+	border-radius: 50%;
+}
+
+.priorityCircleInside.dark {
+	background-color: var(--color4);
+}
+
+.priorityCircleInside.low {
+	background-color: var(--color1);
+}
+
+.priorityCircleInside.medium {
+	background-color: var(--color2);
+}
+
+.priorityCircleInside.high {
+	background-color: var(--color3);
+}
+
+.btn:checked+.priorityCircleInside {
+	transform: scale(50%);
 }
 
 /* Стилі для кнопки */
@@ -65,7 +206,15 @@ select {
 
 /* Стилі для повідомлень про помилки */
 .error {
+	position: absolute;
+
 	color: red;
 	font-size: 12px;
 	margin-top: 4px;
+}
+
+@media screen and (min-width: 768px) {
+	.form {
+		width: 302px;
+	}
 }
