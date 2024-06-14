@@ -1,14 +1,17 @@
 import css from './EditCard.module.css';
 import sprite from '../../../assets/icons.svg';
 import PrimeBtn from '../../Buttons/PrimeBtn';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { createCard } from '../../../redux/cards/operations';
 import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
+import { selectTheme } from '../../../redux/theme/selectors';
 
 
 const EditCard = ({ card, closeModal }) => {
 	const dispatch = useDispatch();
+	const theme = useSelector(selectTheme);
 
 	const {
 		register,
@@ -41,26 +44,22 @@ const EditCard = ({ card, closeModal }) => {
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className={css.form}>
 
-			<div className={css.inputBox}>
-				<input
-					className={css.input}
-					type="text"
-					name="title"
-					placeholder="Title"
-					{...register('title', { required: 'Title is required' })}
-				/>
-				{errors.title && <p className={css.error}>{errors.title.message}</p>}
-			</div>
+			<input
+				className={clsx(css.input, css[theme])}
+				type="text"
+				name="title"
+				placeholder="Title"
+				{...register('title', { required: 'Title is required' })}
+			/>
+			{errors.title && <p className={css.error}>{errors.title.message}</p>}
 
-			<div>
-				<textarea
-					className={css.text}
-					name="description"
-					placeholder="Description"
-					{...register('description')}
-				/>
-			</div>
-
+			<textarea
+				className={clsx(css.textarea)}
+				name="description"
+				placeholder="Description"
+				{...register('description')}
+			/>
+			{/* 
 			<div>
 				<select
 					name="priority"
@@ -70,6 +69,39 @@ const EditCard = ({ card, closeModal }) => {
 					<option value="medium">Medium</option>
 					<option value="high">High</option>
 				</select>
+			</div> */}
+
+			<p className={clsx(css.priorityTitle, css[theme])}>Label color</p>
+			<div className={css.priorityBox}>
+
+				<label>
+					<button className={clsx(css.priorityBtn)} type='radio' name='priority' value="low"></button>
+					<div className={clsx(css.priorityCircle, css.active, css.low)}>
+						<div className={clsx(css.priorityCircleInside, css.active, css.low)}></div>
+					</div>
+				</label>
+
+				<label>
+					<button className={clsx(css.priorityBtn)} type='radio' name='priority' value="medium"></button>
+					<div className={clsx(css.priorityCircle, css.active, css.medium)}>
+						<div className={clsx(css.priorityCircleInside, css.active, css.medium)}></div>
+					</div>
+				</label>
+
+				<label>
+					<button className={clsx(css.priorityBtn)} type='radio' name='priority' value="high"></button>
+					<div className={clsx(css.priorityCircle, css.active, css.high)}>
+						<div className={clsx(css.priorityCircleInside, css.active, css.high)}></div>
+					</div>
+				</label>
+
+				<label>
+					<button className={clsx(css.priorityBtn)} type='radio' name='priority' value="without"></button>
+					<div className={clsx(css.priorityCircle, css.without, css[theme])}>
+						<div className={clsx(css.priorityCircleInside, css.active, css.without, css[theme])}></div>
+					</div>
+				</label>
+
 			</div>
 
 			<div>

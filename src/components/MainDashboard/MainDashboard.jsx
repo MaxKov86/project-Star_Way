@@ -5,7 +5,6 @@ import { selectColumns } from "../../redux/columns/selectors";
 import { useParams } from "react-router-dom";
 // import Column from "../Column/Column";
 
-
 export default function MainDashboard() {
 
     const { boardName } = useParams();
@@ -20,7 +19,6 @@ export default function MainDashboard() {
             {boardColumns.map(column => {
                 return <Column key={column._id} title={column.title} id={column._id} />
             })} */}
-
             <AddColumnBtn />
         </div>
     )

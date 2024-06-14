@@ -9,13 +9,15 @@ import css from './TaskCard.module.css';
 import PropTypes from 'prop-types';
 import OurModal from '../Modal/Modal';
 
-export default function TaskCard({
-	// title,
-	// description,
-	// id,
-	// priority,
-	// deadline,
-}) {
+export default function TaskCard(
+	// 	{
+	// 	// title,
+	// 	// description,
+	// 	// id,
+	// 	// priority,
+	// 	// deadline,
+	// }
+) {
 
 	const title = "Title"
 	const description = "description"
@@ -81,10 +83,12 @@ export default function TaskCard({
 							Priority
 						</h4>
 
-						<p className={clsx(css.priorityText, css[`priorityText_${theme}`])}>
+						<div className={css.priorityFlexbox}>
 							<div className={clsx(css.priorityCircle, css[priority], css[theme])}></div>
-							{priority}
-						</p>
+							<p className={clsx(css.priorityText, css[`priorityText_${theme}`])}>
+								{priority}
+							</p>
+						</div>
 
 					</div>
 
@@ -156,7 +160,7 @@ export default function TaskCard({
 			<OurModal
 				isOpen={editIsOpen}
 				closeModal={closeEditModal}
-				title="New board"
+				title="Edit card"
 			>
 				<EditCard card={card} closeModal={closeEditModal} />
 			</OurModal>
@@ -164,10 +168,8 @@ export default function TaskCard({
 	);
 }
 
-TaskCard.propTypes = {
-	title: PropTypes.string.isRequired,
-	description: PropTypes.string,
-	id: PropTypes.string.isRequired,
-	moveCard: PropTypes.func.isRequired,
-	editCard: PropTypes.func.isRequired,
-};
+// TaskCard.propTypes = {
+// 	title: PropTypes.string.isRequired,
+// 	description: PropTypes.string,
+// 	id: PropTypes.string.isRequired,
+// };

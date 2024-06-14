@@ -161,12 +161,17 @@
 	color: rgba(22, 22, 22, 0.5);
 }
 
+/* priorityFlexbox */
+
+.priorityFlexbox {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+
 /* priorityText */
 
 .priorityText {
-	display: flex;
-	align-items: center;
-
 	text-transform: capitalize;
 
 	font-size: 10px;
