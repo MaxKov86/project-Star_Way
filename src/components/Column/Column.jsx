@@ -24,19 +24,21 @@ const Column = ({ id, title }) => {
 			</div>
 
 			{/* список карток */}
-			<ul className={css.cardList}>
-				{tasks.map(task => (
-					<li key={task._id}>
-						<TaskCard
-							title={task.title}
-							description={task.description}
-							priority={task.priority}
-							deadline={task.deadline}
-							id={task._id}
-						/>
-					</li>
-				))}
-			</ul>
+			{tasks && tasks.length > 0 && (
+				<ul className={css.cardList}>
+					{tasks.map(task => (
+						<li key={task._id}>
+							<TaskCard
+								title={task.title}
+								description={task.description}
+								priority={task.priority}
+								deadline={task.deadline}
+								id={task._id}
+							/>
+						</li>
+					))}
+				</ul>
+			)}
 
 			{/* add another card button*/}
 			<PrimeBtn onBtnClick={openModal} className={css.btn}>
