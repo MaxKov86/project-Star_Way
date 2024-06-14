@@ -22,7 +22,7 @@ const Column = ({ id, title }) => {
 
 	return (
 		<div className={clsx(css.columnWrap, css[theme])}>
-			<ColumnHead title={title} />
+			<ColumnHead title={title} id={id} />
 
 			{/* список карток */}
 			{tasks && tasks.length > 0 && (

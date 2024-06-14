@@ -40,9 +40,10 @@ const slice = createSlice({
 				state.isLoading = true;
 			})
 			.addCase(deleteColumn.fulfilled, (state, action) => {
-				state.items = state.items.filter(
-					item => item._id !== action.payload.id
+				const index = state.items.findIndex(
+					item => item._id === action.payload._id
 				);
+				state.items.splice(index, 1);
 				state.isLoading = false;
 			})
 			.addCase(deleteColumn.rejected, state => {

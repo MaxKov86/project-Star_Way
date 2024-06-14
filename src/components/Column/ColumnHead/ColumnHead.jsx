@@ -1,11 +1,17 @@
 import clsx from 'clsx';
 import { selectTheme } from '../../../redux/theme/selectors';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import css from './ColumnHead.module.css';
 import sprite from '../../../assets/icons.svg';
+import { deleteColumn } from '../../../redux/columns/operation';
 
-const ColumnHead = ({ title }) => {
+const ColumnHead = ({ title, id }) => {
 	const theme = useSelector(selectTheme);
+	const dispatch = useDispatch();
+	const handleDelete = () => {
+		dispatch(deleteColumn(id));
+	};
+
 	return (
 		<div className={clsx(css.columnHead, css[theme])}>
 			<h1 className={clsx(css.title, css[theme])}>{title}</h1>
@@ -17,7 +23,7 @@ const ColumnHead = ({ title }) => {
 					</svg>
 				</button>
 
-				<button className={css.btn} onClick={() => {}} type="button">
+				<button className={css.btn} onClick={handleDelete} type="button">
 					<svg className={clsx(css.icon, css[`icon_${theme}`])}>
 						<use href={`${sprite}#icon-trash`} />
 					</svg>

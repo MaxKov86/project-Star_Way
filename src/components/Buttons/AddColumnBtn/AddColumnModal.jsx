@@ -1,4 +1,3 @@
-
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -27,7 +26,7 @@ const AddColumnModal = ({ handleOpenModal, handleCloseModal }) => {
 	const theme = useSelector(selectTheme);
 	const dispatch = useDispatch();
 	const { boardName } = useParams();
-	console.log(boardName);
+	// console.log(boardName);
 
 	const onSubmit = data => {
 		dispatch(createColumn({ ...data, boardId: boardName }));
