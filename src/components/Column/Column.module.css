@@ -31,48 +31,10 @@
 	overflow-x: hidden;
 }
 
-.columnHead {
-	width: 334px;
-	padding: 18px 20px;
-	border-radius: 8px;
-
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-
-	background-color: var(--secondary-color-black-background);
-}
-
-.columnHead.light {
-	background-color: var(--secondary-color-background);
-	color: var(--primary-color-text);
-}
-
-.columnHeadIconsWrap {
-}
-
 .cardList {
 	display: flex;
 	flex-direction: column;
 	gap: 8px;
-}
-
-.title {
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	display: block;
-	max-width: 100%;
-	font-size: 14px;
-	font-weight: 500;
-	line-height: 21px;
-	letter-spacing: -0.02em;
-	color: var(--primary-color-text-white);
-}
-
-.title.light {
-	color: var(--primary-color-text);
 }
 
 /* стилі скроллу dark */

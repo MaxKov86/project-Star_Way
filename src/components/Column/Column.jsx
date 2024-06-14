@@ -9,6 +9,7 @@ import { useState } from 'react';
 import OurModal from '../Modal/Modal';
 import clsx from 'clsx';
 import { selectTheme } from '../../redux/theme/selectors';
+import ColumnHead from './ColumnHead/ColumnHead';
 
 const Column = ({ id, title }) => {
 	const [modalIsOpen, setIsOpen] = useState(false);
@@ -21,11 +22,7 @@ const Column = ({ id, title }) => {
 
 	return (
 		<div className={clsx(css.columnWrap, css[theme])}>
-			{/* шапка колонки */}
-			<div className={clsx(css.columnHead, css[theme])}>
-				<h1 className={clsx(css.title, css[theme])}>{title}</h1>
-				<div className={css.columnHeadIconsWrap}></div>
-			</div>
+			<ColumnHead title={title} />
 
 			{/* список карток */}
 			{tasks && tasks.length > 0 && (
