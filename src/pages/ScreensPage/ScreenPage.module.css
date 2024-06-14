@@ -3,7 +3,7 @@
 	display: flex;
 	flex-direction: column;
 
-	width: auto;
+	width: 100%;
 	height: 100%;
 
 	background-color: var(--primary-color-black-background);
@@ -17,7 +17,7 @@
 }
 
 .wrapper.violet {
-	background-color: #ECEDFD;
+	background-color: #ecedfd;
 }
 
 /* deskHeader */

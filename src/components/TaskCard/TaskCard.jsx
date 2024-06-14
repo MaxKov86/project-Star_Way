@@ -9,21 +9,18 @@ import css from './TaskCard.module.css';
 import PropTypes from 'prop-types';
 import OurModal from '../Modal/Modal';
 
-export default function TaskCard(
-	// 	{
-	// 	// title,
-	// 	// description,
-	// 	// id,
-	// 	// priority,
-	// 	// deadline,
-	// }
-) {
-
-	const title = "Title"
-	const description = "description"
-	const id = "id"
-	const priority = "low"
-	const deadline = "09/06/2024"
+export default function TaskCard({
+	title,
+	description,
+	id,
+	priority,
+	deadline,
+}) {
+	// const title = 'Title';
+	// const description = 'description';
+	// const id = 'id';
+	// const priority = 'low';
+	// const deadline = '09/06/2024';
 
 	//для відкриття модального вікна
 	const [editIsOpen, setEditIsOpen] = useState(false);
@@ -35,7 +32,6 @@ export default function TaskCard(
 	const closeEditModal = () => {
 		setEditIsOpen(false);
 	};
-
 
 	const [isMoveModalOpen, setIsMoveModalOpen] = useState(false);
 	const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -67,34 +63,30 @@ export default function TaskCard(
 		<div className={clsx(css.cardContainer, css[`cardContainer_${theme}`])}>
 			<div className={clsx(css.stick, css[priority], css[theme])}></div>
 
-			<h3 className={clsx(css.title, css[`title_${theme}`])}>
-				{title}
-			</h3>
+			<h3 className={clsx(css.title, css[`title_${theme}`])}>{title}</h3>
 
-			<p className={clsx(css.text, css[`text_${theme}`])}>
-				{description}
-			</p>
+			<p className={clsx(css.text, css[`text_${theme}`])}>{description}</p>
 
 			<div className={clsx(css.bottomBox, css[theme])}>
 				<div className={css.priorityDeadlineBox}>
-
 					<div className={css.priorityBox}>
 						<h4 className={clsx(css.bottomTitle, css[`bottomTitle_${theme}`])}>
 							Priority
 						</h4>
 
 						<div className={css.priorityFlexbox}>
-							<div className={clsx(css.priorityCircle, css[priority], css[theme])}></div>
-							<p className={clsx(css.priorityText, css[`priorityText_${theme}`])}>
+							<div
+								className={clsx(css.priorityCircle, css[priority], css[theme])}
+							></div>
+							<p
+								className={clsx(css.priorityText, css[`priorityText_${theme}`])}
+							>
 								{priority}
 							</p>
 						</div>
-
 					</div>
 
-
 					<div className={css.deadlineBox}>
-
 						<h4 className={clsx(css.bottomTitle, css[`bottomTitle_${theme}`])}>
 							Deadline
 						</h4>
@@ -102,13 +94,10 @@ export default function TaskCard(
 						<p className={clsx(css.deadlineText, css[`deadlineText_${theme}`])}>
 							{deadline}
 						</p>
-
 					</div>
-
 				</div>
 
 				<div className={css.iconBox}>
-
 					<div className={css.iconRingBox}>
 						<div className={clsx(css.filter, css[theme])}></div>
 						<svg className={clsx(css.iconRing, css[theme])}>
@@ -126,9 +115,7 @@ export default function TaskCard(
 					</button>
 
 					<button className={css.btn} onClick={openEditModal} type="button">
-						<svg
-							className={clsx(css.icon, css[`icon_${theme}`])}
-						>
+						<svg className={clsx(css.icon, css[`icon_${theme}`])}>
 							<use href={`${sprite}#icon-pencil`} />
 						</svg>
 					</button>
