@@ -21,6 +21,21 @@ import { editUserInfo } from '../../../redux/users/operation';
 import { selectUser, selectToken } from '../../../redux/auth/selectors';
 import css from './Modal.module.css';
 
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
+const schema = yup.object().shape({
+	name: yup
+		.string()
+		.min(2, 'Name must be at least 2 characters')
+		.required('Name is required'),
+	email: yup.string().email('Invalid email').required('Email is required'),
+	password: yup
+		.string()
+		.min(8, 'Password must be at least 8 characters')
+		.required('Password is required'),
+});
+
 const ModalForm = ({ open, handleClose }) => {
 	const dispatch = useDispatch();
 	const token = useSelector(selectToken);
@@ -39,6 +54,9 @@ const ModalForm = ({ open, handleClose }) => {
 		register,
 		formState: { errors },
 	} = useForm({
+		resolver: yupResolver(schema),
+		mode: 'onBlur',
+		reValidateMode: 'onChange',
 		defaultValues: {
 			name: user.name,
 			email: user.email,
@@ -57,6 +75,7 @@ const ModalForm = ({ open, handleClose }) => {
 				setUserAvatar(reader.result);
 			};
 			reader.readAsDataURL(file);
+			register('avatarURL').onChange(e); // Реєстрація зміни файлу
 		}
 	};
 
@@ -66,9 +85,17 @@ const ModalForm = ({ open, handleClose }) => {
 		formData.append('email', data.email);
 		formData.append('password', data.password);
 
-		if (data.avatar.length > 0) {
+		if (data.avatarURL && data.avatarURL[0]) {
 			formData.append('avatar', data.avatarURL[0]);
 		}
+
+		// if (data.avatarURL && data.avatarURL.length > 0) {
+		// 	formData.append('avatar', data.avatarURL[0]);
+		// }
+
+		// if (data.avatar.length > 0) {
+		// 	formData.append('avatar', data.avatarURL[0]);
+		// }
 
 		dispatch(editUserInfo({ formData, token }))
 			.then(response => {
@@ -113,7 +140,7 @@ const ModalForm = ({ open, handleClose }) => {
 								type="file"
 								hidden
 								accept="image/*"
-								{...register('avatar')}
+								{...register('avatarURL')} // Реєстрація файлу в react-hook-form
 								onChange={handleAvatarChange}
 							/>
 							<AddIcon className={css.plusBtn} />
@@ -124,7 +151,7 @@ const ModalForm = ({ open, handleClose }) => {
 							name="name"
 							control={control}
 							rules={{
-								minLength: { value: 4, message: 'Too Short' },
+								minLength: { value: 1, message: 'Too Short' },
 								maxLength: { value: 64, message: 'Too Long' },
 							}}
 							render={({ field }) => (
