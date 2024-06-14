@@ -1,228 +1,327 @@
+/* cardContainer */
 .cardContainer {
-	display: flex;
-	flex-direction: column;
+	position: relative;
+
 	width: 334px;
 	height: 154px;
-	flex-shrink: 0;
-	border: 1px solid black;
-	border-radius: 4px;
-	padding: 4px;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 12px;
+
+	overflow: hidden;
+
+	padding-top: 14px;
+	padding-bottom: 14px;
+	padding-right: 20px;
+	padding-left: 24px;
+
+	border-radius: 8px;
 }
+
 .cardContainer_dark {
-	background-color: #333;
-	border-color: #444;
+	background-color: var(--secondary-color-black-background);
 }
+
 .cardContainer_light {
 	background-color: #fff;
-	border-color: #ccc;
 }
+
 .cardContainer_violet {
-	background-color: #f3f4ff;
-	border-color: #d0d1ff;
-}
-.content {
-	display: flex;
-	flex-direction: column;
-	list-style: none;
-	gap: 8px;
-}
-.content {
-	display: flex;
-	flex-direction: column;
-	list-style: none;
-	gap: 8px;
-	border-bottom: 2px solid transparent; /* Початковий колір - прозорий */
-	padding-bottom: 10px; /* Додає відступ для бордера */
+	background-color: #fff;
 }
 
-/* Темна тема */
-.content_dark {
-	border-bottom-color: #fff; /* Білий колір для темної теми */
+/* stick */
+
+.stick {
+	position: absolute;
+	left: 0;
+	top: 0;
+
+	height: 100%;
+	width: 4px;
+
+	border-radius: 4px 0px 0px 4px;
+
+	background-color: rgba(22, 22, 22, 0.3);
 }
 
-/* Світла тема */
-.content_light {
-	border-bottom-color: #161616; /* Чорний або темно-сірий колір для світлої теми */
+.stick.dark {
+	background-color: var(--color4);
 }
 
-/* Фіолетова тема */
-.content_violet {
-	border-bottom-color: #5255bc; /* Фіолетовий колір для фіолетової теми */
+.stick.low {
+	background-color: var(--color1);
 }
+
+.stick.medium {
+	background-color: var(--color2);
+}
+
+.stick.high {
+	background-color: var(--color3);
+}
+
+/* title */
 
 .title {
-	font-family: Poppins;
+	margin-bottom: 8px;
+
 	font-size: 14px;
-	font-style: normal;
 	font-weight: 600;
-	line-height: normal;
-	letter-spacing: -0.28px;
-	padding-left: 24px;
-	padding-top: 14px;
+	letter-spacing: -0.02em;
 }
+
 .title_dark {
 	color: #fff;
 }
+
 .title_light {
 	color: #201e1e;
 }
+
 .title_violet {
 	color: #161616;
 }
+
+/* text */
+
 .text {
+	display: -webkit-box;
+	flex-shrink: 0;
+
 	width: 290px;
 	height: 34px;
-	flex-shrink: 0;
-	display: -webkit-box;
+
+	margin-bottom: 14px;
+
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
-	overflow: hidden;
 	text-overflow: ellipsis;
-	white-space: normal;
-	font-family: Poppins;
+	overflow: hidden;
+
 	font-size: 12px;
-	font-style: normal;
 	font-weight: 400;
-	line-height: 16px; /* 133.333% */
-	letter-spacing: -0.24px;
+	line-height: 1.33;
+	letter-spacing: -0.02em;
 }
+
 .text_dark {
 	color: rgba(255, 255, 255, 0.5);
 }
+
 .text_light {
 	color: rgba(22, 22, 22, 0.7);
 }
+
 .text_violet {
 	color: rgba(22, 22, 22, 0.7);
 }
-/* .line {
-    width: 290px;
-    height: 0.5px;
-    background-color: rgba(22, 22, 22, 0.1);
-    align-self: center;
-    margin: 0 auto;
-    line-height: 1.5;
-}
 
-.line_dark {
-    background-color: rgba(255, 255, 255, 0.5) !important;
-}
-.line_light {
-    background-color: rgba(22, 22, 22, 0.1) !important;
-}
-.line_violet {
-    background-color: rgba(22, 22, 22, 0.7) !important;
-} */
+/* bottomBox */
+.bottomBox {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
 
-.priorityTimeBox {
 	width: 100%;
-	display: flex;
-	flex-direction: row;
-	justify-content: normal;
+
+	padding-top: 14px;
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
-.priorityBox {
-	display: flex;
-	flex-direction: column;
-	padding-right: 14px;
-	padding-left: 24px;
+
+.bottomBox.light {
+	border-top-color: rgba(22, 22, 22, 0.1);
 }
-.priorityTitle {
-	margin-right: 10px;
-	font-family: Poppins;
+
+.bottomBox
+/* priorityTimeBox */
+
+.priorityDeadlineBox {
+	display: flex;
+	gap: 14px;
+}
+
+
+/* priorityTitle */
+
+.bottomTitle {
+	margin-bottom: 4px;
+
 	font-size: 8px;
-	font-style: normal;
 	font-weight: 400;
-	line-height: normal;
-	letter-spacing: -0.16px;
+	letter-spacing: -0.02em;
 }
-.priorityTitle_dark {
+
+.bottomTitle_dark {
 	color: rgba(255, 255, 255, 0.5);
 }
-.priorityTitle_light {
+
+.bottomTitle_light {
 	color: rgba(22, 22, 22, 0.5);
 }
-.priorityTitle_violet {
-	color: #5255bc;
+
+.bottomTitle_violet {
+	color: rgba(22, 22, 22, 0.5);
 }
-.dateInput {
-	color: #161616;
-	font-family: Poppins;
-	font-size: 10px;
-	font-style: normal;
-	font-weight: 400;
-	line-height: normal;
-	letter-spacing: -0.2px;
-}
-.label {
+
+/* priorityFlexbox */
+
+.priorityFlexbox {
 	display: flex;
 	align-items: center;
-	font-family: Poppins;
-	font-size: 10px;
-	font-style: normal;
-	font-weight: 400;
-	line-height: normal;
-	letter-spacing: -0.2px;
+	gap: 4px;
 }
-.label_dark {
+
+/* priorityText */
+
+.priorityText {
+	text-transform: capitalize;
+
+	font-size: 10px;
+	font-weight: 400;
+	letter-spacing: -0.02em;
+}
+
+.priorityText_dark {
 	color: #fff;
 }
-.label_light {
+
+.priorityText_light {
 	color: #161616;
 }
-.label_violet {
-	color: #5255bc;
-}
-.radio {
-	margin-right: 5px;
-}
-.icon {
-	width: 16px;
-	height: 16px;
-	stroke: currentColor; /* Визначте колір контуру в залежності від поточного кольору */
+
+.priorityText_violet {
+	color: #161616;
 }
 
-.icon_dark {
-	stroke: #fff; /* Білий колір для контуру іконок у темній темі */
+/* priorityCircle */
+
+.priorityCircle {
+	width: 12px;
+	height: 12px;
+
+	margin-right: 4px;
+
+	border-radius: 50%;
+	background-color: rgba(22, 22, 22, 0.3);
 }
 
-/* Світла тема */
-.icon_light {
-	stroke: #161616; /* Чорний або темно-сірий колір для контуру іконок у світлій темі */
+.priorityCircle.dark {
+	background-color: var(--color4);
 }
+
+.priorityCircle.low {
+	background-color: var(--color1);
+}
+
+.priorityCircle.medium {
+	background-color: var(--color2);
+}
+
+.priorityCircle.high {
+	background-color: var(--color3);
+}
+
+/* deadlineText */
+
+.deadlineText {
+	font-size: 10px;
+	font-weight: 400;
+	letter-spacing: -0.02em;
+}
+
+.deadlineText_dark {
+	color: #fff;
+}
+
+.deadlineText_light {
+	color: #161616;
+}
+
+.deadlineText_violet {
+	color: #161616;
+}
+
+/* iconBox */
 
 .iconBox {
 	display: flex;
-	flex-direction: row;
-	padding-top: 15px;
 	gap: 8px;
-	padding-left: 86px;
 }
-.iconBox svg {
+
+/* iconRingBox */
+
+.iconRingBox {
+	position: relative;
+
+	height: 16px;
+
+	margin-right: 5px;
+}
+
+/* filter */
+
+.filter {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+
+	transform: translate(-50%, -50%);
+
+	background-color: var(--color-green-background);
+	width: 10px;
+	height: 10px;
+	filter: blur(5.5px);
+}
+
+.filter.light {
+	filter: blur(9.5px);
+}
+
+.filter.violet {
+	background-color: var(--secondary-color-violet);
+	filter: blur(7.5px);
+}
+
+/* iconRing */
+
+.iconRing {
+	height: 16px;
+	width: 16px;
+
+	fill: none;
+	stroke: var(--color-green-background);
+}
+
+.iconRing.violet {
+	stroke: var(--primary-color-violet);
+}
+
+/* btn */
+
+.btn {
 	width: 16px;
 	height: 16px;
+
+	border: none;
+	background-color: transparent;
+}
+
+/* icon */
+
+.icon {
+	width: 16px;
+	height: 16px;
+	stroke: var(--color-icons-board);
+
 	fill: none;
-	stroke-width: 2.6;
-	stroke-linecap: round;
-	stroke-linejoin: round;
 }
-.dateDedline {
-	font-family: Poppins;
-	font-size: 10px;
-	font-style: normal;
-	font-weight: 400;
-	line-height: normal;
-	letter-spacing: -0.2px;
+
+.btn:hover .icon {
+	stroke: var(--primary-color-text-black);
 }
-.dateDedline_dark {
-	color: #fff;
+
+.icon_dark {
+	stroke: var(--color-icons);
 }
-.dateDedline_light {
-	color: #161616;
-}
-.dateDedline_violet {
-	color: #5255bc;
+
+.btn:hover .icon_dark {
+	stroke: var(--primary-color-text-white);
 }

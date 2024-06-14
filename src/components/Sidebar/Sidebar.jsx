@@ -9,22 +9,23 @@ import SidebarBoard from './SidebarBoard/SidebarBoard';
 import { useNavigate, useParams } from 'react-router-dom';
 import Logout from './Logout/Logout';
 
-import { selectBoards } from '../../redux/boards/selectors';
+import { selectBoards, selectIsLoading } from '../../redux/boards/selectors';
 import { useEffect } from 'react';
 
 
 const Sidebar = ({ isOpen, toggle }) => {
 	const { boardName } = useParams();
 	const nav = useNavigate();
+	const isLoading = useSelector(selectIsLoading);
 
 	const boards = useSelector(selectBoards);
 	const theme = useSelector(selectTheme);
 
 	useEffect(() => {
-		if (!boardName && boards.length > 0) {
+		if (!boardName && boards.length > 0 && !isLoading) {
 			nav(`/home/${boards[0]._id}`);
 		}
-	}, [boardName, boards, nav]);
+	}, [boardName, boards, nav, isLoading]);
 
 	return (
 		<>

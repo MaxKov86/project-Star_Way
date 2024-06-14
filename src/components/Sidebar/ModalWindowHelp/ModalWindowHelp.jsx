@@ -1,61 +1,74 @@
 import { useState } from 'react';
 import css from './ModalWindowHelp.module.css';
+import clsx from 'clsx';
+import { selectTheme } from '../../../redux/theme/selectors';
+import { useForm } from 'react-hook-form';
+import { useSelector } from 'react-redux';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 
-const ModalWindowHelp = ({ onClose }) => {
-	const [title, setTitle] = useState('');
-	const [description, setDescription] = useState('');
+// validation
+const schema = yup.object().shape({
+	comment: yup
+		.string()
+		.min(2, 'Min. comment length is 2 symbol')
+		.max(50, 'Max. comment length is 50 symbols')
+		.required('Comment is required'),
+});
 
-	const handleSubmit = () => {
+export default function ModalWindowHelp({ onClose }) {
+	const theme = useSelector(selectTheme);
+
+	const [email, setEmail] = useState('');
+	const [comment, setComment] = useState('');
+
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm({
+		resolver: yupResolver(schema),
+	});
+	const onSubmit = data => {
+		console.log(data);
 		onClose();
 	};
 
 	return (
-		<div className={css.modalContainer}>
-			<button className={css.closeButton} onClick={onClose}>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					width="18"
-					height="18"
-					viewBox="0 0 18 18"
-					fill="none"
-				>
-					<path
-						d="M13.5 4.5L4.5 13.5"
-						stroke="white"
-						strokeWidth="1.5"
-						strokeLinecap="round"
-						strokeLinejoin="round"
-					/>
-					<path
-						d="M4.5 4.5L13.5 13.5"
-						stroke="white"
-						strokeWidth="1.5"
-						strokeLinecap="round"
-						strokeLinejoin="round"
-					/>
-				</svg>
-			</button>
-			<h2 className={css.title}>Need help</h2>
-			<div className={css.form}>
+		<form className={css.form} onSubmit={handleSubmit(onSubmit)}>
+			<div className={css.inputBox}>
 				<input
-					className={css.formInput}
+					className={clsx(css.input, css[theme])}
+					{...register('email')}
 					type="text"
-					placeholder="Email address"
-					value={title}
-					onChange={e => setTitle(e.target.value)}
+					name="email"
+					placeholder="Email address "
+					id="email"
+					value={email}
+					onChange={e => setEmail(e.target.value)}
 				/>
-				<textarea
-					className={css.textareaInput}
-					placeholder="Comment"
-					value={description}
-					onChange={e => setDescription(e.target.value)}
-				></textarea>
-				<button className={css.modalButton} onClick={handleSubmit}>
-					Send
-				</button>
 			</div>
-		</div>
+			<div className={css.inputBox}>
+				<textarea
+					className={clsx(css.input, css.textareaInput, css[theme])}
+					{...register('text')}
+					name="text"
+					placeholder="Comment"
+					id="textarea"
+					value={comment}
+					onChange={e => setComment(e.target.value)}
+				/>
+				{errors.comment && (
+					<p className={css.errors}>{errors.comment.message}</p>
+				)}
+			</div>
+			<button
+				className={clsx(css.btn, css[theme])}
+				type="submit"
+				onClick={handleSubmit}
+			>
+				<p className={clsx(css.btnText, css[theme])}>Send</p>
+			</button>
+		</form>
 	);
-};
-
-export default ModalWindowHelp;
+}

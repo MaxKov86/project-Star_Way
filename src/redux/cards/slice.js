@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { createCard, deleteCard, getAllCards } from './operations';
+import { createCard, deleteCard, getAllCards, updateCard } from './operations';
 
 const slice = createSlice({
 	name: 'cards',
@@ -47,6 +47,17 @@ const slice = createSlice({
 			.addCase(deleteCard.rejected, state => {
 				state.error = false;
 				state.isLoading = true;
+			})
+			.addCase(updateCard.pending, state => {
+				state.error = false;
+				state.isLoading = true;
+			})
+			.addCase(updateCard.fulfilled, (state,action)=>{
+				state.items.find(item=>item._id === action.payload.id)
+				state.isLoading = false;
+			}).addCase(updateCard.rejected, (state)=>{
+				state.error = true;
+				state.isLoading = false;
 			});
 	},
 });
