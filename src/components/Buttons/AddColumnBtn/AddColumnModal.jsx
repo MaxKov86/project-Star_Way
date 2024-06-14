@@ -26,7 +26,6 @@ const AddColumnModal = ({ handleOpenModal, handleCloseModal }) => {
 	const theme = useSelector(selectTheme);
 	const dispatch = useDispatch();
 	const { boardName } = useParams();
-	// console.log(boardName);
 
 	const onSubmit = data => {
 		dispatch(createColumn({ ...data, boardId: boardName }));
@@ -34,10 +33,6 @@ const AddColumnModal = ({ handleOpenModal, handleCloseModal }) => {
 		handleCloseModal();
 		console.log({ ...data, boardId: boardName });
 	};
-
-	// const handleTitleChange = e => {
-	// 	setTitle(e.target.value);
-	// };
 
 	if (!handleOpenModal) return null;
 
