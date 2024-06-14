@@ -1,24 +1,23 @@
 import { useState } from 'react';
-import ReactModal from 'react-modal';
+//import clsx from 'clsx';
 import css from './NeedHelp.module.css';
 import ModalWindowHelp from '../ModalWindowHelp/ModalWindowHelp';
-
-ReactModal.setAppElement('#root');
+import OurModal from '../../Modal/Modal';
 
 const NeedHelp = () => {
-	const [modalIsOpen, setModalIsOpen] = useState(false);
+	//const theme = useSelector(selectTheme);
+	const [modalIsOpen, setIsOpen] = useState(false);
 
-	const handleNeedHelpClick = () => {
-		setModalIsOpen(true);
+	const openModal = () => {
+		setIsOpen(true);
 	};
 
-	const handleCloseModal = () => {
-		setModalIsOpen(false);
+	const closeModal = () => {
+		setIsOpen(false);
 	};
 
 	return (
 		<div className={css.helpBlock}>
-			{/* <img className={css.iconKaktusNeedHelp}></img> */}
 			<img src="/kaktus-need-help.png" alt="Kaktus Need Help" />
 			<p className={css.helpText}>
 				If you need help with <br />
@@ -26,7 +25,7 @@ const NeedHelp = () => {
 				resources or contact our customer support team
 			</p>
 
-			<button className={css.helpBtn} onClick={handleNeedHelpClick}>
+			<button className={css.helpBtn} onClick={openModal}>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					width="20"
@@ -58,15 +57,9 @@ const NeedHelp = () => {
 				Need help?
 			</button>
 
-			<ReactModal
-				isOpen={modalIsOpen}
-				onRequestClose={handleCloseModal}
-				contentLabel="Need Help Modal"
-				className={css.modal}
-				overlayClassName={css.overlay}
-			>
-				<ModalWindowHelp onClose={handleCloseModal} />
-			</ReactModal>
+			<OurModal isOpen={modalIsOpen} closeModal={closeModal} title="Need help">
+				<ModalWindowHelp onClose={closeModal} />
+			</OurModal>
 		</div>
 	);
 };
