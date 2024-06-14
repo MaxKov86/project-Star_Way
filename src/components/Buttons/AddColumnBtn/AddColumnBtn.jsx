@@ -1,14 +1,29 @@
 import clsx from 'clsx';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectTheme } from '../../../redux/theme/selectors';
 import staticIcons from '../../../assets/icons.svg';
 import css from './AddColumnBtn.module.css';
+import AddColumnModal from './AddColumnModal';
 
 const AddColumnBtn = () => {
 	const theme = useSelector(selectTheme);
+	const [showModal, setShowModal] = useState(false);
+
+	const handleOpenModal = () => {
+		setShowModal(true);
+	};
+
+	const handleCloseModal = () => {
+		setShowModal(false);
+	};
+
 	return (
 		<>
-			<button className={clsx(css.addColumnBtn, css[theme])}>
+			<button
+				className={clsx(css.addColumnBtn, css[theme])}
+				onClick={handleOpenModal}
+			>
 				{' '}
 				<svg className={clsx(css.iconAddColumnBtn, css[theme])}>
 					<use href={`${staticIcons}#icon-plus`}></use>
@@ -17,6 +32,10 @@ const AddColumnBtn = () => {
 					Add another column
 				</span>
 			</button>
+			<AddColumnModal
+				handleOpenModal={showModal}
+				handleCloseModal={handleCloseModal}
+			/>
 		</>
 	);
 };
