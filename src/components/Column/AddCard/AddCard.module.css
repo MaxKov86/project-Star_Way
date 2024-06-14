@@ -11,7 +11,7 @@
 /* inputBox */
 
 .inputBox {
-	margin-bottom: 24px;
+	margin-bottom: 14px;
 }
 
 /* input */
@@ -27,19 +27,28 @@
 
 	color: var(--primary-color-text-white);
 	background-color: transparent;
+
+	font-size: 14px;
+	font-weight: 400;
+	letter-spacing: -0.28px;
+	line-height: normal;
 }
 
 /* description */
+.textBox {
+	margin-bottom: 24px;
+}
+
 .text {
 	width: 100%;
 	height: 154px;
 
-	padding-left: 18px;
-	padding: 14px;
+	padding: 14px 18px;
 
 	font-size: 14px;
-	font-weight: 500;
-	letter-spacing: -0.02em;
+	font-weight: 400;
+	letter-spacing: -0.28px;
+	line-height: 18px;
 
 	border-radius: 8px;
 	border: 1px solid rgba(190, 219, 176, 0.4);
@@ -47,8 +56,115 @@
 
 	color: var(--primary-color-text-white);
 	background-color: transparent;
+
+	resize: none;
 }
 
+/* labelColor */
+.titleLabelColor {
+	font-size: 12px;
+	font-weight: 400;
+	line-height: normal;
+	letter-spacing: -0.24px;
+	color: var(--primary-color-text-white);
+	margin-bottom: 4px;
+}
+
+.violet .titliLabelColor {
+	color: var(--primary-color-text-black);
+}
+
+.light .titliLabelColor {
+	color: var(--primary-color-text-black);
+}
+
+/* radioGroup */
+.radioBox {
+	margin-bottom: 14px;
+}
+
+.radioGroup {
+	display: flex;
+	flex-direction: row;
+	gap: 8px;
+}
+
+.radioOption input[type='radio']:focus,
+.radioOption input[type='radio']:hover {
+	color: #fff;
+}
+
+.radioOption {
+	display: flex;
+	align-items: center;
+}
+
+.radioOption input[type='radio'] {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	border: 2px solid rgba(255, 255, 255, 0.3);
+	outline: none;
+	cursor: pointer;
+	position: relative;
+}
+
+.radioOption input[type='radio']:checked::before {
+	content: '';
+	display: block;
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background-color: rgba(255, 255, 255, 0.3);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.radioOption.low input[type='radio'] {
+	border-color: rgba(143, 161, 208, 1);
+}
+
+.radioOption.low input[type='radio']:checked::before {
+	background-color: rgba(143, 161, 208, 1);
+}
+
+.radioOption.medium input[type='radio'] {
+	border-color: rgba(224, 156, 181, 1);
+}
+
+.radioOption.medium input[type='radio']:checked::before {
+	background-color: rgba(224, 156, 181, 1);
+}
+
+.radioOption.high input[type='radio'] {
+	border-color: rgba(190, 219, 176, 1);
+}
+
+.radioOption.high input[type='radio']:checked::before {
+	background-color: rgba(190, 219, 176, 1);
+}
+
+.violet .radioOption input[type='radio']:focus,
+.violet .radioOption input[type='radio']:hover {
+	color: #161616;
+}
+
+.light .radioOption input[type='radio']:focus,
+.light .radioOption input[type='radio']:hover {
+	color: #161616;
+}
+
+/* deadline */
+.deadlineBox {
+	margin-bottom: 40px;
+}
+
+/* button */
 .icon {
 	width: 14px;
 	height: 14px;
