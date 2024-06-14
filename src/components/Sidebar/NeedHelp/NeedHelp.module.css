@@ -11,16 +11,6 @@
 	margin-bottom: 14px;
 }
 
-.iconKaktusNeedHelp {
-	display: inline-block;
-	width: 54px;
-	height: 78px;
-	background-image: url('../../../assets/kaktus-need-help.jpg');
-	background-size: contain;
-	background-position: center;
-	background-repeat: no-repeat;
-}
-
 .btnBox {
 	display: flex;
 	align-items: center;
@@ -36,7 +26,6 @@
 	line-height: 133%;
 	letter-spacing: -0.02em;
 	color: #fff;
-	word-break: break-all;
 	margin-bottom: 18px;
 }
 
