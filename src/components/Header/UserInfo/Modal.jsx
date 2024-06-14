@@ -151,7 +151,7 @@ const ModalForm = ({ open, handleClose }) => {
 							name="name"
 							control={control}
 							rules={{
-								minLength: { value: 1, message: 'Too Short' },
+								minLength: { value: 4, message: 'Too Short' },
 								maxLength: { value: 64, message: 'Too Long' },
 							}}
 							render={({ field }) => (
