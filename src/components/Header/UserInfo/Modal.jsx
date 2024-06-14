@@ -24,7 +24,6 @@ import css from './Modal.module.css';
 const ModalForm = ({ open, handleClose }) => {
 	const dispatch = useDispatch();
 	const token = useSelector(selectToken);
-	console.log(token);
 	const user = useSelector(selectUser);
 	const [showPassword, setShowPassword] = useState(false);
 	const [userAvatar, setUserAvatar] = useState(user.avatarURL);
