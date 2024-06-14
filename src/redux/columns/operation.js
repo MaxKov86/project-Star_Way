@@ -38,3 +38,15 @@ export const deleteColumn = createAsyncThunk(
 		}
 	}
 );
+
+export const updateColumn = createAsyncThunk(
+	'columns/updateColumn',
+	async (columnId, thunkAPI) => {
+		try {
+			const response = await axios.put(`/columns/${columnId}`, updateData);
+			return response.data.column;
+		} catch (error) {
+			return thunkAPI.rejectWithValue(error.message);
+		}
+	}
+);

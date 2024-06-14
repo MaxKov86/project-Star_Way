@@ -3,13 +3,18 @@ import { selectTheme } from '../../../redux/theme/selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import css from './ColumnHead.module.css';
 import sprite from '../../../assets/icons.svg';
-import { deleteColumn } from '../../../redux/columns/operation';
+import { deleteColumn, updateColumn } from '../../../redux/columns/operation';
 
 const ColumnHead = ({ title, id }) => {
 	const theme = useSelector(selectTheme);
 	const dispatch = useDispatch();
+
 	const handleDelete = () => {
 		dispatch(deleteColumn(id));
+	};
+
+	const handleUpdate = () => {
+		dispatch(updateColumn(id));
 	};
 
 	return (
