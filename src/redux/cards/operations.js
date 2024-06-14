@@ -38,3 +38,21 @@ export const deleteCard = createAsyncThunk(
 		}
 	}
 );
+
+export const updateCard = createAsyncThunk(
+	'cards/updateCard',
+	async (card, thunkAPI) => {
+		try {
+			const response = await axios.put(`/cards/${card.id}`, {
+				title: card.title,
+				columnId: card.columnId,
+				description: card.description,
+				priority: card.priority,
+				deadline: card.deadline,
+			});
+			return response.data;
+		} catch (error) {
+			return thunkAPI.rejectWithValue(error.message);
+		}
+	}
+);

@@ -11,6 +11,9 @@
 	--color-white-background: #f6f6f7;
 	--color-form-background: #151515;
 	--secondary-color-black-background: #121212;
+	/* column scroll */
+	--column-scroll-track-dark: #313131;
+	--column-scroll-thumb-dark: #121212;
 	/*addColumn*/
 
 	--color-icons: rgba(255, 255, 255, 0.5);
@@ -38,5 +41,5 @@
 	--color1: #8fa1d0;
 	--color2: #e09cb5;
 	--color3: #bedbb0;
-	--color4: #1616164d;
+	--color4: rgba(255, 255, 255, 0.3);
 }

@@ -3,8 +3,8 @@
 	display: flex;
 	flex-direction: column;
 
-	width: auto;
-	height: 100%;
+	width: 100%;
+	height: calc(100% - 60px);
 
 	background-color: var(--primary-color-black-background);
 	background-repeat: no-repeat;
@@ -17,7 +17,7 @@
 }
 
 .wrapper.violet {
-	background-color: #ECEDFD;
+	background-color: #ecedfd;
 }
 
 /* deskHeader */
@@ -35,6 +35,10 @@
 @media screen and (min-width: 768px) {
 	.deskHeader {
 		padding: 20px 32px;
+	}
+
+	.wrapper {
+		height: calc(100% - 68px);
 	}
 }
 

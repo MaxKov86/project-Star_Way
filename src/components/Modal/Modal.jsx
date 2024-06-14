@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import { useSelector } from 'react-redux';
 import { selectTheme } from '../../redux/theme/selectors';
 
+Modal.setAppElement("#root");
 
 const OurModal = ({ children, isOpen, closeModal, title }) => {
 

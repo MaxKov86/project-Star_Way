@@ -6,7 +6,7 @@ const slice = createSlice({
 	initialState: { value: 'dark' },
 	extraReducers: builder =>
 		builder.addCase(changeTheme.fulfilled, (state, action) => {
-			state.value = action.payload;
+			state.value = action.payload.theme;
 		}),
 });
 

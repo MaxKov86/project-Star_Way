@@ -8,11 +8,12 @@ import { Toaster } from 'react-hot-toast';
 // import ScreenPage from '../pages/ScreensPage/ScreenPage';
 // import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from '../redux/auth/operations';
 import PrivateRoute from './PrivateRoute';
 import RestrictedRoute from './RestrictedRoute';
 import { Suspense, lazy } from 'react';
+import { selectIsRefreshing } from '../redux/auth/selectors';
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
@@ -21,11 +22,14 @@ const ScreenPage = lazy(() => import('../pages/ScreensPage/ScreenPage'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
 
 function App() {
+	const isRefreshing = useSelector(selectIsRefreshing);
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(refreshUser());
 	}, [dispatch]);
-	return (
+	return isRefreshing ? (
+		<p>Refreshing...</p>
+	) : (
 		<>
 			{/* <Layout> */}
 			<Suspense fallback={null}>
