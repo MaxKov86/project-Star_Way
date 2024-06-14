@@ -4,7 +4,7 @@
 	flex-direction: column;
 
 	width: 100%;
-	height: 100%;
+	height: calc(100% - 60px);
 
 	background-color: var(--primary-color-black-background);
 	background-repeat: no-repeat;
@@ -35,6 +35,10 @@
 @media screen and (min-width: 768px) {
 	.deskHeader {
 		padding: 20px 32px;
+	}
+
+	.wrapper {
+		height: calc(100% - 68px);
 	}
 }
 

@@ -6,41 +6,60 @@
 	overflow-y: hidden;
 
 	padding-left: 20px;
-	padding-bottom: 36px;
+	padding-right: 20px;
+	padding-bottom: 24px;
 	margin-bottom: 24px;
 
 	max-width: 100%;
-	max-height: calc(100% - 60px);
+	max-height: 100%;
 }
 
-.columnWrap::-webkit-scrollbar {
-	width: 8px;
+/* scroll styles dark */
+.box::-webkit-scrollbar {
+	height: 12px;
 	border: 0;
 }
 
-.columnWrap::-webkit-scrollbar-thumb {
+.box::-webkit-scrollbar-thumb:horizontal {
 	border-radius: 12px;
 	background-color: var(--secondary-color-black-background);
 }
 
-.columnWrap::-webkit-scrollbar-track {
+.box::-webkit-scrollbar-track:horizontal {
 	border-radius: 12px;
 	background-color: var(--column-scroll-track-dark);
+	margin: 0 20px;
+}
+
+/* scroll styles light */
+.box.light::-webkit-scrollbar-thumb {
+	background-color: var(--color-green);
+}
+
+.box.light::-webkit-scrollbar-track {
+	background-color: var(--secondary-color-background);
 }
 
 @media screen and (min-width: 768px) {
 	.box {
 		padding-left: 32px;
-		padding-bottom: 64px;
+		padding-bottom: 52px;
 		margin-bottom: 32px;
-		max-height: calc(100% - 68px);
+	}
+
+	.box::-webkit-scrollbar-track:horizontal {
+		margin: 0 32px;
 	}
 }
 
 @media screen and (min-width: 1440px) {
 	.box {
 		padding-left: 24px;
-		padding-bottom: 28px;
+		padding-bottom: 15px;
 		margin-bottom: 8px;
+	}
+
+	.box::-webkit-scrollbar-track:horizontal {
+		margin: 0 24px;
 	}
 }
