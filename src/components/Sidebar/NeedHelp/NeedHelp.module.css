@@ -93,13 +93,7 @@
 		max-width: 473px;
 	}
 }
-.helpBtn.light {
-	color: rgba(22, 22, 22, 1);
-	/* stroke: rgba(22, 22, 22, 1); */
-}
-.helpBtn.violet {
-	color: rgba(255, 255, 255, 1);
-}
+
 
 /*=============*/
 .modal {
@@ -131,3 +125,4 @@
 	bottom: 0;
 	background-color: rgba(0, 0, 0, 0.5);
 }
+

@@ -7,6 +7,8 @@ import { useSelector } from 'react-redux';
 import { selectCards } from '../../redux/cards/selectors';
 import { useState } from 'react';
 import OurModal from '../Modal/Modal';
+import clsx from 'clsx';
+import { selectTheme } from '../../redux/theme/selectors';
 
 const Column = ({ id, title }) => {
 	const [modalIsOpen, setIsOpen] = useState(false);
@@ -15,11 +17,13 @@ const Column = ({ id, title }) => {
 	const openModal = () => setIsOpen(true);
 	const closeModal = () => setIsOpen(false);
 
+	const theme = useSelector(selectTheme);
+
 	return (
-		<div className={css.columnWrap}>
+		<div className={clsx(css.columnWrap, css[theme])}>
 			{/* шапка колонки */}
-			<div className={css.columnHead}>
-				<h1 className={css.title}>{title}</h1>
+			<div className={clsx(css.columnHead, css[theme])}>
+				<h1 className={clsx(css.title, css[theme])}>{title}</h1>
 				<div className={css.columnHeadIconsWrap}></div>
 			</div>
 
