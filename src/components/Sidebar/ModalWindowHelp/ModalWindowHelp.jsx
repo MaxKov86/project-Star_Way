@@ -35,7 +35,10 @@ export default function ModalWindowHelp({ onClose }) {
 	};
 
 	return (
-		<form className={css.form} onSubmit={handleSubmit(onSubmit)}>
+		<form
+			className={clsx(css.form, css[theme])}
+			onSubmit={handleSubmit(onSubmit)}
+		>
 			<div className={css.inputBox}>
 				<input
 					className={clsx(css.input, css[theme])}

@@ -1,11 +1,13 @@
 import { useState } from 'react';
-//import clsx from 'clsx';
+import clsx from 'clsx';
 import css from './NeedHelp.module.css';
 import ModalWindowHelp from '../ModalWindowHelp/ModalWindowHelp';
 import OurModal from '../../Modal/Modal';
+import { useSelector } from 'react-redux';
+import { selectTheme } from '../../../redux/theme/selectors';
 
 const NeedHelp = () => {
-	//const theme = useSelector(selectTheme);
+	const theme = useSelector(selectTheme);
 	const [modalIsOpen, setIsOpen] = useState(false);
 
 	const openModal = () => {
@@ -17,15 +19,15 @@ const NeedHelp = () => {
 	};
 
 	return (
-		<div className={css.helpBlock}>
+		<div className={clsx(css.helpBlock, css[theme])}>
 			<img src="/kaktus-need-help.png" alt="Kaktus Need Help" />
-			<p className={css.helpText}>
+			<p className={clsx(css.helpText, css[theme])}>
 				If you need help with <br />
-				<span className={css.taskProSpan}> TaskPro</span>, check out our support
-				resources or contact our customer support team
+				<span className={clsx(css.taskProSpan, css[theme])}> TaskPro</span>,
+				check out our support resources or contact our customer support team
 			</p>
 
-			<button className={css.helpBtn} onClick={openModal}>
+			<button className={clsx(css.helpBtn, css[theme])} onClick={openModal}>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					width="20"

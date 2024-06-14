@@ -1,8 +1,17 @@
 .helpBlock {
-	background-color: #1f1f1f;
+	background-color: rgba(31, 31, 31, 1);
 	padding: 14px;
 	border-radius: 8px;
 	position: relative;
+	margin-bottom: 22px;
+}
+
+.helpBlock.light {
+	background-color: rgba(246, 246, 247, 1);
+}
+
+.helpBlock.violet {
+	background-color: rgba(236, 237, 253, 0.4);
 }
 
 .helpBlock img {
@@ -28,9 +37,21 @@
 	color: #fff;
 	margin-bottom: 18px;
 }
+.helpText.light {
+	color: rgba(22, 22, 22, 1);
+}
+.helpText.violet {
+	color: rgba(22, 22, 22, 1);
+}
 
 .taskProSpan {
-	color: #bedbb0;
+	color: rgba(190, 219, 176, 1);
+}
+.taskProSpan.light {
+	color: rgba(190, 219, 176, 1);
+}
+.taskProSpan.violet {
+	color: rgba(82, 85, 188, 1);
 }
 
 .helpSvg {
@@ -41,7 +62,13 @@
 .iconHelpCircle {
 	width: 20px;
 	height: 20px;
-	stroke: white;
+	stroke: rgba(255, 255, 255, 1);
+}
+.iconHelpCircle.light {
+	stroke: rgba(22, 22, 22, 1);
+}
+.iconHelpCircle.violet {
+	stroke: rgba(255, 255, 255, 1);
 }
 
 .helpBtn {
@@ -53,7 +80,7 @@
 	font-weight: 500;
 	font-size: 12px;
 	letter-spacing: -0.02em;
-	color: #fff;
+	color: rgba(255, 255, 255, 1);
 }
 @media (min-width: 375px) {
 	.helpBlock {
@@ -65,6 +92,13 @@
 	.helpBlock {
 		max-width: 473px;
 	}
+}
+.helpBtn.light {
+	color: rgba(22, 22, 22, 1);
+	/* stroke: rgba(22, 22, 22, 1); */
+}
+.helpBtn.violet {
+	color: rgba(255, 255, 255, 1);
 }
 
 /*=============*/

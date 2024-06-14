@@ -11,6 +11,16 @@
 	}
 }
 
+.header.active {
+	background-color: rgba(22, 22, 22, 1);
+}
+.header.light {
+	background-color: rgba(252, 252, 252, 1);
+}
+.header.violet {
+	background-color: rgba(255, 255, 255, 1);
+}
+
 .burgerBtn {
 	height: min-content;
 	width: min-content;
@@ -33,6 +43,7 @@
 	display: flex;
 	align-items: center;
 	margin-left: auto;
+	background-color: transparent;
 }
 
 .btnTheme {
@@ -46,6 +57,12 @@
 	color: rgba(255, 255, 255, 0.8);
 	display: inline-flex;
 	align-items: center;
+}
+.btnTheme.light {
+	color: rgba(22, 22, 22, 0.8);
+}
+.btnTheme.violet {
+	color: rgba(22, 22, 22, 0.8);
 }
 
 .btnTheme svg {
