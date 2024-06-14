@@ -66,34 +66,3 @@
 		max-width: 473px;
 	}
 }
-
-/*=============*/
-.modal {
-	/* Стилі для модального вікна */
-	position: absolute;
-	/* top: 50%; */
-	top: 0;
-	left: 50%;
-	right: auto;
-	bottom: auto;
-	margin-right: -50%;
-	/* transform: translate(-50%, -50%);*/
-	transform: translateX(-50%);
-	width: 100%;
-	max-width: 335px;
-	padding: 24px;
-	/* background-color: white;
-	border: 1px solid #ccc;
-	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
-	border-radius: 8px;
-	outline: none;
-}
-.overlay {
-	/* Стилі для оверлея */
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: rgba(0, 0, 0, 0.5);
-}
