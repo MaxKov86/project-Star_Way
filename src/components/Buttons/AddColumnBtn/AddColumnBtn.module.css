@@ -8,6 +8,7 @@
 	border: none;
 	height: 56px;
 	width: 335px;
+	flex-shrink: 0;
 }
 
 .iconAddColumnBtn {
