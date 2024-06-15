@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 // import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { selectTheme } from '../../../redux/theme/selectors';
+import CustomDatepicker from '../CustomDatePicker/CustomDatePicker';
 
 const EditCard = ({ card, closeModal }) => {
 	const dispatch = useDispatch();
@@ -134,7 +135,7 @@ const EditCard = ({ card, closeModal }) => {
 			<div className={css.deadlineBox}>
 				<p className={clsx(css.title, css[theme])}>Deadline</p>
 
-				<input
+				{/* <input
 					type="date"
 					name="deadline"
 					{...register('deadline', { required: 'Deadline is required' })}
@@ -142,7 +143,8 @@ const EditCard = ({ card, closeModal }) => {
 				/>
 				{errors.deadline && (
 					<p className={css.error}>{errors.deadline.message}</p>
-				)}
+				)} */}
+				<CustomDatepicker />
 			</div>
 
 			<PrimeBtn>
