@@ -32,10 +32,12 @@ const AddColumnBtn = () => {
 					Add another column
 				</span>
 			</button>
-			<AddColumnModal
-				handleOpenModal={showModal}
-				handleCloseModal={handleCloseModal}
-			/>
+			{showModal && (
+				<AddColumnModal
+					handleOpenModal={showModal}
+					handleCloseModal={handleCloseModal}
+				/>
+			)}
 		</>
 	);
 };

@@ -32,11 +32,13 @@ const UserInfo = () => {
 				>
 					{!avatarURL && <UserIcon />}
 				</Avatar>
-				<ModalForm
-					open={open}
-					handleClose={handleClose}
-					user={{ name, avatarURL }}
-				/>
+				{open && (
+					<ModalForm
+						open={open}
+						handleClose={handleClose}
+						user={{ name, avatarURL }}
+					/>
+				)}
 			</div>
 		</div>
 	);

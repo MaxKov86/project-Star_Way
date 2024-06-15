@@ -40,11 +40,13 @@ const ColumnHead = ({ title, id }) => {
 						<use href={`${sprite}#icon-trash`} />
 					</svg>
 				</button>
-				<EditColumnModal
-					handleOpenModal={showModal}
-					handleCloseModal={handleModal}
-					columnId={id}
-				/>
+				{showModal && (
+					<EditColumnModal
+						handleOpenModal={showModal}
+						handleCloseModal={handleModal}
+						columnId={id}
+					/>
+				)}
 			</div>
 		</div>
 	);
