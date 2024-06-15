@@ -136,7 +136,7 @@ export default function UpdateBoard({ id, handleClose }) {
                                 value={`${i}`}
                             />
                             <img
-                                className={css.bgIcon}
+                                className={clsx(css.bgIcon, css[theme])}
                                 src={`https://res.cloudinary.com/daqlrgzqj/image/upload/task-bg-tablet-${i}.jpg`}
                                 width="28"
                                 height="28"

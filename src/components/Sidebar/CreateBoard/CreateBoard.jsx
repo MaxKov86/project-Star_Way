@@ -35,12 +35,15 @@ export default function CreateCard() {
                 </button>
             </div>
 
-            <OurModal
-                isOpen={modalIsOpen}
-                closeModal={closeModal}
-                title="New board">
-                <CreateBoardModal handelClose={closeModal} />
-            </OurModal>
+            {modalIsOpen &&
+
+                <OurModal
+                    isOpen={modalIsOpen}
+                    closeModal={closeModal}
+                    title="New board">
+                    <CreateBoardModal handelClose={closeModal} />
+                </OurModal>
+            }
         </>
     );
 }
