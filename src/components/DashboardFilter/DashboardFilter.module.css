@@ -22,7 +22,7 @@
 	height: 16px;
 	align-items: center;
 	stroke: var(--secondary-color-text-gray);
-	fill: #1f1f1f;
+	fill: none;
 }
 
 .filterBtnText {
@@ -239,7 +239,7 @@
 
 .violet .btnFilterIcon {
 	stroke: var(--secondary-color-text);
-	fill: var(--primary-color-text-white);
+	fill: none;
 }
 
 .violet .filterBtnText {
@@ -288,7 +288,7 @@
 
 .light .btnFilterIcon {
 	stroke: var(--secondary-color-text);
-	fill: var(--primary-color-text-white);
+	fill: none;
 }
 
 .light .filterBtnText {
