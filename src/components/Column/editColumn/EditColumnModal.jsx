@@ -50,7 +50,9 @@ const EditColumnModal = ({ handleOpenModal, handleCloseModal, columnId }) => {
 						type="text"
 						name="title"
 						{...register('title')}
-						className={clsx(css.input, { [css.error]: errors.title })}
+						className={clsx(css.input, css[theme], {
+							[css.error]: errors.title,
+						})}
 						placeholder="Title"
 					/>
 					{errors.title && (

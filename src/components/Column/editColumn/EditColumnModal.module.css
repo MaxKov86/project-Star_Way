@@ -35,12 +35,18 @@
 	margin-bottom: 24px;
 	width: 100%;
 	padding: 14px 0px 14px 18px;
-	border: 1px solid #444;
+	border: 1px solid #bedbb05f;
 	border-radius: 5px;
 	background: #1f1f1f;
 	color: white;
 	font-size: 1em;
 	box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+	transition: border 250ms ease-in;
+}
+
+.input:focus,
+.input:active {
+	border: 1px solid #bedbb0;
 }
 
 .addButton {
@@ -50,8 +56,14 @@
 	justify-content: center;
 	align-items: center;
 	border-radius: 8px;
-	background: #bedbb0;
+	background-color: #bedbb0;
 	border: none;
+	cursor: pointer;
+	transition: background-color 250ms ease-in;
+}
+
+.addButton:hover {
+	background-color: #9dc888;
 }
 
 .iconAddColumnBtn {
@@ -88,58 +100,80 @@
 
 /* _________VIOLET_________ */
 
-.violet .modal {
+.violet.modal {
 	background: #fcfcfc;
 }
 
-.violet .modalTitle {
+.violet.modalTitle {
 	color: #161616;
 }
 
-.violet .input {
-	border: 1px solid #5255bc;
+.violet.input {
+	border: 1px solid #5255bc5b;
 	background: #fff;
 	color: #161616;
 }
 
-.violet .addButton {
-	background: #5255bc;
+.violet.input:focus,
+.violet.input:active {
+	border: 1px solid #5255bc;
 }
 
-.violet .iconAddColumnBtn {
+.violet.addButton {
+	background-color: #5255bc;
+}
+
+.violet.addButton:hover {
+	background-color: #7b7ede;
+}
+
+.violet.iconAddColumnBtn {
 	stroke: #161616;
 	background-color: #fff;
 }
 
-.violet .btnCloseIcon {
+.violet.btnCloseIcon {
 	stroke: #161616;
+}
+
+.violet.textAddColumnBtn {
+	color: var(--secondary-color-white-background);
 }
 
 /* _________LIGHT_________ */
 
-.light .modal {
+.light.modal {
 	background: #fcfcfc;
 }
 
-.light .modalTitle {
+.light.modalTitle {
 	color: #161616;
 }
 
-.light .input {
-	border: 1px solid #bedbb0;
+.light.input {
+	border: 1px solid #bedbb05f;
 	background: #fff;
 	color: #161616;
 }
 
-.light .addButton {
-	background: #bedbb0;
+.light.input:focus,
+.light.input:active {
+	border: 1px solid #bedbb0;
 }
 
-.light .iconAddColumnBtn {
+.light.addButton {
+	background-color: #bedbb0;
+}
+
+.light.addButton:hover {
+	background-color: #9dc888;
+}
+
+.light.iconAddColumnBtn {
 	stroke: #161616;
 	background-color: #fff;
 }
 
-.light .btnCloseIcon {
+.light.btnCloseIcon {
 	stroke: #161616;
 }
