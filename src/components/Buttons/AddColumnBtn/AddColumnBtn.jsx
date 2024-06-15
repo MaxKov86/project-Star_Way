@@ -19,18 +19,12 @@ const AddColumnBtn = () => {
 	};
 
 	return (
-		<>
-			<button
-				className={clsx(css.addColumnBtn, css[theme])}
-				onClick={handleOpenModal}
-			>
-				{' '}
-				<svg className={clsx(css.iconAddColumnBtn, css[theme])}>
+		<div className={clsx(css.container, css[theme])}>
+			<button className={css.addColumnBtn} onClick={handleOpenModal}>
+				<svg className={css.iconAddColumnBtn}>
 					<use href={`${staticIcons}#icon-plus`}></use>
 				</svg>
-				<span className={clsx(css.textAddColumnBtn, css[theme])}>
-					Add another column
-				</span>
+				<span className={css.textAddColumnBtn}>Add another column</span>
 			</button>
 			{showModal && (
 				<AddColumnModal
@@ -38,7 +32,7 @@ const AddColumnBtn = () => {
 					handleCloseModal={handleCloseModal}
 				/>
 			)}
-		</>
+		</div>
 	);
 };
 

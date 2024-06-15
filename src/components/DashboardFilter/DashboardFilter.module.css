@@ -36,6 +36,7 @@
 }
 
 .modalOverlay {
+	z-index: 999;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -191,7 +192,7 @@
 	width: 14px;
 	height: 14px;
 	border-radius: 50%;
-	border: 2px solid rgba(255, 255, 255, 0.3);
+	border: 2px solid rgba(160, 141, 141, 0.8);
 	outline: none;
 	cursor: pointer;
 	margin-right: 8px;
@@ -204,7 +205,7 @@
 	width: 7px;
 	height: 7px;
 	border-radius: 50%;
-	background-color: rgba(255, 255, 255, 0.3);
+	background-color: rgba(160, 141, 141, 0.8);
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -250,6 +251,10 @@
 	background-color: var(--primary-color-background);
 }
 
+.violet .modalContent::after {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
 .violet .titleModalFilter {
 	color: var(--primary-color-text-black);
 }
@@ -293,6 +298,10 @@
 
 .light .modalContent {
 	background-color: var(--primary-color-background);
+}
+
+.light .modalContent::after {
+	background-color: rgba(0, 0, 0, 0.1);
 }
 
 .light .titleModalFilter {
