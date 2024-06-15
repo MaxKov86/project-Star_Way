@@ -33,6 +33,11 @@ export default function TaskCard({
 		setEditIsOpen(false);
 	};
 
+	const firstPeaceOfDeadline = deadline.split("-");
+	const secondPeaceOfDeadline = firstPeaceOfDeadline[2].split('T')[0];
+	const thirdPeaceOfDeadline = firstPeaceOfDeadline.splice(0, 2);
+	thirdPeaceOfDeadline.push(secondPeaceOfDeadline)
+
 	const [isMoveModalOpen, setIsMoveModalOpen] = useState(false);
 	const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 	const theme = useSelector(selectTheme);
@@ -92,7 +97,7 @@ export default function TaskCard({
 						</h4>
 
 						<p className={clsx(css.deadlineText, css[`deadlineText_${theme}`])}>
-							{deadline}
+							{thirdPeaceOfDeadline.join('/')}
 						</p>
 					</div>
 				</div>
