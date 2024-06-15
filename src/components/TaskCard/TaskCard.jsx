@@ -17,7 +17,7 @@ export default function TaskCard({
 	priority,
 	deadline,
 }) {
-	const dispatch = useDispatch()
+	const dispatch = useDispatch();
 	const theme = useSelector(selectTheme);
 	const card = { id, title, description, priority, deadline };
 	const oneDay = 24 * 60 * 60 * 1000;
@@ -25,8 +25,7 @@ export default function TaskCard({
 	// deadline
 	const renderedDeadline = new Date(deadline).toLocaleDateString().split('.');
 
-	const ring = new Date(deadline) - new Date()
-
+	const ring = new Date(deadline) - new Date();
 
 	//для відкриття модального вікна
 	const [editIsOpen, setEditIsOpen] = useState(false);
@@ -39,13 +38,9 @@ export default function TaskCard({
 		setEditIsOpen(false);
 	};
 
-
-
-
 	// delete
 	const handleDelete = async () => {
-		await dispatch(deleteCard(id)).unwrap();
-		await dispatch(getAllCards()).unwrap();
+		dispatch(deleteCard(id));
 	};
 
 	return (
@@ -87,20 +82,17 @@ export default function TaskCard({
 				</div>
 
 				<div className={css.iconBox}>
-
-					{ring <= oneDay &&
+					{ring <= oneDay && (
 						<div className={css.iconRingBox}>
 							<div className={clsx(css.filter, css[theme])}></div>
 							<svg className={clsx(css.iconRing, css[theme])}>
 								<use href={`${sprite}#icon-ring`} />
 							</svg>
 						</div>
-					}
+					)}
 
 					<button className={css.btn} type="button">
-						<svg
-							className={clsx(css.icon, css[`icon_${theme}`])}
-						>
+						<svg className={clsx(css.icon, css[`icon_${theme}`])}>
 							<use href={`${sprite}#icon-arrow-circle-broken-right`} />
 						</svg>
 					</button>
@@ -128,7 +120,7 @@ export default function TaskCard({
 				handleMove={newColumnId => moveCard(id, newColumnId)}
 			/> */}
 
-			{editIsOpen &&
+			{editIsOpen && (
 				<OurModal
 					isOpen={editIsOpen}
 					closeModal={closeEditModal}
@@ -136,7 +128,7 @@ export default function TaskCard({
 				>
 					<EditCard card={card} closeModal={closeEditModal} />
 				</OurModal>
-			}
+			)}
 		</div>
 	);
 }

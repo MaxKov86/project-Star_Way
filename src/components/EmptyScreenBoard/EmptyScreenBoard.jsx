@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import OurModal from '../Modal/Modal';
 import css from './EmptyScreenBoard.module.css';
-import CreateBoardModal from "../Sidebar/CreateBoard/CreateBoardModal/CreateBoardModal"
+import CreateBoardModal from '../Sidebar/CreateBoard/CreateBoardModal/CreateBoardModal';
 import { useSelector } from 'react-redux';
 import { selectTheme } from '../../redux/theme/selectors';
 import clsx from 'clsx';
@@ -33,13 +33,15 @@ export default function EmptyScreenBoard() {
 					effective collaboration among team members.
 				</div>
 
-				<OurModal
-					isOpen={modalIsOpen}
-					closeModal={closeModal}
-					title="New board"
-				>
-					<CreateBoardModal handelClose={closeModal} />
-				</OurModal>
+				{modalIsOpen && (
+					<OurModal
+						isOpen={modalIsOpen}
+						closeModal={closeModal}
+						title="New board"
+					>
+						<CreateBoardModal handelClose={closeModal} />
+					</OurModal>
+				)}
 			</div>
 		</div>
 	);

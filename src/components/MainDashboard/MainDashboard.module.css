@@ -40,6 +40,15 @@
 	background-color: var(--secondary-color-background);
 }
 
+/* scroll styles violet */
+.box.violet::-webkit-scrollbar-thumb {
+	background-color: var(--secondary-color-violet);
+}
+
+.box.violet::-webkit-scrollbar-track {
+	background-color: var(--secondary-color-background);
+}
+
 @media screen and (min-width: 768px) {
 	.box {
 		padding-left: 32px;

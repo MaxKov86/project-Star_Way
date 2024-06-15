@@ -49,7 +49,7 @@ export const updateBoard = createAsyncThunk(
 				icon: board.icon,
 				title: board.title,
 			});
-			return response.data;
+			return response.data.board;
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error.message);
 		}
@@ -61,7 +61,7 @@ export const getOneBoard = createAsyncThunk(
 	async (boardId, thunkAPI) => {
 		try {
 			const response = await axios.get(`/boards/${boardId}`);
-			return response.data;
+			return response.data.board;
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error.message);
 		}

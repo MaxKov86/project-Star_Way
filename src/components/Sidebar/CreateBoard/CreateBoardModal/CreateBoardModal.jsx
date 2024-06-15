@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { createBoard, getAllBoards } from '../../../../redux/boards/operations';
+import { createBoard } from '../../../../redux/boards/operations';
 import { useNavigate } from 'react-router-dom';
 
 // validation
@@ -55,7 +55,6 @@ export default function CreateBoardModal({ handelClose }) {
 		const newBoard = await dispatch(
 			createBoard({ ...data, background })
 		).unwrap();
-		await dispatch(getAllBoards()).unwrap();
 
 		nav(`/home/${newBoard._id}`);
 		handelClose();

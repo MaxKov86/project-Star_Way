@@ -14,9 +14,7 @@ const HeaderDashboard = () => {
 	const boards = useSelector(selectBoards);
 	const isLoading = useSelector(selectIsLoading);
 
-
 	const board = boards.find(board => board._id === boardName);
-
 
 	const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
 
@@ -32,19 +30,26 @@ const HeaderDashboard = () => {
 	// };
 
 	return (
-		<div className={clsx(css.headerDashboardContainer, css[theme], !boardName && css.empty)}>
-
-			{board && !isLoading &&
+		<div
+			className={clsx(
+				css.headerDashboardContainer,
+				css[theme],
+				!boardName && css.empty
+			)}
+		>
+			{board && !isLoading && (
 				<h2 className={clsx(css.titleHeaderDashboard, css[theme])}>
 					{board.title}
-				</h2>}
+				</h2>
+			)}
 
-
-			<DashboardFilter
-				isFilterModalOpen={isFilterModalOpen}
-				toggleFilterModal={() => setIsFilterModalOpen(!isFilterModalOpen)}
-			// onFilterChange={handleFilterChange}
-			/>
+			{isFilterModalOpen && (
+				<DashboardFilter
+					isFilterModalOpen={isFilterModalOpen}
+					toggleFilterModal={() => setIsFilterModalOpen(!isFilterModalOpen)}
+					// onFilterChange={handleFilterChange}
+				/>
+			)}
 		</div>
 	);
 };
