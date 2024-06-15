@@ -38,6 +38,7 @@ const AddColumnModal = ({ handleOpenModal, handleCloseModal }) => {
 
 	return (
 		<div className={css.modalOverlay}>
+			<div className={clsx(css.modalContainer, css[theme])}>
 			<div className={clsx(css.modal, css[theme])}>
 				<h2 className={clsx(css.modalTitle, css[theme])}>Add Column</h2>
 				<button
@@ -67,6 +68,7 @@ const AddColumnModal = ({ handleOpenModal, handleCloseModal }) => {
 						<span className={clsx(css.textAddColumnBtn, css[theme])}>Add</span>
 					</button>
 				</form>
+			</div>
 			</div>
 		</div>
 	);

@@ -7,37 +7,38 @@ import css from './AddColumnBtn.module.css';
 import AddColumnModal from './AddColumnModal';
 
 const AddColumnBtn = () => {
-	const theme = useSelector(selectTheme);
-	const [showModal, setShowModal] = useState(false);
+    const theme = useSelector(selectTheme);
+    const [showModal, setShowModal] = useState(false);
 
-	const handleOpenModal = () => {
-		setShowModal(true);
-	};
+    const handleOpenModal = () => {
+        setShowModal(true);
+    };
 
-	const handleCloseModal = () => {
-		setShowModal(false);
-	};
+    const handleCloseModal = () => {
+        setShowModal(false);
+    };
 
-	return (
-		<>
-			<button
-				className={clsx(css.addColumnBtn, css[theme])}
-				onClick={handleOpenModal}
-			>
-				{' '}
-				<svg className={clsx(css.iconAddColumnBtn, css[theme])}>
-					<use href={`${staticIcons}#icon-plus`}></use>
-				</svg>
-				<span className={clsx(css.textAddColumnBtn, css[theme])}>
-					Add another column
-				</span>
-			</button>
-			<AddColumnModal
-				handleOpenModal={showModal}
-				handleCloseModal={handleCloseModal}
-			/>
-		</>
-	);
+    return (
+        <div className={clsx(css.container, css[theme])}>
+            <button
+                className={css.addColumnBtn}
+                onClick={handleOpenModal}
+            >
+                <svg className={css.iconAddColumnBtn}>
+                    <use href={`${staticIcons}#icon-plus`}></use>
+                </svg>
+                <span className={css.textAddColumnBtn}>
+                    Add another column
+                </span>
+            </button>
+            {showModal && (
+                <AddColumnModal
+                    handleOpenModal={showModal}
+                    handleCloseModal={handleCloseModal}
+                />
+            )}
+        </div>
+    );
 };
 
 export default AddColumnBtn;
