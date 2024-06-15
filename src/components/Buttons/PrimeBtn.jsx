@@ -7,10 +7,8 @@ const PrimeBtn = ({ children, onBtnClick }) => {
 	const theme = useSelector(selectTheme);
 	return (
 		<button
+			onClick={onBtnClick}
 			type="submit"
-			onClick={() => {
-				// onBtnClick();
-			}}
 			className={clsx(css.button, css[theme])}
 		>
 			{children}
