@@ -1,13 +1,14 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectTheme } from '../../redux/theme/selectors';
 import sprite from '../../assets/icons.svg';
-import { MoveModal } from './moveModal/moveModal';
+// import { MoveModal } from './moveModal/moveModal';
 import EditCard from './EditCard/EditCard';
 import clsx from 'clsx';
 import css from './TaskCard.module.css';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import OurModal from '../Modal/Modal';
+import { deleteCard, getAllCards } from '../../redux/cards/operations';
 
 export default function TaskCard({
 	title,
@@ -16,11 +17,16 @@ export default function TaskCard({
 	priority,
 	deadline,
 }) {
-	// const title = 'Title';
-	// const description = 'description';
-	// const id = 'id';
-	// const priority = 'low';
-	// const deadline = '09/06/2024';
+	const dispatch = useDispatch()
+	const theme = useSelector(selectTheme);
+	const card = { id, title, description, priority, deadline };
+	const oneDay = 24 * 60 * 60 * 1000;
+
+	// deadline
+	const renderedDeadline = new Date(deadline).toLocaleDateString().split('.');
+
+	const ring = new Date(deadline) - new Date()
+
 
 	//для відкриття модального вікна
 	const [editIsOpen, setEditIsOpen] = useState(false);
@@ -33,36 +39,14 @@ export default function TaskCard({
 		setEditIsOpen(false);
 	};
 
-	const firstPeaceOfDeadline = deadline.split("-");
-	const secondPeaceOfDeadline = firstPeaceOfDeadline[2].split('T')[0];
-	const thirdPeaceOfDeadline = firstPeaceOfDeadline.splice(0, 2);
-	thirdPeaceOfDeadline.push(secondPeaceOfDeadline)
 
-	const [isMoveModalOpen, setIsMoveModalOpen] = useState(false);
-	const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-	const theme = useSelector(selectTheme);
 
-	const handleMoveModalOpen = () => {
-		setIsMoveModalOpen(true);
+
+	// delete
+	const handleDelete = async () => {
+		await dispatch(deleteCard(id)).unwrap();
+		await dispatch(getAllCards()).unwrap();
 	};
-
-	const handleMoveModalClose = () => {
-		setIsMoveModalOpen(false);
-	};
-
-	const handleEditModalOpen = () => {
-		setIsEditModalOpen(true);
-	};
-
-	const handleEditModalClose = () => {
-		setIsEditModalOpen(false);
-	};
-
-	const handleDelete = () => {
-		// Напишіть функцію видалення картки
-	};
-
-	const card = { id, title, description, priority, deadline };
 
 	return (
 		<div className={clsx(css.cardContainer, css[`cardContainer_${theme}`])}>
@@ -97,23 +81,25 @@ export default function TaskCard({
 						</h4>
 
 						<p className={clsx(css.deadlineText, css[`deadlineText_${theme}`])}>
-							{thirdPeaceOfDeadline.join('/')}
+							{renderedDeadline.join('/')}
 						</p>
 					</div>
 				</div>
 
 				<div className={css.iconBox}>
-					<div className={css.iconRingBox}>
-						<div className={clsx(css.filter, css[theme])}></div>
-						<svg className={clsx(css.iconRing, css[theme])}>
-							<use href={`${sprite}#icon-ring`} />
-						</svg>
-					</div>
+
+					{ring <= oneDay &&
+						<div className={css.iconRingBox}>
+							<div className={clsx(css.filter, css[theme])}></div>
+							<svg className={clsx(css.iconRing, css[theme])}>
+								<use href={`${sprite}#icon-ring`} />
+							</svg>
+						</div>
+					}
 
 					<button className={css.btn} type="button">
 						<svg
 							className={clsx(css.icon, css[`icon_${theme}`])}
-							onClick={handleMoveModalOpen}
 						>
 							<use href={`${sprite}#icon-arrow-circle-broken-right`} />
 						</svg>
@@ -142,20 +128,15 @@ export default function TaskCard({
 				handleMove={newColumnId => moveCard(id, newColumnId)}
 			/> */}
 
-			{/* <EditModal
-				show={isEditModalOpen}
-				handleClose={handleEditModalClose}
-				card={card}
-				editCard={editCard}
-			/> */}
-
-			<OurModal
-				isOpen={editIsOpen}
-				closeModal={closeEditModal}
-				title="Edit card"
-			>
-				<EditCard card={card} closeModal={closeEditModal} />
-			</OurModal>
+			{editIsOpen &&
+				<OurModal
+					isOpen={editIsOpen}
+					closeModal={closeEditModal}
+					title="Edit card"
+				>
+					<EditCard card={card} closeModal={closeEditModal} />
+				</OurModal>
+			}
 		</div>
 	);
 }

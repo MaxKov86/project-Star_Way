@@ -119,9 +119,11 @@ export default function SidebarBoard({ title, icon, id, isActive }) {
 				</NavLink>
 			)}
 
-			<OurModal isOpen={modalIsOpen} closeModal={closeModal} title="Edit board">
-				<UpdateBoard handleClose={closeModal} id={id} />
-			</OurModal>
+			{modalIsOpen &&
+				<OurModal isOpen={modalIsOpen} closeModal={closeModal} title="Edit board">
+					<UpdateBoard handleClose={closeModal} id={id} />
+				</OurModal>
+			}
 		</>
 	);
 }

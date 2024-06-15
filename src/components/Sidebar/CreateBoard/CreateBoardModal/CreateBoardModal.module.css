@@ -25,6 +25,8 @@
     border: 1px solid rgba(190, 219, 176, 0.4);
     box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
 
+    transition: border-color 250ms ease-in;
+
     color: var(--primary-color-text-white);
     background-color: transparent;
 }
@@ -96,17 +98,30 @@
 .icon {
     width: 18px;
     height: 18px;
-    stroke: var(--secondary-color-text-gray);
+
+    transition: stroke 250ms ease-in;
+
+    stroke: var(--color-icons-board);
     fill: none;
 }
 
 .icon:hover {
     cursor: pointer;
+    stroke: var(--primary-color-text-black);
+}
+
+.icon.dark {
+    stroke: var(--secondary-color-text-gray);
 }
 
 .radioBtn:checked+.icon {
+    stroke: var(--primary-color-text-black);
+}
+
+.radioBtn:checked+.icon.dark {
     stroke: var(--primary-color-text-white);
 }
+
 
 /* bgBox */
 .bgBox {
@@ -130,8 +145,19 @@
     width: 28px;
     height: 28px;
 
+    outline: 2px solid transparent;
+    transition: outline-color 250ms ease-in;
+
     border-radius: 6px;
     background-color: var(--primary-color-black-background);
+}
+
+.nullIconBox:hover {
+    outline-color: var(--color-green-background);
+}
+
+.nullIconBox.violet:hover {
+    outline-color: var(--primary-color-violet);
 }
 
 .nullIconBox.light {
@@ -139,7 +165,7 @@
 }
 
 .nullIconBox.violet {
-    background-color: rgba(22, 22, 22, 0.1);
+    background-color: #ECEDFD;
 }
 
 .radioBtn:checked+.nullIconBox {
@@ -163,15 +189,27 @@
 }
 
 .nullIcon.violet {
-    stroke: #ECEDFD;
+    stroke: rgba(22, 22, 22, 0.1);
 }
 
 /* bgIcon */
 .bgIcon {
     cursor: pointer;
 
+    outline: 2px solid transparent;
+
+    transition: outline-color 250ms ease-in;
+
     object-fit: cover;
     border-radius: 6px;
+}
+
+.bgIcon:hover {
+    outline-color: var(--color-green-background);
+}
+
+.bgIcon.violet:hover {
+    outline-color: var(--primary-color-violet);
 }
 
 .radioBtn:checked+.bgIcon {
@@ -193,13 +231,23 @@
     width: 100%;
     height: 49px;
 
+    transition: background-color 250ms ease-in;
+
     border: none;
     border-radius: 5px;
     background-color: var(--color-green-background);
 }
 
+.btn:hover {
+    background-color: #9DC888;
+}
+
 .btn.violet {
     background-color: var(--primary-color-violet);
+}
+
+.btn.violet:hover {
+    background-color: #7B7EDE;
 }
 
 /* btnIconBox */
@@ -231,7 +279,7 @@
 }
 
 .btnIcon.violet {
-    background-color: var(--primary-color-text);
+    stroke: var(--primary-color-text);
 }
 
 /* btnText */

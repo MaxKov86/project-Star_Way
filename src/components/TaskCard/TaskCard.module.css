@@ -309,8 +309,10 @@
 .icon {
 	width: 16px;
 	height: 16px;
-	stroke: var(--color-icons-board);
 
+	transition: stroke 250ms ease-in;
+
+	stroke: var(--color-icons-board);
 	fill: none;
 }
 

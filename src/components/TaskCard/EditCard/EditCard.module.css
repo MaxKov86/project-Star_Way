@@ -24,6 +24,8 @@
 	font-weight: 400;
 	letter-spacing: -0.02em;
 
+	transition: border-color 250ms ease-in;
+
 	border: 1px solid rgba(190, 219, 176, 0.4);
 	border-radius: 8px;
 	box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
@@ -61,6 +63,8 @@
 	font-size: 14px;
 	font-weight: 400;
 	letter-spacing: -0.02em;
+
+	transition: border-color 250ms ease-in;
 
 	border: 1px solid rgba(190, 219, 176, 0.4);
 	border-radius: 8px;
@@ -139,6 +143,8 @@
 
 	border-radius: 50%;
 
+	transition: background-color 250ms ease-in;
+
 	background-color: rgba(22, 22, 22, 0.3);
 	border: 1px solid rgb(183, 183, 183);
 }
@@ -175,7 +181,6 @@
 	background-color: inherit;
 	border-radius: 50%;
 
-	opacity: 0;
 	transition: transform 250ms ease-in;
 
 	background-color: rgba(22, 22, 22, 0.3);

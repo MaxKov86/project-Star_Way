@@ -59,9 +59,11 @@ const NeedHelp = () => {
 				Need help?
 			</button>
 
-			<OurModal isOpen={modalIsOpen} closeModal={closeModal} title="Need help">
-				<ModalWindowHelp onClose={closeModal} />
-			</OurModal>
+			{modalIsOpen &&
+				<OurModal isOpen={modalIsOpen} closeModal={closeModal} title="Need help">
+					<ModalWindowHelp onClose={closeModal} />
+				</OurModal>
+			}
 		</div>
 	);
 };
