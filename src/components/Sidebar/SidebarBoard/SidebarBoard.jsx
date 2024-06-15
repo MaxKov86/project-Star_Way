@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectTheme } from '../../../redux/theme/selectors';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import staticIcons from '../../../assets/icons.svg';
-import { deleteBoard, getAllBoards } from '../../../redux/boards/operations';
+import { deleteBoard } from '../../../redux/boards/operations';
 import UpdateBoard from './UpdateModal/UpdateBoard';
 import { useState } from 'react';
 import OurModal from '../../Modal/Modal';
@@ -17,7 +17,7 @@ export default function SidebarBoard({ title, icon, id, isActive }) {
 	const boards = useSelector(selectBoards);
 	const { boardName } = useParams();
 
-	const index = boards.findIndex(board => board._id === boardName)
+	const index = boards.findIndex(board => board._id === boardName);
 
 	// modal
 	const [modalIsOpen, setIsOpen] = useState(false);
@@ -32,9 +32,8 @@ export default function SidebarBoard({ title, icon, id, isActive }) {
 
 	// delete function
 
-	const handleDelete = async () => {
-		await dispatch(deleteBoard(id)).unwrap();
-		await dispatch(getAllBoards()).unwrap();
+	const handleDelete = () => {
+		dispatch(deleteBoard(id));
 
 		if (boards.length !== 0 && boards.length !== 1) {
 			if (index === 0) {
@@ -47,7 +46,6 @@ export default function SidebarBoard({ title, icon, id, isActive }) {
 		} else {
 			nav(`/home`);
 		}
-
 	};
 
 	return (
@@ -119,11 +117,15 @@ export default function SidebarBoard({ title, icon, id, isActive }) {
 				</NavLink>
 			)}
 
-			{modalIsOpen &&
-				<OurModal isOpen={modalIsOpen} closeModal={closeModal} title="Edit board">
+			{modalIsOpen && (
+				<OurModal
+					isOpen={modalIsOpen}
+					closeModal={closeModal}
+					title="Edit board"
+				>
 					<UpdateBoard handleClose={closeModal} id={id} />
 				</OurModal>
-			}
+			)}
 		</>
 	);
 }
