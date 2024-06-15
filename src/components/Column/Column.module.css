@@ -35,6 +35,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: 8px;
+	z-index: 2;
 }
 
 /* стилі скроллу dark */
