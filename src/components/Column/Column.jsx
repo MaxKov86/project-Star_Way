@@ -50,11 +50,11 @@ const Column = ({ id, title }) => {
 				</div>
 				Add another card
 			</PrimeBtn>
-			{/* {modalIsOpen && (
+			{modalIsOpen && (
 				<OurModal isOpen={modalIsOpen} closeModal={closeModal} title="Add card">
-					<AddCard columnId={columnId} closeModal={closeModal} />
+					<AddCard columnId={id} closeModal={closeModal} />
 				</OurModal>
-			)} */}
+			)}
 		</div>
 	);
 };

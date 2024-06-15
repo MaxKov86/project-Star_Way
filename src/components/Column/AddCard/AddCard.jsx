@@ -20,18 +20,10 @@ const AddCard = ({ columnId, closeModal }) => {
 		setValue,
 	} = useForm();
 
-	const onSubmit = async data => {
-		const formData = { ...data, columnId };
-		console.log('Form data before dispatch:', formData);
-
-		try {
-			const response = await dispatch(createCard(formData)).unwrap();
-			console.log('New card added:', response);
-			reset();
-			closeModal();
-		} catch (error) {
-			console.error('Error in API call:', error);
-		}
+	const onSubmit = data => {
+		dispatch(createCard({ ...data, columnId }));
+		reset();
+		closeModal();
 	};
 
 	const handleRadioClick = value => {
