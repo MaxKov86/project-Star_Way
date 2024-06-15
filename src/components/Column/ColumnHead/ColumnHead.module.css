@@ -7,11 +7,15 @@
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-
+	transition: background-color 250ms ease-in;
 	background-color: var(--secondary-color-black-background);
 }
 
 .columnHead.light {
+	background-color: var(--secondary-color-background);
+	color: var(--primary-color-text);
+}
+.columnHead.violet {
 	background-color: var(--secondary-color-background);
 	color: var(--primary-color-text);
 }
@@ -36,6 +40,7 @@
 	stroke: var(--color-icons-board);
 
 	fill: none;
+	transition: stroke 250ms ease-in;
 }
 
 .btn:hover .icon {
@@ -48,6 +53,14 @@
 
 .btn:hover .icon_dark {
 	stroke: var(--primary-color-text-white);
+}
+
+.icon_violet {
+	stroke: var(--color-icons-board);
+}
+
+.btn:hover .icon_violet {
+	stroke: var(--primary-color-text-black);
 }
 
 /* title */
@@ -65,5 +78,9 @@
 }
 
 .title.light {
+	color: var(--primary-color-text);
+}
+
+.title.violet {
 	color: var(--primary-color-text);
 }
