@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getAllColumns, createColumn, deleteColumn } from './operation';
+import {
+	getAllColumns,
+	createColumn,
+	deleteColumn,
+	updateColumn,
+} from './operation';
 import { logOut } from '../auth/operations';
 
 const slice = createSlice({
@@ -40,9 +45,10 @@ const slice = createSlice({
 				state.isLoading = true;
 			})
 			.addCase(deleteColumn.fulfilled, (state, action) => {
-				state.items = state.items.filter(
-					item => item._id !== action.payload.id
+				const index = state.items.findIndex(
+					item => item._id === action.payload._id
 				);
+				state.items.splice(index, 1);
 				state.isLoading = false;
 			})
 			.addCase(deleteColumn.rejected, state => {
@@ -52,6 +58,22 @@ const slice = createSlice({
 			.addCase(logOut.fulfilled, state => {
 				state.items = [];
 				state.error = false;
+				state.isLoading = false;
+			})
+			.addCase(updateColumn.pending, state => {
+				state.error = false;
+				state.isLoading = true;
+			})
+			.addCase(updateColumn.fulfilled, (state, action) => {
+				state.error = false;
+				state.isLoading = false;
+				const index = state.items.findIndex(
+					item => item._id === action.payload._id
+				);
+				state.items.splice(index, 1, action.payload);
+			})
+			.addCase(updateColumn.rejected, state => {
+				state.error = true;
 				state.isLoading = false;
 			});
 	},

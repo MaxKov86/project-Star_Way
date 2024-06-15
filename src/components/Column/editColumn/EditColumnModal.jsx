@@ -3,17 +3,16 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import clsx from 'clsx';
 import * as yup from 'yup';
-import css from './AddColumnModal.module.css';
+import css from './EditColumnModal.module.css';
 import staticIcons from '../../../assets/icons.svg';
 import { selectTheme } from '../../../redux/theme/selectors';
-import { createColumn } from '../../../redux/columns/operation';
-import { useParams } from 'react-router-dom';
+import { updateColumn } from '../../../redux/columns/operation';
 
 const schema = yup.object().shape({
 	title: yup.string().min(2, 'Too Short!').required('Title is required'),
 });
 
-const AddColumnModal = ({ handleOpenModal, handleCloseModal }) => {
+const EditColumnModal = ({ handleOpenModal, handleCloseModal, columnId }) => {
 	const {
 		register,
 		handleSubmit,
@@ -25,13 +24,11 @@ const AddColumnModal = ({ handleOpenModal, handleCloseModal }) => {
 
 	const theme = useSelector(selectTheme);
 	const dispatch = useDispatch();
-	const { boardName } = useParams();
 
 	const onSubmit = data => {
-		dispatch(createColumn({ ...data, boardId: boardName }));
+		dispatch(updateColumn({ columnId, ...data }));
 		reset();
 		handleCloseModal();
-		console.log({ ...data, boardId: boardName });
 	};
 
 	if (!handleOpenModal) return null;
@@ -39,7 +36,7 @@ const AddColumnModal = ({ handleOpenModal, handleCloseModal }) => {
 	return (
 		<div className={css.modalOverlay}>
 			<div className={clsx(css.modal, css[theme])}>
-				<h2 className={clsx(css.modalTitle, css[theme])}>Add Column</h2>
+				<h2 className={clsx(css.modalTitle, css[theme])}>Edit Column</h2>
 				<button
 					className={clsx(css.closeButton, css[theme])}
 					onClick={handleCloseModal}
@@ -53,7 +50,6 @@ const AddColumnModal = ({ handleOpenModal, handleCloseModal }) => {
 						type="text"
 						name="title"
 						{...register('title')}
-						// onChange={handleTitleChange}
 						className={clsx(css.input, { [css.error]: errors.title })}
 						placeholder="Title"
 					/>
@@ -72,4 +68,4 @@ const AddColumnModal = ({ handleOpenModal, handleCloseModal }) => {
 	);
 };
 
-export default AddColumnModal;
+export default EditColumnModal;
