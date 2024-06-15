@@ -23,15 +23,14 @@ const Header = ({ isOpen, toggle }) => {
 	return (
 		// <div className={css.header}>
 		<div className={clsx(css.header, css[theme])}>
-			{window.innerWidth < 1440 && (
-				<button
-					className={css.burgerBtn}
-					onClick={() => toggle(!isOpen)}
-					type="button"
-				>
-					<MenuIcon className={css.userIcon} />
-				</button>
-			)}
+			<button
+				className={css.burgerBtn}
+				onClick={() => toggle(!isOpen)}
+				type="button"
+			>
+				<MenuIcon className={css.userIcon} />
+			</button>
+
 			<div className={css.rightSection}>
 				<button
 					className={clsx(css.btnTheme, css[theme])}

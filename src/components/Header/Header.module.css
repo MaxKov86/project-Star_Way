@@ -26,12 +26,16 @@
 	width: min-content;
 	border: 0;
 	background-color: transparent;
+
+	@media screen and (min-width: 1440px) {
+		display: none;
+	}
 }
 
 .userIcon {
 	width: 142px;
 	height: 42px;
-	color: rgba(255, 255, 255, 0.5);
+	fill: rgba(255, 255, 255, 0.5);
 	margin-right: 8px;
 
 	@media screen and (min-width: 768px) {
