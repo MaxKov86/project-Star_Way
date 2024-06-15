@@ -52,10 +52,11 @@ const slice = createSlice({
 				state.error = false;
 				state.isLoading = true;
 			})
-			.addCase(updateCard.fulfilled, (state,action)=>{
-				state.items.find(item=>item._id === action.payload.id)
+			.addCase(updateCard.fulfilled, (state, action) => {
+				state.items.find(item => item._id === action.payload.id);
 				state.isLoading = false;
-			}).addCase(updateCard.rejected, (state)=>{
+			})
+			.addCase(updateCard.rejected, state => {
 				state.error = true;
 				state.isLoading = false;
 			});
