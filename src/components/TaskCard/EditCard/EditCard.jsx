@@ -4,10 +4,9 @@ import PrimeBtn from '../../Buttons/PrimeBtn';
 import { useDispatch, useSelector } from 'react-redux';
 import { createCard } from '../../../redux/cards/operations';
 import { useForm } from 'react-hook-form';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { selectTheme } from '../../../redux/theme/selectors';
-
 
 const EditCard = ({ card, closeModal }) => {
 	const dispatch = useDispatch();
@@ -43,7 +42,6 @@ const EditCard = ({ card, closeModal }) => {
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className={css.form}>
-
 			<input
 				className={clsx(css.input, css[theme])}
 				type="text"
@@ -73,35 +71,66 @@ const EditCard = ({ card, closeModal }) => {
 
 			<p className={clsx(css.priorityTitle, css[theme])}>Label color</p>
 			<div className={css.priorityBox}>
-
 				<label>
-					<button className={clsx(css.priorityBtn)} type='radio' name='priority' value="low"></button>
+					<button
+						className={clsx(css.priorityBtn)}
+						type="radio"
+						name="priority"
+						value="low"
+					></button>
 					<div className={clsx(css.priorityCircle, css.active, css.low)}>
-						<div className={clsx(css.priorityCircleInside, css.active, css.low)}></div>
+						<div
+							className={clsx(css.priorityCircleInside, css.active, css.low)}
+						></div>
 					</div>
 				</label>
 
 				<label>
-					<button className={clsx(css.priorityBtn)} type='radio' name='priority' value="medium"></button>
+					<button
+						className={clsx(css.priorityBtn)}
+						type="radio"
+						name="priority"
+						value="medium"
+					></button>
 					<div className={clsx(css.priorityCircle, css.active, css.medium)}>
-						<div className={clsx(css.priorityCircleInside, css.active, css.medium)}></div>
+						<div
+							className={clsx(css.priorityCircleInside, css.active, css.medium)}
+						></div>
 					</div>
 				</label>
 
 				<label>
-					<button className={clsx(css.priorityBtn)} type='radio' name='priority' value="high"></button>
+					<button
+						className={clsx(css.priorityBtn)}
+						type="radio"
+						name="priority"
+						value="high"
+					></button>
 					<div className={clsx(css.priorityCircle, css.active, css.high)}>
-						<div className={clsx(css.priorityCircleInside, css.active, css.high)}></div>
+						<div
+							className={clsx(css.priorityCircleInside, css.active, css.high)}
+						></div>
 					</div>
 				</label>
 
 				<label>
-					<button className={clsx(css.priorityBtn)} type='radio' name='priority' value="without"></button>
+					<button
+						className={clsx(css.priorityBtn)}
+						type="radio"
+						name="priority"
+						value="without"
+					></button>
 					<div className={clsx(css.priorityCircle, css.without, css[theme])}>
-						<div className={clsx(css.priorityCircleInside, css.active, css.without, css[theme])}></div>
+						<div
+							className={clsx(
+								css.priorityCircleInside,
+								css.active,
+								css.without,
+								css[theme]
+							)}
+						></div>
 					</div>
 				</label>
-
 			</div>
 
 			<div>
@@ -124,7 +153,6 @@ const EditCard = ({ card, closeModal }) => {
 				</div>
 				Save
 			</PrimeBtn>
-
 		</form>
 	);
 };

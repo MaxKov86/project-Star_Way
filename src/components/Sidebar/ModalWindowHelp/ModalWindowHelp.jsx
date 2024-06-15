@@ -29,6 +29,7 @@ export default function ModalWindowHelp({ onClose }) {
 		register,
 		handleSubmit,
 		formState: { errors },
+		trigger,
 
 		reset,
 	} = useForm({
@@ -36,6 +37,7 @@ export default function ModalWindowHelp({ onClose }) {
 			email: user.email,
 		},
 		resolver: yupResolver(schema),
+		reValidateMode: 'onChange',
 	});
 
 	const onSubmit = data => {
@@ -52,21 +54,18 @@ export default function ModalWindowHelp({ onClose }) {
 			<div className={css.inputBox}>
 				<input
 					className={clsx(css.input, css[theme])}
-					{...register('email')}
+					{...register('email', { onChange: () => trigger('email') })}
 					type="text"
 					name="email"
 					placeholder="Email address "
-
 					id="email"
-					value={email}
-					onChange={e => setEmail(e.target.value)}
-
+					// value={email}
+					// onChange={e => setEmail(e.target.value)}
 				/>
 			</div>
 			<div className={css.inputBox}>
 				<textarea
 					className={clsx(css.input, css.textareaInput, css[theme])}
-
 					{...register('comment')}
 					name="comment"
 					placeholder="Comment"
@@ -77,7 +76,6 @@ export default function ModalWindowHelp({ onClose }) {
 			</div>
 
 			<button className={clsx(css.btn, css[theme])} type="submit">
-
 				<p className={clsx(css.btnText, css[theme])}>Send</p>
 			</button>
 		</form>
