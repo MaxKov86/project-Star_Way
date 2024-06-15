@@ -29,7 +29,7 @@ const Header = ({ isOpen, toggle }) => {
 					onClick={() => toggle(!isOpen)}
 					type="button"
 				>
-					<MenuIcon className={clsx(css.userIcon, css[theme])} />
+					<MenuIcon className={css.userIcon} />
 				</button>
 			)}
 			<div className={css.rightSection}>

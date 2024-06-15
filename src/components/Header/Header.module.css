@@ -5,11 +5,8 @@
 	justify-content: space-between;
 	align-items: center;
 	padding: 0 20px;
-	transition: background-color 250ms ease-in;
-}
 
-@media screen and (min-width: 768px) {
-	.header {
+	@media screen and (min-width: 768px) {
 		height: 68px;
 	}
 }
@@ -21,7 +18,7 @@
 	background-color: rgba(252, 252, 252, 1);
 }
 .header.violet {
-	background-color: var(--secondary-color-violet);
+	background-color: rgba(255, 255, 255, 1);
 }
 
 .burgerBtn {
@@ -36,20 +33,10 @@
 	height: 42px;
 	color: rgba(255, 255, 255, 0.5);
 	margin-right: 8px;
-}
 
-@media screen and (min-width: 768px) {
-	.userIcon {
+	@media screen and (min-width: 768px) {
 		height: 24px;
 	}
-}
-
-.userIcon.light {
-	color: var(--primary-color-black-background);
-}
-
-.userIcon.violet {
-	color: var(--primary-color-white-background);
 }
 
 .rightSection {
