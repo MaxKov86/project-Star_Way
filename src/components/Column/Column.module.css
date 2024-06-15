@@ -62,12 +62,3 @@
 .columnWrap.light::-webkit-scrollbar-track {
 	background-color: var(--secondary-color-background);
 }
-
-/* scroll violet */
-.columnWrap.violet::-webkit-scrollbar-thumb {
-	background-color: var(--secondary-color-violet);
-}
-
-.columnWrap.violet::-webkit-scrollbar-track {
-	background-color: var(--secondary-color-background);
-}
