@@ -18,7 +18,7 @@ const AddCard = ({ columnId, closeModal }) => {
 		reset,
 		formState: { errors },
 		setValue,
-	} = useForm();
+	} = useForm({ mode: 'onBlur' });
 
 	const onSubmit = data => {
 		dispatch(createCard({ ...data, columnId }));
