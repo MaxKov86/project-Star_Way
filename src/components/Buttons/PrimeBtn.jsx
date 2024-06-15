@@ -9,7 +9,7 @@ const PrimeBtn = ({ children, onBtnClick }) => {
 		<button
 			type="submit"
 			onClick={() => {
-				onBtnClick();
+				// onBtnClick();
 			}}
 			className={clsx(css.button, css[theme])}
 		>
