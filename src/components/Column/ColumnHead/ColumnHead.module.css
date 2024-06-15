@@ -9,9 +9,15 @@
 	align-items: center;
 
 	background-color: var(--secondary-color-black-background);
+	transition: background-color 250ms ease-in;
 }
 
 .columnHead.light {
+	background-color: var(--secondary-color-background);
+	color: var(--primary-color-text);
+}
+
+.columnHead.violet {
 	background-color: var(--secondary-color-background);
 	color: var(--primary-color-text);
 }
@@ -36,6 +42,8 @@
 	stroke: var(--color-icons-board);
 
 	fill: none;
+
+	transition: stroke 250ms ease-in;
 }
 
 .btn:hover .icon {
@@ -46,8 +54,16 @@
 	stroke: var(--color-icons);
 }
 
+.icon_violet {
+	stroke: var(--color-icons-board);
+}
+
 .btn:hover .icon_dark {
 	stroke: var(--primary-color-text-white);
+}
+
+.btn:hover .icon_violet {
+	stroke: var(--primary-color-text-black);
 }
 
 /* title */
@@ -65,5 +81,9 @@
 }
 
 .title.light {
+	color: var(--primary-color-text);
+}
+
+.title.violet {
 	color: var(--primary-color-text);
 }

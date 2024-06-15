@@ -1,3 +1,4 @@
+/* _________DARK_________ */
 .addColumnBtn {
 	display: inline-flex;
 	padding: 14px 78px 14px 79px;
@@ -9,6 +10,11 @@
 	height: 56px;
 	width: 335px;
 	flex-shrink: 0;
+	transition: background-color 250ms ease-in;
+}
+
+.addColumnBtn:hover {
+	background-color: var(--color-form-background);
 }
 
 .iconAddColumnBtn {
@@ -34,30 +40,40 @@
 
 /* _________VIOLET_________ */
 
-.violet .addColumnBtn {
-	background: #fff;
+.addColumnBtn.violet {
+	border: none;
+	background-color: var(--primary-color-violet);
+	color: var(--primary-color-text-white);
 }
 
-.violet .iconAddColumnBtn {
+.addColumnBtn.violet:hover {
+	background-color: #7b7ede;
+}
+
+.iconAddColumnBtn.violet {
 	stroke: #fff;
-	background-color: rgba(82, 85, 188, 1);
+	background-color: var(--secondary-color-black-background);
 }
 
-.violet .textAddColumnBtn {
-	color: #161616;
+.textAddColumnBtn.violet {
+	color: var(--primary-color-text-white);
 }
 
 /* _________LIGHT_________ */
 
-.light .addColumnBtn {
+.addColumnBtn.light {
 	background: #fff;
 }
 
-.light .iconAddColumnBtn {
+.addColumnBtn.light:hover {
+	background-color: var(--color-white-background);
+}
+
+.iconAddColumnBtn.light {
 	stroke: #fff;
 	background-color: #161616;
 }
 
-.light .textAddColumnBtn {
+.textAddColumnBtn.light {
 	color: #161616;
 }
