@@ -7,7 +7,6 @@ import css from './EditColumnModal.module.css';
 import staticIcons from '../../../assets/icons.svg';
 import { selectTheme } from '../../../redux/theme/selectors';
 import { updateColumn } from '../../../redux/columns/operation';
-import { useParams } from 'react-router-dom';
 
 const schema = yup.object().shape({
 	title: yup.string().min(2, 'Too Short!').required('Title is required'),
@@ -25,7 +24,6 @@ const EditColumnModal = ({ handleOpenModal, handleCloseModal, columnId }) => {
 
 	const theme = useSelector(selectTheme);
 	const dispatch = useDispatch();
-	const { boardName } = useParams();
 
 	const onSubmit = data => {
 		dispatch(updateColumn({ columnId, ...data }));
