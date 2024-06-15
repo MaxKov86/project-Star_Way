@@ -19,13 +19,13 @@ export const editUserInfo = createAsyncThunk(
 			const response = await axios.patch('/users/edit', formData, {
 				headers: {
 					'Content-Type': 'multipart/form-data',
-					'Authorization': `Bearer ${token}`,
+					Authorization: `Bearer ${token}`,
 				},
 			});
+			
 			return response.data;
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error.message);
 		}
 	}
 );
-
