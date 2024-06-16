@@ -1,60 +1,54 @@
 .box {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
 
-    margin-bottom: 70px;
+	margin-bottom: 70px;
 }
 
 .iconBox {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
-    width: 32px;
-    height: 32px;
+	width: 32px;
+	height: 32px;
 
-    border-radius: 7px;
+	border-radius: 7px;
 }
 
 .iconBox_dark {
-    background-color: var(--primary-color-black-background);
+	background-color: var(--primary-color-black-background);
 }
 
 .iconBox_light {
-    background-color: var(--primary-color-black-background);
+	background-color: var(--primary-color-black-background);
 }
 
 .iconBox_violet {
-    background-color: #ECEDFD;
-}
-
-@font-face {
-    font-family: 'Poppins';
-    src: url('./fonts/Poppins/Poppins-Regular.ttf');
+	background-color: #ecedfd;
 }
 
 .text {
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: -0.04em;
+	font-size: 16px;
+	font-weight: 600;
+	letter-spacing: -0.04em;
 }
 
 .text_dark {
-    color: var(--primary-color-text-white);
+	color: var(--primary-color-text-white);
 }
 
 .text_light {
-    color: var(--primary-color-text);
+	color: var(--primary-color-text);
 }
 
 .text_violet {
-    color: var(--primary-color-text-white);
+	color: var(--primary-color-text-white);
 }
 
-
 @media screen and (min-width: 768px) {
-    .box {
-        margin-bottom: 60px;
-    }
+	.box {
+		margin-bottom: 60px;
+	}
 }
