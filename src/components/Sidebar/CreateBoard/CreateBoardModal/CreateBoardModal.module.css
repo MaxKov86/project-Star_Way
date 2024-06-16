@@ -33,7 +33,12 @@
 
 
 .input.violet {
+    color: var(--primary-color-text-black);
     border-color: rgba(82, 85, 188, 0.4);
+}
+
+.input.light {
+    color: var(--primary-color-text-black);
 }
 
 .input.violet:focus {

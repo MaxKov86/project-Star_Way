@@ -1,17 +1,26 @@
 import css from './AddCard.module.css';
 import clsx from 'clsx';
 import sprite from '../../../assets/icons.svg';
-import PrimeBtn from '../../Buttons/PrimeBtn';
 import { useDispatch, useSelector } from 'react-redux';
 import { createCard } from '../../../redux/cards/operations';
 import { useForm, Controller } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { selectTheme } from '../../../redux/theme/selectors';
+import * as yup from 'yup';
+import PrimeBtn from '../../Buttons/PrimeBtn';
 import CustomDatePicker from '../../TaskCard/CustomDatePicker/CustomDatePicker';
 
 const AddCard = ({ columnId, closeModal }) => {
 	const dispatch = useDispatch();
 
 	const theme = useSelector(selectTheme);
+	const schema = yup.object().shape({
+		title: yup.string().min(2, 'Too Short!').required('Title is required'),
+		description: yup
+			.string()
+			.min(2, 'Too Short!')
+			.required('Description is required'),
+	});
 
 	const {
 		register,
@@ -19,8 +28,9 @@ const AddCard = ({ columnId, closeModal }) => {
 		reset,
 		control,
 		formState: { errors },
-		setValue,
-	} = useForm({ mode: 'onBlur', defaultValues: { deadline: null } });
+	} = useForm({
+		resolver: yupResolver(schema),
+	});
 
 	const onSubmit = data => {
 		const formData = { ...data, columnId };
@@ -29,16 +39,12 @@ const AddCard = ({ columnId, closeModal }) => {
 		closeModal();
 	};
 
-	const handleRadioClick = value => {
-		setValue('priority', value);
-	};
-
 	return (
 		<div>
 			<form onSubmit={handleSubmit(onSubmit)} className={css.form}>
 				<div className={css.inputBox}>
 					<input
-						className={css.input}
+						className={clsx(css.input, css[theme])}
 						type="text"
 						name="title"
 						placeholder="Title"
@@ -48,60 +54,101 @@ const AddCard = ({ columnId, closeModal }) => {
 				</div>
 				<div className={css.textBox}>
 					<textarea
-						className={css.text}
+						className={clsx(css.textarea, css[theme])}
 						name="description"
 						placeholder="Description"
 						{...register('description')}
 					/>
 				</div>
 				<div className={css.radioBox}>
-					<h5 className={clsx(css.titleLabelColor, css[theme])}>Label color</h5>
-					<div className={css.radioGroup}>
-						<div className={css.radioOption}>
+					<h5 className={clsx(css.title, css[theme])}>Label color</h5>
+					<div className={css.priorityBox}>
+						<label>
 							<input
+								className={clsx(css.priorityBtn)}
 								type="radio"
-								id="without"
-								name="priority"
-								value="without"
-								checked
-								{...register('priority', { required: 'Priority is required' })}
-								onClick={() => handleRadioClick('without')}
-							/>
-						</div>
-						<div className={`${css.radioOption} ${css.low}`}>
-							<input
-								type="radio"
-								id="low"
 								name="priority"
 								value="low"
 								{...register('priority')}
-								onClick={() => handleRadioClick('low')}
 							/>
-						</div>
-						<div className={`${css.radioOption} ${css.medium}`}>
+
+							<div className={clsx(css.priorityCircle, css.active, css.low)}>
+								<div
+									className={clsx(
+										css.priorityCircleInside,
+										css.active,
+										css.low
+									)}
+								></div>
+							</div>
+						</label>
+
+						<label>
 							<input
+								className={clsx(css.priorityBtn)}
 								type="radio"
-								id="medium"
 								name="priority"
 								value="medium"
 								{...register('priority')}
-								onClick={() => handleRadioClick('medium')}
 							/>
-						</div>
-						<div className={`${css.radioOption} ${css.high}`}>
+
+							<div className={clsx(css.priorityCircle, css.active, css.medium)}>
+								<div
+									className={clsx(
+										css.priorityCircleInside,
+										css.active,
+										css.medium
+									)}
+								></div>
+							</div>
+						</label>
+
+						<label>
 							<input
+								className={clsx(css.priorityBtn)}
 								type="radio"
-								id="high"
 								name="priority"
 								value="high"
 								{...register('priority')}
-								onClick={() => handleRadioClick('high')}
 							/>
-						</div>
+
+							<div className={clsx(css.priorityCircle, css.active, css.high)}>
+								<div
+									className={clsx(
+										css.priorityCircleInside,
+										css.active,
+										css.high
+									)}
+								></div>
+							</div>
+						</label>
+
+						<label>
+							<input
+								className={clsx(css.priorityBtn)}
+								type="radio"
+								name="priority"
+								value="without"
+								{...register('priority')}
+							/>
+
+							<div
+								className={clsx(css.priorityCircle, css.without, css[theme])}
+							>
+								<div
+									className={clsx(
+										css.priorityCircleInside,
+										css.active,
+										css.without,
+										css[theme]
+									)}
+								></div>
+							</div>
+						</label>
 					</div>
 				</div>
 				<div className={css.deadlineBox}>
-					<h5 className={clsx(css.titleLabelColor, css[theme])}>Deadline</h5>
+					<h5 className={clsx(css.title, css[theme])}>Deadline</h5>
 					<Controller
 						name="deadline"
 						control={control}
@@ -110,9 +157,10 @@ const AddCard = ({ columnId, closeModal }) => {
 						)}
 					/>
 				</div>
-				<PrimeBtn className={css.btn}>
-					<div className={css.iconWrapper}>
-						<svg className={css.icon}>
+
+				<PrimeBtn>
+					<div className={clsx(css.iconWrapper, css[theme])}>
+						<svg className={clsx(css.icon, css[theme])}>
 							<use href={`${sprite}#icon-plus`}></use>
 						</svg>
 					</div>

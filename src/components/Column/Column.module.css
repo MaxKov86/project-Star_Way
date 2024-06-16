@@ -1,22 +1,56 @@
-.icon {
-	width: 14px;
-	height: 14px;
-	stroke: var(--secondary-color-white-background);
+.btn {
+	display: flex;
+	padding: 14px 78px;
+	justify-content: center;
+	align-items: center;
+	border-radius: 8px;
+	background: #bedbb0;
+	border: none;
+	height: 56px;
+	width: 335px;
+	flex-shrink: 0;
 }
 
-.iconWrapper {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+.violet .btn {
+	background: #5255bc;
+}
+
+.icon {
 	width: 28px;
 	height: 28px;
-	background-color: #161616;
 	margin-right: 8px;
-	border-radius: 6px;
+	padding: 7px;
+	stroke: #ffffff;
+	background-color: #161616;
+	border-radius: 8px;
 }
 
-.btn {
-	flex-shrink: 0;
+.violet .icon {
+	stroke: #161616;
+	background-color: #fff;
+}
+
+.light .icon {
+	stroke: #fff;
+	background-color: #161616;
+}
+
+.textAddCard {
+	color: #161616;
+	font-family: Poppins;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	letter-spacing: -0.28px;
+}
+
+.violet .textAddCard {
+	color: #ffffff;
+}
+
+.light .textAddCard {
+	color: #161616;
 }
 
 /* desktop */

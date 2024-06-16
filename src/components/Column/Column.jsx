@@ -1,7 +1,6 @@
 import TaskCard from '../TaskCard/TaskCard';
 import css from './Column.module.css';
 import sprite from '../../assets/icons.svg';
-import PrimeBtn from '../Buttons/PrimeBtn';
 import AddCard from './AddCard/AddCard';
 import { useSelector } from 'react-redux';
 import { selectFilteredCards } from '../../redux/cards/selectors'; 
@@ -10,6 +9,7 @@ import OurModal from '../Modal/Modal';
 import clsx from 'clsx';
 import { selectTheme } from '../../redux/theme/selectors';
 import ColumnHead from './ColumnHead/ColumnHead';
+import PrimeBtn from '../Buttons/PrimeBtn';
 
 const Column = ({ id, title }) => {
 	const [modalIsOpen, setIsOpen] = useState(false);
@@ -42,14 +42,15 @@ const Column = ({ id, title }) => {
 			)}
 
 			{/* add another card button*/}
-			<PrimeBtn onBtnClick={openModal} className={css.btn}>
-				<div className={css.iconWrapper}>
-					<svg className={css.icon}>
+			<PrimeBtn onBtnClick={openModal}>
+				<div className={clsx(css.iconWrapper, css[theme])}>
+					<svg className={clsx(css.icon, css[theme])}>
 						<use href={`${sprite}#icon-plus`}></use>
 					</svg>
 				</div>
 				Add another card
 			</PrimeBtn>
+
 			{modalIsOpen && (
 				<OurModal isOpen={modalIsOpen} closeModal={closeModal} title="Add card">
 					<AddCard columnId={id} closeModal={closeModal} />

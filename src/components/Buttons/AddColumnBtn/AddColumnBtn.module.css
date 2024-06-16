@@ -60,3 +60,11 @@
 .light .textAddColumnBtn {
 	color: #161616;
 }
+
+@media screen and (max-width: 374px) {
+	.addColumnBtn {
+		padding: 14px 50px 14px 50px;
+		height: 56px;
+		width: 300px;
+	}
+}
