@@ -8,6 +8,9 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { updateBoard } from '../../../../redux/boards/operations';
 import { selectBoards } from '../../../../redux/boards/selectors';
+import loadingToaster from '../../../../helpers/loadingToast';
+import successToaster from '../../../../helpers/successToast';
+import errorToaster from '../../../../helpers/errorToast';
 
 // validation
 
@@ -27,6 +30,7 @@ export default function UpdateBoard({ id, handleClose }) {
 	const boards = useSelector(selectBoards);
 	const board = boards.find(item => item._id === id);
 	const { title, background, icon } = board;
+
 
 	// array for icons and backgrounds
 	const numbers = (num, start) => {
@@ -55,8 +59,15 @@ export default function UpdateBoard({ id, handleClose }) {
 		let { background } = data;
 		if (background === '') background = null;
 
-		dispatch(updateBoard({ ...data, background, id }));
-		handleClose();
+		const toastId = loadingToaster(theme);
+		try {
+			await dispatch(updateBoard({ ...data, background, id }));
+
+			successToaster(theme, toastId);
+			handleClose();
+		} catch (err) {
+			errorToaster(theme, toastId);
+		}
 	};
 
 	return (
