@@ -15,7 +15,10 @@
 
 @font-face {
 	font-family: 'Poppins';
-	src: url('../src/fonts/Poppins/Poppins-Regular.ttf') format('truetype');
+	font-style: normal;
+	font-weight: normal;
+	src: local('Poppins Regular'),
+		url('../src/fonts/poppins-webfont/Poppins-Regular.woff') format('woff');
 }
 
 body {
