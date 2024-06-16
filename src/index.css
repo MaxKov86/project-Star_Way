@@ -17,7 +17,7 @@
 	font-family: 'Poppins';
 	font-style: normal;
 	font-weight: normal;
-	src: local('Poppins Regular'),
+	src: local('Poppins'),
 		url('../src/fonts/poppins-webfont/Poppins-Regular.woff') format('woff');
 }
 

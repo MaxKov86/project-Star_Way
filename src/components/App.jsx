@@ -1,12 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
-// import WelcomePage from '../pages/WelcomePage/WelcomePage';
-// import AuthPage from '../pages/AuthPage/AuthPage';
-// import HomePage from '../pages/HomePage/HomePage';
 import './App.module.css';
 import { Toaster } from 'react-hot-toast';
-// import Layout from './Layout/Layout';
-// import ScreenPage from '../pages/ScreensPage/ScreenPage';
-// import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from '../redux/auth/operations';

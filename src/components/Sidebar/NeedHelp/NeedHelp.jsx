@@ -24,7 +24,8 @@ const NeedHelp = () => {
 			<p className={clsx(css.helpText, css[theme])}>
 				If you need help with <br />
 				<span className={clsx(css.taskProSpan, css[theme])}> TaskPro</span>,
-				check out our support resources or contact our customer support team
+				check out our support resources or reach out to our customer support
+				team
 			</p>
 
 			<button className={clsx(css.helpBtn, css[theme])} onClick={openModal}>
@@ -59,11 +60,15 @@ const NeedHelp = () => {
 				Need help?
 			</button>
 
-			{modalIsOpen &&
-				<OurModal isOpen={modalIsOpen} closeModal={closeModal} title="Need help">
+			{modalIsOpen && (
+				<OurModal
+					isOpen={modalIsOpen}
+					closeModal={closeModal}
+					title="Need help"
+				>
 					<ModalWindowHelp onClose={closeModal} />
 				</OurModal>
-			}
+			)}
 		</div>
 	);
 };
