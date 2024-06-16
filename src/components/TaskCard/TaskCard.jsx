@@ -7,6 +7,9 @@ import clsx from 'clsx';
 import css from './TaskCard.module.css';
 import OurModal from '../Modal/Modal';
 import { deleteCard } from '../../redux/cards/operations';
+import loadingToaster from '../../helpers/loadingToast';
+import successToaster from '../../helpers/successToast';
+import errorToaster from '../../helpers/errorToast';
 import ColumnSelector from './moveModal/ColumnSelector';
 
 export default function TaskCard({
@@ -42,7 +45,14 @@ export default function TaskCard({
 	const modalRef = useRef(null);
 
 	const handleDelete = async () => {
-		dispatch(deleteCard(id));
+		const toastId = loadingToaster(theme);
+
+		try {
+			await dispatch(deleteCard(id));
+			successToaster(theme, toastId);
+		} catch (err) {
+			errorToaster(theme, toastId);
+		}
 	};
 
 	return (

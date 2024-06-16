@@ -9,6 +9,9 @@ import UpdateBoard from './UpdateModal/UpdateBoard';
 import { useState } from 'react';
 import OurModal from '../../Modal/Modal';
 import { selectBoards } from '../../../redux/boards/selectors';
+import loadingToaster from '../../../helpers/loadingToast';
+import successToaster from '../../../helpers/successToast';
+import errorToaster from '../../../helpers/errorToast';
 
 export default function SidebarBoard({ title, icon, id, isActive }) {
 	const theme = useSelector(selectTheme);
@@ -32,8 +35,14 @@ export default function SidebarBoard({ title, icon, id, isActive }) {
 
 	// delete function
 
-	const handleDelete = () => {
-		dispatch(deleteBoard(id));
+	const handleDelete = async () => {
+		const toastId = loadingToaster(theme);
+		try {
+			await dispatch(deleteBoard(id));
+			successToaster(theme, toastId);
+		} catch (err) {
+			errorToaster(theme, toastId);
+		}
 
 		if (boards.length !== 0 && boards.length !== 1) {
 			if (index === 0) {
