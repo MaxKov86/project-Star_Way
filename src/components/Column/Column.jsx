@@ -9,6 +9,7 @@ import OurModal from '../Modal/Modal';
 import clsx from 'clsx';
 import { selectTheme } from '../../redux/theme/selectors';
 import ColumnHead from './ColumnHead/ColumnHead';
+import PrimeBtn from '../Buttons/PrimeBtn';
 
 const Column = ({ id, title }) => {
 	const [modalIsOpen, setIsOpen] = useState(false);
@@ -41,18 +42,14 @@ const Column = ({ id, title }) => {
 			)}
 
 			{/* add another card button*/}
-			<button
-				onClick={openModal}
-				className={clsx(css.btn, css[theme])}
-				type="button"
-			>
-				<svg className={clsx(css.icon, css[theme])}>
-					<use href={`${sprite}#icon-plus`}></use>
-				</svg>
-				<span className={clsx(css.textAddCard, css[theme])}>
-					Add another card
-				</span>
-			</button>
+			<PrimeBtn onBtnClick={openModal}>
+				<div className={clsx(css.iconWrapper, css[theme])}>
+					<svg className={clsx(css.icon, css[theme])}>
+						<use href={`${sprite}#icon-plus`}></use>
+					</svg>
+				</div>
+				Add another card
+			</PrimeBtn>
 
 			{modalIsOpen && (
 				<OurModal isOpen={modalIsOpen} closeModal={closeModal} title="Add card">

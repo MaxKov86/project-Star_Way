@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { selectTheme } from '../../../redux/theme/selectors';
 import * as yup from 'yup';
+import PrimeBtn from '../../Buttons/PrimeBtn';
 
 const AddCard = ({ columnId, closeModal }) => {
 	const dispatch = useDispatch();
@@ -156,12 +157,14 @@ const AddCard = ({ columnId, closeModal }) => {
 					)}
 				</div>
 
-				<button className={clsx(css.btn, css[theme])} type="submit">
-					<svg className={clsx(css.icon, css[theme])}>
-						<use href={`${sprite}#icon-plus`}></use>
-					</svg>
-					<span className={clsx(css.textAdd, css[theme])}>Add</span>
-				</button>
+				<PrimeBtn>
+					<div className={clsx(css.iconWrapper, css[theme])}>
+						<svg className={clsx(css.icon, css[theme])}>
+							<use href={`${sprite}#icon-plus`}></use>
+						</svg>
+					</div>
+					Add
+				</PrimeBtn>
 			</form>
 		</div>
 	);
