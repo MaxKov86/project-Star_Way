@@ -57,11 +57,11 @@ const AddCard = ({ columnId, closeModal }) => {
 						<div className={css.radioOption}>
 							<input
 								type="radio"
-								id="withoutPriority"
+								id="without"
 								name="priority"
-								value="withoutPriority"
+								value="without"
 								{...register('priority', { required: 'Priority is required' })}
-								onClick={() => handleRadioClick('withoutPriority')}
+								onClick={() => handleRadioClick('without')}
 							/>
 						</div>
 						<div className={`${css.radioOption} ${css.low}`}>
