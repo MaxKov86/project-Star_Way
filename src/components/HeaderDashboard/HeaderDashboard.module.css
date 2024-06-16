@@ -3,14 +3,13 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 20px 14px;
 	margin-bottom: 20px;
+	padding: 14px 20px 39px 20px;
 }
 
 .empty.headerDashboardContainer {
 	justify-content: flex-end;
 }
-
 
 .titleHeaderDashboard {
 	font-size: 14px;
@@ -41,7 +40,7 @@
 
 @media screen and (min-width: 768px) {
 	.headerDashboardContainer {
-		padding: 20px 32px;
+		padding: 26px 32px 26px 32px;
 	}
 
 	.titleHeaderDashboard {
@@ -51,7 +50,7 @@
 
 @media screen and (min-width: 1440px) {
 	.headerDashboardContainer {
-		padding: 20px 10px;
+		padding: 10px 24px 10px 24px;
 		margin-bottom: 0;
 	}
 }

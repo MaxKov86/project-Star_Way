@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-// import { clearFilter, setFilter } from '../../redux/filter/slice.js';
+import { clearFilter, setFilter } from '../../redux/filter/slice.js';
 import clsx from 'clsx';
 
 import { selectTheme } from '../../redux/theme/selectors';
@@ -19,15 +19,15 @@ const HeaderDashboard = () => {
 	const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
 
 	const theme = useSelector(selectTheme);
-	// const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-	// const handleFilterChange = filter => {
-	// 	if (filter === null) {
-	// 		dispatch(clearFilter());
-	// 	} else {
-	// 		dispatch(setFilter(filter));
-	// 	}
-	// };
+	const handleFilterChange = filter => {
+		if (filter === null) {
+			dispatch(clearFilter());
+		} else {
+			dispatch(setFilter(filter));
+		}
+	};
 
 	return (
 		<div
@@ -37,18 +37,18 @@ const HeaderDashboard = () => {
 				!boardName && css.empty
 			)}
 		>
+			
 			{board && !isLoading && (
+				<>
 				<h2 className={clsx(css.titleHeaderDashboard, css[theme])}>
 					{board.title}
 				</h2>
-			)}
-
-			{isFilterModalOpen && (
 				<DashboardFilter
-					isFilterModalOpen={isFilterModalOpen}
-					toggleFilterModal={() => setIsFilterModalOpen(!isFilterModalOpen)}
-					// onFilterChange={handleFilterChange}
-				/>
+				isFilterModalOpen={isFilterModalOpen}
+				toggleFilterModal={() => setIsFilterModalOpen(!isFilterModalOpen)}
+				onFilterChange={handleFilterChange}
+			/>
+			</>
 			)}
 		</div>
 	);

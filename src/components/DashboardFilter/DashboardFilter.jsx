@@ -66,14 +66,14 @@ const DashboardFilter = ({
 									<div className={css.radioOption}>
 										<input
 											type="radio"
-											id="withoutPriority"
+											id="without"
 											name="priority"
-											value="withoutPriority"
+											value="without"
 											onClick={handleRadioClick}
 										/>
 										<label
 											className={clsx(css.labelModalFilter, css[theme])}
-											htmlFor="withoutPriority"
+											htmlFor="without"
 										>
 											Without priority
 										</label>
