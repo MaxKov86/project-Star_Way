@@ -115,6 +115,10 @@
 	stroke: #161616;
 }
 
+.errorText {
+	color: red;
+}
+
 /* _________LIGHT_________ */
 
 .light .modal {
