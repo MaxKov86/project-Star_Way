@@ -1,0 +1,86 @@
+.themeModal {
+	position: absolute;
+	z-index: 10000;
+	display: block;
+	right: 5px;
+	top: 10px;
+}
+
+.list {
+	max-width: 150px;
+	max-height: 107px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	font-family: 'Poppins', sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	align-items: flex-start;
+	border: 1px solid #bedbb0;
+	border-radius: 8px;
+	box-shadow: 0 4px 16px rgba(17, 17, 17, 0.1);
+	display: inline-flex;
+	flex-direction: column;
+	gap: 4px;
+	list-style: none;
+	padding: 0;
+	padding-right: 44px;
+	line-height: 1.7;
+	background: rgb(21, 21, 21, 1);
+	margin: 0;
+	z-index: 999;
+}
+.list.light {
+	background: rgba(252, 252, 252, 1);
+	/* color: var(--secondary-color-text); */
+}
+.list.violet {
+	background: rgba(252, 252, 252, 1);
+	/* border: 1px solid #bedbb0; */
+	border: 1px solid #ecedfd;
+}
+
+.btn {
+	cursor: pointer;
+	background-color: transparent;
+	border: none;
+	color: var(--primary-color-text-white);
+}
+
+.btn.light,
+.btn.violet {
+	color: var(--primary-color-text);
+}
+
+.btn.light:hover {
+	color: var(--color-green-background);
+}
+
+.icon {
+	width: 16px;
+	height: 16px;
+
+	transition: stroke 250ms ease-in;
+
+	stroke: var(--color-icons-board);
+	fill: none;
+}
+
+.btn:hover .icon {
+	stroke: var(--primary-color-text-black);
+}
+
+.icon_dark {
+	stroke: var(--color-icons);
+}
+
+.btn:hover .icon_dark {
+	stroke: var(--primary-color-text-white);
+}
+
+.transition {
+	transition-property: all;
+	transition-duration: 0.2s;
+	transition-timing-function: ease;
+	transition-delay: 0s;
+}

@@ -1,14 +1,13 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectTheme } from '../../redux/theme/selectors';
 import sprite from '../../assets/icons.svg';
-// import { MoveModal } from './moveModal/moveModal';
 import EditCard from './EditCard/EditCard';
 import clsx from 'clsx';
 import css from './TaskCard.module.css';
-// import PropTypes from 'prop-types';
 import OurModal from '../Modal/Modal';
-import { deleteCard, getAllCards } from '../../redux/cards/operations';
+import { deleteCard } from '../../redux/cards/operations';
+import ColumnSelector from './moveModal/ColumnSelector';
 
 export default function TaskCard({
 	title,
@@ -16,31 +15,32 @@ export default function TaskCard({
 	id,
 	priority,
 	deadline,
+	columnId,
+	isMoveModalOpen,
+	setMoveModalOpen,
 }) {
 	const dispatch = useDispatch();
 	const theme = useSelector(selectTheme);
 	const card = { id, title, description, priority, deadline };
 	const oneDay = 24 * 60 * 60 * 1000;
 
-	// deadline
 	const renderedDeadline = deadline
 		? new Date(deadline).toLocaleDateString().split('.').join('/')
 		: 'No deadline';
 
 	const ring = new Date(deadline) - new Date();
 
-	//для відкриття модального вікна
 	const [editIsOpen, setEditIsOpen] = useState(false);
+	const openEditModal = () => setEditIsOpen(true);
+	const closeEditModal = () => setEditIsOpen(false);
 
-	const openEditModal = () => {
-		setEditIsOpen(true);
+	// Function to toggle the modal open/close
+	const handleMoveCardModal = () => {
+		setMoveModalOpen(prevState => (prevState === id ? null : id));
 	};
 
-	const closeEditModal = () => {
-		setEditIsOpen(false);
-	};
+	const modalRef = useRef(null);
 
-	// delete
 	const handleDelete = async () => {
 		dispatch(deleteCard(id));
 	};
@@ -93,7 +93,12 @@ export default function TaskCard({
 						</div>
 					)}
 
-					<button className={css.btn} type="button">
+					<button
+						className={css.btn}
+						onClick={handleMoveCardModal}
+						type="button"
+						data-toggle-id={id}
+					>
 						<svg className={clsx(css.icon, css[`icon_${theme}`])}>
 							<use href={`${sprite}#icon-arrow-circle-broken-right`} />
 						</svg>
@@ -116,11 +121,15 @@ export default function TaskCard({
 				</div>
 			</div>
 
-			{/* <MoveModal
-				show={isMoveModalOpen}
-				handleClose={handleMoveModalClose}
-				handleMove={newColumnId => moveCard(id, newColumnId)}
-			/> */}
+			{isMoveModalOpen === id && (
+				<div style={{ position: 'relative' }} ref={modalRef} data-modal-id={id}>
+					<ColumnSelector
+						cardId={card.id}
+						columnId={columnId}
+						handleClose={() => setMoveModalOpen(null)}
+					/>
+				</div>
+			)}
 
 			{editIsOpen && (
 				<OurModal
@@ -134,9 +143,3 @@ export default function TaskCard({
 		</div>
 	);
 }
-
-// TaskCard.propTypes = {
-// 	title: PropTypes.string.isRequired,
-// 	description: PropTypes.string,
-// 	id: PropTypes.string.isRequired,
-// };

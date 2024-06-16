@@ -4,9 +4,6 @@
 
 	width: 334px;
 	height: 154px;
-
-	overflow: hidden;
-
 	padding-top: 14px;
 	padding-bottom: 14px;
 	padding-right: 20px;
@@ -138,7 +135,6 @@
 	gap: 14px;
 }
 
-
 /* priorityTitle */
 
 .bottomTitle {
@@ -242,6 +238,7 @@
 /* iconBox */
 
 .iconBox {
+	position: relative;
 	display: flex;
 	gap: 8px;
 }
