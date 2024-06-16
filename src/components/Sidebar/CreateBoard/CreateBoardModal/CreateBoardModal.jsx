@@ -8,6 +8,9 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { createBoard } from '../../../../redux/boards/operations';
 import { useNavigate } from 'react-router-dom';
+import loadingToaster from '../../../../helpers/loadingToast';
+import successToaster from '../../../../helpers/successToast';
+import errorToaster from '../../../../helpers/errorToast';
 
 // validation
 
@@ -52,12 +55,20 @@ export default function CreateBoardModal({ handelClose }) {
 		let { background } = data;
 		if (background === '') background = null;
 
-		const newBoard = await dispatch(
-			createBoard({ ...data, background })
-		).unwrap();
+		const toastId = loadingToaster(theme);
+		try {
+			const newBoard = await dispatch(
+				createBoard({ ...data, background })
+			).unwrap();
 
-		nav(`/home/${newBoard._id}`);
-		handelClose();
+			successToaster(theme, toastId);
+
+			nav(`/home/${newBoard._id}`);
+			handelClose();
+
+		} catch (err) {
+			errorToaster(theme, toastId)
+		}
 	};
 
 	return (

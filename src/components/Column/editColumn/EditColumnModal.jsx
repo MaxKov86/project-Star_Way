@@ -7,6 +7,9 @@ import css from './EditColumnModal.module.css';
 import staticIcons from '../../../assets/icons.svg';
 import { selectTheme } from '../../../redux/theme/selectors';
 import { updateColumn } from '../../../redux/columns/operation';
+import loadingToaster from '../../../helpers/loadingToast';
+import successToaster from '../../../helpers/successToast';
+import errorToaster from '../../../helpers/errorToast';
 
 const schema = yup.object().shape({
 	title: yup.string().min(2, 'Too Short!').required('Title is required'),
@@ -25,10 +28,18 @@ const EditColumnModal = ({ handleOpenModal, handleCloseModal, columnId }) => {
 	const theme = useSelector(selectTheme);
 	const dispatch = useDispatch();
 
-	const onSubmit = data => {
-		dispatch(updateColumn({ columnId, ...data }));
-		reset();
-		handleCloseModal();
+	const onSubmit = async (data) => {
+		const toastId = loadingToaster(theme);
+
+		try {
+			await dispatch(updateColumn({ columnId, ...data }));
+
+			successToaster(theme, toastId);
+			reset();
+			handleCloseModal();
+		} catch (err) {
+			errorToaster(theme, toastId);
+		}
 	};
 
 	if (!handleOpenModal) return null;

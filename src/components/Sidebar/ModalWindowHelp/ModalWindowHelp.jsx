@@ -9,6 +9,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import { selectUser } from '../../../redux/auth/selectors';
 import { needHelp } from '../../../redux/users/operation';
+import loadingToaster from '../../../helpers/loadingToast';
+import successToaster from '../../../helpers/successToast';
+import errorToaster from '../../../helpers/errorToast';
 
 // validation
 const schema = yup.object().shape({
@@ -40,10 +43,18 @@ export default function ModalWindowHelp({ onClose }) {
 		reValidateMode: 'onChange',
 	});
 
-	const onSubmit = data => {
-		dispatch(needHelp(data));
-		onClose();
-		reset();
+	const onSubmit = async (data) => {
+		const toastId = loadingToaster(theme);
+
+		try {
+			await dispatch(needHelp(data));
+			successToaster(theme, toastId);
+			onClose();
+			reset();
+
+		} catch (err) {
+			errorToaster(theme, toastId);
+		}
 	};
 
 	return (
@@ -59,8 +70,8 @@ export default function ModalWindowHelp({ onClose }) {
 					name="email"
 					placeholder="Email address "
 					id="email"
-					// value={email}
-					// onChange={e => setEmail(e.target.value)}
+				// value={email}
+				// onChange={e => setEmail(e.target.value)}
 				/>
 			</div>
 			<div className={css.inputBox}>

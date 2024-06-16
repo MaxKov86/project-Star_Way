@@ -7,6 +7,9 @@ import { useForm, Controller } from 'react-hook-form';
 import clsx from 'clsx';
 import { selectTheme } from '../../../redux/theme/selectors';
 import CustomDatepicker from '../CustomDatePicker/CustomDatePicker';
+import loadingToaster from '../../../helpers/loadingToast';
+import successToaster from '../../../helpers/successToast';
+import errorToaster from '../../../helpers/errorToast';
 
 const EditCard = ({ card, closeModal }) => {
 	const dispatch = useDispatch();
@@ -30,12 +33,14 @@ const EditCard = ({ card, closeModal }) => {
 	const onSubmit = async data => {
 		const formData = { ...data, id: card.id };
 
+		const toastId = loadingToaster(theme);
 		try {
-			dispatch(updateCard(formData));
+			await dispatch(updateCard(formData));
+			successToaster(theme, toastId);
 			reset();
 			closeModal();
 		} catch (error) {
-			console.error('Error in API call:', error);
+			errorToaster(theme, toastId);
 		}
 	};
 

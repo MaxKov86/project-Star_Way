@@ -8,7 +8,10 @@ import clsx from 'clsx';
 import css from './TaskCard.module.css';
 // import PropTypes from 'prop-types';
 import OurModal from '../Modal/Modal';
-import { deleteCard, getAllCards } from '../../redux/cards/operations';
+import { deleteCard } from '../../redux/cards/operations';
+import loadingToaster from '../../helpers/loadingToast';
+import successToaster from '../../helpers/successToast';
+import errorToaster from '../../helpers/errorToast';
 
 export default function TaskCard({
 	title,
@@ -42,7 +45,15 @@ export default function TaskCard({
 
 	// delete
 	const handleDelete = async () => {
-		dispatch(deleteCard(id));
+		const toastId = loadingToaster(theme);
+
+		try {
+			await dispatch(deleteCard(id));
+			successToaster(theme, toastId)
+		} catch (err) {
+			errorToaster(theme, toastId)
+
+		}
 	};
 
 	return (

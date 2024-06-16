@@ -6,6 +6,9 @@ import sprite from '../../../assets/icons.svg';
 import { deleteColumn, updateColumn } from '../../../redux/columns/operation';
 import EditColumnModal from '../editColumn/EditColumnModal';
 import { useState } from 'react';
+import loadingToaster from '../../../helpers/loadingToast';
+import successToaster from '../../../helpers/successToast';
+import errorToaster from '../../../helpers/errorToast';
 
 const ColumnHead = ({ title, id }) => {
 	const theme = useSelector(selectTheme);
@@ -16,8 +19,15 @@ const ColumnHead = ({ title, id }) => {
 		setShowModal(!showModal);
 	};
 
-	const handleDelete = () => {
-		dispatch(deleteColumn(id));
+	const handleDelete = async () => {
+		const toastId = loadingToaster(theme);
+
+		try {
+			await dispatch(deleteColumn(id));
+			successToaster(theme, toastId)
+		} catch (err) {
+			errorToaster(theme, toastId);
+		}
 	};
 
 	const handleUpdate = () => {
