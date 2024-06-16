@@ -30,6 +30,7 @@ const AddCard = ({ columnId, closeModal }) => {
 		formState: { errors },
 	} = useForm({
 		resolver: yupResolver(schema),
+		defaultValues: { deadline: null, priority: 'without' },
 	});
 
 	const onSubmit = data => {
