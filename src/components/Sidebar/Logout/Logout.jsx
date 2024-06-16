@@ -3,9 +3,10 @@ import css from "./Logout.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTheme } from "../../../redux/theme/selectors";
 import { logOut } from "../../../redux/auth/operations";
-import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import loadingToaster from "../../../helpers/loadingToast";
+import successToaster from "../../../helpers/successToast";
+import errorToaster from "../../../helpers/errorToast";
 
 
 export default function Logout() {
@@ -15,13 +16,13 @@ export default function Logout() {
     const nav = useNavigate()
 
     const click = async () => {
-        let toastId = toast.loading("Wait, please");
+        let toastId = loadingToaster(theme);
         try {
             await dispatch(logOut()).unwrap();
-            loadingToaster(theme)
+            successToaster(theme, toastId);
             nav("/");
         } catch (err) {
-            toast.error("Sorry, something went wrong. Please, try again!")
+            errorToaster(theme, toastId);
         }
     }
 
