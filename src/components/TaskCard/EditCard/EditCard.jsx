@@ -2,9 +2,8 @@ import css from './EditCard.module.css';
 import sprite from '../../../assets/icons.svg';
 import PrimeBtn from '../../Buttons/PrimeBtn';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllCards, updateCard } from '../../../redux/cards/operations';
-import { useForm } from 'react-hook-form';
-// import PropTypes from 'prop-types';
+import { updateCard } from '../../../redux/cards/operations';
+import { useForm, Controller } from 'react-hook-form';
 import clsx from 'clsx';
 import { selectTheme } from '../../../redux/theme/selectors';
 import CustomDatepicker from '../CustomDatePicker/CustomDatePicker';
@@ -12,19 +11,19 @@ import CustomDatepicker from '../CustomDatePicker/CustomDatePicker';
 const EditCard = ({ card, closeModal }) => {
 	const dispatch = useDispatch();
 	const theme = useSelector(selectTheme);
-	const deadline = card.deadline.split('T')[0];
 
 	const {
 		register,
 		handleSubmit,
 		reset,
+		control,
 		formState: { errors },
 	} = useForm({
 		defaultValues: {
 			title: card.title,
 			description: card.description,
 			priority: card.priority,
-			deadline: deadline,
+			deadline: card.deadline ? card.deadline.split('T')[0] : null,
 		},
 	});
 
@@ -135,16 +134,13 @@ const EditCard = ({ card, closeModal }) => {
 			<div className={css.deadlineBox}>
 				<p className={clsx(css.title, css[theme])}>Deadline</p>
 
-				{/* <input
-					type="date"
+				<Controller
 					name="deadline"
-					{...register('deadline', { required: 'Deadline is required' })}
-					min={new Date().toISOString().split('T')[0]}
+					control={control}
+					render={({ field }) => (
+						<CustomDatepicker value={field.value} onChange={field.onChange} />
+					)}
 				/>
-				{errors.deadline && (
-					<p className={css.error}>{errors.deadline.message}</p>
-				)} */}
-				<CustomDatepicker />
 			</div>
 
 			<PrimeBtn>
@@ -158,16 +154,5 @@ const EditCard = ({ card, closeModal }) => {
 		</form>
 	);
 };
-
-// EditCard.propTypes = {
-// 	card: PropTypes.shape({
-// 		id: PropTypes.string.isRequired,
-// 		title: PropTypes.string.isRequired,
-// 		description: PropTypes.string,
-// 		priority: PropTypes.oneOf(['low', 'medium', 'high']).isRequired,
-// 		deadline: PropTypes.string.isRequired,
-// 	}).isRequired,
-// 	closeModal: PropTypes.func.isRequired,
-// };
 
 export default EditCard;

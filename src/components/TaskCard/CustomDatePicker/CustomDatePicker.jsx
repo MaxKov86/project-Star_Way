@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from 'react';
+import React, { forwardRef } from 'react';
 import { useSelector } from 'react-redux';
 import { format, isToday, isTomorrow } from 'date-fns';
 import DatePicker from 'react-datepicker';
@@ -8,9 +8,7 @@ import css from './CustomDatePicker.module.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import './custom-date-picker.css';
 
-const CustomDatePicker = () => {
-	// перенести стейт в модалку, передавать пропом
-	const [startDate, setStartDate] = useState(null);
+const CustomDatePicker = ({ value, onChange, name }) => {
 	const theme = useSelector(selectTheme);
 
 	const formatDate = date => {
@@ -40,11 +38,8 @@ const CustomDatePicker = () => {
 	return (
 		<div className={clsx('datepicker-wrapper', theme)}>
 			<DatePicker
-				selected={startDate}
-				onChange={date => {
-					console.log(date);
-					setStartDate(date);
-				}}
+				selected={value}
+				onChange={onChange}
 				customInput={<DateButton />}
 				popperPlacement="right-top"
 				isClearable
