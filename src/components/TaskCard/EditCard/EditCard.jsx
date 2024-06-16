@@ -23,7 +23,7 @@ const EditCard = ({ card, closeModal }) => {
 			title: card.title,
 			description: card.description,
 			priority: card.priority,
-			deadline: card.deadline ? card.deadline.split('T')[0] : null,
+			deadline: card.deadline ? card.deadline[0].split('T')[0] : null,
 		},
 	});
 
