@@ -26,7 +26,7 @@ const CustomDatePicker = () => {
 
 	const DateButton = forwardRef(({ value, onClick }, ref) => (
 		<button
-			className={css.dateButton}
+			className={clsx(css.dateButton, css[theme])}
 			onClick={e => {
 				e.preventDefault();
 				e.stopPropagation();
