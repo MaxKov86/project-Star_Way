@@ -61,7 +61,10 @@ const RegisterForm = () => {
 					className={`${css.formInput} ${errors.name ? css.error : ''}`}
 					placeholder="Enter your name"
 					type="text"
-					{...register('name', { onBlur: () => trigger('name') })}
+					{...register('name', {
+						onBlur: () => trigger('name'),
+						onChange: () => trigger('name'),
+					})}
 				/>
 				{errors.name && <p className={css.errors}>{errors.name.message}</p>}
 			</div>
@@ -70,7 +73,10 @@ const RegisterForm = () => {
 					className={`${css.formInput} ${errors.email ? css.error : ''}`}
 					type="text"
 					placeholder="Enter your email"
-					{...register('email', { onBlur: () => trigger('email') })}
+					{...register('email', {
+						onBlur: () => trigger('email'),
+						onChange: () => trigger('email'),
+					})}
 				/>
 				{errors.email && <p className={css.errors}>{errors.email.message}</p>}
 			</div>
@@ -78,7 +84,10 @@ const RegisterForm = () => {
 				<input
 					className={`${css.formInput} ${errors.password ? css.error : ''}`}
 					type={showPassword ? 'text' : 'password'}
-					{...register('password', { onBlur: () => trigger('password') })}
+					{...register('password', {
+						onBlur: () => trigger('password'),
+						onChange: () => trigger('password'),
+					})}
 					placeholder="Create a password"
 				/>
 				<svg

@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import css from './Header.module.css';
-import MenuIcon from '@mui/icons-material/Menu';
+// import MenuIcon from '@mui/icons-material/Menu';
 import UserInfo from './UserInfo/UserInfo';
 import ThemeSelector from './ThemeSelector/ThemeSelector';
-import svg from '../../assets/icons.svg';
+import icon from '../../assets/icons.svg';
 import clsx from 'clsx';
 import { useSelector } from 'react-redux';
 import { selectTheme } from '../../redux/theme/selectors';
@@ -23,14 +23,18 @@ const Header = ({ isOpen, toggle }) => {
 	return (
 		// <div className={css.header}>
 		<div className={clsx(css.header, css[theme])}>
-			<button
-				className={css.burgerBtn}
-				onClick={() => toggle(!isOpen)}
-				type="button"
-			>
-				<MenuIcon className={css.userIcon} />
-			</button>
-
+			{window.innerWidth < 1440 && (
+				<button
+					className={clsx(css.burgerBtn, css[theme])}
+					onClick={() => toggle(!isOpen)}
+					type="button"
+				>
+					{/* <MenuIcon className={clsx(css.burgerIcon, css[theme])} /> */}
+					<svg className={clsx(css.burgerIcon, css[theme])}>
+						<use xlinkHref={icon + '#icon-menu-01'}></use>
+					</svg>
+				</button>
+			)}
 			<div className={css.rightSection}>
 				<button
 					className={clsx(css.btnTheme, css[theme])}
@@ -38,7 +42,7 @@ const Header = ({ isOpen, toggle }) => {
 				>
 					Theme
 					<svg width="16" height="16" stroke="currentColor">
-						<use href={svg + '#icon-chevron-down'}></use>
+						<use xlinkHref={icon + '#icon-chevron-down'}></use>
 					</svg>
 				</button>
 				<UserInfo />

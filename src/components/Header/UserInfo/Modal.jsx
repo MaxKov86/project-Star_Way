@@ -20,6 +20,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { editUserInfo } from '../../../redux/users/operation';
 import { selectUser, selectToken } from '../../../redux/auth/selectors';
 import css from './Modal.module.css';
+import clsx from 'clsx';
+import icons from '/src/assets/icons.svg';
+import { selectTheme } from '../../../redux/theme/selectors';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -40,6 +43,7 @@ const ModalForm = ({ open, handleClose }) => {
 	const dispatch = useDispatch();
 	const token = useSelector(selectToken);
 	const user = useSelector(selectUser);
+	const theme = useSelector(selectTheme);
 	const [showPassword, setShowPassword] = useState(false);
 	const [userAvatar, setUserAvatar] = useState(user.avatarURL);
 
@@ -51,6 +55,7 @@ const ModalForm = ({ open, handleClose }) => {
 		handleSubmit,
 		control,
 		register,
+		trigger,
 		formState: { errors },
 	} = useForm({
 		resolver: yupResolver(schema),
@@ -111,57 +116,64 @@ const ModalForm = ({ open, handleClose }) => {
 
 	return (
 		<Modal open={open} onClose={handleClose}>
-			<Box className={css.modalBox}>
-				<div className={css.wrap}>
-					<IconButton
-						onClick={handleClose}
-						className={css.closeBtn}
-						style={{ color: 'white' }}
-					>
-						<CloseIcon />
+			<Box className={clsx(css.modalBox, css[theme])}>
+				<div className={clsx(css.wrap, css[theme])}>
+					<IconButton onClick={handleClose}>
+						<CloseIcon className={clsx(css.closeBtn, css[theme])} />
 					</IconButton>
 				</div>
-				<h2 className={css.text}>Edit profile</h2>
-				<form onSubmit={handleSubmit(onSubmit)} className={css.form}>
-					<div className={css.photoUpload}>
-						<Avatar
-							src={userAvatar || ''}
-							style={{
-								width: '68px',
-								height: '68px',
-								borderRadius: '4px',
-							}}
-						>
-							{!userAvatar && <UserIcon />}
-						</Avatar>
-						<IconButton component="label">
-							<input
-								type="file"
-								hidden
-								accept="image/*"
-								{...register('avatarURL')} // Реєстрація файлу в react-hook-form
-								onChange={handleAvatarChange}
-							/>
-							<AddIcon className={css.plusBtn} />
-						</IconButton>
+				<h2 className={clsx(css.title, css[theme])}>Edit profile</h2>
+				<form
+					onSubmit={handleSubmit(onSubmit)}
+					className={clsx(css.form, css[theme])}
+					noValidate
+				>
+					<div className={css.userBlock}>
+						<div className={clsx(css.photoUpload, css[theme])}>
+							<Avatar
+								style={{ width: '68px', height: '68px', borderRadius: '8px' }}
+								// className={clsx(css.userAvatar, css[theme])}
+								src={
+									userAvatar ||
+									`${icons}#${
+										theme === 'light' ? 'icon-user-light' : 'icon-user-violet'
+									}`
+								}
+							>
+								{!userAvatar && <UserIcon />}
+							</Avatar>
+							<IconButton component="label">
+								<input
+									type="file"
+									hidden
+									accept="image/*"
+									{...register('avatarURL')} // Реєстрація файлу в react-hook-form
+									onChange={handleAvatarChange}
+								/>
+								<AddIcon className={clsx(css.plusBtn, css[theme])} />
+							</IconButton>
+						</div>
 					</div>
-					<div className={css.form}>
+					<div className={clsx(css.form, css[theme])}>
 						<Controller
 							name="name"
 							control={control}
-							rules={{
-								minLength: { value: 4, message: 'Too Short' },
-								maxLength: { value: 64, message: 'Too Long' },
-							}}
 							render={({ field }) => (
 								<TextField
+									type="name"
+									{...register('name', {
+										onBlur: () => trigger('name'),
+										onChange: () => trigger('name'),
+									})}
 									{...field}
 									placeholder={user.name}
 									error={!!errors.name}
-									helperText={errors.name ? 'Invalid name' : ''}
+									// helperText={errors.name ? 'Invalid name' : ''}
+									helperText={errors.name?.message}
 									InputProps={{
 										className: css.formInput,
 										style: { color: 'white' },
+										// sx={themes }
 									}}
 								/>
 							)}
@@ -177,12 +189,18 @@ const ModalForm = ({ open, handleClose }) => {
 							}}
 							render={({ field }) => (
 								<TextField
+									type="email"
+									{...register('email', {
+										onBlur: () => trigger('email'),
+										onChange: () => trigger('email'),
+									})}
 									{...field}
 									placeholder={user.email}
 									error={!!errors.email}
-									helperText={errors.email ? 'Invalid email' : ''}
+									// helperText={errors.email ? 'Invalid email' : ''}
+									helperText={errors.email?.message}
 									InputProps={{
-										className: css.formInput,
+										// className: `${clsx(css.formInput, css[theme])}`,
 										style: { color: 'white' },
 									}}
 								/>
@@ -197,10 +215,15 @@ const ModalForm = ({ open, handleClose }) => {
 							}}
 							render={({ field }) => (
 								<TextField
+									{...register('password', {
+										onBlur: () => trigger('email'),
+										onChange: () => trigger('email'),
+									})}
 									{...field}
 									type={showPassword ? 'text' : 'password'}
 									error={!!errors.password}
-									helperText={errors.password ? 'Invalid password' : ''}
+									// helperText={errors.password ? 'Invalid password' : ''}
+									helperText={errors.password?.message}
 									InputProps={{
 										endAdornment: (
 											<InputAdornment position="end">
