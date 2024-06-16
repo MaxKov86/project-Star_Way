@@ -20,7 +20,6 @@
 	max-width: 233px;
 	border: 1px solid var(--color-green-background);
 	border-radius: 8px;
-	/* max-height: 254px; */
 }
 
 /* General date picker container */
@@ -33,7 +32,6 @@
 	line-height: 18px;
 	letter-spacing: -0.02em;
 	max-width: 214px;
-	/* max-height: 254px; */
 }
 
 /* Header styles */
@@ -56,11 +54,6 @@
 	padding-bottom: 12px;
 	margin: 0 19px 10px;
 	border-bottom: 1px solid #ffffff27;
-}
-
-.react-datepicker__day-names {
-	/* display: flex; */
-	/* justify-content: sspace-between; */
 }
 
 .react-datepicker__day-name {
@@ -162,7 +155,7 @@
 
 .violet .react-datepicker__day.react-datepicker__day--selected {
 	background-color: var(--primary-color-violet);
-	color: white;
+	color: var(--primary-color-text-white);
 }
 
 .violet .react-datepicker-popper {
