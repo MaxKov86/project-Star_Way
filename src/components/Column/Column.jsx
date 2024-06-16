@@ -4,7 +4,7 @@ import sprite from '../../assets/icons.svg';
 import PrimeBtn from '../Buttons/PrimeBtn';
 import AddCard from './AddCard/AddCard';
 import { useSelector } from 'react-redux';
-import { selectCards } from '../../redux/cards/selectors';
+import { selectFilteredCards } from '../../redux/cards/selectors'; 
 import { useState } from 'react';
 import OurModal from '../Modal/Modal';
 import clsx from 'clsx';
@@ -13,7 +13,7 @@ import ColumnHead from './ColumnHead/ColumnHead';
 
 const Column = ({ id, title }) => {
 	const [modalIsOpen, setIsOpen] = useState(false);
-	const tasks = useSelector(selectCards).filter(task => task.columnId === id);
+	const tasks = useSelector(selectFilteredCards).filter(task => task.columnId === id);
 
 	const openModal = () => setIsOpen(true);
 	const closeModal = () => setIsOpen(false);
