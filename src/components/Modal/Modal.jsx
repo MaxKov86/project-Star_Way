@@ -18,7 +18,7 @@ const OurModal = ({ children, isOpen, closeModal, title }) => {
 
 	const handleRequestClose = () => {
 		setShouldAnimate(false);
-		setTimeout(closeModal, 300); // Duration should match the animation duration
+		setTimeout(closeModal, 300);
 	};
 
 	return (

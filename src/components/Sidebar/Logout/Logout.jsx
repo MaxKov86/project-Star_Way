@@ -5,6 +5,7 @@ import { selectTheme } from "../../../redux/theme/selectors";
 import { logOut } from "../../../redux/auth/operations";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import loadingToaster from "../../../helpers/loadingToast";
 
 
 export default function Logout() {
@@ -14,9 +15,10 @@ export default function Logout() {
     const nav = useNavigate()
 
     const click = async () => {
+        let toastId = toast.loading("Wait, please");
         try {
             await dispatch(logOut()).unwrap();
-            toast.success("See you later!");
+            loadingToaster(theme)
             nav("/");
         } catch (err) {
             toast.error("Sorry, something went wrong. Please, try again!")
