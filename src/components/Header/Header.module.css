@@ -32,6 +32,19 @@
 	}
 }
 
+.burgerIcon {
+	width: 32px;
+	height: 32px;
+	fill: none;
+	stroke: rgba(255, 255, 255, 0.5);
+}
+.burgerIcon.light {
+	stroke: rgb(22, 22, 22, 0.8);
+}
+.burgerIcon.violet {
+	stroke: rgb(22, 22, 22, 0.8);
+}
+
 .userIcon {
 	width: 142px;
 	height: 42px;

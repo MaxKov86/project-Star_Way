@@ -34,7 +34,7 @@
 	font-size: 12px;
 	line-height: 133%;
 	letter-spacing: -0.02em;
-	color: #fff;
+	color: var(--primary-color-text-white);
 	margin-bottom: 18px;
 }
 
@@ -47,17 +47,17 @@
 }
 
 .helpText.light {
-	color: rgba(22, 22, 22, 1);
+	color: var(--primary-color-text);
 }
 .helpText.violet {
-	color: rgba(22, 22, 22, 1);
+	color: var(--primary-color-text);
 }
 
 .taskProSpan {
-	color: rgba(190, 219, 176, 1);
+	color: var(--color-green-secondary);
 }
 .taskProSpan.light {
-	color: rgba(190, 219, 176, 1);
+	color: var(--color-green-secondary);
 }
 .taskProSpan.violet {
 	color: rgba(82, 85, 188, 1);
@@ -71,13 +71,14 @@
 .iconHelpCircle {
 	width: 20px;
 	height: 20px;
-	stroke: rgba(255, 255, 255, 1);
+	stroke: var(--primary-color-text-white);
+	fill: none;
 }
 .iconHelpCircle.light {
-	stroke: rgba(22, 22, 22, 1);
+	stroke: rgb(22, 22, 22, 0.8);
 }
 .iconHelpCircle.violet {
-	stroke: rgba(255, 255, 255, 1);
+	stroke: var(--primary-color-text-white);
 }
 
 .helpBtn {
@@ -89,8 +90,15 @@
 	font-weight: 500;
 	font-size: 12px;
 	letter-spacing: -0.02em;
-	color: rgba(255, 255, 255, 1);
+	color: var(--primary-color-text-white);
 }
+.helpBtn.light {
+	color: var(--primary-color-text-black);
+}
+.helpBtn.violet {
+	color: var(--primary-color-text-white);
+}
+
 @media (min-width: 375px) {
 	.helpBlock {
 		max-width: 335px;
