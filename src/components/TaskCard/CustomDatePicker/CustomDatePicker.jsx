@@ -8,7 +8,7 @@ import css from './CustomDatePicker.module.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import './custom-date-picker.css';
 
-const CustomDatePicker = ({ value, onChange, name }) => {
+const CustomDatePicker = ({ value, onChange }) => {
 	const theme = useSelector(selectTheme);
 
 	const formatDate = date => {
