@@ -1,7 +1,6 @@
 import TaskCard from '../TaskCard/TaskCard';
 import css from './Column.module.css';
 import sprite from '../../assets/icons.svg';
-import PrimeBtn from '../Buttons/PrimeBtn';
 import AddCard from './AddCard/AddCard';
 import { useSelector } from 'react-redux';
 import { selectCards } from '../../redux/cards/selectors';
@@ -42,14 +41,19 @@ const Column = ({ id, title }) => {
 			)}
 
 			{/* add another card button*/}
-			<PrimeBtn onBtnClick={openModal} className={css.btn}>
-				<div className={css.iconWrapper}>
-					<svg className={css.icon}>
-						<use href={`${sprite}#icon-plus`}></use>
-					</svg>
-				</div>
-				Add another card
-			</PrimeBtn>
+			<button
+				onClick={openModal}
+				className={clsx(css.btn, css[theme])}
+				type="button"
+			>
+				<svg className={clsx(css.icon, css[theme])}>
+					<use href={`${sprite}#icon-plus`}></use>
+				</svg>
+				<span className={clsx(css.textAddCard, css[theme])}>
+					Add another card
+				</span>
+			</button>
+
 			{modalIsOpen && (
 				<OurModal isOpen={modalIsOpen} closeModal={closeModal} title="Add card">
 					<AddCard columnId={id} closeModal={closeModal} />

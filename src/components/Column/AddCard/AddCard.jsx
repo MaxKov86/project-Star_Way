@@ -1,16 +1,20 @@
 import css from './AddCard.module.css';
 import clsx from 'clsx';
 import sprite from '../../../assets/icons.svg';
-import PrimeBtn from '../../Buttons/PrimeBtn';
 import { useDispatch, useSelector } from 'react-redux';
 import { createCard } from '../../../redux/cards/operations';
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { selectTheme } from '../../../redux/theme/selectors';
+import * as yup from 'yup';
 
 const AddCard = ({ columnId, closeModal }) => {
 	const dispatch = useDispatch();
 
 	const theme = useSelector(selectTheme);
+	const schema = yup.object().shape({
+		title: yup.string().min(2, 'Too Short!').required('Title is required'),
+	});
 
 	const {
 		register,
@@ -18,7 +22,9 @@ const AddCard = ({ columnId, closeModal }) => {
 		reset,
 		formState: { errors },
 		setValue,
-	} = useForm({ mode: 'onBlur' });
+	} = useForm({
+		resolver: yupResolver(schema),
+	});
 
 	const onSubmit = data => {
 		dispatch(createCard({ ...data, columnId }));
@@ -53,28 +59,29 @@ const AddCard = ({ columnId, closeModal }) => {
 				</div>
 				<div className={css.radioBox}>
 					<h5 className={clsx(css.titleLabelColor, css[theme])}>Label color</h5>
-					<div className={css.radioGroup}>
-						<div className={css.radioOption}>
-							<input
-								type="radio"
-								id="without"
-								name="priority"
-								value="without"
-								{...register('priority', { required: 'Priority is required' })}
-								onClick={() => handleRadioClick('without')}
-							/>
-						</div>
-						<div className={`${css.radioOption} ${css.low}`}>
+					<div className={css.priorityBox}>
+						<label>
 							<input
 								type="radio"
 								id="low"
 								name="priority"
+								className={clsx(css.priorityBtn)}
 								value="low"
 								{...register('priority')}
 								onClick={() => handleRadioClick('low')}
 							/>
-						</div>
-						<div className={`${css.radioOption} ${css.medium}`}>
+							<div className={clsx(css.priorityCircle, css.active, css.low)}>
+								<div
+									className={clsx(
+										css.priorityCircleInside,
+										css.active,
+										css.low
+									)}
+								></div>
+							</div>
+						</label>
+
+						<label>
 							<input
 								type="radio"
 								id="medium"
@@ -83,8 +90,18 @@ const AddCard = ({ columnId, closeModal }) => {
 								{...register('priority')}
 								onClick={() => handleRadioClick('medium')}
 							/>
-						</div>
-						<div className={`${css.radioOption} ${css.high}`}>
+							<div className={clsx(css.priorityCircle, css.active, css.medium)}>
+								<div
+									className={clsx(
+										css.priorityCircleInside,
+										css.active,
+										css.medium
+									)}
+								></div>
+							</div>
+						</label>
+
+						<label>
 							<input
 								type="radio"
 								id="high"
@@ -93,7 +110,40 @@ const AddCard = ({ columnId, closeModal }) => {
 								{...register('priority')}
 								onClick={() => handleRadioClick('high')}
 							/>
-						</div>
+							<div className={clsx(css.priorityCircle, css.active, css.high)}>
+								<div
+									className={clsx(
+										css.priorityCircleInside,
+										css.active,
+										css.high
+									)}
+								></div>
+							</div>
+						</label>
+
+						<label>
+							<input
+								type="radio"
+								id="without"
+								name="priority"
+								className={clsx(css.priorityBtn)}
+								value="without"
+								{...register('priority', { required: 'Priority is required' })}
+								onClick={() => handleRadioClick('without')}
+							/>
+							<div
+								className={clsx(css.priorityCircle, css.without, css[theme])}
+							>
+								<div
+									className={clsx(
+										css.priorityCircleInside,
+										css.active,
+										css.without,
+										css[theme]
+									)}
+								></div>
+							</div>
+						</label>
 					</div>
 				</div>
 				<div className={css.deadlineBox}>
@@ -108,14 +158,13 @@ const AddCard = ({ columnId, closeModal }) => {
 						<p className={css.error}>{errors.deadline.message}</p>
 					)}
 				</div>
-				<PrimeBtn className={css.btn}>
-					<div className={css.iconWrapper}>
-						<svg className={css.icon}>
-							<use href={`${sprite}#icon-plus`}></use>
-						</svg>
-					</div>
-					Add
-				</PrimeBtn>
+
+				<button className={clsx(css.btn, css[theme])} type="submit">
+					<svg className={clsx(css.icon, css[theme])}>
+						<use href={`${sprite}#icon-plus`}></use>
+					</svg>
+					<span className={clsx(css.textAdd, css[theme])}>Add</span>
+				</button>
 			</form>
 		</div>
 	);

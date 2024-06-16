@@ -78,85 +78,104 @@
 	color: var(--primary-color-text-black);
 }
 
-/* radioGroup */
+/* priorityBox */
 .radioBox {
 	margin-bottom: 14px;
 }
 
-.radioGroup {
+.priorityBox {
 	display: flex;
-	flex-direction: row;
 	gap: 8px;
 }
 
-.radioOption input[type='radio']:focus,
-.radioOption input[type='radio']:hover {
-	color: #fff;
-}
+/* priorityBtn */
 
-.radioOption {
-	display: flex;
-	align-items: center;
-}
-
-.radioOption input[type='radio'] {
-	appearance: none;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	width: 14px;
-	height: 14px;
-	border-radius: 50%;
-	border: 2px solid rgba(255, 255, 255, 0.3);
-	outline: none;
-	cursor: pointer;
-	position: relative;
-}
-
-.radioOption input[type='radio']:checked::before {
-	content: '';
-	display: block;
-	width: 7px;
-	height: 7px;
-	border-radius: 50%;
-	background-color: rgba(255, 255, 255, 0.3);
+.priorityBtn {
 	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	border: 0;
+	padding: 0;
+
+	white-space: nowrap;
+	clip-path: inset(100%);
+	clip: rect(0 0 0 0);
+	overflow: hidden;
 }
 
-.radioOption.low input[type='radio'] {
-	border-color: rgba(143, 161, 208, 1);
+/* priorityCircle */
+
+.priorityCircle {
+	cursor: pointer;
+
+	height: 14px;
+	width: 14px;
+
+	border-radius: 50%;
+
+	transition: background-color 250ms ease-in;
+
+	background-color: rgba(22, 22, 22, 0.3);
+	border: 1px solid rgb(183, 183, 183);
 }
 
-.radioOption.low input[type='radio']:checked::before {
-	background-color: rgba(143, 161, 208, 1);
+.priorityCircle.dark {
+	background-color: var(--color4);
+	border-color: rgb(92, 92, 92);
 }
 
-.radioOption.medium input[type='radio'] {
-	border-color: rgba(224, 156, 181, 1);
+.priorityCircle.low {
+	background-color: var(--color1);
+	border-color: var(--color1);
 }
 
-.radioOption.medium input[type='radio']:checked::before {
-	background-color: rgba(224, 156, 181, 1);
+.priorityCircle.medium {
+	background-color: var(--color2);
+	border-color: var(--color2);
 }
 
-.radioOption.high input[type='radio'] {
-	border-color: rgba(190, 219, 176, 1);
+.priorityCircle.high {
+	background-color: var(--color3);
+	border-color: var(--color3);
 }
 
-.radioOption.high input[type='radio']:checked::before {
-	background-color: rgba(190, 219, 176, 1);
+.priorityBtn:checked + .priorityCircle {
+	background-color: transparent;
 }
 
-.violet .radioOption input[type='radio']:focus,
-.violet .radioOption input[type='radio']:hover {
-	color: #161616;
+/* priorityCircleInside */
+
+.priorityCircleInside {
+	height: 100%;
+	width: 100%;
+	background-color: inherit;
+	border-radius: 50%;
+
+	transition: transform 250ms ease-in;
+
+	background-color: rgba(22, 22, 22, 0.3);
 }
 
-.light .radioOption input[type='radio']:focus,
-.light .radioOption input[type='radio']:hover {
-	color: #161616;
+.priorityCircleInside.dark {
+	background-color: rgb(92, 92, 92);
+}
+
+.priorityCircleInside.low {
+	background-color: var(--color1);
+}
+
+.priorityCircleInside.medium {
+	background-color: var(--color2);
+}
+
+.priorityCircleInside.high {
+	background-color: var(--color3);
+}
+
+.priorityBtn:checked + .priorityCircle > .priorityCircleInside {
+	opacity: 1;
+	transform: scale(50%);
 }
 
 /* deadline */
@@ -165,19 +184,68 @@
 }
 
 /* button */
-.icon {
-	width: 14px;
-	height: 14px;
-	stroke: var(--secondary-color-white-background);
-}
-
-.iconWrapper {
+.btn {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	gap: 8px;
+
+	width: 100%;
+	height: 49px;
+
+	transition: background-color 250ms ease-in;
+
+	border: none;
+	border-radius: 5px;
+	background-color: var(--color-green-background);
+}
+
+.btn:hover {
+	background-color: #9dc888;
+}
+
+.btn.violet {
+	background-color: var(--primary-color-violet);
+}
+
+.btn.violet:hover {
+	background-color: #7b7ede;
+}
+
+.icon {
 	width: 28px;
 	height: 28px;
-	background-color: #161616;
 	margin-right: 8px;
-	border-radius: 6px;
+	padding: 7px;
+	stroke: #ffffff;
+	background-color: #161616;
+	border-radius: 8px;
+}
+
+.violet .icon {
+	stroke: #161616;
+	background-color: #fff;
+}
+
+.light .icon {
+	stroke: #fff;
+	background-color: #161616;
+}
+
+.textAdd {
+	color: #161616;
+	font-family: Poppins;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	letter-spacing: -0.28px;
+}
+
+.violet .textAdd {
+	color: #ffffff;
+}
+
+.light .textAdd {
+	color: #161616;
 }
