@@ -1,3 +1,10 @@
 .dateButton {
+	font-size: 14px;
 	border: 0;
+	background: none;
+	color: var(--color-green-background);
+}
+
+.dateButton.violet {
+	color: var(--primary-color-violet);
 }
