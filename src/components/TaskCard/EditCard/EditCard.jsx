@@ -2,9 +2,8 @@ import css from './EditCard.module.css';
 import sprite from '../../../assets/icons.svg';
 import PrimeBtn from '../../Buttons/PrimeBtn';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllCards, updateCard } from '../../../redux/cards/operations';
+import { updateCard } from '../../../redux/cards/operations';
 import { useForm } from 'react-hook-form';
-// import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { selectTheme } from '../../../redux/theme/selectors';
 
@@ -156,16 +155,5 @@ const EditCard = ({ card, closeModal }) => {
 		</form>
 	);
 };
-
-// EditCard.propTypes = {
-// 	card: PropTypes.shape({
-// 		id: PropTypes.string.isRequired,
-// 		title: PropTypes.string.isRequired,
-// 		description: PropTypes.string,
-// 		priority: PropTypes.oneOf(['low', 'medium', 'high']).isRequired,
-// 		deadline: PropTypes.string.isRequired,
-// 	}).isRequired,
-// 	closeModal: PropTypes.func.isRequired,
-// };
 
 export default EditCard;
