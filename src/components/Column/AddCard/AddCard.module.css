@@ -21,61 +21,92 @@
 
 	padding-left: 18px;
 
-	border-radius: 8px;
-	border: 1px solid rgba(190, 219, 176, 0.4);
-	box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
-
-	color: var(--primary-color-text-white);
-	background-color: transparent;
-
 	font-size: 14px;
 	font-weight: 400;
-	letter-spacing: -0.28px;
-	line-height: normal;
+	letter-spacing: -0.02em;
+
+	transition: border-color 250ms ease-in;
+
+	border: 1px solid rgba(190, 219, 176, 0.4);
+	border-radius: 8px;
+	box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+
+	background-color: transparent;
+	color: var(--primary-color-text-white);
 }
 
-/* description */
-.textBox {
-	margin-bottom: 24px;
+.input:focus {
+	border-color: var(--color-green);
 }
 
-.text {
+.input.light {
+	color: var(--primary-color-text-black);
+}
+
+.input.violet {
+	color: var(--primary-color-text-black);
+	border-color: rgba(82, 85, 188, 0.4);
+}
+
+.input:focus.violet {
+	border-color: var(--primary-color-violet);
+}
+
+/* textarea */
+
+.textarea {
 	width: 100%;
 	height: 154px;
 
 	padding: 14px 18px;
+	margin-bottom: 24px;
 
 	font-size: 14px;
 	font-weight: 400;
-	letter-spacing: -0.28px;
-	line-height: 18px;
+	letter-spacing: -0.02em;
 
-	border-radius: 8px;
+	transition: border-color 250ms ease-in;
+
 	border: 1px solid rgba(190, 219, 176, 0.4);
+	border-radius: 8px;
 	box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
-
-	color: var(--primary-color-text-white);
-	background-color: transparent;
-
 	resize: none;
+
+	background-color: transparent;
+	color: var(--primary-color-text-white);
 }
 
+.textarea:focus {
+	border-color: var(--color-green);
+}
+
+.textarea.light {
+	color: var(--primary-color-text-black);
+}
+
+.textarea.violet {
+	color: var(--primary-color-text-black);
+	border-color: rgba(82, 85, 188, 0.4);
+}
+
+.textarea:focus.violet {
+	border-color: var(--primary-color-violet);
+}
 /* labelColor */
-.titleLabelColor {
+/* title */
+
+.title {
+	margin-bottom: 4px;
+
 	font-size: 12px;
 	font-weight: 400;
-	line-height: normal;
-	letter-spacing: -0.24px;
-	color: var(--primary-color-text-white);
-	margin-bottom: 4px;
+	letter-spacing: -0.02em;
+
+	color: var(--color-icons-board);
 }
 
-.violet .titliLabelColor {
-	color: var(--primary-color-text-black);
-}
-
-.light .titliLabelColor {
-	color: var(--primary-color-text-black);
+.title.dark {
+	color: var(--color-icons);
 }
 
 /* priorityBox */

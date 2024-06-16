@@ -14,6 +14,10 @@ const AddCard = ({ columnId, closeModal }) => {
 	const theme = useSelector(selectTheme);
 	const schema = yup.object().shape({
 		title: yup.string().min(2, 'Too Short!').required('Title is required'),
+		description: yup
+			.string()
+			.min(2, 'Too Short!')
+			.required('Description is required'),
 	});
 
 	const {
@@ -21,7 +25,6 @@ const AddCard = ({ columnId, closeModal }) => {
 		handleSubmit,
 		reset,
 		formState: { errors },
-		setValue,
 	} = useForm({
 		resolver: yupResolver(schema),
 	});
@@ -32,16 +35,12 @@ const AddCard = ({ columnId, closeModal }) => {
 		closeModal();
 	};
 
-	const handleRadioClick = value => {
-		setValue('priority', value);
-	};
-
 	return (
 		<div>
 			<form onSubmit={handleSubmit(onSubmit)} className={css.form}>
 				<div className={css.inputBox}>
 					<input
-						className={css.input}
+						className={clsx(css.input, css[theme])}
 						type="text"
 						name="title"
 						placeholder="Title"
@@ -51,14 +50,14 @@ const AddCard = ({ columnId, closeModal }) => {
 				</div>
 				<div className={css.textBox}>
 					<textarea
-						className={css.text}
+						className={clsx(css.textarea, css[theme])}
 						name="description"
 						placeholder="Description"
 						{...register('description')}
 					/>
 				</div>
 				<div className={css.radioBox}>
-					<h5 className={clsx(css.titleLabelColor, css[theme])}>Label color</h5>
+					<h5 className={clsx(css.title, css[theme])}>Label color</h5>
 					<div className={css.priorityBox}>
 						<label>
 							<input
@@ -145,7 +144,7 @@ const AddCard = ({ columnId, closeModal }) => {
 					</div>
 				</div>
 				<div className={css.deadlineBox}>
-					<h5 className={clsx(css.titleLabelColor, css[theme])}>Deadline</h5>
+					<h5 className={clsx(css.title, css[theme])}>Deadline</h5>
 					<input
 						type="date"
 						name="deadline"
