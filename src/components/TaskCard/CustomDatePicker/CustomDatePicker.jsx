@@ -1,47 +1,30 @@
 import css from './CustomDatePicker.module.css';
 import React, { forwardRef, useState } from 'react';
 import DatePicker from 'react-datepicker';
+import { format, isToday, isTomorrow } from 'date-fns';
 import 'react-datepicker/dist/react-datepicker.css';
-import { format } from 'date-fns';
-
-// V1
-// const CustomDatePicker = () => {
-// 	const [selectedDate, setSelectedDate] = useState(new Date());
-// 	const [isOpen, setIsOpen] = useState(false);
-
-// 	const handleDateChange = date => {
-// 		setIsOpen(!isOpen);
-// 		setSelectedDate(date);
-// 	};
-
-// 	const handleClick = e => {
-// 		e.preventDefault();
-// 		setIsOpen(!isOpen);
-// 	};
-
-// 	return (
-// 		<>
-// 			<button className={css.dateButton} onClick={handleClick}>
-// 				{format(selectedDate, 'dd-MM-yyyy')}
-// 			</button>
-// 			{isOpen && (
-// 				<DatePicker
-// 					selected={selectedDate}
-// 					onChange={handleDateChange}
-// 					inline
-// 				/>
-// 			)}
-// 		</>
-// 	);
-// };
-
-// export default CustomDatePicker;
+import './custom-date-picker.css';
+import { useSelector } from 'react-redux';
+import { selectTheme } from '../../../redux/theme/selectors';
+import clsx from 'clsx';
 
 // v2
 const CustomDatePicker = () => {
+	// перенести стейт в модалку, передавать пропом
 	const [startDate, setStartDate] = useState(null);
+	const theme = useSelector(selectTheme);
 
-	const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
+	const formatDate = date => {
+		if (isToday(date)) {
+			return `Today, ${format(date, 'd MMMM')}`;
+		} else if (isTomorrow(date)) {
+			return `Tomorrow, ${format(date, 'd MMMM')}`;
+		} else {
+			return format(date, 'dd/MM/yyyy');
+		}
+	};
+
+	const DateButton = forwardRef(({ value, onClick }, ref) => (
 		<button
 			className={css.dateButton}
 			onClick={e => {
@@ -51,16 +34,25 @@ const CustomDatePicker = () => {
 			}}
 			ref={ref}
 		>
-			{value ? value : 'No deadline'}
+			{value ? formatDate(new Date(value)) : 'No deadline'}
 		</button>
 	));
 
 	return (
-		<DatePicker
-			selected={startDate}
-			onChange={date => setStartDate(date)}
-			customInput={<ExampleCustomInput />}
-		/>
+		<div className={clsx('datepicker-wrapper', theme)}>
+			<DatePicker
+				selected={startDate}
+				onChange={date => {
+					console.log(date);
+					setStartDate(date);
+				}}
+				customInput={<DateButton />}
+				popperPlacement="center"
+				isClearable
+				minDate={new Date()}
+				className={css[theme]}
+			/>
+		</div>
 	);
 };
 
