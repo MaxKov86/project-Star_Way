@@ -28,13 +28,20 @@
 	background-color: transparent;
 }
 
+.input.light {
+	/* border-color: rgba(82, 85, 188, 0.4); */
+	color: var(--primary-color-text);
+}
+
 .input.violet {
 	border-color: rgba(82, 85, 188, 0.4);
-	color: #161616;
+
+	color: var(--primary-color-text);
 }
 
 .input.violet:focus {
 	border-color: var(--primary-color-violet);
+	color: var(--primary-color-text);
 }
 
 .input:focus {

@@ -1,12 +1,12 @@
 :root {
 	/*dark theme*/
-	--primary-color-text-white: #fff;
+	--primary-color-text-white: rgba(255, 255, 255, 1);
 	--secondary-color-text-gray: rgba(255, 255, 255, 0.5);
-	--primary-color-text-black: #161616;
+	--primary-color-text-black: rgb(22, 22, 22, 1);
 
 	--primary-color-black-background: #1f1f1f;
 	/*needHelp*/
-	--color-green-background: #bedbb0;
+	--color-green-background: rgb(190, 219, 176);
 	/*buttom, welcomePage*/
 	--color-white-background: #f6f6f7;
 	--color-form-background: #151515;
@@ -19,23 +19,26 @@
 	--color-icons: rgba(255, 255, 255, 0.5);
 
 	/*white theme*/
+
 	--primary-color-background: #fcfcfc;
 	--secondary-color-background: #fff;
 	--color-text-welcome: rgba(22, 22, 22, 0.7);
 	--color-icons-board: rgba(22, 22, 22, 0.5);
 	--primary-color-text: rgb(22, 22, 22, 1);
 	--secondary-color-text: rgba(22, 22, 22, 0.8);
-	--color-green: #bedbb0;
+	--color-green: rgba(190, 219, 176, 1);
+	--color-green-secondary: rgba(157, 200, 136, 1);
 
 	/*violet theme*/
 	--primary-color-white-background: #fcfcfc;
 	--secondary-color-white-background: #fff;
 	--primary-color-violet: #5255bc;
 	--secondary-color-violet: #b8bcfd;
+	--icon-color-violet: rgba(236, 237, 253, 1);
 	/*--color-violet-background:   ;*/
 	--secondary-color-text: rgba(22, 22, 22, 0.7);
 	--color-icons-board: rgba(22, 22, 22, 0.5);
-	--primary-color-text: #161616;
+	--primary-color-text: rgb(22, 22, 22, 1);
 
 	/* Кольори select */
 	--color1: #8fa1d0;
