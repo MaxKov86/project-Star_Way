@@ -30,6 +30,7 @@
 
 .input.violet {
 	border-color: rgba(82, 85, 188, 0.4);
+	color: #161616;
 }
 
 .input.violet:focus {
@@ -38,6 +39,10 @@
 
 .input:focus {
 	border-color: var(--color-green-background);
+}
+
+.input.light {
+	color: var(--primary-color-text);
 }
 
 .input.textareaInput {
