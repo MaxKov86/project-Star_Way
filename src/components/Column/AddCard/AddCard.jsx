@@ -62,14 +62,13 @@ const AddCard = ({ columnId, closeModal }) => {
 					<div className={css.priorityBox}>
 						<label>
 							<input
-								type="radio"
-								id="low"
-								name="priority"
 								className={clsx(css.priorityBtn)}
+								type="radio"
+								name="priority"
 								value="low"
 								{...register('priority')}
-								onClick={() => handleRadioClick('low')}
 							/>
+
 							<div className={clsx(css.priorityCircle, css.active, css.low)}>
 								<div
 									className={clsx(
@@ -83,13 +82,13 @@ const AddCard = ({ columnId, closeModal }) => {
 
 						<label>
 							<input
+								className={clsx(css.priorityBtn)}
 								type="radio"
-								id="medium"
 								name="priority"
 								value="medium"
 								{...register('priority')}
-								onClick={() => handleRadioClick('medium')}
 							/>
+
 							<div className={clsx(css.priorityCircle, css.active, css.medium)}>
 								<div
 									className={clsx(
@@ -103,13 +102,13 @@ const AddCard = ({ columnId, closeModal }) => {
 
 						<label>
 							<input
+								className={clsx(css.priorityBtn)}
 								type="radio"
-								id="high"
 								name="priority"
 								value="high"
 								{...register('priority')}
-								onClick={() => handleRadioClick('high')}
 							/>
+
 							<div className={clsx(css.priorityCircle, css.active, css.high)}>
 								<div
 									className={clsx(
@@ -123,14 +122,13 @@ const AddCard = ({ columnId, closeModal }) => {
 
 						<label>
 							<input
-								type="radio"
-								id="without"
-								name="priority"
 								className={clsx(css.priorityBtn)}
+								type="radio"
+								name="priority"
 								value="without"
-								{...register('priority', { required: 'Priority is required' })}
-								onClick={() => handleRadioClick('without')}
+								{...register('priority')}
 							/>
+
 							<div
 								className={clsx(css.priorityCircle, css.without, css[theme])}
 							>
