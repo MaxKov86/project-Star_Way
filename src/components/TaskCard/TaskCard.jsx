@@ -23,7 +23,9 @@ export default function TaskCard({
 	const oneDay = 24 * 60 * 60 * 1000;
 
 	// deadline
-	const renderedDeadline = new Date(deadline).toLocaleDateString().split('.');
+	const renderedDeadline = deadline
+		? new Date(deadline).toLocaleDateString().split('.').join('/')
+		: 'No deadline';
 
 	const ring = new Date(deadline) - new Date();
 
@@ -76,13 +78,13 @@ export default function TaskCard({
 						</h4>
 
 						<p className={clsx(css.deadlineText, css[`deadlineText_${theme}`])}>
-							{renderedDeadline.join('/')}
+							{renderedDeadline}
 						</p>
 					</div>
 				</div>
 
 				<div className={css.iconBox}>
-					{ring <= oneDay && (
+					{deadline && ring <= oneDay && (
 						<div className={css.iconRingBox}>
 							<div className={clsx(css.filter, css[theme])}></div>
 							<svg className={clsx(css.iconRing, css[theme])}>

@@ -3,11 +3,12 @@ import clsx from 'clsx';
 import sprite from '../../../assets/icons.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { createCard } from '../../../redux/cards/operations';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { selectTheme } from '../../../redux/theme/selectors';
 import * as yup from 'yup';
 import PrimeBtn from '../../Buttons/PrimeBtn';
+import CustomDatePicker from '../../TaskCard/CustomDatePicker/CustomDatePicker';
 
 const AddCard = ({ columnId, closeModal }) => {
 	const dispatch = useDispatch();
@@ -25,13 +26,16 @@ const AddCard = ({ columnId, closeModal }) => {
 		register,
 		handleSubmit,
 		reset,
+		control,
 		formState: { errors },
 	} = useForm({
 		resolver: yupResolver(schema),
+		defaultValues: { deadline: null, priority: 'without' },
 	});
 
 	const onSubmit = data => {
-		dispatch(createCard({ ...data, columnId }));
+		const formData = { ...data, columnId };
+		dispatch(createCard(formData));
 		reset();
 		closeModal();
 	};
@@ -146,15 +150,13 @@ const AddCard = ({ columnId, closeModal }) => {
 				</div>
 				<div className={css.deadlineBox}>
 					<h5 className={clsx(css.title, css[theme])}>Deadline</h5>
-					<input
-						type="date"
+					<Controller
 						name="deadline"
-						{...register('deadline', { required: 'Deadline is required' })}
-						min={new Date().toISOString().split('T')[0]}
+						control={control}
+						render={({ field }) => (
+							<CustomDatePicker value={field.value} onChange={field.onChange} />
+						)}
 					/>
-					{errors.deadline && (
-						<p className={css.error}>{errors.deadline.message}</p>
-					)}
 				</div>
 
 				<PrimeBtn>
