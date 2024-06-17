@@ -23,6 +23,7 @@ import clsx from 'clsx';
 import icons from '/src/assets/icons.svg';
 import { selectTheme } from '../../../redux/theme/selectors';
 import { refreshUser } from '../../../redux/auth/operations';
+import sound from '../../../assets/bell.mp3';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -109,6 +110,11 @@ const ModalForm = ({ open, handleClose }) => {
 			});
 	};
 
+	const playSound = () => {
+		const audio = new Audio(sound);
+		audio.play();
+	};
+
 	return (
 		<Modal open={open} onClose={handleClose}>
 			<Box className={clsx(css.modalBox, css[theme])}>
@@ -159,6 +165,7 @@ const ModalForm = ({ open, handleClose }) => {
 										fullWidth
 										InputProps={{
 											className: clsx(css.formInput, css[theme]),
+											onClick: playSound,
 										}}
 										type="text"
 										{...field}
