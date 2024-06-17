@@ -156,18 +156,9 @@ const ModalForm = ({ open, handleClose }) => {
 								control={control}
 								render={({ field }) => (
 									<TextField
-										style={{
-											color: '#red',
-											sx: {
-												color: theme === 'light' ? '#red' : '#blue',
-											},
-										}}
 										fullWidth
 										InputProps={{
 											className: clsx(css.formInput, css[theme]),
-											sx: {
-												color: theme === 'light' ? '#red' : '#blue',
-											},
 										}}
 										type="text"
 										{...field}
