@@ -7,12 +7,14 @@ import { useParams } from 'react-router-dom';
 import { selectColumns } from '../../../redux/columns/selectors';
 import { updateCard } from '../../../redux/cards/operations';
 
-const ColumnSelector = ({ handleClose, cardId }) => {
+const ColumnSelector = ({ handleClose, cardId, columnId }) => {
 	const theme = useSelector(selectTheme);
 	const dispatch = useDispatch();
 	const { boardName } = useParams();
 	const columns = useSelector(selectColumns);
-	const boardColumns = columns.filter(column => column.boardId === boardName);
+	const boardColumns = columns.filter(
+		column => column.boardId === boardName && column._id !== columnId
+	);
 
 	const handleMove = newColumnId => {
 		dispatch(updateCard({ id: cardId, columnId: newColumnId }));
@@ -36,8 +38,8 @@ const ColumnSelector = ({ handleClose, cardId }) => {
 							className={clsx(css.btn, css.transition, css[theme])}
 							onClick={() => handleMove(column._id)}
 						>
-							{column.title}
-							<svg className={clsx(css.icon, css[`icon_${theme}`])}>
+							<span>{column.title}</span>
+							<svg className={clsx(css.icon, css[theme])}>
 								<use href={`${sprite}#icon-arrow-circle-broken-right`} />
 							</svg>
 						</button>
