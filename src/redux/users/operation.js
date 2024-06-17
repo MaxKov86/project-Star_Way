@@ -22,7 +22,7 @@ export const editUserInfo = createAsyncThunk(
 					Authorization: `Bearer ${token}`,
 				},
 			});
-			
+
 			return response.data;
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error.message);

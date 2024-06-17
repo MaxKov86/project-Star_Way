@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { editUserInfo, needHelp } from './operation';
-import { logIn, refreshUser } from '../auth/operations';
+import {  refreshUser } from '../auth/operations';
 
 const slice = createSlice({
 	name: 'users',
@@ -23,10 +23,10 @@ const slice = createSlice({
 				state.profile = action.payload;
 			})
 			.addCase(needHelp.fulfilled, (state, action) => {
-				state.needHelp = action.payload.help;
+				state.needHelp = action.payload;
 			})
 			.addCase(logIn.fulfilled, (state, action) => {
-				state.profile = action.payload;
+				state.profile = action.payload.user;
 			})
 			.addCase(refreshUser.fulfilled, (state, action) => {
 				state.profile = action.payload;

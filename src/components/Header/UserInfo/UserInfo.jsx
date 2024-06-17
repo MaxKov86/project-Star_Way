@@ -3,7 +3,6 @@ import { Avatar } from '@mui/material';
 import { Person as UserIcon } from '@mui/icons-material';
 import { useSelector } from 'react-redux';
 import ModalForm from './Modal';
-// import { selectUser } from '../../../redux/auth/selectors';
 import css from './UserInfo.module.css';
 import clsx from 'clsx';
 import { selectTheme } from '../../../redux/theme/selectors';

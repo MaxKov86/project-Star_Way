@@ -68,13 +68,13 @@
 	margin-top: 24px;
 }
 
-.userAvatar {
+/* .userAvatar {
 	/* background-image: url('../../../../public/user-dark.svg'); */
-	/* background-repeat: no-repeat; */
-	/* width: 68px;
+/* background-repeat: no-repeat; */
+/* width: 68px;
 	height: 68px;
 	border-radius: 8px; */
-}
+/* } */
 .userAvatar.light {
 	/* background-image: url('../../../../public/user-light.svg'); */
 	color: red;
