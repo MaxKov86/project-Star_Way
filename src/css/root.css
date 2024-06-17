@@ -21,7 +21,7 @@
 	/*white theme*/
 
 	--primary-color-background: #fcfcfc;
-	--secondary-color-background: #fff;
+	--secondary-color-background: rgba(255, 255, 255, 1);
 	--color-text-welcome: rgba(22, 22, 22, 0.7);
 	--color-icons-board: rgba(22, 22, 22, 0.5);
 	--primary-color-text: rgb(22, 22, 22, 1);
@@ -31,7 +31,7 @@
 
 	/*violet theme*/
 	--primary-color-white-background: #fcfcfc;
-	--secondary-color-white-background: #fff;
+	--secondary-color-white-background: rgba(255, 255, 255, 1);
 	--primary-color-violet: #5255bc;
 	--secondary-color-violet: #b8bcfd;
 	--icon-color-violet: rgba(236, 237, 253, 1);

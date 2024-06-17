@@ -55,6 +55,7 @@ const ColumnHead = ({ title, id }) => {
 						handleOpenModal={showModal}
 						handleCloseModal={handleModal}
 						columnId={id}
+						value={title}
 					/>
 				)}
 			</div>

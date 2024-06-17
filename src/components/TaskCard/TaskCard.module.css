@@ -4,9 +4,6 @@
 
 	width: 334px;
 	height: 154px;
-
-	overflow: hidden;
-
 	padding-top: 14px;
 	padding-bottom: 14px;
 	padding-right: 20px;
@@ -126,7 +123,8 @@
 	border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.bottomBox.light {
+.bottomBox.light,
+.bottomBox.violet {
 	border-top-color: rgba(22, 22, 22, 0.1);
 }
 
@@ -137,7 +135,6 @@
 	display: flex;
 	gap: 14px;
 }
-
 
 /* priorityTitle */
 
@@ -242,6 +239,7 @@
 /* iconBox */
 
 .iconBox {
+	position: relative;
 	display: flex;
 	gap: 8px;
 }

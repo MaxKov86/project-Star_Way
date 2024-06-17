@@ -41,7 +41,7 @@ const CustomDatePicker = ({ value, onChange }) => {
 				selected={value}
 				onChange={onChange}
 				customInput={<DateButton />}
-				popperPlacement="right-top"
+				popperPlacement="top-start"
 				isClearable
 				minDate={new Date()}
 				className={css[theme]}

@@ -3,8 +3,8 @@ import css from './Column.module.css';
 import sprite from '../../assets/icons.svg';
 import AddCard from './AddCard/AddCard';
 import { useSelector } from 'react-redux';
-import { selectFilteredCards } from '../../redux/cards/selectors'; 
-import { useState } from 'react';
+import { selectFilteredCards } from '../../redux/cards/selectors';
+import { useState, useEffect } from 'react';
 import OurModal from '../Modal/Modal';
 import clsx from 'clsx';
 import { selectTheme } from '../../redux/theme/selectors';
@@ -12,13 +12,34 @@ import ColumnHead from './ColumnHead/ColumnHead';
 import PrimeBtn from '../Buttons/PrimeBtn';
 
 const Column = ({ id, title }) => {
+	const theme = useSelector(selectTheme);
 	const [modalIsOpen, setIsOpen] = useState(false);
-	const tasks = useSelector(selectFilteredCards).filter(task => task.columnId === id);
+	const [isMoveModalOpen, setMoveModalOpen] = useState(null);
+
+	const tasks = useSelector(selectFilteredCards).filter(
+		task => task.columnId === id
+	);
 
 	const openModal = () => setIsOpen(true);
 	const closeModal = () => setIsOpen(false);
 
-	const theme = useSelector(selectTheme);
+	// Handle clicks outside of the modal
+	const handleClickOutside = event => {
+		if (
+			isMoveModalOpen &&
+			!event.target.closest(`[data-modal-id="${isMoveModalOpen}"]`) &&
+			!event.target.closest(`[data-toggle-id="${isMoveModalOpen}"]`)
+		) {
+			setMoveModalOpen(null);
+		}
+	};
+
+	useEffect(() => {
+		document.addEventListener('mousedown', handleClickOutside);
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside);
+		};
+	}, [isMoveModalOpen]);
 
 	return (
 		<div className={clsx(css.columnWrap, css[theme])}>
@@ -35,6 +56,9 @@ const Column = ({ id, title }) => {
 								priority={task.priority}
 								deadline={task.deadline}
 								id={task._id}
+								columnId={id}
+								isMoveModalOpen={isMoveModalOpen}
+								setMoveModalOpen={setMoveModalOpen}
 							/>
 						</li>
 					))}
