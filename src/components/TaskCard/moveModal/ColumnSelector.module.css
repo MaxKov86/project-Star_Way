@@ -2,49 +2,67 @@
 	position: absolute;
 	z-index: 10000;
 	display: block;
-	right: 5px;
-	top: 10px;
+	right: -22px;
+	top: 0;
 }
 
 .list {
-	max-width: 150px;
-	max-height: 107px;
+	min-width: 135px;
+	max-width: 180px;
+	max-height: 86px;
 	overflow-y: auto;
 	overflow-x: hidden;
-	font-family: 'Poppins', sans-serif;
 	font-size: 14px;
 	font-style: normal;
 	font-weight: 400;
 	align-items: flex-start;
-	border: 1px solid #bedbb0;
 	border-radius: 8px;
-	box-shadow: 0 4px 16px rgba(17, 17, 17, 0.1);
+	box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.2);
 	display: inline-flex;
 	flex-direction: column;
 	gap: 4px;
 	list-style: none;
-	padding: 0;
-	padding-right: 44px;
+	padding: 10px 18px;
 	line-height: 1.7;
-	background: rgb(21, 21, 21, 1);
-	margin: 0;
+	background: var(--primary-color-black-background);
 	z-index: 999;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
 }
-.list.light {
-	background: rgba(252, 252, 252, 1);
-	/* color: var(--secondary-color-text); */
-}
+
+.list.light,
 .list.violet {
-	background: rgba(252, 252, 252, 1);
-	/* border: 1px solid #bedbb0; */
-	border: 1px solid #ecedfd;
+	background: var(--primary-color-background);
+}
+
+.list::-webkit-scrollbar {
+	display: none;
+}
+
+.list li {
+	width: 100%;
 }
 
 .btn {
+	width: 100%;
+
+	display: flex;
+	justify-content: space-between;
+	gap: 8px;
+
 	cursor: pointer;
 	background-color: transparent;
 	border: none;
-	color: var(--primary-color-text-white);
+	color: var(--secondary-color-text-gray);
+}
+
+.btn span {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	display: block;
+	letter-spacing: -0.02em;
+	line-height: 21px;
 }
 
 .btn.light,
@@ -52,8 +70,16 @@
 	color: var(--primary-color-text);
 }
 
+.btn:hover {
+	color: var(--color-green-background);
+}
+
 .btn.light:hover {
 	color: var(--color-green-background);
+}
+
+.btn.violet:hover {
+	color: var(--primary-color-violet);
 }
 
 .icon {
@@ -62,20 +88,25 @@
 
 	transition: stroke 250ms ease-in;
 
-	stroke: var(--color-icons-board);
+	stroke: var(--secondary-color-text-gray);
 	fill: none;
 }
 
 .btn:hover .icon {
-	stroke: var(--primary-color-text-black);
+	stroke: var(--color-green-background);
 }
 
-.icon_dark {
-	stroke: var(--color-icons);
+.icon.light,
+.icon.violet {
+	stroke: var(--primary-color-text);
 }
 
-.btn:hover .icon_dark {
-	stroke: var(--primary-color-text-white);
+.btn.light:hover .icon {
+	stroke: var(--color-green-background);
+}
+
+.btn.violet:hover .icon {
+	stroke: var(--primary-color-violet);
 }
 
 .transition {

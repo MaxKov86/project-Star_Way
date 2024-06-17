@@ -123,7 +123,8 @@
 	border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.bottomBox.light {
+.bottomBox.light,
+.bottomBox.violet {
 	border-top-color: rgba(22, 22, 22, 0.1);
 }
 
