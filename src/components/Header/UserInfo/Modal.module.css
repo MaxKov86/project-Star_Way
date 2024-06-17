@@ -10,6 +10,7 @@
 	left: 50%;
 	transform: translate(-50%, -50%);
 	outline: none;
+	width: 335px;
 	@media screen and (min-width: 768px) {
 		width: 400px;
 	}
@@ -60,28 +61,11 @@
 }
 
 .photoUpload {
-	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	text-align: center;
 	margin-top: 24px;
-}
-
-.userAvatar {
-	/* background-image: url('../../../../public/user-dark.svg'); */
-	/* background-repeat: no-repeat; */
-	/* width: 68px;
-	height: 68px;
-	border-radius: 8px; */
-}
-.userAvatar.light {
-	/* background-image: url('../../../../public/user-light.svg'); */
-	color: red;
-}
-.userAvatar.violet {
-	/* background-image: url('../../../../public/user-violet.svg'); */
-	color: green;
 }
 
 .plusBtn {
@@ -104,11 +88,20 @@
 .form {
 	display: flex;
 	flex-direction: column;
-	gap: 14px;
 }
 
-.form::placeholder {
-	color: red;
+.formFields {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	color: var(--primary-color-text-white);
+}
+.formFields.light {
+	color: var(--primary-color-text-black);
+}
+.formFields.violet {
+	color: var(--primary-color-text-black);
 }
 
 .formInput {
@@ -118,20 +111,110 @@
 	height: 49px;
 	border-radius: 8px;
 	border: 1px solid rgba(190, 219, 176, 0.5);
-	background-color: inherit;
-	font-family: 'Poppins', sans-serif;
+	font-family: Poppins;
 	font-size: 14px;
 	font-weight: 400;
 	outline: none;
 	box-shadow: none;
-	position: relative;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+	-webkit-text-fill-color: inherit;
+	-webkit-box-shadow: 0 0 0 1000px transparent inset;
+	transition: background-color 5000s ease-in-out 0s;
+}
+
+.formInput {
+	color: var(--primary-color-text-white) !important;
+}
+
+.formInput::placeholder {
 	color: var(--primary-color-text-white);
 }
 
 .formInput.light {
+	color: var(--primary-color-text-black) !important;
+}
+
+.formInput.light::placeholder {
 	color: var(--primary-color-text-black);
 }
 
 .formInput.violet {
+	color: var(--primary-color-text-black) !important;
+	border: 1px solid #5255bc;
+}
+
+.formInput.violet::placeholder {
 	color: var(--primary-color-text-black);
+}
+
+.inputArea {
+	position: relative;
+	width: 100%;
+}
+.errors {
+	color: #ff4c4c;
+	font-size: 10px;
+	line-height: 10px;
+	margin-top: 5px;
+	position: absolute;
+	top: 95%;
+	left: 5px;
+}
+.showPasswordBtn {
+	background-color: transparent;
+	border: none;
+	color: var(--primary-color-text-white);
+}
+
+.showPasswordBtn.light {
+	color: var(--primary-color-text-black);
+}
+
+.showPasswordBtn.violet {
+	color: var(--primary-color-text-black);
+}
+
+.submitBtn {
+	font-size: 14px;
+	font-weight: 500;
+	align-items: center;
+	background-color: var(--color-green-background);
+	border: none;
+	border-radius: 8px;
+	color: #161616;
+	line-height: 21px;
+	padding-bottom: 11px;
+	padding-top: 10px;
+	letter-spacing: -0.0175rem;
+	width: 100%;
+	height: 49px;
+	margin-top: 24px;
+}
+.submitBtn:hover {
+	background-color: rgba(157, 200, 136, 1);
+}
+
+.submitBtn.light {
+	background-color: var(--color-green-background);
+	color: var(--primary-color-text-black);
+}
+.submitBtn.light:hover {
+	background-color: rgba(157, 200, 136, 1);
+}
+.submitBtn.violet {
+	background-color: rgba(82, 85, 188, 1);
+	color: var(--primary-color-text-white);
+}
+.submitBtn.violet:hover {
+	background-color: rgba(123, 126, 222, 1);
 }
