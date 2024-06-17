@@ -15,7 +15,12 @@ const schema = yup.object().shape({
 	title: yup.string().min(2, 'Too Short!').required('Title is required'),
 });
 
-const EditColumnModal = ({ handleOpenModal, handleCloseModal, columnId }) => {
+const EditColumnModal = ({
+	handleOpenModal,
+	handleCloseModal,
+	columnId,
+	value,
+}) => {
 	const {
 		register,
 		handleSubmit,
@@ -23,6 +28,7 @@ const EditColumnModal = ({ handleOpenModal, handleCloseModal, columnId }) => {
 		formState: { errors },
 	} = useForm({
 		resolver: yupResolver(schema),
+		defaultValues: { title: value },
 	});
 
 	const theme = useSelector(selectTheme);
