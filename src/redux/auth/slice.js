@@ -26,9 +26,13 @@ const slice = createSlice({
 				state.token = action.payload.token;
 				state.isLoggedIn = true;
 			})
+			.addCase(logIn.pending, state => {
+				state.isRefreshing = true;
+			})
 			.addCase(logIn.fulfilled, (state, action) => {
 				state.user = action.payload.user;
 				state.token = action.payload.token;
+				state.isRefreshing = false;
 				state.isLoggedIn = true;
 			})
 			.addCase(logOut.fulfilled, state => {

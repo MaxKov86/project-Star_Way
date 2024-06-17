@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { editUserInfo, needHelp } from './operation';
-import {  refreshUser } from '../auth/operations';
+import { refreshUser, logIn } from '../auth/operations';
 
 const slice = createSlice({
 	name: 'users',

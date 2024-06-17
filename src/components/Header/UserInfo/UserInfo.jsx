@@ -6,10 +6,10 @@ import ModalForm from './Modal';
 import css from './UserInfo.module.css';
 import clsx from 'clsx';
 import { selectTheme } from '../../../redux/theme/selectors';
-import { selectUser } from '../../../redux/auth/selectors';
+import { selectUserProfile } from '../../../redux/users/selectors';
 
 const UserInfo = () => {
-	const { name, avatarURL } = useSelector(selectUser);
+	const { name, avatarURL } = useSelector(selectUserProfile);
 	const [open, setOpen] = useState(false);
 	const theme = useSelector(selectTheme);
 	const handleOpen = () => setOpen(true);

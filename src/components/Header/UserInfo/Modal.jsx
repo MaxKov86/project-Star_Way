@@ -102,7 +102,6 @@ const ModalForm = ({ open, handleClose }) => {
 					console.error('Error updating user:', response.error);
 				} else {
 					handleClose();
-					dispatch(refreshUser());
 				}
 			})
 			.catch(error => {
@@ -172,7 +171,7 @@ const ModalForm = ({ open, handleClose }) => {
 										placeholder={user.name}
 										onChange={e => {
 											field.onChange(e);
-											field.trigger('name');
+											trigger('name');
 										}}
 									/>
 								)}
@@ -193,7 +192,7 @@ const ModalForm = ({ open, handleClose }) => {
 										placeholder={user.email}
 										onChange={e => {
 											field.onChange(e);
-											field.trigger('email');
+											trigger('email');
 										}}
 										InputProps={{
 											className: clsx(css.formInput, css[theme]),
@@ -217,7 +216,7 @@ const ModalForm = ({ open, handleClose }) => {
 										placeholder="Password"
 										onChange={e => {
 											field.onChange(e);
-											field.trigger('password');
+											trigger('password');
 										}}
 										InputProps={{
 											endAdornment: (
