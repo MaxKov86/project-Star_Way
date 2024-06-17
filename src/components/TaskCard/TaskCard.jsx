@@ -11,6 +11,8 @@ import loadingToaster from '../../helpers/loadingToast';
 import successToaster from '../../helpers/successToast';
 import errorToaster from '../../helpers/errorToast';
 import ColumnSelector from './moveModal/ColumnSelector';
+import { selectColumns } from '../../redux/columns/selectors';
+import { useParams } from 'react-router-dom';
 
 export default function TaskCard({
 	title,
@@ -54,6 +56,10 @@ export default function TaskCard({
 			errorToaster(theme, toastId);
 		}
 	};
+
+	const { boardName } = useParams();
+	const columns = useSelector(selectColumns);
+	const boardColumns = columns.filter(column => column.boardId === boardName);
 
 	return (
 		<div className={clsx(css.cardContainer, css[`cardContainer_${theme}`])}>
@@ -108,6 +114,7 @@ export default function TaskCard({
 						onClick={handleMoveCardModal}
 						type="button"
 						data-toggle-id={id}
+						disabled={boardColumns.length === 1}
 					>
 						<svg className={clsx(css.icon, css[`icon_${theme}`])}>
 							<use href={`${sprite}#icon-arrow-circle-broken-right`} />
