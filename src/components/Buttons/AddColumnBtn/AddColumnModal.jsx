@@ -30,7 +30,7 @@ const AddColumnModal = ({ handleOpenModal, handleCloseModal }) => {
 	const dispatch = useDispatch();
 	const { boardName } = useParams();
 
-	const onSubmit = async (data) => {
+	const onSubmit = async data => {
 		const toastId = loadingToaster(theme);
 
 		try {
@@ -40,7 +40,6 @@ const AddColumnModal = ({ handleOpenModal, handleCloseModal }) => {
 
 			reset();
 			handleCloseModal();
-			console.log({ ...data, boardId: boardName });
 		} catch (err) {
 			errorToaster(theme, toastId);
 		}
@@ -77,7 +76,9 @@ const AddColumnModal = ({ handleOpenModal, handleCloseModal }) => {
 							<svg className={clsx(css.iconAddColumnBtn, css[theme])}>
 								<use href={`${staticIcons}#icon-plus`}></use>
 							</svg>
-							<span className={clsx(css.textAddColumnBtn, css[theme])}>Add</span>
+							<span className={clsx(css.textAddColumnBtn, css[theme])}>
+								Add
+							</span>
 						</button>
 					</form>
 				</div>
