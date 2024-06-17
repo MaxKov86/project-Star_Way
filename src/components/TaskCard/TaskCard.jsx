@@ -67,7 +67,9 @@ export default function TaskCard({
 
 			<h3 className={clsx(css.title, css[`title_${theme}`])}>{title}</h3>
 
-			<p className={clsx(css.text, css[`text_${theme}`])}>{description}</p>
+			<p className={clsx(css.text, css[`text_${theme}`])}>
+				{description ? description : ''}
+			</p>
 
 			<div className={clsx(css.bottomBox, css[theme])}>
 				<div className={css.priorityDeadlineBox}>
