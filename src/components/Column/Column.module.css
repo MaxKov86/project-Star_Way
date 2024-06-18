@@ -53,12 +53,13 @@
 	color: #161616;
 }
 
-/* desktop */
 .columnWrap {
 	display: flex;
 	position: relative;
 	flex-direction: column;
 	flex-shrink: 0;
+	padding-top: 75px;
+	width: 350px;
 
 	gap: 14px;
 	height: 100%;
@@ -70,14 +71,17 @@
 	gap: 8px;
 
 	z-index: 2;
-
-	margin-top: 75px;
+	width: 100%;
 	padding-right: 8px;
 
 	border-radius: 8px;
 
 	overflow-y: auto;
 	overflow-x: hidden;
+}
+
+.addCardBtn {
+	width: 334px;
 }
 
 /* стилі скроллу dark */

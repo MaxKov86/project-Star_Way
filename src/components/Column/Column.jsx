@@ -66,7 +66,7 @@ const Column = ({ id, title }) => {
 			)}
 
 			{/* add another card button*/}
-			<PrimeBtn onBtnClick={openModal}>
+			<PrimeBtn onBtnClick={openModal} additionalClass={css.addCardBtn}>
 				<div className={clsx(css.iconWrapper, css[theme])}>
 					<svg className={clsx(css.icon, css[theme])}>
 						<use href={`${sprite}#icon-plus`}></use>
