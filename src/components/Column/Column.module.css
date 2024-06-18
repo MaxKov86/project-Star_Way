@@ -56,51 +56,57 @@
 /* desktop */
 .columnWrap {
 	display: flex;
+	position: relative;
 	flex-direction: column;
 	flex-shrink: 0;
+
 	gap: 14px;
-	padding-right: 8px;
 	height: 100%;
-	overflow-y: auto;
-	overflow-x: hidden;
 }
 
 .cardList {
 	display: flex;
 	flex-direction: column;
 	gap: 8px;
+
 	z-index: 2;
+
+	margin-top: 75px;
+	padding-right: 8px;
+
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 /* стилі скроллу dark */
-.columnWrap::-webkit-scrollbar {
+.cardList::-webkit-scrollbar {
 	width: 8px;
 	border: 0;
 }
 
-.columnWrap::-webkit-scrollbar-thumb {
+.cardList::-webkit-scrollbar-thumb {
 	border-radius: 12px;
 	background-color: var(--secondary-color-black-background);
 }
 
-.columnWrap::-webkit-scrollbar-track {
+.cardList::-webkit-scrollbar-track {
 	border-radius: 12px;
 	background-color: var(--column-scroll-track-dark);
 }
 
 /* стилі скроллу light */
-.columnWrap.light::-webkit-scrollbar-thumb {
+.cardList.light::-webkit-scrollbar-thumb {
 	background-color: var(--color-green);
 }
 
-.columnWrap.light::-webkit-scrollbar-track {
+.cardList.light::-webkit-scrollbar-track {
 	background-color: var(--secondary-color-background);
 }
 
-.columnWrap.violet::-webkit-scrollbar-thumb {
+.cardList.violet::-webkit-scrollbar-thumb {
 	background-color: var(--secondary-color-violet);
 }
 
-.columnWrap.violet::-webkit-scrollbar-track {
+.cardList.violet::-webkit-scrollbar-track {
 	background-color: var(--secondary-color-background);
 }
