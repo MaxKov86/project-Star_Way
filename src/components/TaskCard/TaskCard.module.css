@@ -372,6 +372,14 @@
 	stroke: var(--primary-color-text-black);
 }
 
+.btn:disabled {
+	cursor: default;
+}
+
+.btn:disabled:hover .icon {
+	stroke: var(--color-icons-board);
+}
+
 .icon_dark {
 	stroke: var(--color-icons);
 }
