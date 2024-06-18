@@ -247,6 +247,7 @@
 /* iconRingBox */
 
 .iconRingBox {
+	cursor: pointer;
 	position: relative;
 
 	height: 16px;
@@ -327,8 +328,6 @@
 }
 
 .iconRing {
-	cursor: pointer;
-
 	height: 16px;
 	width: 16px;
 
