@@ -9,6 +9,7 @@ import { useState } from 'react';
 import loadingToaster from '../../../helpers/loadingToast';
 import successToaster from '../../../helpers/successToast';
 import errorToaster from '../../../helpers/errorToast';
+import OurModal from '../../Modal/Modal';
 
 const ColumnHead = ({ title, id }) => {
 	const theme = useSelector(selectTheme);
@@ -24,7 +25,7 @@ const ColumnHead = ({ title, id }) => {
 
 		try {
 			await dispatch(deleteColumn(id));
-			successToaster(theme, toastId)
+			successToaster(theme, toastId);
 		} catch (err) {
 			errorToaster(theme, toastId);
 		}
@@ -51,12 +52,17 @@ const ColumnHead = ({ title, id }) => {
 					</svg>
 				</button>
 				{showModal && (
-					<EditColumnModal
-						handleOpenModal={showModal}
-						handleCloseModal={handleModal}
-						columnId={id}
-						value={title}
-					/>
+					<OurModal
+						isOpen={showModal}
+						closeModal={handleModal}
+						title="Edit Column"
+					>
+						<EditColumnModal
+							handleCloseModal={handleModal}
+							columnId={id}
+							value={title}
+						/>
+					</OurModal>
 				)}
 			</div>
 		</div>

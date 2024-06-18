@@ -15,12 +15,7 @@ const schema = yup.object().shape({
 	title: yup.string().min(2, 'Too Short!').required('Title is required'),
 });
 
-const EditColumnModal = ({
-	handleOpenModal,
-	handleCloseModal,
-	columnId,
-	value,
-}) => {
+const EditColumnModal = ({ handleCloseModal, columnId, value }) => {
 	const {
 		register,
 		handleSubmit,
@@ -48,41 +43,28 @@ const EditColumnModal = ({
 		}
 	};
 
-	if (!handleOpenModal) return null;
-
 	return (
-		<div className={css.modalOverlay}>
-			<div className={clsx(css.modal, css[theme])}>
-				<h2 className={clsx(css.modalTitle, css[theme])}>Edit Column</h2>
-				<button
-					className={clsx(css.closeButton, css[theme])}
-					onClick={handleCloseModal}
-				>
-					<svg className={clsx(css.btnCloseIcon, css[theme])}>
-						<use href={`${staticIcons}#icon-x-close`}></use>
+		<div>
+			<form onSubmit={handleSubmit(onSubmit)}>
+				<input
+					type="text"
+					name="title"
+					{...register('title')}
+					className={clsx(css.input, css[theme], {
+						[css.error]: errors.title,
+					})}
+					placeholder="Title"
+				/>
+				{errors.title && (
+					<p className={css.errorText}>{errors.title.message}</p>
+				)}
+				<button type="submit" className={clsx(css.addButton, css[theme])}>
+					<svg className={clsx(css.iconAddColumnBtn, css[theme])}>
+						<use href={`${staticIcons}#icon-plus`}></use>
 					</svg>
+					<span className={clsx(css.textAddColumnBtn, css[theme])}>Add</span>
 				</button>
-				<form onSubmit={handleSubmit(onSubmit)}>
-					<input
-						type="text"
-						name="title"
-						{...register('title')}
-						className={clsx(css.input, css[theme], {
-							[css.error]: errors.title,
-						})}
-						placeholder="Title"
-					/>
-					{errors.title && (
-						<p className={css.errorText}>{errors.title.message}</p>
-					)}
-					<button type="submit" className={clsx(css.addButton, css[theme])}>
-						<svg className={clsx(css.iconAddColumnBtn, css[theme])}>
-							<use href={`${staticIcons}#icon-plus`}></use>
-						</svg>
-						<span className={clsx(css.textAddColumnBtn, css[theme])}>Add</span>
-					</button>
-				</form>
-			</div>
+			</form>
 		</div>
 	);
 };
