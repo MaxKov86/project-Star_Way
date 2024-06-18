@@ -5,6 +5,7 @@ import { selectTheme } from '../../../redux/theme/selectors';
 import staticIcons from '../../../assets/icons.svg';
 import css from './AddColumnBtn.module.css';
 import AddColumnModal from './AddColumnModal';
+import OurModal from '../../Modal/Modal';
 
 const AddColumnBtn = () => {
 	const theme = useSelector(selectTheme);
@@ -27,10 +28,13 @@ const AddColumnBtn = () => {
 				<span className={css.textAddColumnBtn}>Add another column</span>
 			</button>
 			{showModal && (
-				<AddColumnModal
-					handleOpenModal={showModal}
-					handleCloseModal={handleCloseModal}
-				/>
+				<OurModal
+					isOpen={showModal}
+					closeModal={handleCloseModal}
+					title="Add column"
+				>
+					<AddColumnModal handleCloseModal={handleCloseModal} />
+				</OurModal>
 			)}
 		</div>
 	);
