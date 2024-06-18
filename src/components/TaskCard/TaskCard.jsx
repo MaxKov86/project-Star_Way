@@ -13,6 +13,7 @@ import errorToaster from '../../helpers/errorToast';
 import ColumnSelector from './moveModal/ColumnSelector';
 import { selectColumns } from '../../redux/columns/selectors';
 import { useParams } from 'react-router-dom';
+import audio from '../../assets/bell.mp3'
 
 export default function TaskCard({
 	title,
@@ -28,12 +29,17 @@ export default function TaskCard({
 	const theme = useSelector(selectTheme);
 	const card = { id, title, description, priority, deadline };
 	const oneDay = 24 * 60 * 60 * 1000;
+	const ringSound = new Audio(audio);
 
 	const renderedDeadline = deadline
 		? new Date(deadline).toLocaleDateString().split('.').join('/')
 		: 'No deadline';
 
 	const ring = new Date(deadline) - new Date();
+
+	const handelRing = () => {
+		if (deadline && ring <= oneDay) ringSound.play();
+	}
 
 	const [editIsOpen, setEditIsOpen] = useState(false);
 	const openEditModal = () => setEditIsOpen(true);
@@ -101,7 +107,7 @@ export default function TaskCard({
 
 				<div className={css.iconBox}>
 					{deadline && ring <= oneDay && (
-						<div className={css.iconRingBox}>
+						<div className={css.iconRingBox} onClick={handelRing}>
 							<div className={clsx(css.filter, css[theme])}></div>
 							<svg className={clsx(css.iconRing, css[theme])}>
 								<use href={`${sprite}#icon-ring`} />
