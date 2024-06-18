@@ -15,7 +15,7 @@ const Loader = () => {
 				wrapperStyle={{}}
 				wrapperClass=""
 			/>
-			<p>PLEASE WAITE...</p>
+			<p className={css.loaderText}>PLEASE WAITE...</p>
 		</div>
 	);
 };
