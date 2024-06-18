@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { changeTheme } from './operations';
-import { logOut } from '../auth/operations';
+import { logIn, logOut } from '../auth/operations';
 
 const slice = createSlice({
 	name: 'theme',
@@ -12,6 +12,9 @@ const slice = createSlice({
 			})
 			.addCase(logOut.fulfilled, state => {
 				state.value = 'dark';
+			})
+			.addCase(logIn.fulfilled, (state, action) => {
+				state.value = action.payload.user.theme;
 			}),
 });
 
