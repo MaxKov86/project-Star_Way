@@ -27,7 +27,7 @@ const ColumnSelector = ({ handleClose, cardId, columnId }) => {
 
 	return (
 		<div
-			className={css.themeModal}
+			className={clsx(css.themeModal, css[theme])}
 			onClick={handleMenuClick}
 			data-modal-id={cardId}
 		>
