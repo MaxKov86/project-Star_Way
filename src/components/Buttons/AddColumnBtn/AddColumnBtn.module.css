@@ -9,6 +9,12 @@
 	height: 56px;
 	width: 335px;
 	flex-shrink: 0;
+	transition: background-color 350ms ease-in-out;
+}
+
+.addColumnBtn:focus,
+.addColumnBtn:hover {
+	background: #1d1c1c;
 }
 
 .iconAddColumnBtn {
@@ -37,6 +43,11 @@
 	background: #fff;
 }
 
+.violet .addColumnBtn:focus,
+.violet .addColumnBtn:hover {
+	background: rgb(196, 198, 255);
+}
+
 .violet .iconAddColumnBtn {
 	stroke: #fff;
 	background-color: rgba(82, 85, 188, 1);
@@ -50,6 +61,11 @@
 
 .light .addColumnBtn {
 	background: #fff;
+}
+
+.light .addColumnBtn:focus,
+.light .addColumnBtn:hover {
+	background: #bedbb0;
 }
 
 .light .iconAddColumnBtn {

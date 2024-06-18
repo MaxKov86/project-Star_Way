@@ -35,12 +35,20 @@
 	margin-bottom: 24px;
 	width: 100%;
 	padding: 14px 0px 14px 18px;
-	border: 1px solid #444;
+	border: 1px solid rgba(190, 219, 176, 0.3);
 	border-radius: 5px;
 	background: #1f1f1f;
 	color: white;
 	font-size: 1em;
 	box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+	transition: border-color 350ms ease-in-out;
+}
+
+.input:focus,
+.input:hover {
+	background-color: rgba(31, 31, 31, 1);
+	border-color: rgba(190, 219, 176, 1);
+	outline: none;
 }
 
 .addButton {
@@ -52,6 +60,12 @@
 	border-radius: 8px;
 	background: #bedbb0;
 	border: none;
+	transition: background-color 350ms ease-in-out;
+}
+
+.addButton:focus,
+.addButton:hover {
+	background: #9dc888;
 }
 
 .iconAddColumnBtn {
@@ -86,6 +100,14 @@
 	stroke: #fff;
 }
 
+.errorText {
+	position: absolute;
+	left: 25px;
+	bottom: 80px;
+	color: red;
+	font-size: 12px;
+}
+
 /* _________VIOLET_________ */
 
 .violet .modal {
@@ -97,13 +119,25 @@
 }
 
 .violet .input {
-	border: 1px solid #5255bc;
+	border: 1px solid rgba(82, 85, 188, 0.3);
 	background: #fff;
 	color: #161616;
 }
 
+.violet .input:focus,
+.violet .input:hover {
+	background-color: #fdfdfd;
+	border-color: rgba(82, 85, 188, 1);
+	outline: none;
+}
+
 .violet .addButton {
-	background: #5255bc;
+	background: rgba(82, 85, 188, 1);
+}
+
+.violet .addButton:focus,
+.violet .addButton:hover {
+	background-color: rgba(123, 126, 222, 1);
 }
 
 .violet .iconAddColumnBtn {
@@ -113,11 +147,6 @@
 
 .violet .btnCloseIcon {
 	stroke: #161616;
-}
-
-.errorText {
-	color: red;
-	font-size: 12px;
 }
 
 /* _________LIGHT_________ */
@@ -131,13 +160,25 @@
 }
 
 .light .input {
-	border: 1px solid #bedbb0;
+	border: 1px solid rgba(190, 219, 176, 0.4);
 	background: #fff;
 	color: #161616;
 }
 
+.light .input:focus,
+.light .input:hover {
+	background-color: #fcfcfc;
+	border-color: rgba(190, 219, 176, 1);
+	outline: none;
+}
+
 .light .addButton {
 	background: #bedbb0;
+}
+
+.light .addButton:focus,
+.light .addButton:hover {
+	background-color: rgba(157, 200, 136, 1);
 }
 
 .light .iconAddColumnBtn {
