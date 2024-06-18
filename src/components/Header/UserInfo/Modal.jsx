@@ -18,6 +18,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { editUserInfo } from '../../../redux/users/operation';
 import { selectUser, selectToken } from '../../../redux/auth/selectors';
+import { selectUserProfile } from '../../../redux/users/selectors';
 import css from './Modal.module.css';
 import clsx from 'clsx';
 import icons from '/src/assets/icons.svg';
@@ -43,13 +44,14 @@ const ModalForm = ({ open, handleClose }) => {
 	const dispatch = useDispatch();
 	const token = useSelector(selectToken);
 	const user = useSelector(selectUser);
+	const { avatarURL } = useSelector(selectUserProfile);
 	const theme = useSelector(selectTheme);
 	const [showPassword, setShowPassword] = useState(false);
-	const [userAvatar, setUserAvatar] = useState(user.avatarURL);
+	const [userAvatar, setUserAvatar] = useState(avatarURL);
 
 	useEffect(() => {
-		setUserAvatar(user.avatarURL);
-	}, [user.avatarURL]);
+		setUserAvatar(avatarURL);
+	}, [avatarURL]);
 
 	const {
 		handleSubmit,
