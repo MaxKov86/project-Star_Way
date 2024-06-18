@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createCard, deleteCard, getAllCards, updateCard } from './operations';
+import { logOut } from '../auth/operations';
 
 const slice = createSlice({
 	name: 'cards',
@@ -62,6 +63,11 @@ const slice = createSlice({
 			})
 			.addCase(updateCard.rejected, state => {
 				state.error = true;
+				state.isLoading = false;
+			})
+			.addCase(logOut.fulfilled, state => {
+				state.items = [];
+				state.error = false;
 				state.isLoading = false;
 			});
 	},

@@ -17,8 +17,8 @@ import {
 import { useForm, Controller } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { editUserInfo } from '../../../redux/users/operation';
-import { selectUser, selectToken } from '../../../redux/auth/selectors';
 import { selectUserProfile } from '../../../redux/users/selectors';
+
 import css from './Modal.module.css';
 import clsx from 'clsx';
 import icons from '/src/assets/icons.svg';
@@ -42,16 +42,14 @@ const schema = yup.object().shape({
 
 const ModalForm = ({ open, handleClose }) => {
 	const dispatch = useDispatch();
-	const token = useSelector(selectToken);
-	const user = useSelector(selectUser);
-	const { avatarURL } = useSelector(selectUserProfile);
+	const user = useSelector(selectUserProfile);
 	const theme = useSelector(selectTheme);
 	const [showPassword, setShowPassword] = useState(false);
-	const [userAvatar, setUserAvatar] = useState(avatarURL);
+	const [userAvatar, setUserAvatar] = useState(user.avatarURL);
 
 	useEffect(() => {
-		setUserAvatar(avatarURL);
-	}, [avatarURL]);
+		setUserAvatar(user.avatarURL);
+	}, [user.avatarURL]);
 
 	const {
 		handleSubmit,
@@ -96,7 +94,7 @@ const ModalForm = ({ open, handleClose }) => {
 			formData.append('avatar', data.avatarURL[0]);
 		}
 
-		dispatch(editUserInfo({ formData, token }))
+		dispatch(editUserInfo({ formData }))
 			.unwrap()
 			.then(response => {
 				if (response.error) {

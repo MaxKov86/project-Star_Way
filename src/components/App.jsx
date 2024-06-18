@@ -40,10 +40,7 @@ function App() {
 					<Route
 						path="/home"
 						element={
-							<PrivateRoute
-								component={<HomePage />}
-								redirectTo="/auth/register"
-							/>
+							<PrivateRoute component={<HomePage />} redirectTo="/auth/login" />
 						}
 					>
 						<Route path="/home/:boardName" element={<ScreenPage />} />

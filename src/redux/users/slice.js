@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { editUserInfo, needHelp } from './operation';
-import { refreshUser, logIn } from '../auth/operations';
+import { refreshUser, logIn, logOut, registr } from '../auth/operations';
 
 const slice = createSlice({
 	name: 'users',
 	initialState: {
 		profile: {
-			name: '',
-			email: '',
-			password: '',
-			avatarURL: '',
+			name: null,
+			email: null,
+			password: null,
+			avatarURL: null,
 		},
 		help: {
 			email: '',
@@ -25,6 +25,9 @@ const slice = createSlice({
 			.addCase(needHelp.fulfilled, (state, action) => {
 				state.needHelp = action.payload;
 			})
+			.addCase(registr.fulfilled, (state, action) => {
+				state.profile = action.payload.user;
+			})
 			.addCase(logIn.fulfilled, (state, action) => {
 				state.profile = action.payload.user;
 			})
@@ -32,6 +35,14 @@ const slice = createSlice({
 				state.profile = action.payload;
 				state.isLoggedIn = true;
 				state.isRefreshing = false;
+			})
+			.addCase(logOut.fulfilled, state => {
+				state.profile = {
+					name: null,
+					email: null,
+					password: null,
+					avatarURL: null,
+				};
 			}),
 });
 
