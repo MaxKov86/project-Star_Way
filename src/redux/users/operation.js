@@ -14,12 +14,11 @@ export const needHelp = createAsyncThunk(
 
 export const editUserInfo = createAsyncThunk(
 	'users/editUserInfo',
-	async ({ formData, token }, thunkAPI) => {
+	async ({ formData }, thunkAPI) => {
 		try {
 			const response = await axios.patch('/users/edit', formData, {
 				headers: {
 					'Content-Type': 'multipart/form-data',
-					Authorization: `Bearer ${token}`,
 				},
 			});
 

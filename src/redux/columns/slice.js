@@ -55,11 +55,7 @@ const slice = createSlice({
 				state.error = false;
 				state.isLoading = true;
 			})
-			.addCase(logOut.fulfilled, state => {
-				state.items = [];
-				state.error = false;
-				state.isLoading = false;
-			})
+
 			.addCase(updateColumn.pending, state => {
 				state.error = false;
 				state.isLoading = true;
@@ -74,6 +70,11 @@ const slice = createSlice({
 			})
 			.addCase(updateColumn.rejected, state => {
 				state.error = true;
+				state.isLoading = false;
+			})
+			.addCase(logOut.fulfilled, state => {
+				state.items = [];
+				state.error = false;
 				state.isLoading = false;
 			});
 	},

@@ -47,7 +47,7 @@ const Column = ({ id, title }) => {
 
 			{/* список карток */}
 			{tasks && tasks.length > 0 && (
-				<ul className={css.cardList}>
+				<ul className={clsx(css.cardList, css[theme])}>
 					{tasks.map(task => (
 						<li key={task._id}>
 							<TaskCard

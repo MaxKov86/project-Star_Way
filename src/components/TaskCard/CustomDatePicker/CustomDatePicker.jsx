@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { useSelector } from 'react-redux';
 import { format, isToday, isTomorrow } from 'date-fns';
 import DatePicker from 'react-datepicker';
@@ -35,6 +35,7 @@ const CustomDatePicker = ({ value, onChange }) => {
 		</button>
 	));
 
+	DateButton.displayName = 'DateButton';
 	return (
 		<div className={clsx('datepicker-wrapper', theme)}>
 			<DatePicker
