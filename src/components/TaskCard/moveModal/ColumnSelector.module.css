@@ -63,6 +63,7 @@
 	display: block;
 	letter-spacing: -0.02em;
 	line-height: 21px;
+	/* transition: color 250ms ease-in; */
 }
 
 .btn.light,
@@ -86,7 +87,7 @@
 	width: 16px;
 	height: 16px;
 
-	transition: stroke 250ms ease-in;
+	transition: stroke 200ms ease;
 
 	stroke: var(--secondary-color-text-gray);
 	fill: none;
