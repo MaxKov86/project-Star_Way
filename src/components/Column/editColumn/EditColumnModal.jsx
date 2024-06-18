@@ -34,7 +34,7 @@ const EditColumnModal = ({
 	const theme = useSelector(selectTheme);
 	const dispatch = useDispatch();
 
-	const onSubmit = async (data) => {
+	const onSubmit = async data => {
 		const toastId = loadingToaster(theme);
 
 		try {

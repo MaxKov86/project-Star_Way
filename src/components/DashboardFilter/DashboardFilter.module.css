@@ -1,13 +1,16 @@
 .filterBtnModal {
+	padding: 3px 10px;
 	display: flex;
 	background: none;
 	border: none;
 	cursor: pointer;
-	width: 64px;
-	height: 20px;
+	/* width: 66px;
+	height: 20px; */
 	align-items: center;
 	gap: 8px;
 	border: none;
+	border-radius: 8px;
+	background-color: rgba(31, 31, 31, 1);
 }
 
 .filterBtnModal:focus,
@@ -15,6 +18,7 @@
 	outline: none;
 	background: none;
 	border: none;
+	background-color: rgba(31, 31, 31, 1);
 }
 
 .btnFilterIcon {
@@ -160,6 +164,11 @@
 	gap: 8px;
 }
 
+.radioOption {
+	display: flex;
+	align-items: center;
+}
+
 .labelModalFilter {
 	font-family: Poppins;
 	font-size: 12px;
@@ -180,11 +189,6 @@
 	color: #fff;
 }
 
-.radioOption {
-	display: flex;
-	align-items: center;
-}
-
 .radioOption input[type='radio'] {
 	appearance: none;
 	-webkit-appearance: none;
@@ -192,20 +196,22 @@
 	width: 14px;
 	height: 14px;
 	border-radius: 50%;
-	border: 2px solid rgba(160, 141, 141, 0.8);
+	background-color: #161616;
 	outline: none;
 	cursor: pointer;
 	margin-right: 8px;
 	position: relative;
+	background-color: rgba(160, 141, 141, 0.8);
 }
 
 .radioOption input[type='radio']:checked::before {
 	content: '';
 	display: block;
-	width: 7px;
-	height: 7px;
+	width: 11px;
+	height: 11px;
 	border-radius: 50%;
-	background-color: rgba(160, 141, 141, 0.8);
+	background: rgba(160, 141, 141, 0.8);
+	border: 2px solid var(--color-form-background);
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -214,6 +220,7 @@
 
 .radioOption.low input[type='radio'] {
 	border-color: rgba(143, 161, 208, 1);
+	background-color: rgba(143, 161, 208, 1);
 }
 
 .radioOption.low input[type='radio']:checked::before {
@@ -222,6 +229,7 @@
 
 .radioOption.medium input[type='radio'] {
 	border-color: rgba(224, 156, 181, 1);
+	background-color: rgba(224, 156, 181, 1);
 }
 
 .radioOption.medium input[type='radio']:checked::before {
@@ -230,6 +238,7 @@
 
 .radioOption.high input[type='radio'] {
 	border-color: rgba(190, 219, 176, 1);
+	background-color: rgba(190, 219, 176, 1);
 }
 
 .radioOption.high input[type='radio']:checked::before {
@@ -237,6 +246,10 @@
 }
 
 /* _________VIOLET_________ */
+
+.violet.filterBtnModal {
+	background-color: rgba(236, 237, 253, 1);
+}
 
 .violet .btnFilterIcon {
 	stroke: var(--secondary-color-text);
@@ -275,6 +288,10 @@
 	color: rgba(22, 22, 22, 0.5);
 }
 
+.violet .radioOption input[type='radio']:checked::before {
+	border: 2px solid #fff;
+}
+
 .violet .labelModalFilter:focus,
 .violet .labelModalFilter:hover {
 	color: #161616;
@@ -286,6 +303,10 @@
 }
 
 /* _________LIGHT_________ */
+
+.light.filterBtnModal {
+	background-color: rgba(246, 246, 247, 1);
+}
 
 .light .btnFilterIcon {
 	stroke: var(--secondary-color-text);
@@ -322,6 +343,10 @@
 
 .light .labelModalFilter {
 	color: rgba(22, 22, 22, 0.5);
+}
+
+.light .radioOption input[type='radio']:checked::before {
+	border: 2px solid #fff;
 }
 
 .light .labelModalFilter:focus,

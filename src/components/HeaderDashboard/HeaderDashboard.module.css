@@ -16,6 +16,9 @@
 	font-weight: 500;
 	letter-spacing: -0.02em;
 	color: var(--primary-color-text-white);
+	padding: 2px 15px;
+	border-radius: 8px;
+	background-color: rgba(31, 31, 31, 1);
 }
 
 /* _________VIOLET_________ */
@@ -26,6 +29,7 @@
 
 .violet .titleHeaderDashboard {
 	color: var(--primary-color-text);
+	background-color: rgba(236, 237, 253, 1);
 }
 
 /* _________LIGHT_________ */
@@ -34,8 +38,9 @@
 	background-color: var(--color-white-background);
 }
 
-.violet .titleHeaderDashboard {
+.light .titleHeaderDashboard {
 	color: var(--primary-color-text);
+	background-color: rgba(246, 246, 247, 1);
 }
 
 @media screen and (min-width: 768px) {

@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.module.css';
 import { Toaster } from 'react-hot-toast';
+import Loader from './Loader/Loader';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from '../redux/auth/operations';
@@ -22,7 +23,7 @@ function App() {
 		dispatch(refreshUser());
 	}, [dispatch]);
 	return isRefreshing ? (
-		<p>Refreshing...</p>
+		<Loader />
 	) : (
 		<>
 			{/* <Layout> */}
@@ -38,7 +39,12 @@ function App() {
 					/>
 					<Route
 						path="/home"
-						element={<PrivateRoute component={<HomePage />} />}
+						element={
+							<PrivateRoute
+								component={<HomePage />}
+								redirectTo="/auth/register"
+							/>
+						}
 					>
 						<Route path="/home/:boardName" element={<ScreenPage />} />
 					</Route>

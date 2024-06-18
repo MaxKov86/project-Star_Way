@@ -6,7 +6,6 @@ import {
 	InputAdornment,
 	Avatar,
 	Box,
-	Button,
 } from '@mui/material';
 import {
 	Person as UserIcon,
@@ -19,10 +18,12 @@ import { useForm, Controller } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { editUserInfo } from '../../../redux/users/operation';
 import { selectUser, selectToken } from '../../../redux/auth/selectors';
+import { selectUserProfile } from '../../../redux/users/selectors';
 import css from './Modal.module.css';
 import clsx from 'clsx';
 import icons from '/src/assets/icons.svg';
 import { selectTheme } from '../../../redux/theme/selectors';
+import sound from '../../../assets/bell.mp3';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -43,13 +44,14 @@ const ModalForm = ({ open, handleClose }) => {
 	const dispatch = useDispatch();
 	const token = useSelector(selectToken);
 	const user = useSelector(selectUser);
+	const { avatarURL } = useSelector(selectUserProfile);
 	const theme = useSelector(selectTheme);
 	const [showPassword, setShowPassword] = useState(false);
-	const [userAvatar, setUserAvatar] = useState(user.avatarURL);
+	const [userAvatar, setUserAvatar] = useState(avatarURL);
 
 	useEffect(() => {
-		setUserAvatar(user.avatarURL);
-	}, [user.avatarURL]);
+		setUserAvatar(avatarURL);
+	}, [avatarURL]);
 
 	const {
 		handleSubmit,
@@ -59,7 +61,7 @@ const ModalForm = ({ open, handleClose }) => {
 		formState: { errors },
 	} = useForm({
 		resolver: yupResolver(schema),
-		mode: 'onBlur',
+		mode: 'all',
 		reValidateMode: 'onChange',
 		defaultValues: {
 			name: user.name,
@@ -80,6 +82,7 @@ const ModalForm = ({ open, handleClose }) => {
 			};
 			reader.readAsDataURL(file);
 			register('avatarURL').onChange(e); // Реєстрація зміни файлу
+			trigger('avatarURL');
 		}
 	};
 
@@ -93,15 +96,8 @@ const ModalForm = ({ open, handleClose }) => {
 			formData.append('avatar', data.avatarURL[0]);
 		}
 
-		// if (data.avatarURL && data.avatarURL.length > 0) {
-		// 	formData.append('avatar', data.avatarURL[0]);
-		// }
-
-		// if (data.avatar.length > 0) {
-		// 	formData.append('avatar', data.avatarURL[0]);
-		// }
-
 		dispatch(editUserInfo({ formData, token }))
+			.unwrap()
 			.then(response => {
 				if (response.error) {
 					console.error('Error updating user:', response.error);
@@ -112,6 +108,11 @@ const ModalForm = ({ open, handleClose }) => {
 			.catch(error => {
 				console.error('Error dispatching editUser:', error);
 			});
+	};
+
+	const playSound = () => {
+		const audio = new Audio(sound);
+		audio.play();
 	};
 
 	return (
@@ -132,7 +133,7 @@ const ModalForm = ({ open, handleClose }) => {
 						<div className={clsx(css.photoUpload, css[theme])}>
 							<Avatar
 								style={{ width: '68px', height: '68px', borderRadius: '8px' }}
-								// className={clsx(css.userAvatar, css[theme])}
+								className={clsx(css.userAvatar, css[theme])}
 								src={
 									userAvatar ||
 									`${icons}#${
@@ -154,118 +155,94 @@ const ModalForm = ({ open, handleClose }) => {
 							</IconButton>
 						</div>
 					</div>
-					<div className={clsx(css.form, css[theme])}>
-						<Controller
-							name="name"
-							control={control}
-							render={({ field }) => (
-								<TextField
-									type="name"
-									{...register('name', {
-										onBlur: () => trigger('name'),
-										onChange: () => trigger('name'),
-									})}
-									{...field}
-									placeholder={user.name}
-									error={!!errors.name}
-									// helperText={errors.name ? 'Invalid name' : ''}
-									helperText={errors.name?.message}
-									InputProps={{
-										className: css.formInput,
-										style: { color: 'white' },
-										// sx={themes }
-									}}
-								/>
+					<div className={clsx(css.formFields, css[theme])}>
+						<div className={css.inputArea}>
+							<Controller
+								name="name"
+								control={control}
+								render={({ field }) => (
+									<TextField
+										fullWidth
+										InputProps={{
+											className: clsx(css.formInput, css[theme]),
+											onClick: playSound,
+										}}
+										type="text"
+										{...field}
+										placeholder={user.name}
+										onChange={e => {
+											field.onChange(e);
+											trigger('name');
+										}}
+									/>
+								)}
+							/>
+							{errors.name && (
+								<p className={css.errors}>{errors.name.message}</p>
 							)}
-						/>
-						<Controller
-							name="email"
-							control={control}
-							rules={{
-								pattern: {
-									value: /^[^@\s]+@[^@\s]+\.[^@\s]+$/,
-									message: 'Must be a valid email',
-								},
-							}}
-							render={({ field }) => (
-								<TextField
-									type="email"
-									{...register('email', {
-										onBlur: () => trigger('email'),
-										onChange: () => trigger('email'),
-									})}
-									{...field}
-									placeholder={user.email}
-									error={!!errors.email}
-									// helperText={errors.email ? 'Invalid email' : ''}
-									helperText={errors.email?.message}
-									InputProps={{
-										// className: `${clsx(css.formInput, css[theme])}`,
-										style: { color: 'white' },
-									}}
-								/>
+						</div>
+						<div className={css.inputArea}>
+							<Controller
+								name="email"
+								control={control}
+								render={({ field }) => (
+									<TextField
+										fullWidth
+										type="email"
+										{...field}
+										placeholder={user.email}
+										onChange={e => {
+											field.onChange(e);
+											trigger('email');
+										}}
+										InputProps={{
+											className: clsx(css.formInput, css[theme]),
+										}}
+									/>
+								)}
+							/>
+							{errors.email && (
+								<p className={css.errors}>{errors.email.message}</p>
 							)}
-						/>
-						<Controller
-							name="password"
-							control={control}
-							rules={{
-								minLength: { value: 8, message: 'Too Short' },
-								maxLength: { value: 64, message: 'Too Long' },
-							}}
-							render={({ field }) => (
-								<TextField
-									{...register('password', {
-										onBlur: () => trigger('email'),
-										onChange: () => trigger('email'),
-									})}
-									{...field}
-									type={showPassword ? 'text' : 'password'}
-									error={!!errors.password}
-									// helperText={errors.password ? 'Invalid password' : ''}
-									helperText={errors.password?.message}
-									InputProps={{
-										endAdornment: (
-											<InputAdornment position="end">
-												<IconButton
-													onClick={handleClickShowPassword}
-													style={{
-														backgroundColor: 'transparent',
-														border: 'none',
-														color: 'white',
-													}}
-												>
-													{showPassword ? <VisibilityOff /> : <Visibility />}
-												</IconButton>
-											</InputAdornment>
-										),
-										className: css.formInput,
-										style: { color: 'white' },
-									}}
-								/>
+						</div>
+						<div className={css.inputArea}>
+							<Controller
+								name="password"
+								control={control}
+								render={({ field }) => (
+									<TextField
+										fullWidth
+										{...field}
+										type={showPassword ? 'text' : 'password'}
+										placeholder="Password"
+										onChange={e => {
+											field.onChange(e);
+											trigger('password');
+										}}
+										InputProps={{
+											endAdornment: (
+												<InputAdornment position="end">
+													<IconButton
+														onClick={handleClickShowPassword}
+														className={clsx(css.showPasswordBtn, css[theme])}
+													>
+														{showPassword ? <Visibility /> : <VisibilityOff />}
+													</IconButton>
+												</InputAdornment>
+											),
+											className: clsx(css.formInput, css[theme]),
+										}}
+									/>
+								)}
+							/>
+							{errors.password && (
+								<p className={css.errors}>{errors.password.message}</p>
 							)}
-						/>
+						</div>
 					</div>
-					<Button
-						type="submit"
-						style={{
-							fontSize: '14px',
-							fontWeight: 600,
-							fontStyle: 'normal',
-							alignItems: 'center',
-							backgroundColor: '#bedbb0',
-							border: 'none',
-							borderRadius: '8px',
-							color: '#161616',
-							lineHeight: '21px',
-							paddingBottom: '11px',
-							paddingTop: '10px',
-							width: '100%',
-							marginTop: '14px',
-						}}
-					>
-						Edit
-					</Button>
+					<button type="submit" className={clsx(css.submitBtn, css[theme])}>
+						Send
+					</button>
 				</form>
 			</Box>
 		</Modal>

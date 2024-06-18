@@ -43,7 +43,7 @@ export default function ModalWindowHelp({ onClose }) {
 		reValidateMode: 'onChange',
 	});
 
-	const onSubmit = async (data) => {
+	const onSubmit = async data => {
 		const toastId = loadingToaster(theme);
 
 		try {
@@ -51,9 +51,9 @@ export default function ModalWindowHelp({ onClose }) {
 			successToaster(theme, toastId);
 			onClose();
 			reset();
-
 		} catch (err) {
 			errorToaster(theme, toastId);
+			console.log(err);
 		}
 	};
 
@@ -70,8 +70,8 @@ export default function ModalWindowHelp({ onClose }) {
 					name="email"
 					placeholder="Email address "
 					id="email"
-				// value={email}
-				// onChange={e => setEmail(e.target.value)}
+					// value={email}
+					// onChange={e => setEmail(e.target.value)}
 				/>
 			</div>
 			<div className={css.inputBox}>
