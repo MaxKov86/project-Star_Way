@@ -46,10 +46,8 @@ export default function SidebarBoard({ title, icon, id, isActive }) {
 
 		if (boards.length !== 0 && boards.length !== 1) {
 			if (index === 0) {
-				console.log(1);
 				nav(`/home/${boards[index + 1]._id}`);
 			} else {
-				console.log(2);
 				nav(`/home/${boards[index - 1]._id}`);
 			}
 		} else {

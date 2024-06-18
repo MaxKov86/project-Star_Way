@@ -47,7 +47,7 @@ const Column = ({ id, title }) => {
 
 			{/* список карток */}
 			{tasks && tasks.length > 0 && (
-				<ul className={css.cardList}>
+				<ul className={clsx(css.cardList, css[theme])}>
 					{tasks.map(task => (
 						<li key={task._id}>
 							<TaskCard
@@ -66,7 +66,7 @@ const Column = ({ id, title }) => {
 			)}
 
 			{/* add another card button*/}
-			<PrimeBtn onBtnClick={openModal}>
+			<PrimeBtn onBtnClick={openModal} additionalClass={css.addCardBtn}>
 				<div className={clsx(css.iconWrapper, css[theme])}>
 					<svg className={clsx(css.icon, css[theme])}>
 						<use href={`${sprite}#icon-plus`}></use>

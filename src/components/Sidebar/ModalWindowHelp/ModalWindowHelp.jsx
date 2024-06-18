@@ -53,7 +53,6 @@ export default function ModalWindowHelp({ onClose }) {
 			reset();
 		} catch (err) {
 			errorToaster(theme, toastId);
-			console.log(err);
 		}
 	};
 

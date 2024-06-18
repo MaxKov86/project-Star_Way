@@ -37,7 +37,6 @@ const LoginForm = () => {
 	const navigate = useNavigate();
 
 	const onSubmit = data => {
-		console.log(data);
 		dispatch(logIn(data));
 		// const reg = logIn(data);
 		// dispatch(reg);
