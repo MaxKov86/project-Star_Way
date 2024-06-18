@@ -22,7 +22,6 @@ import css from './Modal.module.css';
 import clsx from 'clsx';
 import icons from '/src/assets/icons.svg';
 import { selectTheme } from '../../../redux/theme/selectors';
-import { refreshUser } from '../../../redux/auth/operations';
 import sound from '../../../assets/bell.mp3';
 
 import { yupResolver } from '@hookform/resolvers/yup';
