@@ -28,6 +28,7 @@ const slice = createSlice({
 				state.user = action.payload.user;
 				state.token = action.payload.token;
 				state.isLoggedIn = true;
+				state.isRefreshing = false;
 			})
 			.addCase(registr.rejected, state => {
 				state.isLoggedIn = false;

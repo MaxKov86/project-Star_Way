@@ -6,10 +6,9 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from '../redux/auth/operations';
 import PrivateRoute from './PrivateRoute';
-// import RestrictedRoute from './RestrictedRoute';
+import RestrictedRoute from './RestrictedRoute';
 import { Suspense, lazy } from 'react';
 import { selectIsRefreshing } from '../redux/auth/selectors';
-import RestrictedRoute from './RestrictedRoute';
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
@@ -30,22 +29,20 @@ function App() {
 			{/* <Layout> */}
 			<Suspense fallback={null}>
 				<Routes>
-					<Route path="/" element={<WelcomePage />} />
+					<Route
+						path="/"
+						element={<RestrictedRoute component={<WelcomePage />} />}
+					/>
 					<Route
 						path="/auth/:id"
-						element={
-							<RestrictedRoute
-								component={<AuthPage />}
-								redirectTo="/auth/registr"
-							/>
-						}
+						element={<RestrictedRoute component={<AuthPage />} />}
 					/>
 					<Route
 						path="/home"
 						element={
 							<PrivateRoute
 								component={<HomePage />}
-								redirectTo="/"
+								redirectTo="/auth/register"
 							/>
 						}
 					>
