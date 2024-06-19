@@ -13,7 +13,7 @@ import errorToaster from '../../helpers/errorToast';
 import ColumnSelector from './moveModal/ColumnSelector';
 import { selectColumns } from '../../redux/columns/selectors';
 import { useParams } from 'react-router-dom';
-import audio from '../../assets/bell.mp3'
+import audio from '../../assets/bell.mp3';
 
 export default function TaskCard({
 	title,
@@ -39,7 +39,7 @@ export default function TaskCard({
 
 	const handelRing = () => {
 		if (deadline && ring <= oneDay) ringSound.play();
-	}
+	};
 
 	const [editIsOpen, setEditIsOpen] = useState(false);
 	const openEditModal = () => setEditIsOpen(true);
