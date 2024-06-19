@@ -13,8 +13,13 @@ const schema = yup.object().shape({
 	name: yup
 		.string()
 		.min(2, 'Name must be at least 2 characters')
-		.required('Name is required'),
-	email: yup.string().email('Invalid email').required('Email is required'),
+		.required('Name is required')
+		.trim(),
+	email: yup
+		.string()
+		.email('Invalid email')
+		.required('Email is required')
+		.trim(),
 	password: yup
 		.string()
 		.min(8, 'Password must be at least 8 characters')

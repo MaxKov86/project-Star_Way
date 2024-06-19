@@ -12,7 +12,11 @@ import { useDispatch } from 'react-redux';
 import { logIn } from '../../redux/auth/operations';
 
 const schema = yup.object().shape({
-	email: yup.string().email('Invalid email').required('Email is required'),
+	email: yup
+		.string()
+		.email('Invalid email')
+		.required('Email is required')
+		.trim(),
 	password: yup
 		.string()
 		.min(8, 'Password must be at least 8 characters')
