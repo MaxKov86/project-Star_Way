@@ -8,7 +8,7 @@ import {
 	Box,
 } from '@mui/material';
 import {
-	Person as UserIcon,
+	// Person as UserIcon,
 	Visibility,
 	VisibilityOff,
 	Add as AddIcon,
@@ -21,23 +21,65 @@ import { selectUserProfile } from '../../../redux/users/selectors';
 
 import css from './Modal.module.css';
 import clsx from 'clsx';
-import icons from '/src/assets/icons.svg';
+// import icons from '/src/assets/icons.svg';
 import { selectTheme } from '../../../redux/theme/selectors';
-import sound from '../../../assets/bell.mp3';
+// import sound from '../../../assets/bell.mp3';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
-	name: yup
-		.string()
-		.min(2, 'Name must be at least 2 characters')
-		.required('Name is required'),
-	email: yup.string().email('Invalid email').required('Email is required'),
-	password: yup
-		.string()
-		.min(8, 'Password must be at least 8 characters')
-		.required('Password is required'),
+	name: yup.lazy(value => {
+		if (value !== undefined && value !== '') {
+			return yup
+				.string()
+				.min(2, 'Name must be at least 2 characters')
+				.lowercase();
+		}
+		return yup.string().nullable().optional();
+	}),
+
+	// yup
+	// 	.string()
+	// 	.min(2, 'Name must be at least 2 characters')
+	// 	.nullable()
+	// 	.notRequired(),
+	// .required('Name is required'),
+	email: yup.lazy(value => {
+		if (value !== undefined && value !== '') {
+			return yup.string().email('Invalid email').lowercase();
+		}
+		return yup.string().nullable().optional();
+	}),
+	// yup.string().email('Invalid email').nullable().notRequired(),
+	// .required('Email is required'),
+	password: yup.lazy(value => {
+		if (value !== undefined && value !== '') {
+			return yup.string().min(8).lowercase();
+		}
+		return yup.string().nullable().optional();
+	}),
+
+	// yup.string().when('password', (val, schema) => {
+	// 	if (val?.length > 0) {
+	// 		return yup.string().min(8, 'min 8').required('Required');
+	// 	} else {
+	// 		return yup.string().notRequired();
+	// 	}
+	// }),
+
+	// yup
+	// 	.string()
+	// 	// .min(8, 'Password must be at least 8 characters')
+	// 	.nullable()
+	// 	.notRequired()
+	// 	.optional()
+	// 	.length(8),
+	// .required('Password is required'),
+	// [
+	// 	["name", "email"],
+	// 	["password"],
+	//    ]
 });
 
 const ModalForm = ({ open, handleClose }) => {
@@ -62,9 +104,9 @@ const ModalForm = ({ open, handleClose }) => {
 		mode: 'all',
 		reValidateMode: 'onChange',
 		defaultValues: {
-			name: user.name,
-			email: user.email,
-			password: '',
+			name: user.name || '',
+			email: user.email || '',
+			password: user.password || '',
 			avatarURL: '',
 		},
 	});
@@ -86,10 +128,18 @@ const ModalForm = ({ open, handleClose }) => {
 
 	const onSubmit = data => {
 		const formData = new FormData();
-		formData.append('name', data.name);
-		formData.append('email', data.email);
-		formData.append('password', data.password);
-
+		// formData.append('name', data.name);
+		// formData.append('email', data.email);
+		// formData.append('password', data.password);
+		if (data.name) {
+			formData.append('name', data.name);
+		}
+		if (data.email) {
+			formData.append('email', data.email);
+		}
+		if (data.password) {
+			formData.append('password', data.password);
+		}
 		if (data.avatarURL && data.avatarURL[0]) {
 			formData.append('avatar', data.avatarURL[0]);
 		}
@@ -108,10 +158,20 @@ const ModalForm = ({ open, handleClose }) => {
 			});
 	};
 
-	const playSound = () => {
-		const audio = new Audio(sound);
-		audio.play();
-	};
+	// const playSound = () => {
+	// 	const audio = new Audio(sound);
+	// 	audio.play();
+	// };
+	// const avaLink = theme => {
+	// 	switch (theme) {
+	// 		case 'dark':
+	// 			return `/public/darkUser.png`;
+	// 		case 'light':
+	// 			return `/public/whiteUser.png`;
+	// 		case 'violet':
+	// 			return `/public/violetUser.png`;
+	// 	}
+	// };
 
 	return (
 		<Modal open={open} onClose={handleClose}>
@@ -131,15 +191,16 @@ const ModalForm = ({ open, handleClose }) => {
 						<div className={clsx(css.photoUpload, css[theme])}>
 							<Avatar
 								style={{ width: '68px', height: '68px', borderRadius: '8px' }}
-								className={clsx(css.userAvatar, css[theme])}
-								src={
-									userAvatar ||
-									`${icons}#${
-										theme === 'light' ? 'icon-user-light' : 'icon-user-violet'
-									}`
-								}
+								src={userAvatar}
+								// className={clsx(css.userAvatar, css[theme])}
+								// src={
+								// 	userAvatar ||
+								// 	`${icons}#${
+								// 		theme === 'light' ? 'icon-user-light' : 'icon-user-violet'
+								// 	}`
+								// }
 							>
-								{!userAvatar && <UserIcon />}
+								{/* {!userAvatar && <UserIcon />} */}
 							</Avatar>
 							<IconButton component="label">
 								<input
@@ -163,7 +224,13 @@ const ModalForm = ({ open, handleClose }) => {
 										fullWidth
 										InputProps={{
 											className: clsx(css.formInput, css[theme]),
-											onClick: playSound,
+											// onClick: playSound,
+											sx: {
+												'&.Mui-focused fieldset': {
+													borderColor: 'green', // Set the border color when focused
+													borderWidth: 8, // Increase the border width when focused
+												},
+											},
 										}}
 										type="text"
 										{...field}

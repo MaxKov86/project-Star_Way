@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Avatar } from '@mui/material';
-import { Person as UserIcon } from '@mui/icons-material';
+// import { Person as UserIcon } from '@mui/icons-material';
 import ModalForm from './Modal';
 import css from './UserInfo.module.css';
 import clsx from 'clsx';
@@ -14,6 +14,19 @@ const UserInfo = () => {
 	const theme = useSelector(selectTheme);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
+
+	const avaLink = theme => {
+		switch (theme) {
+			case 'dark':
+				return `/public/darkUser.png`;
+			case 'light':
+				return `/public/whiteUser.png`;
+			case 'violet':
+				return `/public/violetUser.png`;
+			default:
+				return avatarURL;
+		}
+	};
 
 	return (
 		<div className={css.wrap}>
@@ -29,15 +42,15 @@ const UserInfo = () => {
 					onClick={() => {
 						handleOpen();
 					}}
-					src={avatarURL || ''}
+					src={avatarURL || avaLink(theme)}
 				>
-					{!avatarURL && <UserIcon />}
+					{/* {!avatarURL && <UserIcon />} */}
 				</Avatar>
 				{open && (
 					<ModalForm
 						open={open}
 						handleClose={handleClose}
-						user={{ name, avatarURL }}
+						// user={{ name, avatarURL }}
 					/>
 				)}
 			</div>
