@@ -16,9 +16,15 @@
 	font-weight: 500;
 	letter-spacing: -0.02em;
 	color: var(--primary-color-text-white);
-	padding: 2px 15px;
+	padding: 2px 10px;
 	border-radius: 8px;
-	background-color: rgba(31, 31, 31, 1);
+	border: none;
+	/* background-color: rgba(31, 31, 31, 1); */
+	background: radial-gradient(
+		circle,
+		rgba(31, 31, 31, 0.5) 33%,
+		rgba(31, 31, 31, 0.3) 83%
+	);
 }
 
 /* _________VIOLET_________ */
@@ -29,7 +35,12 @@
 
 .violet .titleHeaderDashboard {
 	color: var(--primary-color-text);
-	background-color: rgba(236, 237, 253, 1);
+	/* background-color: rgba(236, 237, 253, 1); */
+	background: radial-gradient(
+		circle,
+		rgba(236, 237, 253, 0.5) 33%,
+		rgba(236, 237, 253, 0.3) 83%
+	);
 }
 
 /* _________LIGHT_________ */
@@ -40,7 +51,12 @@
 
 .light .titleHeaderDashboard {
 	color: var(--primary-color-text);
-	background-color: rgba(246, 246, 247, 1);
+	/* background-color: rgba(246, 246, 247, 1); */
+	background: radial-gradient(
+		circle,
+		rgba(246, 246, 247, 0.5) 33%,
+		rgba(246, 246, 247, 0.3) 83%
+	);
 }
 
 @media screen and (min-width: 768px) {
