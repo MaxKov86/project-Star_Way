@@ -14,6 +14,7 @@
 
 .react-datepicker__close-icon::after {
 	background-color: var(--color-green-background);
+	color: #000;
 }
 
 .react-datepicker-popper {
@@ -153,6 +154,7 @@
 /* VIOLET */
 .violet .react-datepicker__close-icon::after {
 	background-color: var(--primary-color-violet);
+	color: #fff;
 }
 
 .violet .react-datepicker__navigation-icon::before {
@@ -229,10 +231,13 @@
 	background-color: var(--primary-color-text-white);
 }
 
+.light .react-datepicker__close-icon::after {
+	color: #fff;
+}
+
 .light .react-datepicker__day {
 	color: var(--primary-color-text);
 }
-
 .light .react-datepicker__current-month {
 	color: var(--primary-color-text);
 	border-color: #16161636;

@@ -16,10 +16,7 @@ const AddCard = ({ columnId, closeModal }) => {
 	const theme = useSelector(selectTheme);
 	const schema = yup.object().shape({
 		title: yup.string().min(2, 'Too Short!').required('Title is required'),
-		description: yup
-			.string()
-			.min(2, 'Too Short!')
-			.required('Description is required'),
+		description: yup.string(),
 	});
 
 	const {

@@ -66,8 +66,8 @@
 	align-items: center;
 	text-align: center;
 	margin-top: 24px;
+	margin-bottom: 14px;
 }
-
 
 .plusBtn {
 	border: none;
@@ -109,14 +109,30 @@
 	padding-left: 0;
 	padding-right: 18px;
 	width: 100%;
-	height: 49px;
-	border-radius: 8px;
+	height: 49px !important;
+	border-radius: 8px !important;
 	border: 1px solid rgba(190, 219, 176, 0.5);
-	font-family: Poppins;
+	font-family: Poppins !important;
 	font-size: 14px;
 	font-weight: 400;
 	outline: none;
 	box-shadow: none;
+}
+.formInput {
+	color: var(--primary-color-text-white) !important;
+}
+
+/* .formInput::placeholder, */
+.formInput:focus {
+	color: var(--primary-color-text-white);
+	/* outline: none; */
+	/* box-shadow: none; */
+	border-color: #4caf50 !important;
+}
+
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+	border-color: #ff0066; /* Change outline color on focus */
+	border-width: 2px; /* Increase outline width on focus */
 }
 
 input:-webkit-autofill,
@@ -133,16 +149,10 @@ select:-webkit-autofill:focus {
 	transition: background-color 5000s ease-in-out 0s;
 }
 
-.formInput {
-	color: var(--primary-color-text-white) !important;
-}
-
-.formInput::placeholder {
-	color: var(--primary-color-text-white);
-}
-
 .formInput.light {
 	color: var(--primary-color-text-black) !important;
+	border: 1px solid var(--color-green-background);
+	outline-color: var(--color-green-background);
 }
 
 .formInput.light::placeholder {
@@ -152,6 +162,7 @@ select:-webkit-autofill:focus {
 .formInput.violet {
 	color: var(--primary-color-text-black) !important;
 	border: 1px solid #5255bc;
+	outline-color: #5255bc;
 }
 
 .formInput.violet::placeholder {
@@ -174,15 +185,18 @@ select:-webkit-autofill:focus {
 .showPasswordBtn {
 	background-color: transparent;
 	border: none;
-	color: var(--primary-color-text-white);
+	color: var(--primary-color-text-white) !important;
+	opacity: 0.4;
 }
 
 .showPasswordBtn.light {
-	color: var(--primary-color-text-black);
+	color: var(--primary-color-text-black) !important;
+	opacity: 0.4;
 }
 
 .showPasswordBtn.violet {
-	color: var(--primary-color-text-black);
+	color: rgba(82, 85, 188, 1) !important;
+	opacity: 0.4;
 }
 
 .submitBtn {

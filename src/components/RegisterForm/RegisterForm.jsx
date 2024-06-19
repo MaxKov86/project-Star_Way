@@ -39,7 +39,6 @@ const RegisterForm = () => {
 	const navigate = useNavigate();
 
 	const onSubmit = data => {
-		console.log(data);
 		dispatch(registr(data));
 		navigate('/home');
 	};

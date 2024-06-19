@@ -247,6 +247,7 @@
 /* iconRingBox */
 
 .iconRingBox {
+	cursor: pointer;
 	position: relative;
 
 	height: 16px;
@@ -327,8 +328,6 @@
 }
 
 .iconRing {
-	cursor: pointer;
-
 	height: 16px;
 	width: 16px;
 
@@ -370,6 +369,14 @@
 
 .btn:hover .icon {
 	stroke: var(--primary-color-text-black);
+}
+
+.btn:disabled {
+	cursor: default;
+}
+
+.btn:disabled:hover .icon {
+	stroke: var(--color-icons-board);
 }
 
 .icon_dark {

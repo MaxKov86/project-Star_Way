@@ -11,12 +11,13 @@ import { useParams } from 'react-router-dom';
 import loadingToaster from '../../../helpers/loadingToast';
 import successToaster from '../../../helpers/successToast';
 import errorToaster from '../../../helpers/errorToast';
+import PrimeBtn from '../PrimeBtn';
 
 const schema = yup.object().shape({
 	title: yup.string().min(2, 'Too Short!').required('Title is required'),
 });
 
-const AddColumnModal = ({ handleOpenModal, handleCloseModal }) => {
+const AddColumnModal = ({ handleCloseModal }) => {
 	const {
 		register,
 		handleSubmit,
@@ -30,7 +31,7 @@ const AddColumnModal = ({ handleOpenModal, handleCloseModal }) => {
 	const dispatch = useDispatch();
 	const { boardName } = useParams();
 
-	const onSubmit = async (data) => {
+	const onSubmit = async data => {
 		const toastId = loadingToaster(theme);
 
 		try {
@@ -40,49 +41,28 @@ const AddColumnModal = ({ handleOpenModal, handleCloseModal }) => {
 
 			reset();
 			handleCloseModal();
-			console.log({ ...data, boardId: boardName });
 		} catch (err) {
 			errorToaster(theme, toastId);
 		}
 	};
 
-	if (!handleOpenModal) return null;
-
 	return (
-		<div className={css.modalOverlay}>
-			<div className={clsx(css.modalContainer, css[theme])}>
-				<div className={clsx(css.modal, css[theme])}>
-					<h2 className={clsx(css.modalTitle, css[theme])}>Add Column</h2>
-					<button
-						className={clsx(css.closeButton, css[theme])}
-						onClick={handleCloseModal}
-					>
-						<svg className={clsx(css.btnCloseIcon, css[theme])}>
-							<use href={`${staticIcons}#icon-x-close`}></use>
-						</svg>
-					</button>
-					<form onSubmit={handleSubmit(onSubmit)}>
-						<input
-							type="text"
-							name="title"
-							{...register('title')}
-							// onChange={handleTitleChange}
-							className={clsx(css.input, { [css.error]: errors.title })}
-							placeholder="Title"
-						/>
-						{errors.title && (
-							<p className={css.errorText}>{errors.title.message}</p>
-						)}
-						<button type="submit" className={clsx(css.addButton, css[theme])}>
-							<svg className={clsx(css.iconAddColumnBtn, css[theme])}>
-								<use href={`${staticIcons}#icon-plus`}></use>
-							</svg>
-							<span className={clsx(css.textAddColumnBtn, css[theme])}>Add</span>
-						</button>
-					</form>
-				</div>
-			</div>
-		</div>
+		<form onSubmit={handleSubmit(onSubmit)}>
+			<input
+				type="text"
+				name="title"
+				{...register('title')}
+				className={clsx(css.input, css[theme], { [css.error]: errors.title })}
+				placeholder="Title"
+			/>
+			{errors.title && <p className={css.errorText}>{errors.title.message}</p>}
+			<button type="submit" className={clsx(css.addButton, css[theme])}>
+				<svg className={clsx(css.iconAddColumnBtn, css[theme])}>
+					<use href={`${staticIcons}#icon-plus`}></use>
+				</svg>
+				<span className={clsx(css.textAddColumnBtn, css[theme])}>Add</span>
+			</button>
+		</form>
 	);
 };
 
