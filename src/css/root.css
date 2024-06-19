@@ -8,8 +8,8 @@
 	/*needHelp*/
 	--color-green-background: rgb(190, 219, 176, 1);
 	/*buttom, welcomePage*/
-	--color-white-background: #f6f6f7;
-	--color-form-background: #151515;
+	--color-white-background: rgb(246, 246, 247);
+	--color-form-background: rgb(21, 21, 21);
 	--secondary-color-black-background: #121212;
 	/* column scroll */
 	--column-scroll-track-dark: #313131;
