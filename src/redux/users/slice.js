@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { editUserInfo, needHelp } from './operation';
 import { refreshUser, logIn, logOut, registr } from '../auth/operations';
+import { changeTheme } from '../theme/operations';
 
 const slice = createSlice({
 	name: 'users',
@@ -43,6 +44,9 @@ const slice = createSlice({
 					password: null,
 					avatarURL: null,
 				};
+			})
+			.addCase(changeTheme.fulfilled, (state, action) => {
+				state.profile.avatarURL = action.payload.avatarURL;
 			}),
 });
 

@@ -15,19 +15,6 @@ const UserInfo = () => {
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
 
-	const avaLink = theme => {
-		switch (theme) {
-			case 'dark':
-				return `/public/darkUser.png`;
-			case 'light':
-				return `/public/whiteUser.png`;
-			case 'violet':
-				return `/public/violetUser.png`;
-			default:
-				return avatarURL;
-		}
-	};
-
 	return (
 		<div className={css.wrap}>
 			<div className={css.userinfo}>
@@ -42,7 +29,7 @@ const UserInfo = () => {
 					onClick={() => {
 						handleOpen();
 					}}
-					src={avatarURL || avaLink(theme)}
+					src={avatarURL}
 				>
 					{/* {!avatarURL && <UserIcon />} */}
 				</Avatar>
