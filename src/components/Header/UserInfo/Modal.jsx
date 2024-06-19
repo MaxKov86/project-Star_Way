@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { styled } from '@mui/material/styles';
 import {
 	Modal,
 	TextField,
@@ -13,6 +14,8 @@ import {
 	VisibilityOff,
 	Add as AddIcon,
 	Close as CloseIcon,
+	// PaddingRounded,
+	// BorderClear,
 } from '@mui/icons-material';
 import { useForm, Controller } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
@@ -21,9 +24,7 @@ import { selectUserProfile } from '../../../redux/users/selectors';
 
 import css from './Modal.module.css';
 import clsx from 'clsx';
-// import icons from '/src/assets/icons.svg';
 import { selectTheme } from '../../../redux/theme/selectors';
-// import sound from '../../../assets/bell.mp3';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -38,48 +39,18 @@ const schema = yup.object().shape({
 		}
 		return yup.string().nullable().optional();
 	}),
-
-	// yup
-	// 	.string()
-	// 	.min(2, 'Name must be at least 2 characters')
-	// 	.nullable()
-	// 	.notRequired(),
-	// .required('Name is required'),
 	email: yup.lazy(value => {
 		if (value !== undefined && value !== '') {
 			return yup.string().email('Invalid email').lowercase();
 		}
 		return yup.string().nullable().optional();
 	}),
-	// yup.string().email('Invalid email').nullable().notRequired(),
-	// .required('Email is required'),
 	password: yup.lazy(value => {
 		if (value !== undefined && value !== '') {
 			return yup.string().min(8).lowercase();
 		}
 		return yup.string().nullable().optional();
 	}),
-
-	// yup.string().when('password', (val, schema) => {
-	// 	if (val?.length > 0) {
-	// 		return yup.string().min(8, 'min 8').required('Required');
-	// 	} else {
-	// 		return yup.string().notRequired();
-	// 	}
-	// }),
-
-	// yup
-	// 	.string()
-	// 	// .min(8, 'Password must be at least 8 characters')
-	// 	.nullable()
-	// 	.notRequired()
-	// 	.optional()
-	// 	.length(8),
-	// .required('Password is required'),
-	// [
-	// 	["name", "email"],
-	// 	["password"],
-	//    ]
 });
 
 const ModalForm = ({ open, handleClose }) => {
@@ -158,20 +129,56 @@ const ModalForm = ({ open, handleClose }) => {
 			});
 	};
 
-	// const playSound = () => {
-	// 	const audio = new Audio(sound);
-	// 	audio.play();
-	// };
-	// const avaLink = theme => {
-	// 	switch (theme) {
-	// 		case 'dark':
-	// 			return `/public/darkUser.png`;
-	// 		case 'light':
-	// 			return `/public/whiteUser.png`;
-	// 		case 'violet':
-	// 			return `/public/violetUser.png`;
-	// 	}
-	// };
+	const InputField = styled(TextField)({
+		'& .MuiOutlinedInput-root': {
+			'& fieldset': {
+				borderColor:
+					theme === 'violet'
+						? 'rgba(82, 85, 188, 0.5)'
+						: 'rgba(157, 200, 136, 0.5)',
+				borderWidth: '1px',
+				borderRadius: '8px',
+				height: '55px',
+				fontFamily: ['Poppins', 'Arial'].join(','),
+				fontSize: 14,
+				fontWeight: 400,
+				paddingLeft: '0',
+				paddingRight: '18px',
+			},
+			'& .MuiOutlinedInput-input': {
+				color:
+					theme === 'dark' ? 'rgba(255, 255, 255, 0.5)' : 'rgba(22, 22, 22, 1)',
+			},
+			'&:hover fieldset': {
+				borderColor:
+					theme === 'violet'
+						? 'rgba(82, 85, 188, 1)'
+						: 'rgba(157, 200, 136, 1)',
+				borderWidth: '1px',
+			},
+			'&.Mui-focused fieldset': {
+				borderColor:
+					theme === 'violet'
+						? 'rgba(82, 85, 188, 1)'
+						: 'rgba(157, 200, 136, 1)',
+				borderWidth: '1px',
+				color:
+					theme === 'dark' ? 'rgba(255, 255, 255, 0.5)' : 'rgba(22, 22, 22, 1)',
+			},
+		},
+		'& .MuiInputBase-input': {
+			fontSize: 14,
+			fontFamily: ['Poppins', 'Arial'].join(','),
+		},
+		'& .MuiInputBase-input:-webkit-autofill': {
+			WebkitBoxShadow:
+				theme === 'dark'
+					? '0 0 0 1000px rgba(21, 21, 21, 1) inset'
+					: '0 0 0 1000px rgb(246, 246, 247, 0.8) inset',
+			WebkitTextFillColor:
+				theme === 'dark' ? 'rgba(255, 255, 255, 1)' : 'rgba(22, 22, 22, 1)',
+		},
+	});
 
 	return (
 		<Modal open={open} onClose={handleClose}>
@@ -190,7 +197,12 @@ const ModalForm = ({ open, handleClose }) => {
 					<div className={css.userBlock}>
 						<div className={clsx(css.photoUpload, css[theme])}>
 							<Avatar
-								style={{ width: '68px', height: '68px', borderRadius: '8px' }}
+								style={{
+									width: '68px',
+									height: '68px',
+									borderRadius: '8px',
+									backgroundColor: 'rgba(255, 255, 255, 0.5)',
+								}}
 								src={userAvatar}
 								// className={clsx(css.userAvatar, css[theme])}
 								// src={
@@ -207,7 +219,7 @@ const ModalForm = ({ open, handleClose }) => {
 									type="file"
 									hidden
 									accept="image/*"
-									{...register('avatarURL')} // Реєстрація файлу в react-hook-form
+									{...register('avatarURL')}
 									onChange={handleAvatarChange}
 								/>
 								<AddIcon className={clsx(css.plusBtn, css[theme])} />
@@ -219,28 +231,29 @@ const ModalForm = ({ open, handleClose }) => {
 							<Controller
 								name="name"
 								control={control}
-								render={({ field }) => (
-									<TextField
-										fullWidth
-										InputProps={{
-											className: clsx(css.formInput, css[theme]),
-											// onClick: playSound,
-											sx: {
-												'&.Mui-focused fieldset': {
-													borderColor: 'green', // Set the border color when focused
-													borderWidth: 8, // Increase the border width when focused
-												},
-											},
-										}}
-										type="text"
-										{...field}
-										placeholder={user.name}
-										onChange={e => {
-											field.onChange(e);
-											trigger('name');
-										}}
-									/>
-								)}
+								render={({ field }) => {
+									// const inputRef = useRef(null);
+									return (
+										<InputField
+											// autoFocus
+											fullWidth
+											type="text"
+											{...field}
+											placeholder={user.name}
+											value={field.value}
+											onChange={e => {
+												field.onChange(e);
+
+												// trigger('name');
+											}}
+											onBlur={() => {
+												trigger('name');
+												// inputRef.current.focus();
+											}}
+											// ref={inputRef}
+										/>
+									);
+								}}
 							/>
 							{errors.name && (
 								<p className={css.errors}>{errors.name.message}</p>
@@ -251,17 +264,15 @@ const ModalForm = ({ open, handleClose }) => {
 								name="email"
 								control={control}
 								render={({ field }) => (
-									<TextField
+									<InputField
+										// autoFocus
 										fullWidth
 										type="email"
 										{...field}
 										placeholder={user.email}
 										onChange={e => {
 											field.onChange(e);
-											trigger('email');
-										}}
-										InputProps={{
-											className: clsx(css.formInput, css[theme]),
+											// trigger('email');
 										}}
 									/>
 								)}
@@ -275,14 +286,15 @@ const ModalForm = ({ open, handleClose }) => {
 								name="password"
 								control={control}
 								render={({ field }) => (
-									<TextField
+									<InputField
+										// autoFocus
 										fullWidth
 										{...field}
 										type={showPassword ? 'text' : 'password'}
 										placeholder="Password"
 										onChange={e => {
 											field.onChange(e);
-											trigger('password');
+											// trigger('password');
 										}}
 										InputProps={{
 											endAdornment: (
@@ -295,7 +307,6 @@ const ModalForm = ({ open, handleClose }) => {
 													</IconButton>
 												</InputAdornment>
 											),
-											className: clsx(css.formInput, css[theme]),
 										}}
 									/>
 								)}

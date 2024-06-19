@@ -106,20 +106,20 @@
 }
 
 .formInput {
-	padding-left: 0;
+	/* padding-left: 0;
 	padding-right: 18px;
 	width: 100%;
-	height: 49px !important;
-	border-radius: 8px !important;
-	border: 1px solid rgba(190, 219, 176, 0.5);
-	font-family: Poppins !important;
+	height: 49px !important; */
+	/* border-radius: 8px !important; */
+	/* border: 1px solid rgba(190, 219, 176, 0.502); */
+	/* font-family: Poppins !important;
 	font-size: 14px;
 	font-weight: 400;
 	outline: none;
-	box-shadow: none;
+	box-shadow: none; */
 }
 .formInput {
-	color: var(--primary-color-text-white) !important;
+	/* color: var(--primary-color-text-white) !important; */
 }
 
 /* .formInput::placeholder, */
@@ -127,12 +127,7 @@
 	color: var(--primary-color-text-white);
 	/* outline: none; */
 	/* box-shadow: none; */
-	border-color: #4caf50 !important;
-}
-
-.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-	border-color: #ff0066; /* Change outline color on focus */
-	border-width: 2px; /* Increase outline width on focus */
+	/* border-color: #4caf50 !important; */
 }
 
 input:-webkit-autofill,
@@ -151,8 +146,8 @@ select:-webkit-autofill:focus {
 
 .formInput.light {
 	color: var(--primary-color-text-black) !important;
-	border: 1px solid var(--color-green-background);
-	outline-color: var(--color-green-background);
+	/* border: 1px solid var(--color-green-background);
+	outline-color: var(--color-green-background); */
 }
 
 .formInput.light::placeholder {
@@ -161,8 +156,8 @@ select:-webkit-autofill:focus {
 
 .formInput.violet {
 	color: var(--primary-color-text-black) !important;
-	border: 1px solid #5255bc;
-	outline-color: #5255bc;
+	/* border: 0px solid #5255bc; */
+	/* outline-color: #5255bc; */
 }
 
 .formInput.violet::placeholder {
@@ -227,9 +222,9 @@ select:-webkit-autofill:focus {
 	background-color: rgba(157, 200, 136, 1);
 }
 .submitBtn.violet {
-	background-color: rgba(82, 85, 188, 1);
+	background-color: #5255bc;
 	color: var(--primary-color-text-white);
 }
 .submitBtn.violet:hover {
-	background-color: rgba(123, 126, 222, 1);
+	background-color: #7b7ede;
 }
