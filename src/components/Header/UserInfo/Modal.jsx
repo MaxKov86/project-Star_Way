@@ -30,22 +30,19 @@ import * as yup from 'yup';
 const schema = yup.object().shape({
 	name: yup.lazy(value => {
 		if (value !== undefined && value !== '') {
-			return yup
-				.string()
-				.min(2, 'Name must be at least 2 characters')
-				.lowercase();
+			return yup.string().min(2, 'Name must be at least 2 characters');
 		}
 		return yup.string().nullable().optional();
 	}),
 	email: yup.lazy(value => {
 		if (value !== undefined && value !== '') {
-			return yup.string().email('Invalid email').lowercase();
+			return yup.string().email('Invalid email');
 		}
 		return yup.string().nullable().optional();
 	}),
 	password: yup.lazy(value => {
 		if (value !== undefined && value !== '') {
-			return yup.string().min(8).lowercase();
+			return yup.string().min(8);
 		}
 		return yup.string().nullable().optional();
 	}),

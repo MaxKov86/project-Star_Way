@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Avatar } from '@mui/material';
-// import { Person as UserIcon } from '@mui/icons-material';
 import ModalForm from './Modal';
 import css from './UserInfo.module.css';
 import clsx from 'clsx';
@@ -31,13 +30,13 @@ const UserInfo = () => {
 					}}
 					src={avatarURL}
 				>
-					{/* {!avatarURL && <UserIcon />} */}
+				
 				</Avatar>
 				{open && (
 					<ModalForm
 						open={open}
 						handleClose={handleClose}
-						// user={{ name, avatarURL }}
+						
 					/>
 				)}
 			</div>
