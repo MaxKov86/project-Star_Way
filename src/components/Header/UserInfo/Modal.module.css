@@ -105,31 +105,6 @@
 	color: var(--primary-color-text-black);
 }
 
-.formInput {
-	/* padding-left: 0;
-	padding-right: 18px;
-	width: 100%;
-	height: 49px !important; */
-	/* border-radius: 8px !important; */
-	/* border: 1px solid rgba(190, 219, 176, 0.502); */
-	/* font-family: Poppins !important;
-	font-size: 14px;
-	font-weight: 400;
-	outline: none;
-	box-shadow: none; */
-}
-.formInput {
-	/* color: var(--primary-color-text-white) !important; */
-}
-
-/* .formInput::placeholder, */
-.formInput:focus {
-	color: var(--primary-color-text-white);
-	/* outline: none; */
-	/* box-shadow: none; */
-	/* border-color: #4caf50 !important; */
-}
-
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -144,26 +119,6 @@ select:-webkit-autofill:focus {
 	transition: background-color 5000s ease-in-out 0s;
 }
 
-.formInput.light {
-	color: var(--primary-color-text-black) !important;
-	/* border: 1px solid var(--color-green-background);
-	outline-color: var(--color-green-background); */
-}
-
-.formInput.light::placeholder {
-	color: var(--primary-color-text-black);
-}
-
-.formInput.violet {
-	color: var(--primary-color-text-black) !important;
-	/* border: 0px solid #5255bc; */
-	/* outline-color: #5255bc; */
-}
-
-.formInput.violet::placeholder {
-	color: var(--primary-color-text-black);
-}
-
 .inputArea {
 	position: relative;
 	width: 100%;
@@ -172,9 +127,9 @@ select:-webkit-autofill:focus {
 	color: #ff4c4c;
 	font-size: 10px;
 	line-height: 10px;
-	margin-top: 5px;
+	/* margin-top: 5px; */
 	position: absolute;
-	top: 95%;
+	top: 100%;
 	left: 5px;
 }
 .showPasswordBtn {
