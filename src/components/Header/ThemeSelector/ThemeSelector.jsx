@@ -4,27 +4,15 @@ import { changeTheme } from '../../../redux/theme/operations';
 import { selectTheme } from '../../../redux/theme/selectors';
 import css from './ThemeSelector.module.css';
 import clsx from 'clsx';
-// import { selectTheme } from '../../../redux/theme/selectors';
 
 const ThemeSelector = ({ closeMenuModal }) => {
 	const dispatch = useDispatch();
 	const currentTheme = useSelector(selectTheme);
-	// const theme = useSelector(selectTheme);
 
 	const handleThemeChange = selectedTheme => {
 		dispatch(changeTheme(selectedTheme));
 		closeMenuModal();
 	};
-
-	// const btnColor = selectedColor => {
-	// 	return (
-	// 			`${css.btn}, ${css.transition}, $
-	// 			{currentTheme === selectedColor
-	// 				? css.btnActive[currentTheme]
-	// 				: css.btnInactive[currentTheme]}
-	// 			`;
-	// 	);
-	// };
 
 	const btnColor = selectedColor => {
 		return clsx(css.btn, css.transition, {

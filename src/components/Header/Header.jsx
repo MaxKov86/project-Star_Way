@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import css from './Header.module.css';
-// import MenuIcon from '@mui/icons-material/Menu';
+
 import UserInfo from './UserInfo/UserInfo';
 import ThemeSelector from './ThemeSelector/ThemeSelector';
 import icon from '../../assets/icons.svg';
@@ -21,7 +21,6 @@ const Header = ({ isOpen, toggle }) => {
 	};
 
 	return (
-		// <div className={css.header}>
 		<div className={clsx(css.header, css[theme])}>
 			{window.innerWidth < 1440 && (
 				<button
@@ -29,7 +28,6 @@ const Header = ({ isOpen, toggle }) => {
 					onClick={() => toggle(!isOpen)}
 					type="button"
 				>
-					{/* <MenuIcon className={clsx(css.burgerIcon, css[theme])} /> */}
 					<svg className={clsx(css.burgerIcon, css[theme])}>
 						<use xlinkHref={icon + '#icon-menu-01'}></use>
 					</svg>

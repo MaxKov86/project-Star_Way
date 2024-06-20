@@ -36,11 +36,10 @@
 }
 .list.light {
 	background: rgba(252, 252, 252, 1);
-	/* color: var(--secondary-color-text); */
+	
 }
 .list.violet {
 	background: rgba(252, 252, 252, 1);
-	/* border: 1px solid #bedbb0; */
 	border: 1px solid #ecedfd;
 }
 
@@ -52,8 +51,7 @@
 
 .btnActive {
 	color: rgba(190, 219, 176, 1);
-	/* background-color: transparent;
-	border: none; */
+	
 }
 .btnActive.light {
 	color: rgba(190, 219, 176, 1);
@@ -64,8 +62,7 @@
 
 .btnInactive.dark {
 	color: rgba(255, 255, 255, 0.5);
-	/* background-color: transparent;
-	border: none; */
+	
 }
 .btnInactive.light {
 	color: rgba(22, 22, 22, 1);
