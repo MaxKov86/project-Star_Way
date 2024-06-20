@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-import './App.module.css';
 import { Toaster } from 'react-hot-toast';
 import Loader from './Loader/Loader';
 import { useEffect } from 'react';
@@ -26,7 +25,6 @@ function App() {
 		<Loader />
 	) : (
 		<>
-			{/* <Layout> */}
 			<Suspense fallback={null}>
 				<Routes>
 					<Route
@@ -51,7 +49,6 @@ function App() {
 			</Suspense>
 
 			<Toaster />
-			{/* </Layout> */}
 		</>
 	);
 }
