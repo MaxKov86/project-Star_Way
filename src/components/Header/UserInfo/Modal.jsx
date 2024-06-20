@@ -23,6 +23,9 @@ import { styled } from '@mui/material/styles';
 import css from './Modal.module.css';
 import clsx from 'clsx';
 import { selectTheme } from '../../../redux/theme/selectors';
+import loadingToaster from '../../../helpers/loadingToast';
+import successToaster from '../../../helpers/successToast';
+import errorToaster from '../../../helpers/errorToast';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -106,17 +109,19 @@ const ModalForm = ({ open, handleClose }) => {
 		if (data.avatarURL && data.avatarURL[0]) {
 			formData.append('avatar', data.avatarURL[0]);
 		}
-
+		const toastId = loadingToaster(theme);
 		dispatch(editUserInfo({ formData }))
 			.unwrap()
 			.then(response => {
 				if (response.error) {
 					console.error('Error updating user:', response.error);
 				} else {
+					successToaster(theme, toastId);
 					handleClose();
 				}
 			})
 			.catch(error => {
+				errorToaster(theme, toastId);
 				console.error('Error dispatching editUser:', error);
 			});
 	};
