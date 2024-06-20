@@ -105,11 +105,6 @@
 	color: var(--primary-color-text-black);
 }
 
-
-.formInput:focus {
-	color: var(--primary-color-text-white);
-}
-
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -124,24 +119,6 @@ select:-webkit-autofill:focus {
 	transition: background-color 5000s ease-in-out 0s;
 }
 
-.formInput.light {
-	color: var(--primary-color-text-black) !important;
-
-}
-
-.formInput.light::placeholder {
-	color: var(--primary-color-text-black);
-}
-
-.formInput.violet {
-	color: var(--primary-color-text-black) !important;
-	
-}
-
-.formInput.violet::placeholder {
-	color: var(--primary-color-text-black);
-}
-
 .inputArea {
 	position: relative;
 	width: 100%;
@@ -150,9 +127,9 @@ select:-webkit-autofill:focus {
 	color: #ff4c4c;
 	font-size: 10px;
 	line-height: 10px;
-	margin-top: 5px;
+	/* margin-top: 5px; */
 	position: absolute;
-	top: 95%;
+	top: 100%;
 	left: 5px;
 }
 .showPasswordBtn {

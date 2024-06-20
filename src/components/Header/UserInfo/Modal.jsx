@@ -240,12 +240,15 @@ const ModalForm = ({ open, handleClose }) => {
 											{...field}
 											type="text"
 											placeholder={user.name}
-											error={!!errors.name}
-											helperText={errors.name ? errors.name.message : ''}
+											// error={!!errors.name}
+											// helperText={errors.name ? errors.name.message : ''}
 										/>
 									);
 								}}
 							/>
+							{errors.name && (
+								<p className={css.errors}>{errors.name.message}</p>
+							)}
 						</div>
 						<div className={css.inputArea}>
 							<Controller
@@ -257,11 +260,14 @@ const ModalForm = ({ open, handleClose }) => {
 										{...field}
 										type="email"
 										placeholder={user.email}
-										error={!!errors.email}
-										helperText={errors.email ? errors.email.message : ''}
+										// error={!!errors.email}
+										// helperText={errors.email ? errors.email.message : ''}
 									/>
 								)}
 							/>
+							{errors.email && (
+								<p className={css.errors}>{errors.email.message}</p>
+							)}
 						</div>
 						<div className={css.inputArea}>
 							<Controller
@@ -285,11 +291,14 @@ const ModalForm = ({ open, handleClose }) => {
 												</InputAdornment>
 											),
 										}}
-										error={!!errors.password}
-										helperText={errors.password ? errors.password.message : ''}
+										// error={!!errors.password}
+										// helperText={errors.password ? errors.password.message : ''}
 									/>
 								)}
 							/>
+							{errors.password && (
+								<p className={css.errors}>{errors.password.message}</p>
+							)}
 						</div>
 					</div>
 					<button type="submit" className={clsx(css.submitBtn, css[theme])}>
