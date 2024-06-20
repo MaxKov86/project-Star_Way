@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 import icons from '/src/assets/icons.svg';
 import css from './LoginForm.module.css';
@@ -10,6 +10,7 @@ import { NavLink } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../redux/auth/operations';
+import toast from 'react-hot-toast';
 
 const schema = yup.object().shape({
 	email: yup
@@ -38,13 +39,18 @@ const LoginForm = () => {
 		reValidateMode: 'onChange',
 	});
 
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
 
 	const onSubmit = data => {
-		dispatch(logIn(data));
-		// const reg = logIn(data);
-		// dispatch(reg);
-		navigate('/home');
+		dispatch(logIn(data))
+			.unwrap()
+			.then(() => {
+				toast.success('Welcome! :))');
+			})
+			.catch(() => {
+				toast.error('Invalid login or password! :((');
+			});
+		// navigate('/home');
 	};
 
 	const toggleShowPassword = () => {
