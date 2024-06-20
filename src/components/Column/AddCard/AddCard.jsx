@@ -61,7 +61,7 @@ const AddCard = ({ columnId, closeModal }) => {
 				<div className={css.radioBox}>
 					<h5 className={clsx(css.title, css[theme])}>Label color</h5>
 					<div className={css.priorityBox}>
-						<label>
+						<label title="low">
 							<input
 								className={clsx(css.priorityBtn)}
 								type="radio"
@@ -81,7 +81,7 @@ const AddCard = ({ columnId, closeModal }) => {
 							</div>
 						</label>
 
-						<label>
+						<label title="medium">
 							<input
 								className={clsx(css.priorityBtn)}
 								type="radio"
@@ -101,7 +101,7 @@ const AddCard = ({ columnId, closeModal }) => {
 							</div>
 						</label>
 
-						<label>
+						<label title="high">
 							<input
 								className={clsx(css.priorityBtn)}
 								type="radio"
@@ -121,7 +121,7 @@ const AddCard = ({ columnId, closeModal }) => {
 							</div>
 						</label>
 
-						<label>
+						<label title="without">
 							<input
 								className={clsx(css.priorityBtn)}
 								type="radio"
