@@ -11,7 +11,6 @@ import { useParams } from 'react-router-dom';
 import loadingToaster from '../../../helpers/loadingToast';
 import successToaster from '../../../helpers/successToast';
 import errorToaster from '../../../helpers/errorToast';
-import PrimeBtn from '../PrimeBtn';
 
 const schema = yup.object().shape({
 	title: yup.string().min(2, 'Too Short!').required('Title is required'),
