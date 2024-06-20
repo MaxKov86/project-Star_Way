@@ -7,6 +7,8 @@ import {
 	InputAdornment,
 	Avatar,
 	Box,
+	// FormControl,
+	// FormHelperText,
 } from '@mui/material';
 import {
 	// Person as UserIcon,
@@ -21,6 +23,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { editUserInfo } from '../../../redux/users/operation';
 import { selectUserProfile } from '../../../redux/users/selectors';
+// import { TextField, FormControl, FormHelperText } from '@material-ui/core';
 
 import css from './Modal.module.css';
 import clsx from 'clsx';
@@ -72,7 +75,7 @@ const ModalForm = ({ open, handleClose }) => {
 		formState: { errors },
 	} = useForm({
 		resolver: yupResolver(schema),
-		mode: 'all',
+		mode: 'onChange',
 		reValidateMode: 'onChange',
 		defaultValues: {
 			name: user.name || '',
@@ -179,7 +182,6 @@ const ModalForm = ({ open, handleClose }) => {
 				theme === 'dark' ? 'rgba(255, 255, 255, 1)' : 'rgba(22, 22, 22, 1)',
 		},
 	});
-
 	return (
 		<Modal open={open} onClose={handleClose}>
 			<Box className={clsx(css.modalBox, css[theme])}>
@@ -232,32 +234,32 @@ const ModalForm = ({ open, handleClose }) => {
 								name="name"
 								control={control}
 								render={({ field }) => {
-									// const inputRef = useRef(null);
 									return (
 										<InputField
 											// autoFocus
 											fullWidth
-											type="text"
 											{...field}
+											type="text"
 											placeholder={user.name}
-											value={field.value}
-											onChange={e => {
-												field.onChange(e);
+											// value={field.value}
+											// onChange={e => {
+											// 	field.onChange(e);
 
-												// trigger('name');
-											}}
-											onBlur={() => {
-												trigger('name');
-												// inputRef.current.focus();
-											}}
-											// ref={inputRef}
+											// 	// trigger('name');
+											// }}
+											// onBlur={() => {
+											// 	trigger('name');
+											// 	// inputRef.current.focus();
+											// }}
+											error={!!errors.name}
+											helperText={errors.name ? errors.name.message : ''}
 										/>
 									);
 								}}
 							/>
-							{errors.name && (
+							{/* {errors.name && (
 								<p className={css.errors}>{errors.name.message}</p>
-							)}
+							)} */}
 						</div>
 						<div className={css.inputArea}>
 							<Controller
@@ -267,19 +269,23 @@ const ModalForm = ({ open, handleClose }) => {
 									<InputField
 										// autoFocus
 										fullWidth
-										type="email"
 										{...field}
+										type="email"
 										placeholder={user.email}
-										onChange={e => {
-											field.onChange(e);
-											// trigger('email');
-										}}
+										// onChange={e => {
+										// 	field.onChange(e);
+										// 	// trigger('email');
+										// }}
+										// error={!!errors.email}
+										// helperText={errors.email?.message}
+										error={!!errors.email}
+										helperText={errors.email ? errors.email.message : ''}
 									/>
 								)}
 							/>
-							{errors.email && (
+							{/* {errors.email && (
 								<p className={css.errors}>{errors.email.message}</p>
-							)}
+							)} */}
 						</div>
 						<div className={css.inputArea}>
 							<Controller
@@ -289,13 +295,13 @@ const ModalForm = ({ open, handleClose }) => {
 									<InputField
 										// autoFocus
 										fullWidth
-										{...field}
 										type={showPassword ? 'text' : 'password'}
+										{...field}
 										placeholder="Password"
-										onChange={e => {
-											field.onChange(e);
-											// trigger('password');
-										}}
+										// onChange={e => {
+										// 	field.onChange(e);
+										// 	// trigger('password');
+										// }}
 										InputProps={{
 											endAdornment: (
 												<InputAdornment position="end">
@@ -308,12 +314,16 @@ const ModalForm = ({ open, handleClose }) => {
 												</InputAdornment>
 											),
 										}}
+										// error={!!errors.password}
+										// helperText={errors.password?.message}
+										error={!!errors.password}
+										helperText={errors.password ? errors.password.message : ''}
 									/>
 								)}
 							/>
-							{errors.password && (
+							{/* {errors.password && (
 								<p className={css.errors}>{errors.password.message}</p>
-							)}
+							)} */}
 						</div>
 					</div>
 					<button type="submit" className={clsx(css.submitBtn, css[theme])}>
