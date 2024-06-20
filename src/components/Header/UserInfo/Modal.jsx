@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { styled } from '@mui/material/styles';
+import { useState, useEffect, useCallback } from 'react';
+
 import {
 	Modal,
 	TextField,
@@ -9,19 +9,17 @@ import {
 	Box,
 } from '@mui/material';
 import {
-	// Person as UserIcon,
 	Visibility,
 	VisibilityOff,
 	Add as AddIcon,
 	Close as CloseIcon,
-	// PaddingRounded,
-	// BorderClear,
 } from '@mui/icons-material';
 import { useForm, Controller } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { editUserInfo } from '../../../redux/users/operation';
 import { selectUserProfile } from '../../../redux/users/selectors';
 
+import { styled } from '@mui/material/styles';
 import css from './Modal.module.css';
 import clsx from 'clsx';
 import { selectTheme } from '../../../redux/theme/selectors';
@@ -69,8 +67,8 @@ const ModalForm = ({ open, handleClose }) => {
 		formState: { errors },
 	} = useForm({
 		resolver: yupResolver(schema),
-		mode: 'all',
-		reValidateMode: 'onChange',
+		mode: 'onChange',
+		reValidateMode: 'onSubmit',
 		defaultValues: {
 			name: user.name || '',
 			email: user.email || '',
@@ -96,9 +94,6 @@ const ModalForm = ({ open, handleClose }) => {
 
 	const onSubmit = data => {
 		const formData = new FormData();
-		// formData.append('name', data.name);
-		// formData.append('email', data.email);
-		// formData.append('password', data.password);
 		if (data.name) {
 			formData.append('name', data.name);
 		}
@@ -126,56 +121,75 @@ const ModalForm = ({ open, handleClose }) => {
 			});
 	};
 
-	const InputField = styled(TextField)({
-		'& .MuiOutlinedInput-root': {
-			'& fieldset': {
-				borderColor:
-					theme === 'violet'
-						? 'rgba(82, 85, 188, 0.5)'
-						: 'rgba(157, 200, 136, 0.5)',
-				borderWidth: '1px',
-				borderRadius: '8px',
-				height: '55px',
-				fontFamily: ['Poppins', 'Arial'].join(','),
+	const InputField = useCallback(
+		styled(TextField)({
+			'& .MuiOutlinedInput-root': {
+				'& fieldset': {
+					borderColor:
+						theme === 'violet'
+							? 'rgba(82, 85, 188, 0.5)'
+							: 'rgba(157, 200, 136, 0.5)',
+					borderWidth: '1px',
+					borderRadius: '8px',
+					height: '55px',
+					fontFamily: ['Poppins', 'Arial'].join(','),
+					fontSize: 14,
+					fontWeight: 400,
+					paddingLeft: '0',
+					paddingRight: '18px',
+				},
+				'& .MuiFormControl-root': {
+					marginBottom: '-1px',
+				},
+				'& .MuiFormHelperText-root': {
+					lineHeight: 'normal',
+					marginTop: '-4px',
+					marginBottom: '-10px',
+				},
+				'& .MuiOutlinedInput-input': {
+					color:
+						theme === 'dark'
+							? 'rgba(255, 255, 255, 0.5)'
+							: 'rgba(22, 22, 22, 1)',
+				},
+				'&:hover fieldset': {
+					borderColor:
+						theme === 'violet'
+							? 'rgba(82, 85, 188, 1)'
+							: 'rgba(157, 200, 136, 1)',
+					borderWidth: '1px',
+				},
+				'&.Mui-focused fieldset': {
+					borderColor:
+						theme === 'violet'
+							? 'rgba(82, 85, 188, 1)'
+							: 'rgba(157, 200, 136, 1)',
+					borderWidth: '1px',
+					color:
+						theme === 'dark'
+							? 'rgba(255, 255, 255, 0.5)'
+							: 'rgba(22, 22, 22, 1)',
+				},
+			},
+			'& .MuiInputBase-root': {
 				fontSize: 14,
-				fontWeight: 400,
-				paddingLeft: '0',
-				paddingRight: '18px',
+				fontFamily: ['Poppins', 'Arial'].join(','),
 			},
-			'& .MuiOutlinedInput-input': {
-				color:
-					theme === 'dark' ? 'rgba(255, 255, 255, 0.5)' : 'rgba(22, 22, 22, 1)',
+			'& .MuiInputBase-input': {
+				fontSize: 14,
+				fontFamily: ['Poppins', 'Arial'].join(','),
 			},
-			'&:hover fieldset': {
-				borderColor:
-					theme === 'violet'
-						? 'rgba(82, 85, 188, 1)'
-						: 'rgba(157, 200, 136, 1)',
-				borderWidth: '1px',
+			'& .MuiInputBase-input:-webkit-autofill': {
+				WebkitBoxShadow:
+					theme === 'dark'
+						? '0 0 0 1000px rgba(21, 21, 21, 1) inset'
+						: '0 0 0 1000px rgb(246, 246, 247, 0.8) inset',
+				WebkitTextFillColor:
+					theme === 'dark' ? 'rgba(255, 255, 255, 1)' : 'rgba(22, 22, 22, 1)',
 			},
-			'&.Mui-focused fieldset': {
-				borderColor:
-					theme === 'violet'
-						? 'rgba(82, 85, 188, 1)'
-						: 'rgba(157, 200, 136, 1)',
-				borderWidth: '1px',
-				color:
-					theme === 'dark' ? 'rgba(255, 255, 255, 0.5)' : 'rgba(22, 22, 22, 1)',
-			},
-		},
-		'& .MuiInputBase-input': {
-			fontSize: 14,
-			fontFamily: ['Poppins', 'Arial'].join(','),
-		},
-		'& .MuiInputBase-input:-webkit-autofill': {
-			WebkitBoxShadow:
-				theme === 'dark'
-					? '0 0 0 1000px rgba(21, 21, 21, 1) inset'
-					: '0 0 0 1000px rgb(246, 246, 247, 0.8) inset',
-			WebkitTextFillColor:
-				theme === 'dark' ? 'rgba(255, 255, 255, 1)' : 'rgba(22, 22, 22, 1)',
-		},
-	});
+		}),
+		[theme]
+	);
 
 	return (
 		<Modal open={open} onClose={handleClose}>
@@ -201,16 +215,7 @@ const ModalForm = ({ open, handleClose }) => {
 									backgroundColor: 'rgba(255, 255, 255, 0.5)',
 								}}
 								src={userAvatar}
-								// className={clsx(css.userAvatar, css[theme])}
-								// src={
-								// 	userAvatar ||
-								// 	`${icons}#${
-								// 		theme === 'light' ? 'icon-user-light' : 'icon-user-violet'
-								// 	}`
-								// }
-							>
-								{/* {!userAvatar && <UserIcon />} */}
-							</Avatar>
+							></Avatar>
 							<IconButton component="label">
 								<input
 									type="file"
@@ -229,32 +234,18 @@ const ModalForm = ({ open, handleClose }) => {
 								name="name"
 								control={control}
 								render={({ field }) => {
-									// const inputRef = useRef(null);
 									return (
 										<InputField
-											// autoFocus
 											fullWidth
-											type="text"
 											{...field}
+											type="text"
 											placeholder={user.name}
-											value={field.value}
-											onChange={e => {
-												field.onChange(e);
-
-												// trigger('name');
-											}}
-											onBlur={() => {
-												trigger('name');
-												// inputRef.current.focus();
-											}}
-											// ref={inputRef}
+											error={!!errors.name}
+											helperText={errors.name ? errors.name.message : ''}
 										/>
 									);
 								}}
 							/>
-							{errors.name && (
-								<p className={css.errors}>{errors.name.message}</p>
-							)}
 						</div>
 						<div className={css.inputArea}>
 							<Controller
@@ -262,21 +253,15 @@ const ModalForm = ({ open, handleClose }) => {
 								control={control}
 								render={({ field }) => (
 									<InputField
-										// autoFocus
 										fullWidth
-										type="email"
 										{...field}
+										type="email"
 										placeholder={user.email}
-										onChange={e => {
-											field.onChange(e);
-											// trigger('email');
-										}}
+										error={!!errors.email}
+										helperText={errors.email ? errors.email.message : ''}
 									/>
 								)}
 							/>
-							{errors.email && (
-								<p className={css.errors}>{errors.email.message}</p>
-							)}
 						</div>
 						<div className={css.inputArea}>
 							<Controller
@@ -284,15 +269,10 @@ const ModalForm = ({ open, handleClose }) => {
 								control={control}
 								render={({ field }) => (
 									<InputField
-										// autoFocus
 										fullWidth
-										{...field}
 										type={showPassword ? 'text' : 'password'}
+										{...field}
 										placeholder="Password"
-										onChange={e => {
-											field.onChange(e);
-											// trigger('password');
-										}}
 										InputProps={{
 											endAdornment: (
 												<InputAdornment position="end">
@@ -305,12 +285,11 @@ const ModalForm = ({ open, handleClose }) => {
 												</InputAdornment>
 											),
 										}}
+										error={!!errors.password}
+										helperText={errors.password ? errors.password.message : ''}
 									/>
 								)}
 							/>
-							{errors.password && (
-								<p className={css.errors}>{errors.password.message}</p>
-							)}
 						</div>
 					</div>
 					<button type="submit" className={clsx(css.submitBtn, css[theme])}>
